@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!--通过input上传文件，在html页面中预览-->
+  <input type="file" name="file">
+  <button>点我查看内容</button>
+  <p></p> 
+<script>
+// 1.获取元素
+var input=document.querySelector('input');
+var button=document.querySelector('button');
+var p=document.querySelector('p');
+
+// 2.读取文件
+// 2.1上传
+// 2.2 点击
+button.onclick=function(){
+// 2.3 获取到上传的文件
+var file=input.files[0]
+// console.log(input.files[0]);
+// 2.4 读取文件 readAsDataURL()
+var reader =new FileReader();
+// console.log(reader);
+// reader.readAsText(传入上传上去的文本文件)读取文本文件的 
+reader.readAsText(file);
+// 2.5 监听文件读取完成
+reader.onload=function(){
+// 3.6  获取文件的结果
+p.innerHTML=reader.result;
+}
+
+}
+
+</script>
+</body>
+</html>

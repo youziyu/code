@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //数组的遍历操作，使用for循环,原因是数组中的元素按照索引排列，有序的递增
+    
+    //对象的保存，是按照属性名保存，是一种无序的存储方式
+    
+    //for..in
+    
+    var obj = {
+      name: "张三",
+      age: 18,
+      gender: "男",
+      sayHi: function () {
+        console.log("我是一个方法");
+      }
+    };
+    
+    //forin也是一个循环
+    //k 代表某一个属性名，每一次循环都会取出一个不同的k
+    for (var k in obj) {
+      //k的类型为字符串 - 相当于遍历数组中的i
+      console.log(k);
+      //console.log(typeof k);
+      
+      //取出k所对应的属性值obj[k] - 相当于arr[i]
+      console.log(obj[k]);
+      //console.log(obj.k);错误的写法，值为undefined
+    }
+  
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

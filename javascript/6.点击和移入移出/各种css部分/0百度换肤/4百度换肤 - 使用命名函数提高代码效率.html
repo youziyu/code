@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>百度换肤</title>
+  <style>
+    html, body, div {
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      width: 100%;
+      background: url(images/1.jpg) no-repeat;
+    }
+    
+    .back {
+      width: 100%;
+      height: 180px;
+      background: rgba(255, 255, 255, 0.3);
+      padding-top: 50px;
+      text-align: center;
+    }
+    
+    .back img {
+      width: 200px;
+      cursor: pointer;
+      /*background: url(images/111.jpg);*/
+    }
+  </style>
+  <script>
+  
+  </script>
+</head>
+<body>
+<div class="back">
+  <img id="pic1" src="images/1.jpg" alt="">
+  <img id="pic2" src="images/2.jpg" alt="">
+  <img id="pic3" src="images/3.jpg" alt="">
+  <img id="pic4" src="images/4.jpg" alt="">
+  <img id="pic5" src="images/5.jpg" alt="">
+</div>
+
+<script>
+  //旧的方式
+  //1 先获取要操作的元素
+  //  var pic1 = document.getElementById("pic1");
+  //  var pic2 = document.getElementById("pic2");
+  //  var pic3 = document.getElementById("pic3");
+  //  var pic4 = document.getElementById("pic4");
+  //  var pic5 = document.getElementById("pic5");
+  
+  //2 使用this进行化简
+  //  pic1.onclick = function () {
+  //    document.body.style.backgroundImage = "url(" + this.src + ")";
+  //  };
+  
+  
+  // - 最终化简方式 -
+  //1 获取所有的小图片
+  var pics = document.getElementsByTagName("img");
+  
+  //2 遍历
+  for (var i = 0; i < pics.length; i++) {
+    //3 给每个pics中的img设置事件
+    //在循环中，每个img的事件处理程序都是相同的函数，我们可以使用命名函数提高代码的利用率
+    pics[i].onclick = changePic;
+  }
+  
+  function changePic() {
+    //4 将自己（事件源）的src属性设置给body
+    document.body.style.backgroundImage = "url(" + this.src + ")";
+  }
+
+</script>
+</body>
+</html>

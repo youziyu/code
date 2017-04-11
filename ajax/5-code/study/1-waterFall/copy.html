@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>瀑布流案例</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+			font-family: '微软雅黑';
+		}
+		
+		.wrapper {
+			padding: 50px;
+		}
+		
+		img {
+			display: block;
+			width: 100%;
+			height: 300px;
+		}
+		
+		.items {
+			position: relative;
+		}
+		
+		.item {
+			width: 228px;
+			position: absolute;
+		}
+		
+		.tips {
+			width: 280px;
+			height: 40px;
+			margin: 30px auto 0;
+			text-align: center;
+			line-height: 40px;
+			background-color: #CCC;
+			border-radius: 6px;
+			font-size: 24px;
+			cursor: pointer;
+		}
+		
+		.tips.loading {
+			background-color: transparent;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="items">
+			<!--<div class="item" style="top: 0px; left: 0px;">
+				<img src="./images/1.jpg" alt="">
+				<p>一支素笔，一杯花茶，一段时光，浅笑又安然一场盛世的繁华，愿不倾城，不倾国，只倾我所有。只为过简单安稳的生活，单纯不平凡。一支素笔，一杯花茶，一段时光，浅笑又安然。早安！</p>
+			</div>-->
+		</div>
+		<p class="tips loading">正在加载...</p>
+	</div>
+	<!--瀑布流案例-->
+	<!--1.实现瀑布流的数据请求成功-->
+	<!--2.实现瀑布流案例的正常布局-->
+	<!--3.实现瀑布流点击加载-->
+	<!--4.实现滚动加载-->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/template-native.js"></script>
+	<script src="js/jquery.waterFall.js"></script>
+	<script type="text/template" id="temp">
+	<!--3.声明模板-->
+	<%for(var i=0;i<items.length;i++){%>
+			<div class="item">
+				<img src="<%=items[i].path%>" alt="">
+				<p><%=items[i].text%></p>
+			</div>
+		<%}%>
+	</script>
+	<script>
+		// 1.发起ajax请求
+		function getData(pageNum){
+			$.ajax({
+				type:'post',
+				url:'data.php',
+				data:{page:pageNum},
+				beforeSend:function(){
+					// 6.改变按钮的效果
+					$('.tips').text('正在加载...').addClass('loading');
+				},
+				success:function(data){
+					// 2.把数据渲染到页面中
+					var result=template('temp',data);
+					console.log(data);
+					// 4.把得到的结果插入到对应的标签中
+					$('.items').append(result);
+					// 5.使用瀑布流布局插件
+					$('.items').waterFall();
+					// 7.3 把页面缓存起来(把页面写入到一个不动的标签上)
+					$('.tips').attr('page',data.page);
+				},
+				complete:function(){
+					$('.tips').text('点击加载').removeClass('loading');
+				}
+			})
+		}
+
+		getData(1);
+
+		// 7.点击加载
+			// 7.1.获取按扭 添加点击事件
+		$('.tips').on('click',function(){
+			// 7.2.获取页码 传递页码
+			var pageNum=$(this).attr('page');
+			getData(pageNum);
+		})
+// 8.实现滚动加载
+	// 8.1 window调用滚动事件
+	$(window).on('scroll',function(){
+	// 8.2 滚动到底部(底部是一个泛称，多少才算底部)和判断加载按钮如果有loading代表没有加载完成才加载
+	// 8.3.获取items的高度
+	var itemsHeight=$('.items').height();
+	// console.log(itemsHeight);
+	// 8.4获取items距离html顶部的距离
+	var itemsTop=$('.items').offset().top;
+	// console.log(itemsTop);
+	// 8.5 获取浏览器的高度
+	var windowHeight=$(window).height();
+	// console.log(windowHeight);
+	// 8.6 获取滚动条的高度
+	var windowScrollTop=$(window).scrollTop();
+	// console.log(windowScrollTop);
+
+	// 剩余的高度
+	var height=itemsHeight+itemsTop-windowHeight-windowScrollTop;
+	// console.log(height);
+	if(height<200&&!$('.tips').hasClass('loading')){
+	// 8.7 获取页码
+	var pageNum=$('.tips').attr('page');
+	// 8.8 加载
+	getData(pageNum);
+		}
+	})
+
+
+
+	</script>
+</body>
+
+</html>

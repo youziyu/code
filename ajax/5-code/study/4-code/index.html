@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理系统</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Microsoft YaHei
+        }
+        
+        .table-bordered > thead > tr > th {
+            border-bottom-width: 1px;
+            background: #f5f5f5;
+            text-align: center
+        }
+        
+        .pagination {
+            margin: 0
+        }
+        
+        .pagination>li>a {
+            padding: 2px 15px;
+        }
+        
+        .disabled {
+            cursor: not-allowed;
+        }
+        
+        .panel-body {
+            position: relative;
+        }
+        
+        .loading {
+            width: 80px;
+            height: 30px;
+            border-radius: 5px;
+            background: url("images/loading.gif") center center no-repeat;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+        
+        input {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>后台管理系统
+                <small>用户管理</small>
+            </h1>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">用户管理</div>
+            <div class="panel-body">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th width="15%">用户名</th>
+                            <th width="15%">密码</th>
+                            <th width="20%">教师姓名</th>
+                            <th width="25%">所属学院</th>
+                            <th width="10%">年龄</th>
+                            <th width="10%">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--<tr class="text-center">
+                            <td>1</td>
+                            <td>liubei</td>
+                            <td>3344520</td>
+                            <td>刘备</td>
+                            <td>蜀国</td>
+                            <td>50</td>
+                            <td><a href="javascript:;" class="delete" data-id="3" title="删除"><span class="glyphicon glyphicon-remove"></span></a></td>
+                        </tr>-->
+                    </tbody>
+                </table>
+                <nav>
+                    <button class="btn btn-default btn-sm" data-toggle='modal' data-target="#edit">添加</button>
+                    <ul class="pagination pull-right">
+                        <li><a href=""><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                        <li><a href=""><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                    </ul>
+                </nav>
+                <div class="loading"></div>
+            </div>
+        </div>
+        <!--模态框-->
+        <div class="modal fade" id="edit">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">信息录入</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="javascript:;" id="form" autocomplete="off">
+                            <input name="username" maxlength="20" class="form-control" placeholder="请输入用户名" type="text" required />
+                            <input name="password" maxlength="20" class="form-control" placeholder="请输入密码" type="password" />
+                            <input name="name" maxlength="100" class="form-control" placeholder="请输入姓名" type="text" />
+                            <input name="school" maxlength="100" class="form-control" placeholder="请输入学校" type="text" />
+                            <input name="age" class="form-control" placeholder="请输入年龄" type="text" />
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="save">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--1.引入jquery库-->
+    
+    <!--2.引入bootstrap库-->
+    
+    <!--3.引入模板引擎库-->
+    
+    <!--4.声明分页模板-->
+    
+    <!--5.声明数据模板-->
+    
+    
+
+   
+    <!--6.书写业务代码-->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

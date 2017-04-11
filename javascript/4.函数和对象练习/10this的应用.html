@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //this在方法内使用就是指向这个方法所属于的对象（指向函数的调用者）
+    //疑问：直接使用这个对象的名字也可以达到这个目的
+    var xiaoMing = new Object();
+    xiaoMing.name = "小明";
+    xiaoMing.age = 18;
+    //小明的行为是sayHi
+    xiaoMing.sayHi = sayHi;
+    
+    var xiaoHong = new Object();
+    xiaoHong.name = "小红";
+    xiaoHong.age = 19;
+    //小红也具有一个sayHi方法
+    xiaoHong.sayHi = sayHi;
+    
+    function sayHi() {
+      //当一个函数被多个对象的方法引用时，this可以指向不同的对象
+      console.log("嗨，我是" + this.name + ",我得年龄是:" + this.age);
+    }
+    
+    xiaoHong.sayHi();
+    xiaoMing.sayHi();
+    
+    //如果在普通的函数(不属于方法的函数)中使用this，this指向window
+    //sayHi();
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    body {
+      width: 2000px;
+      height: 10000px;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  //document.documentElement  html标签的获取方式
+  
+  //如何获取页面的卷曲高度(上面卷曲的距离)和宽度(左面卷曲的距离)
+  
+  window.onscroll = function () {
+    //纵向的卷曲高度：检测环境（谷歌获取浏览器均为最新版本）
+    //console.log(window.pageYOffset);//ie不支持
+    //console.log(document.documentElement.scrollTop);//谷歌不支持
+    //console.log(document.body.scrollTop);//只有谷歌支持
+    
+    //console.log(window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0);
+    //console.log(window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0);
+    
+    //var obj = myScroll();
+    //console.log(obj.top);
+    
+    //在页面滚动时，实时获取卷曲的高度或者宽度
+    console.log(myScroll().top);
+  };
+  
+  
+  function myScroll() {
+    //var obj = {};
+    //obj.top = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    //obj.left = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
+    //return obj;
+    
+    return {
+      top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0,
+      left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0
+    };
+  }
+
+
+</script>
+</body>
+</html>

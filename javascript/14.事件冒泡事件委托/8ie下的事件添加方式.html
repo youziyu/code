@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<button id="btn">按钮</button>
+
+<script>
+  var btn = document.getElementById("btn");
+  
+  //标签.attachEvent(eventType,fn)  eventType需要加on
+  //注意，多次添加事件时，执行的顺序相反
+  //ie6-10支持
+  btn.attachEvent("onclick", function () {
+    console.log("今天天气不错1");
+  });
+  
+  btn.attachEvent("onclick", fun);
+  btn.attachEvent("onclick", function () {
+    console.log("今天天气不错3");
+  });
+  
+  //移除事件  标签.detachEvent()  参数必须与设置时完全一致
+  btn.detachEvent("onclick", fun);
+  
+  
+  function fun() {
+    console.log("今天天气不错2");
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<ul id="list">
+  <li>我是li</li>
+  <li>我是li</li>
+  <li>我是li</li>
+  <li>我是li</li>
+  <li>我是li</li>
+</ul>
+<script>
+  //由于id名具有唯一性，js允许我们不获取直接使用，但是会出现不经意的问题，所以我们不要这么写。
+  
+  //1 获取元素
+  var list = document.getElementById("list");
+  //2 在ul内部获取li
+  var lis = list.getElementsByTagName("li");
+  
+  //3 遍历lis
+  for (var i = 0; i < lis.length; i++) {
+    //4 判断索引值的奇偶，设置不同的背景色
+    //注意，索引值的奇偶与真正的行数的奇偶不同
+    if (i % 2 == 0) {
+      lis[i].style.backgroundColor = "red";
+    } else {
+      lis[i].style.backgroundColor = "blue";
+    }
+  }
+
+
+</script>
+</body>
+</html>

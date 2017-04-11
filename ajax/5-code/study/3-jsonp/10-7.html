@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <p></p> 
+<!--1.声明一个函数 当我们请求的时候 通过请求调用这个函数 弹出一句话-->
+<script>
+    // fn();
+    function fn(name){
+        // alert("跨域成功")
+        alert('你在吗'+name);
+    }
+
+    // www.study.com 去请求api.study.com这个网站  输出 你好 某某某(夜华) 
+    // 你去请求的时候 你也不知道这个某某某是谁  要让api.study.com这个网站返回信息
+</script>
+
+
+<!--fn()-->
+<script src="http://api.study.com/10-7.php?callback=fn"></script>  
+ 
+</body>
+</html>

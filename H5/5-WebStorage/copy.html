@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <button class="red">红色</button>
+  <button class="blue">蓝色</button>
+  <script>
+    var red = document.querySelector('.red');
+    var blue = document.querySelector('.blue');
+
+    //  网页换肤
+    // 步骤:
+    // 1.点击red按钮
+    red.onclick = function () {
+      // 2.给body设置背景颜色
+      document.body.style.backgroundColor = 'red';
+      // 3.把背景颜色存入localStorage
+      window.localStorage.setItem('color', 'red');
+    }
+
+    blue.onclick = function () {
+      // 2.给body设置背景颜色
+      document.body.style.backgroundColor = 'blue';
+      // 3.把背景颜色存入localStorage
+      window.localStorage.setItem('color', 'blue');
+      
+    }
+
+    // 4.当页面载入后从localStorage中取出颜色设置给body
+    window.onload = function () {
+      document.body.style.backgroundColor = window.localStorage.getItem('color');
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // XMLHttpRequest对象是一个内置对象(叫黑社会)
+        var xhr=new XMLHttpRequest();
+       
+        // 1.设置请求行  open(请求方式,请求地址) (告诉黑社会欠我钱的人的地址  要钱的方式)
+        xhr.open('post','01-login.php');
+        // 2.设置请求头 key:value   set(设置)Request(请求)Header(头)  请求头只会出现在post请求方式下()
+        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        
+        // 3.设置请求正文 key=value&key=value（欠我多少钱）
+        xhr.send("username=wanlum&password=123456");
+        // 4.监听   on(当)readystate(状态)change(改变)
+        xhr.onreadystatechange=function(){
+            // (钱叫我这)
+            // readyState=4代表成功接收到响应但不确定是成功的还是失败的响应
+            // xhr.status 状态码  400  404(找不到) 304(浏览器没有修改) 403(没有权限) 200(响应成功) 500(服务器错误)
+
+            // 含义:既成功的接收到了响应 而且接收的是成功时的响应
+        if(xhr.readyState==4&&xhr.status==200){
+            console.log(xhr.responseText);
+        }
+ 
+        }
+// 1. 页面会不会发生跳转
+    </script>
+</body>
+
+</html>

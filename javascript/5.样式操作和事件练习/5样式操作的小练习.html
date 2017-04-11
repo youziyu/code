@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+
+</head>
+<body>
+<div id="box1"></div>
+<div id="box2"></div>
+
+<script>
+  //1 获取元素,并且保存在变量中，这样操作比較简便
+//  var box1 = document.getElementById("box1");
+//  box1.style.width = "100px";
+//  box1.style.height = "100px";
+//  box1.style.backgroundColor = "red";
+  
+//  var box2 = document.getElementById("box2");
+//  box2.style.width = "200px";
+//  box2.style.height = "200px";
+//  box2.style.backgroundColor = "blue";
+  
+  
+  changeStyle("box1",100);
+  changeStyle("box2","200");
+  
+  function changeStyle(id,w) {
+    var box1 = document.getElementById(id);
+    box1.style.width = w + "px";
+    box1.style.height = "100px";
+    box1.style.backgroundColor = "red";
+    box1.style.marginBottom = "10px";
+  }
+
+
+</script>
+</body>
+</html>

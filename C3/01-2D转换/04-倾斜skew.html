@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>2D转换--倾斜skew</title>
+	<style type="text/css" media="screen">
+		html {
+			width: 100%;
+			height: 100%;
+		}
+		
+		body {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			/* 声明为伸缩容器 */
+			display: flex;
+			/* 调整主轴方向 */
+			flex-direction: column;
+			/* 调整主轴对齐 */
+			justify-content: space-around;
+			/* 调整侧轴对齐 */
+			align-items: center;
+		}
+		
+		div {
+			width: 200px;
+			height: 100px;
+			background-color: green;
+			text-align: center;
+			line-height: 100px;
+			transition: all 3s;
+		}
+		.skew-x{
+			/*转换  X轴倾斜  30deg*/
+			transform: skewX(30deg);
+		}
+		.skew-y{
+			transform: skewY(30deg);
+		}
+		.skew{
+			transform: skew(30deg,30deg);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="skew-x">
+		skew-x
+	</div>
+
+	<div class="skew-y">
+		skew-y
+	</div>
+
+	<div class="skew">
+		skew
+	</div>
+</body>
+
+</html>

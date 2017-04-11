@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<ul>
+  <li></li>
+  <li>这是上一个li</li>
+  <li id="me">这是我</li>
+  <li>这是下一个li</li>
+  <li></li>
+</ul>
+<script>
+  //1 获取me
+  var me = document.getElementById("me");
+  
+  //2 获取上一个同级节点  previousSibling  可能会获取到空格和换行
+  //console.log(me.previousSibling);
+  
+  //获取上一个同级元素节点 previousElementSibling  在ie9以下不支持
+  //console.log(me.previousElementSibling);
+  
+  //3 获取下一个同级节点 nextSibling  可能会获取到空格和换行
+  //console.log(me.nextSibling);
+  
+  //获取下一个同级元素节点 nextElementSibling  在ie9以下不支持
+  //console.log(me.nextElementSibling);
+
+</script>
+</body>
+</html>

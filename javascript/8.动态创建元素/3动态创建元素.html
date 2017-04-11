@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+  //动态创建元素的方式
+  //1 document.write()  在使用时，会向body的最后进行添加
+  //document.write("<br>");
+  //document.write("<br>");
+  
+  //2 innerHTML 可以设置某个标签内部的子标签
+  var box = document.getElementById("box");
+  //box.innerHTML = "<span>我是span</span>";
+  
+  //3 document.createElement("标签名") 创建的标签不处于页面中
+  // 如果想要在页面中显示，需要使用appendChild或者insertBefore将这个标签添加到指定位置
+  var div = document.createElement("div");
+  box.appendChild(div);
+  div.innerHTML = "我是新创建的div";
+
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        ul {
+            width: 500px;
+            height: 500px;
+            list-style: none;
+            border: 1px solid #000;
+            margin: 0 auto;
+            padding: 0;
+        }
+        
+        li {
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border: 1px solid #ccc;
+            background-color: hotpink;
+            float: left;
+        }
+        ul{
+            display: flex;
+        }
+        li:nth-child(1){
+            /*flex　代表的是伸缩项目在伸缩容器中所占的空间*/
+            width:10px;
+        }
+         li:nth-child(2){
+            /*flex　代表的是伸缩项目在伸缩容器中所占的空间*/
+            flex:2;
+        }
+         li:nth-child(3){
+            /*flex　代表的是伸缩项目在伸缩容器中所占的空间*/
+            flex:1;
+        }
+
+        /*元素中的flex代表的是所有元素的值/lex加起来 比值*/
+     
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</body>
+
+</html>

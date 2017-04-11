@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 300px;
+      border: 1px solid #000;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+     
+      ////按钮点击后：给box内部创建一个子元素p
+      $("#btn").click(function () {
+        $("#box").append("<p>我是新的p标签</p>");
+      });
+      
+      //最终jq使用on方法统一了事件的添加方式
+      
+      //1 添加简单事件
+      //$("#btn").on("click",function () {
+      //  console.log("我执行了");
+      //});
+      
+      //2 添加多个事件
+      //$("#btn").on("click mouseenter",function () {
+      //  console.log("我执行了");
+      //});
+      
+      //$("#btn").on({
+      //  "click":function () {
+      //    console.log("我是点击事件代码");
+      //  },
+      //  "mouseenter":function () {
+      //    console.log("我是移入事件代码");
+      //  }
+      //});
+      
+      //3 添加事件委托
+      //参数1 事件类型
+      //参数2 选择器：设置执行事件的内部子元素
+      //参数3 事件处理程序
+      $("#box").on("click","p",function () {
+        console.log("我是由内部的子元素p执行的事件委托")
+      })
+      
+      
+    });
+  </script>
+</head>
+<body>
+<button id="btn">按钮</button>
+<div id="box">
+  <div>我是div</div>
+  <p>我是原始的p标签</p>
+  <span>我是span</span>
+</div>
+</body>
+</html>

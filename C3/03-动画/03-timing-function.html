@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .outer{
+            width:500px;
+            height:500px;
+            border:1px solid red;
+            box-sizing: border-box;
+            margin: 100px auto;
+            position: relative;
+        }
+        .inner{
+            position: absolute;
+            top:-10px;
+            left:-10px;
+            width:20px;
+            height:20px;
+            background-color: hotpink;
+            border-radius: 50%;
+            transition:all 1s;
+
+            animation-name: move;
+            animation-duration: 4s;
+            /*animation-timing-function: ease;*/
+            /*animation-timing-function: ease-in;*/
+            animation-timing-function: linear;
+        }
+
+
+
+ @keyframes move{
+        0%{
+            transform: translate(0px,0px);
+        }
+        25%{
+            transform: translate(500px,0px);
+        }
+        50%{
+            transform: translate(500px,500px);
+        }
+        75%{
+            transform: translate(0px,500px);
+        }
+        100%{
+            transform: translate(0px,0px);
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <span class="inner"></span>
+    </div>
+</body>
+</html>

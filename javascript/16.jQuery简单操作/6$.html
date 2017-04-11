@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script src="jquery-1.12.4.min.js"></script>
+  <script>
+    //$是jq所暴露出来的一个全局变量
+    //jq准备了第二个全局变量，以应对$无法使用的情况
+    //console.log(jQuery === $);
+    
+    //注意不要自己将自己的变量或者函数起名为$
+    
+    //$的本质是什么？通过观察$的使用，发现$是一个函数
+    //$(document).ready(function () {
+    //});
+    //$(function () {
+    //});
+    //$("#box");
+    
+    //console.log(typeof $);//function，说明$实际上是一个函数
+    
+    //$()根据传入的参数不同，可以执行不同的功能
+    //1 选择器 $("#box")
+    //2 入口函数 $(function(){});
+    //3 将DOM对象转换为jQ对象   托尼穿上了盔甲就可以飞了
+    $(document).ready(function () {
+    });
+    //document本身不具有ready方法，当套上$()时，就具有了新的功能ready
+  
+  </script>
+</head>
+
+<body>
+
+<script>
+
+</script>
+</body>
+</html>

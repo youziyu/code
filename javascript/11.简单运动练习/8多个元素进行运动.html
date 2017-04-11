@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      /*left: 50px;*/
+    }
+    
+    #box2 {
+      top: 150px;
+    }
+  </style>
+</head>
+<body>
+<button id="btn1">运动到200</button>
+<div id="box1">box1</div>
+<div id="box2">box2</div>
+<script>
+  //1 获取元素
+  var box1 = document.getElementById("box1");
+  var box2 = document.getElementById("box2");
+  var btn1 = document.getElementById("btn1");
+  //  var timer = null;
+  
+  //2 点击按钮1 让box1和box2运动到200
+  btn1.onclick = function () {
+    //由于调用时的顺序不同，谁先调用，谁就动不了
+    animate(box1, 400);
+    animate(box2, 400);
+  };
+  
+  
+  /**
+   * 让某一个标签，运动到left为几的位置上
+   * @param tag 要运动的标签
+   * @param target 运动到的left值
+   */
+  function animate(tag, target) {
+    //由于防止加速的代码在animate执行开始时，会将前面调用的animate所开启的定时器进行清除
+    //导致前面的调用无法执行运动。
+    //如果每个元素的运动是使用一个独立的timer进行标识，这时就不会出现这个问题
+    //我们可以使用自定义属性进行定时器的保存
+    clearInterval(tag.timer);//防止加速
+    tag.timer = setInterval(function () {
+      //1 获取offsetLeft和step的设置
+      var leader = tag.offsetLeft;
+      var step = 10;//步数如果一直为正数，导致无法进行后退
+      //1.1 step的正负设置根据leader和target的关系
+      //step = target>leader?step:-step;
+      step = leader > target ? -step : step;//与上一种相同
+      
+      //4 给运动设置条件
+      //判断条件的修改：有时候我们设置的步数无法正好到达指定位置，可能会超出，造成抖动
+      //可以通过判断leader和target之间的距离与step的大小关系来解决
+      if (Math.abs(leader - target) > Math.abs(step)) {
+        //2 根据运动公式计算新的位置
+        leader = leader + step;
+        //3 将新的位置设置给box
+        tag.style.left = leader + "px";
+      } else {
+        //如果进入else，先设置tag的运动位置为target，然后再设置清除
+        tag.style.left = target + "px";
+        //5 设置停止
+        clearInterval(tag.timer);
+      }
+    }, 17);
+  }
+  
+  //DOM操作所消耗的时间最低为13-16毫秒
+
+
+</script>
+</body>
+</html>

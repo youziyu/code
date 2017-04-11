@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+
+<script>
+    var box = document.getElementById("box");
+
+
+    box.onclick = function () {
+        animate(box, "width", 400);
+        animate(box, "height", 400);
+    }
+
+    //今天我想要改宽度
+    function animate(tag, attr, target) {
+        clearInterval(tag.timer);
+        tag.timer = setInterval(function () {
+            //修改的是什么属性。是由leader和最终设置的属性决定
+            //使用一个短路操作，防止获取出NaN导致计算出问题
+            var leader = parseInt(getStyle(tag, attr)) || 0;// NaN || 0
+            var step = (target - leader) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            leader = leader + step;
+            //设置的是什么，就是改的什么
+            tag.style[attr] = leader + "px";
+            if (leader == target) {
+                clearInterval(tag.timer);
+            }
+
+        }, 17);
+    }
+
+    //获取left
+    //第一个问题，是获取的结果带单位
+    //第二个问题，是如果没有设置初始值，获取结果是"auto"
+    // 如果你没有设置默认值，代表你心里想的是默认值为0
+    //    console.log(getStyle(box, "left"));
+
+
+    function getStyle(tag, attr) {
+        //if(tag.currentStyle){
+        //    return tag.currentStyle[attr];
+        //}else{
+        //    return getComputedStyle(tag,null)[attr];
+        //}
+        return tag.currentStyle ? tag.currentStyle[attr] : getComputedStyle(tag, null)[attr];
+    }
+
+
+</script>
+</body>
+</html>

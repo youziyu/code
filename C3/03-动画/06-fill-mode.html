@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .outer{
+            width:500px;
+            height:500px;
+            border:1px solid red;
+            box-sizing: border-box;
+            margin: 100px auto;
+            position: relative;
+        }
+        .inner{
+            position: absolute;
+            top:-10px;
+            left:-10px;
+            width:20px;
+            height:20px;
+            background-color: hotpink;
+            border-radius: 50%;
+            transition:all 1s;
+            
+            animation-name: move;
+            animation-duration: 2s;
+            /*
+            backwards  动画执行完毕会回到初始状态
+            forwards   动画执行完毕会停留在结束状态
+            */
+            animation-fill-mode:forwards;
+
+        }
+        @keyframes move{
+            from{
+                transform: translate(0px,0px);
+            }
+            to{
+                transform: translate(500px,0px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <span class="inner"></span>
+    </div>
+</body>
+</html>

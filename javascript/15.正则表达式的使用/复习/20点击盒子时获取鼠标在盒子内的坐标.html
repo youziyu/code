@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+      top: 200px;
+      left: 200px;
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+  var box = document.getElementById("box");
+  //点击盒子，获取鼠标在盒子内的坐标
+  
+  //鼠标在盒子内的纵坐标 = 鼠标纵坐标 - 盒子顶部的距离
+  //鼠标在盒子内的横坐标 = 鼠标横坐标 - 盒子左侧的距离
+  box.onclick = function (e) {
+    var e = e || window.event;
+    var x = e.clientX - box.offsetLeft;
+    var y = e.clientY - box.offsetTop;
+    
+    console.log(x + "-" + y);
+  };
+
+</script>
+</body>
+</html>

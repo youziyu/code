@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      
+    }
+  </style>
+</head>
+<body>
+<button id="btn1">运动到200</button>
+<button id="btn2">运动到400</button>
+<div id="box"></div>
+<script>
+  var box = document.getElementById("box");
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+  var timer = null;
+  
+  btn1.onclick = function () {
+    animate(box, "width", 200);
+    animate(box, "height", 400);
+    
+  };
+  
+  //  btn2.onclick = function () {
+  //    animate(box, "height", 400);
+  //  };
+  //
+  function animate(tag, attr, target) {
+    clearInterval(tag.timer);
+    tag.timer = setInterval(function () {
+      //获取要使用的数据
+      var leader = parseInt(getStyle(tag, attr)) || 0;
+      var step = (target - leader) / 10;
+      //给step设置取整
+      step = step > 0 ? Math.ceil(step) : Math.floor(step);
+      
+      
+      //根据步长计算出新的位置
+      leader = leader + step;
+      tag.style[attr] = leader + "px";
+      
+      //判断位置，清除定时器
+      if (leader == target) {
+        clearInterval(tag.timer);
+      }
+    }, 20);
+  }
+  
+  
+  function getStyle(tag, attr) {
+    if (tag.currentStyle) {
+      return tag.currentStyle[attr];
+    } else {
+      return getComputedStyle(tag, null)[attr];
+    }
+  }
+
+</script>
+</body>
+</html>

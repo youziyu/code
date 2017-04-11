@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    .colorBlue {
+      background-color: blue !important;
+    }
+  </style>
+</head>
+<body>
+
+<ul>
+  <li>我是一个li</li>
+  <li>我是一个li</li>
+  <li>我是一个li</li>
+  <li>我是一个li</li>
+  <li>我是一个li</li>
+</ul>
+
+<script>
+  //1 获取元素
+  var lis = document.getElementsByTagName("li");
+  
+  //2 遍历lis
+  for (var i = 0; i < lis.length; i++) {
+    //3 判断i的奇偶
+    if (i % 2 == 0) {
+      lis[i].style.backgroundColor = "pink";
+    } else {
+      lis[i].style.backgroundColor = "orange";
+    }
+    
+    //在循环内给每个li添加事件
+    lis[i].onmouseover = function () {
+      //     --不好使：给当前这个li设置背景色
+      //     --不好使：this.style.backgroundColor = "blue";
+      
+      //移入时给当前li设置类名colorBlue
+      this.className = "colorBlue";
+      //注意，由于隔行变色效果是使用js设置的背景色，这时js设置的样式显示在行内
+      //优先级较高，在设置类名的时候需要使用!important提升权重
+    };
+    
+    //移出事件
+    lis[i].onmouseout = function () {
+      //     --不好使：在移出的时候无法确定当前的li以前是什么颜色
+      //     --不好使：this.style.backgroundColor = "pink";
+      
+      //可以使用类名的设置方式解决这个问题
+      //移出li时清除类名
+      this.className = "";
+    };
+    
+    
+  }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<div id="box">
+  <p>我是p标签的内容</p>
+  <p>我是p标签的内容</p>
+  <p>我是p标签的内容</p>
+  <p>我是p标签的内容</p>
+  <p>我是p标签的内容</p>
+  <span>我是一个span</span>
+  <a href="javascript:;">我是一个a标签</a>
+</div>
+<script>
+  //事件冒泡的执行顺序，是由当前触发的元素向父级元素传递
+  
+  var box = document.getElementById("box");
+  //获取内部的p标签，设置点击事件
+  //var ps = box.children;
+  //for (var i = 0; i < ps.length; i++) {
+  //  ps[i].onclick = fun;
+  //}
+  //function fun() {
+  //  console.log("我是一个p标签");
+  //}
+  
+  //由于box中的每个元素都需要设置相同的事件，我们可以通过事件冒泡简化操作，将事件设置给box
+  //由于box内部的p标签会产生事件冒泡，如果将事件设置给box，可以省去遍历，依次添加的步骤
+  //  box.onclick = function () {
+  //    console.log("我是一个p标签");
+  //  };
+  
+  //使用事件冒泡设置给box的方式虽然可以简化代码操作，但是灵活性不强
+  
+  //3 内部有许多类型的子元素，我们想让其中的p标签执行box的事件
+  //2 我们需要先知道当前触发事件的子元素是什么标签
+  //1 我们需要先找到这个标签，才能进行判断
+  box.onclick = function (e) {
+    //想要获取触发事件的元素，脑海中的第一反应应该是this
+    //console.log(this);//box
+    //我们发现this指向的不是真正触发事件的元素，而是这个事件属于哪个元素
+    
+    //兼容事件对象
+    var e = e || window.event;
+    //获取真正触发事件的元素:在普通浏览器中使用target属性 在ie低版本中使用srcElement
+    var tag = e.target || e.srcElement;
+    //如何知道tag是什么标签？  nodeName - 获取结果是元素节点的标签名 - 在html中是大写，在xhtml中是小写
+    //console.log(tag.nodeName);
+    var tagName = tag.nodeName;
+    //检测，如果值是p，这时设置p标签需要执行的代码
+    if (tagName.toUpperCase() == "P") {
+      console.log("我是box内部的p标签");
+    } else if (tagName.toLowerCase() == "span") {
+      console.log("我是box内部的span标签");
+    }
+  };
+  
+  //以上代码事件的功能称为：事件委托、事件代理（委托事件、代理事件）
+
+</script>
+</body>
+</html>

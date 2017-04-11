@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		// 有一个字符串
+		var html = '我叫<% name %>，我今年<% age %>岁了，我在<% school %>学习';
+		// 数据
+		var data = {
+			name: '小明',
+			age: 18,
+			school: '传智播客'
+		}
+		// 	定义好的正则表达式
+
+		var reg = /<%\s*([^%>]\S+)\s*%>/;
+		// 问题:如何吧对象中的数据添加到字符串中组成一句话
+		// exec()返回的是一个数组  整个正则表达式匹配 整个的字符串  子表达式匹配符合子表达式的字符串
+		var match = reg.exec(html);
+		console.log(match);
+		// 0:"<% name %>"
+		// 1:"name"
+
+		// replace(你要替换的值,替换成哪个值)
+		html = html.replace(match[0], data[match[1]]);
+		console.log(html);
+
+		match = reg.exec(html);
+		console.log(match);
+		html = html.replace(match[0],data[match[1]]);
+		console.log(html);
+
+
+		match = reg.exec(html);
+		console.log(match);
+		html = html.replace(match[0], data[match[1]]);
+		console.log(html);
+
+			match = reg.exec(html);
+			console.log(match);
+	</script>
+</body>
+
+</html>

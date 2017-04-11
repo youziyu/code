@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            position: fixed;
+            left: 200px;
+            bottom: 100px;
+            width: 200px;
+            height: 200px;
+            background-color: darkcyan;
+            transition: all 1s;
+        }
+
+        .model1 {
+            transform: skew(20deg, 0deg);
+            transform-origin: left bottom;
+        }
+
+        .model2 {
+            transform: skew(0deg, 20deg);
+            transform-origin: left bottom;
+        }
+
+        .model3 {
+            transform: skew(20deg, 20deg);
+            transform-origin: left bottom;
+        }
+
+        .model4 {
+            transform: skew(-20deg, 0deg);
+            transform-origin: left bottom;
+        }
+
+        .model5 {
+            transform: skew(0deg, -20deg);
+            transform-origin: left bottom;
+        }
+
+        .model6 {
+            transform: skew(-20deg, -20deg);
+            transform-origin: left bottom;
+        }
+
+        #box2 {
+            width: 400px;
+            height: 400px;
+            position: fixed;
+            left: 200px;
+            bottom: 100px;
+            border-bottom: 3px solid red;
+            border-left: 3px solid red;
+        }
+
+        button {
+            width: 300px;
+            height: 60px;
+            font-size: 22px;
+            background-color: darkgray;
+        }
+    </style>
+    <script src="js/jquery1.12.3.js"></script>
+</head>
+<body>
+<div id="box"></div>
+<div id="box2"></div>
+<button id="btn0">返回初始状态</button>
+<button id="btn1">设置skew（20deg,0deg）</button>
+<button id="btn2">设置skew（0deg,20deg）</button>
+<button id="btn3">设置skew（20deg,20deg）</button>
+<button id="btn4">设置skew（-20deg,0deg）</button>
+<button id="btn5">设置skew（0deg,-20deg）</button>
+<button id="btn6">设置skew（-20deg,-20deg）</button>
+<script>
+    var box = $("#box");
+    var btn0 = $("#btn0");
+    var btn1 = $("#btn1");
+    var btn2 = $("#btn2");
+    var btn3 = $("#btn3");
+    var btn4 = $("#btn4");
+    var btn5 = $("#btn5");
+    var btn6 = $("#btn6");
+    btn0.click(function () {
+        box.removeClass();
+    });
+    btn1.click(function () {
+        box.removeClass();
+        box.addClass("model1")
+    });
+    btn2.click(function () {
+        box.removeClass();
+        box.addClass("model2")
+    });
+    btn3.click(function () {
+        box.removeClass();
+        box.addClass("model3")
+    });
+    btn4.click(function () {
+        box.removeClass();
+        box.addClass("model4")
+    });
+    btn5.click(function () {
+        box.removeClass();
+        box.addClass("model5")
+    });
+    btn6.click(function () {
+        box.removeClass();
+        box.addClass("model6")
+    });
+</script>
+</body>
+</html>

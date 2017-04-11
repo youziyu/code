@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: #6a0012;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+<button id="btn1">跑到200吧</button>
+<button id="btn2">跑到400吧</button>
+<div id="box"></div>
+
+<script>
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+  var box = document.getElementById("box");
+  var timer = null;
+  
+  //    offsetLeft取值的问题，小数部分四舍五入
+  //    console.log(box.offsetLeft);
+  
+  //点击事件
+  btn1.onclick = function () {
+    var leader = box.offsetLeft;
+    timer = setInterval(function () {
+      //获取当前位置
+      //走到越近的地方，步数越小，如果小于0.5会被offsetLeft给省略
+      //我们在step小于1的时候对step进行取整
+      var step = ( 200 - leader ) / 10;
+      //对step进行取整
+      step = Math.ceil(step);
+      
+      leader = leader + step;
+      box.style.left = leader + "px";
+      
+      //判断如果leader==target清除定时器
+      if (leader == 200) {
+        clearInterval(timer);
+        console.log(2);
+      }
+      
+    }, 17);
+    
+  };
+  
+  
+  btn2.onclick = function () {
+    var leader = box.offsetLeft;
+    timer = setInterval(function () {
+      //获取当前位置
+      //走到越近的地方，步数越小，如果小于0.5会被offsetLeft给省略
+      //我们在step小于1的时候对step进行取整
+      var step = ( 400 - leader ) / 10;
+      //对step进行取整
+      step = Math.ceil(step);
+      
+      leader = leader + step;
+      box.style.left = leader + "px";
+      
+      //判断如果leader==target清除定时器
+      if (leader == 400) {
+        clearInterval(timer);
+        console.log(1);
+      }
+      
+    }, 17);
+    
+  };
+
+</script>
+
+</body>
+</html>

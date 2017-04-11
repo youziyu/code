@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      $("#box").click(function () {
+        console.log("我是box的点击事件");
+      });
+      
+      //想要在程序中主动触发某个元素的点击事件  click()
+      //$("#box").click();
+      
+      //用于直接调用某个元素的某个指定事件
+      //trigger() 可以比普通的方式灵活一些
+      //$("#box").trigger("click");
+      
+      //可以不触发一些标签的操作效果
+      //输入框的光标跳动效果
+      //triggerHandler()
+      $("#ipt").focus(function () {
+        console.log("我获取焦点了");
+      });
+
+      $("#ipt").trigger("focus");
+//      $("#ipt").triggerHandler("focus");
+      
+      
+    });
+  </script>
+</head>
+<body>
+<input type="text" id="ipt">
+<div id="box">
+  我是box
+</div>
+</body>
+</html>

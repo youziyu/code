@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      border: 20px solid #000;
+      padding: 10px;
+      overflow: scroll;
+      direction: rtl;
+    }
+  </style>
+</head>
+<body>
+<div id="box">看我</div>
+<script>
+  var box = document.getElementById("box");
+  //clientHeight  clientWidth (获取的是元素的内部宽/高)
+  //获取值的计算方式：clientHeight顶边框的底部到底边框的顶部之间的距离
+  //注意：不受内部的内容影响
+  //console.log(box.clientHeight);
+  
+  //clientLeft  clientTop  相当于 borderLeft和borderTop
+  //console.log(box.clientTop);
+  
+  //如果元素具有左侧滚动条，这时clientLeft的值会包含左侧滚动条的宽度17px
+  //console.log(box.clientLeft);
+  
+  
+
+
+</script>
+</body>
+</html>

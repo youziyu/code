@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    table {
+      width: 800px;
+      border-collapse: collapse;
+    }
+    
+    td {
+      height: 40px;
+      text-align: center;
+      border: 1px solid #CCC;
+    }
+  </style>
+</head>
+
+<body>
+  <button>点击我触发ajax请求</button>
+  <table>
+    <!--告诉自己我将要呈现的页面效果是什么结构-->
+    <!--<tr>
+            <td>老段</td>
+            <td>38</td>
+            <td>抽烟喝酒吃</td>
+        </tr>-->
+  </table>
+  <script>
+    // 要和xml中的teacher案例一样。从后台获取数据到前端展示
+    // 1.获取button
+    var btn = document.querySelector('button');
+    // 2.给button添加事件
+    btn.onclick = function () {
+      // 3. 实例化对象
+      var xhr = new XMLHttpRequest();
+      // 4.设置请求行
+      xhr.open('get', 'teacher.php');
+      // 5.设置请求头(get方式可以不写)
+      // 6.设置请求正文
+      xhr.send(null);
+      // 7.监听并处理响应
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          // 8.处理获取到的响应 
+          // console.log(xhr.responseText);
+          //  8.1 把获取到的json字符串转换为js数组
+          var result = JSON.parse(xhr.responseText);
+          console.log(result);
+          //  8.2 遍历数组
+          // 8.2.1 声明一个空字符串
+          var html = "";
+          for (var i = 0; i < result.length; i++) {
+            html += '<tr>' +
+              '<td>' + result[i].name + '</td>' +
+              '<td>' + result[i].age + '</td>' +
+              '<td>' + result[i].hobby + '</td>' +
+              '</tr>';
+          }
+          console.log(html);
+          document.querySelector('table').innerHTML=html;
+        }
+
+      }
+
+    }
+  </script>
+</body>
+
+</html>

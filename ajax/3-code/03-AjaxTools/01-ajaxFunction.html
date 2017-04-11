@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>点击我触发ajax请求</button>
+  <script src="03-ajaxTools.js"></script>
+  <script>
+    // 学习过的ajax过程走一遍
+    document.querySelector('button').onclick = function () {
+
+      //1.实例化xmlhttprequest对象
+      // var xhr=new XMLHttpRequest();
+      // 2.设置请求行
+      // xhr.open('post','00-ajaxtools.php');
+      // 3.设置请求头
+      // xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+      // 4.设置请求正文
+      // xhr.send("name=itcast&age=10");
+      // 5. 监听并处理响应
+      // xhr.onreadystatechange=function(){
+      // if(xhr.readyState==4&&xhr.status==200){
+      // 6.获取响应结果
+      // console.log(xhr.responseText);
+      // }
+      // }
+      // ajax('post','00-ajaxtools.php','name=itcast&age=10',function (result){
+      //     console.log(result);
+      // })
+      // $('ccc').css({
+
+      // })
+      // ajax({
+      //   url:'00-ajaxtools.php',
+      //   type:'get',
+      //   data:{name:"itcast",age:10},
+      //   success:function(result){
+      //     console.log(result);
+      //   }
+      // })
+      // $.ajax({
+
+      // })
+
+      //  var str= $.param({name:"itcast",age:1});
+
+      //  console.log(str);
+      $.ajax({
+        type: 'post',
+        url: '00-ajaxtools.php',
+        data: { name: 'zhangfei', age: 36 },
+        success: function (result) {
+          console.log(result);
+        }
+      })
+    }
+    // 1.请求方式
+    // 2.请求地址
+    // 3.请求正文
+    // 4.响应结果
+  </script>
+</body>
+
+</html>

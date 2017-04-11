@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 200px;
+      border: 1px solid #000;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      $("#btn").click(function () {
+        //将text添加到box的子元素最后
+        //使用append方法时，以下操作必须设置为两句，不符合链式编程的书写方式，可以使用appendTo方法进行简化
+        //$(".text").text("我是新设置的内容");
+        //$("#box").append($(".text"));
+        
+        //1 appendTo() 使用时与append()相反
+        //$(".text").text("我是新的p标签的文本").appendTo($("#box"));
+        
+        //2 prependTo() 使用与prepend()相反
+        //$(".text").prependTo($("#box"));
+        
+        //3 insertAfter() 操作时与after()相反
+        
+        //4 insertBefore() 操作时与before()相反  与js中的insertBefore完全没关系
+        $(".text").insertBefore($("#box"));//将text添加到box的前面
+        
+        //以上4个方法的作用为完善链式编程的使用
+      })
+    });
+  </script>
+</head>
+<body>
+<button id="btn">添加</button>
+<div id="box">
+  <p>我是内部的子元素p</p>
+</div>
+
+<p class="text">我是外面的p标签</p>
+</body>
+</html>

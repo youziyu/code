@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS 3D转换</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		.rotateY {
+			height: 226px;
+			padding-top: 100px;
+			text-align: center;
+			perspective: 1000px;
+		}
+		
+		.rotateY img {
+			transition: all 1s;
+		}
+		body:hover img{
+			transform:rotateY(60deg);
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="rotateY">
+		<img src="./images/y.jpg" alt="">
+	</div>
+</body>
+</html>

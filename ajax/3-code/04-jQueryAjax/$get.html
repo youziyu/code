@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        table {
+            width: 800px;
+            border-collapse: collapse;
+        }
+        
+        td {
+            height: 40px;
+            text-align: center;
+            border: 1px solid #CCC;
+        }
+    </style>
+
+</head>
+
+<body>
+    <table>
+        <!--<tr>
+            <td>王力宏</td>
+            <td>39</td>
+            <td>男</td>
+        </tr>-->
+
+    </table>
+   <script src="js/jquery.min.js"></script>
+   <script>
+    $.get('stars.php',null,function(result){
+        console.log(result);
+    })
+   </script>
+</body>
+
+</html>

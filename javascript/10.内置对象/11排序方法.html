@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  ////reverse() 翻转数组:只会将所有的元素进行翻转
+  ////reverse方法的返回值为原数组，不需要进行接收
+  //var arr = [1, 6, 2, 3, 4, 5];
+  ////var resultArr = arr.reverse();
+  ////arr[0] = 100;
+  ////console.log(arr);
+  ////console.log(resultArr);
+  //
+  //arr.reverse();
+  //console.log(arr);
+  
+  //sort();
+  ////1 sort可以对字符串数组进行排序
+  //var arr = ["b","g","ca","aa","daa","ea"];
+  //arr.sort();
+  //console.log(arr);
+  
+  //2 sort对数值数组进行排序
+  var arr = [4, 6, 567, 7, 5, 11, 3, 25, 8, 2, 9, 1];
+  //arr.sort();//直接使用sort排序不准确
+  //console.log(arr);
+  
+  //如果对数值数组进行排序，需要设置参数
+  //参数1 function(a,b){return a-b}; 升序
+  //arr.sort(function (a,b) {
+  //  return a-b;
+  //});
+  //console.log(arr);
+  
+  //参数2 function(a,b){return b-a}; 降序
+  arr.sort(function (a, b) {
+    return b - a;
+  });
+  console.log(arr);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //给box添加一个简单事件
+      $("#box").on("click", function () {
+        console.log("我是box添加的简单事件");
+      });
+      
+      //给box添加一个委托事件，由内部p执行
+      $("#box").on("click", "p", function () {
+        console.log("我是委托事件");
+      });
+      
+      //如果一个元素既有自身的事件，又有事件委托，这时事件委托会先执行
+      //我们自己书写代码，一般不会给一个元素既添加自身事件，又添加事件委托的。
+      
+      
+    });
+  </script>
+</head>
+<body>
+<div id="box">
+  <p>我是p标签</p>
+</div>
+</body>
+</html>

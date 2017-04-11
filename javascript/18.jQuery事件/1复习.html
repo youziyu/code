@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      display: none;
+    }
+  </style>
+  
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //1 类名操作
+      //添加类名 addClass("box fl") 同时可以添加一个或者多个指定类名
+      //移除类名 removeClass("box fl") 可以同时移除一个或多个指定类名，跟设置的顺序无关
+      //切换类名 toggleClass()  如果元素具有指定类名，会移除，如果没有，添加这个类名
+      //检测类名 hasClass()  我们在使用时，通常只检测一个标签的一个类名
+      //      如果检测一个标签的多个类名，这时要求书写顺序必须与设置顺序相同
+      //      如果同时检测多个标签的类名，这时只要有一个拥有，就会返回true，不准确
+      
+      //2 运动
+      //show() hide()
+      //不传参数，表示普通的显示与隐藏
+      //传入参数，表示运动，参数1表示运动时间，单位为毫秒，可以接受字符串参数 slow600  normal 400 fast200
+      //如果传入乱七八糟的字符串，默认为400毫秒，参数2为回调函数，表示运动结束后做什么、
+      //执行运动，修改的是元素的width、height、opacity
+      
+      //slideDown() 下拉
+      //slideUp() 上拉
+      //slideToggle() 切换，如果当前元素显示完全，这时执行slideUp，如果没显示，这时执行slideDown
+      
+      //fadeIn() 渐入
+      //fadeOut() 渐出
+      //fadeToggle() 切换，如果当前元素显示完全，这时执行fadeOut，如果没显示，这时执行fadeIn
+      //fadeTo(运动时间，渐到什么程度，回调函数)  不使用的原因，会对其他运动造成影响，通常使用自定义运动animate
+      
+      //animate()  自定义动画
+      //参数1 需要运动的样式值，对象形式 (必选)
+      //参数2 运动时间
+      //参数3 运动模式 linear  swing
+      //参数4 回调函数
+      
+      //动画的积累问题
+      //由于jQ的动画需要执行运动时间，如果在时间没有到达时，多次添加了新的运动，这时会造成动画的积累
+      // 这种形式我们称为动画队列
+      //解决方式，可以使用stop方法
+      //stop()
+      //参数1 是否清除动画队列
+      //参数2 是否跳到当前运动的最终效果 (false),如果这个参数值为true，会导致运动效果非常突兀
+      //通常使用时，两个参数均设置为false，两个参数的默认值均为false，所以一般不传参数
+      //注意：使用时，将stop方法设置在新运动的前面，先清除再运动
+      
+      
+      //1 创建元素  $("<div></div>"); 通过这种方式创建的元素不在页面中
+      //           jQ对象.html("<div></div>");
+      
+      //2 移动节点
+      
+      //append() 添加位置为父元素的子节点最后
+      //父节点.append("<div></div>"); 直接创建新元素，并且添加
+      //父节点.append($(".text")); 移动已经存在的元素
+      //父节点.append($div); 添加创建的元素
+      
+      //prepend() 添加位置为父元素的子节点最前面
+      //before() 添加位置为调用元素的（同级的）前面
+      //after() 添加位置为调用元素的（同级的）后面
+      //上面三种方式的使用方式参考append();
+      
+      
+      // 要插入的元素.appendTo(父元素)
+      // 要插入的元素.prependTo(父元素)
+      // 要插入的元素.insertAfter(参考元素)
+      // 要插入的元素.insertBefore(参考元素) 跟js中的insertBefore完全没有关系
+      
+      
+      //移除节点
+      //html("") 内部子元素的事件无法移除
+      //empty() 清空元素内部的所有内容 (感觉被掏空)
+      //remove() 清除自身以及内部所有内容(自杀)
+      
+      //克隆节点
+      //clone();
+      //参数值为false，深复制，复制标签以及内容
+      //参数值为true，深深复制，复制标签以及内容，和内容的事件
+      
+      
+      //属性操作
+      //1 attr() 用于获取和设置标签的行内自定义属性
+      //1 prop() 用于获取和设置标签的行内自带属性
+      
+      //使用方式：两个方法的使用方式完全相同，只不过使用场景不同，在这以prop为例
+      
+      //1 设置单个属性
+      $("#box").prop("id", "hehe").prop("class","haha");
+      
+      //2 设置多个属性
+      //$("#box").prop({
+      //  "id":"haha",
+      //  "class":"hehe",
+      //  "title":"heihei"
+      //});
+      
+      //3 获取属性值，获取单个标签的单个属性值
+      console.log($("#box").prop("id"));
+  
+  
+    });
+  </script>
+</head>
+<body>
+
+<div id="box"></div>
+
+</body>
+</html>

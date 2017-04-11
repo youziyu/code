@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body, ul, ol, li, img {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    #box {
+      width: 490px;
+      height: 270px;
+      padding: 5px;
+      position: relative;
+      border: 1px solid #ccc;
+      margin: 100px auto 0;
+    }
+    
+    .ad {
+      width: 490px;
+      height: 270px;
+      /*overflow: hidden;*/
+      position: relative;
+    }
+    
+    #box img {
+      width: 490px;
+    }
+    
+    .ad ol {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+    
+    .ad ol li {
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      border: 1px solid #ccc;
+      text-align: center;
+      background: #fff;
+      float: left;
+      margin-right: 10px;
+      cursor: pointer;
+      _display: inline;
+    }
+    
+    .ad ol li.current {
+      background: yellow;
+    }
+    
+    .ad ul li {
+      float: left;
+    }
+    
+    .ad ul {
+      position: absolute;
+      top: 0;
+      width: 2940px;
+    }
+    
+    .ad ul li.current {
+      display: block;
+    }
+    
+    #arr {
+      display: none;
+    }
+    
+    #arr span {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      margin-top: -20px;
+      background: #000;
+      cursor: pointer;
+      line-height: 40px;
+      text-align: center;
+      font-weight: bold;
+      font-family: '黑体';
+      font-size: 30px;
+      color: #fff;
+      opacity: 0.3;
+      border: 1px solid #fff;
+    }
+    
+    #arr #right {
+      right: 5px;
+      left: auto;
+    }
+    
+    .square {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+    }
+    
+    .square span {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: #c0c6ff;
+      text-align: center;
+      line-height: 20px;
+      cursor: pointer;
+    }
+    
+    .square span.current {
+      background-color: orangered;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+<div id="box" class="all">
+  <div class="ad">
+    <ul id="imgs">
+      <li><img src="images/1.jpg"/></li>
+      <li><img src="images/2.jpg"/></li>
+      <li><img src="images/3.jpg"/></li>
+      <li><img src="images/4.jpg"/></li>
+      <li><img src="images/5.jpg"/></li>
+    </ul>
+    <div class="square">
+      <span class="current">1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+      <span>5</span>
+    </div>
+  </div>
+  
+  <div id="arr">
+    <span id="left">&lt;</span>
+    <span id="right">&gt;</span>
+  </div>
+</div>
+<script>
+  //要操作谁？
+  //1 获取元素
+  var box = document.getElementById("box");//大父盒子
+  var ad = box.children[0];//可视区域
+  var list = ad.children[0];//ul运动
+  var lis = list.children;//ul内部的li
+  var sq = ad.children[1];
+  var sps = sq.children;//操作的小按钮
+  var arr = document.getElementById("arr");//两个箭头的父盒子
+  var arrLeft = arr.children[0];//操作的箭头
+  var arrRight = arr.children[1];//操作的箭头
+  var imgWid = ad.offsetWidth;//图片宽
+  
+  //1 先分别实现两个功能
+  //1.1 简单轮播图效果
+  for (var i = 0; i < sps.length; i++) {
+    sps[i].index = i;
+    sps[i].onclick = function () {
+      for (var i = 0; i < sps.length; i++) {
+        sps[i].className = "";
+      }
+      this.className = "current";
+      var target = -this.index * imgWid;
+      animate(list, target);
+      
+      //修改pic，pic的作用记录滚过的图片张数，与this.index作用相同
+      pic = this.index;
+    };
+  }
+  
+  //1.2 左右操作
+  box.onmouseover = function () {
+    arr.style.display = "block";
+  };
+  box.onmouseout = function () {
+    arr.style.display = "none";
+  };
+  
+  var pic = 0;
+  arrRight.onclick = function () {
+    if (pic < lis.length - 1) {
+      pic++;
+      var target = -pic * imgWid;
+      animate(list, target);
+      
+      //设置变色
+      for (var i = 0; i < sps.length; i++) {
+        sps[i].className = "";
+      }
+      //将pic作为索引值使用
+      sps[pic].className = "current";
+      
+      
+    }
+  };
+  
+  arrLeft.onclick = function () {
+    if (pic > 0) {
+      pic--;
+      animate(list, -pic * imgWid);
+      
+      //设置变色
+      for (var i = 0; i < sps.length; i++) {
+        sps[i].className = "";
+      }
+      //将pic作为索引值使用
+      sps[pic].className = "current";
+    }
+  };
+  
+  
+  function animate(tag, target) {
+    //将定时器设置在tag的自定义属性上
+    clearInterval(tag.timer);
+    //设置定时器，进行运动
+    tag.timer = setInterval(function () {
+      //获取初始位置
+      var leader = tag.offsetLeft;
+      //设置步长
+      var step = 9;
+      //根据leader和target的大小关系去设置step的正负
+      step = leader > target ? -step : step;
+      //检测什么时候可以进行运动
+      //有时候，不能正好运动到指定位置
+      //我们需要检测，当前位置距离目标位置的长度是否够一步
+      //如果足够走一步，随便走，
+      //如果不够，直接走到指定位置
+      if (Math.abs(leader - target) > Math.abs(step)) {
+        //套用公式，计算要运动到的新位置
+        leader = leader + step;
+        //将新位置设置给元素，进行运动
+        tag.style.left = leader + "px";
+      } else {
+        //直接走到指定位置
+        tag.style.left = target + "px";
+        //到达指定位置，清除定时器
+        clearInterval(tag.timer);
+      }
+    }, 17);
+  }
+</script>
+</body>
+</html>

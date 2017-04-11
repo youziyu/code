@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //attr() 用于操作行内属性的值，但是有问题
+      //1 设置行内属性值
+      //$("#box").attr("id","hehe").attr("class","haha");
+      //2 同时设置多个行内属性
+      //$("#box").attr({
+      //  "id":"hehe",
+      //  "class":"haha",
+      //  "title":"heihei"
+      //});
+      //3 获取行内属性的值
+      //console.log($("#box").attr("id"));
+      //如果获取表单元素的一些属性时，会出现小问题
+      //console.log($("#ipt").attr("checked"));//如果选中，值为checked
+      //console.log($("#ipt").attr("checked"));//如果没有选中，值为undefined
+      
+      //prop() 与attr使用方式完全相同
+      //使用prop获取标签行内自带的属性值时，获取的值使用比較方便
+      //console.log($("#ipt").prop("checked"));//true
+      
+      //prop无法操作行内自定义的属性
+      //console.log($("#ipt").prop("hehe"));
+      //console.log($("#ipt").attr("hehe"));
+      
+      
+      //通常，我们使用attr方法操作标签行内的自定义属性
+      //使用prop方法操作标签行内自带的属性值
+    });
+  </script>
+</head>
+<body>
+<!--<div id="box" class="box"></div>-->
+<input id="ipt" type="checkbox" checked hehe="a">
+</body>
+</html>

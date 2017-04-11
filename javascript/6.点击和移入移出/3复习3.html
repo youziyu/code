@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<div id="box">我是box的内容</div>
+<img id="pic" src="images/111.jpg" alt="我是alt的内容">
+
+<script>
+  //事件的作用：让你书写的页面可以跟用户交互
+  //事件的组成部分: 事件源(触发事件的标签)  事件类型（onclick）  事件处理程序(触发事件后做什么)
+  //事件的语法格式:
+  //事件源.事件类型 = function(){
+  //  //事件处理程序：在事件触发后执行内部代码
+  //}
+  
+  //  var box = document.getElementById("box");
+  //  //添加事件并且使用匿名函数的形式
+  //  box.onclick = function () {
+  //    alert("今天天气不错");
+  //  };
+  //
+  //  //添加事件并且使用命名函数的形式 (新内容)
+  //  box.onclick = fun;
+  //  function fun() {
+  //    alert("今天天气不错");
+  //  }
+  
+  //类似id这种标签行内自带的属性可以使用标签.属性名的方式直接进行操作
+  //  var box = document.getElementById("box");
+  //  box.id = "hehe";
+  var pic = document.getElementById("pic");
+  pic.onclick = function () {
+    //在事件中this指向事件源
+    this.src = "images/222.jpg";
+  }
+</script>
+</body>
+</html>

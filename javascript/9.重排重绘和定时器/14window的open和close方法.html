@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<button id="open">打开</button>
+<button id="close">关闭</button>
+<script>
+  var openBtn = document.getElementById("open");
+  var closeBtn = document.getElementById("close");
+  var win;
+  
+  //open的作用是打开一个新的页面
+  openBtn.onclick = function () {
+    //open第一个参数是url地址，第二个参数表示打开位置  _self  _blank
+    //第三个参数 新窗口的一些样式
+    //open方法具有返回值：使用open打开的新窗口的window对象
+    win = window.open("13history对象.html", "_blank", "width=300,height=300");
+  };
+  
+  
+  //点击close按钮，关闭新的页面
+  closeBtn.onclick = function () {
+    //window.close() 关闭页面
+    win.close();
+  };
+
+</script>
+</body>
+</html>

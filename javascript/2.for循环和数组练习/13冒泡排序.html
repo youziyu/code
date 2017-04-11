@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //冒泡排序，从小到大    [65,97,76,13,27,49,58]
+    
+    //冒泡  排序
+    //    var arr = [65, 97, 76, 13, 27, 49, 58];
+    var arr = [5, 66, 8, 9, 3, 7, 2, 4];
+    
+    //多轮比较 轮数是length-1
+    for (var i = 0; i < arr.length - 1; i++) {
+      //每一轮中比較多次，内层循环控制次数
+      //每一轮中又比較了多次,次数递减 arr.length-1-i
+      for (var j = 0; j < arr.length - 1 - i; j++) {
+        //每一次比較的时候所做的事情是比較当前项和后项的大小关系
+        if (arr[j] > arr[j + 1]) {
+          //如果满足条件，交换
+          var temp = arr[j];
+          arr[j] = arr[j + 1];
+          arr[j + 1] = temp;
+        }
+      }
+    }
+    console.log(arr);
+  
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

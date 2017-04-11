@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    tbody td {
+      width: 165px;
+      height: 19px;
+    }
+  </style>
+</head>
+<body>
+<!--添加按钮-->
+<a id="add" href="javascript:void(0)">添加</a>
+<!--放置表格的位置-->
+<div id="box">
+
+</div>
+<script>
+  //------------------------- 创建表格数据-----------------------------
+  //表头的数据
+  var heads = ["姓名", "科目", "成绩", "操作"];
+  //根据datas中对象的个数创建tr行，每个行中的td个数就是这个对象的属性个数
+  var datas = [
+    {"name": "张三1", "subject": "语文1", "score": 99.8},
+    {"name": "张三2", "subject": "语文2", "score": 80.8},
+    {"name": "张三3", "subject": "语文3", "score": 70.8},
+    {"name": "张三4", "subject": "语文4", "score": 100},
+    {"name": "张三5", "subject": "语文5", "score": 60},
+    {"name": "张三6", "subject": "语文6", "score": 70},
+    {"name": "张三7", "subject": "语文7", "score": 89.8}
+  ];
+
+
+</script>
+
+
+</body>
+
+</html>

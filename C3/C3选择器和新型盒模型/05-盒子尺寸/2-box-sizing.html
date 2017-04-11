@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{
+            width:200px;
+            height:200px;
+
+            border:1px solid #000;
+
+            padding:10px;
+
+            box-sizing: content-box;
+
+            /*盒子的宽度  200+2+20*/
+
+            box-sizing:border-box;
+            background-color: rgb(255,120,255);
+
+            /*盒子的宽度  200=2+20+可变的宽度(178)*/
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

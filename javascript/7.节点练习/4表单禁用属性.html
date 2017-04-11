@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<input type="text" id="ipt">
+<button id="btn1">点击禁用</button>
+<button id="btn2">点击启用</button>
+<script>
+  var ipt = document.getElementById("ipt");
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+  
+  ipt.onclick = function () {
+    console.log("我被点击了")
+  };
+  
+  //点击按钮1 设置ipt禁用
+  btn1.onclick = function () {
+    //disabled禁用
+    //ipt.disabled = "111";
+    ipt.disabled = true;
+  };
+  
+  btn2.onclick = function () {
+    ipt.disabled = false;
+  }
+
+</script>
+</body>
+</html>

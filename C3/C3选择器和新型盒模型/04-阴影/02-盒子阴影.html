@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>盒子阴影</title>
+	<style type="text/css" media="screen">
+		div{
+			position:absolute;
+			top:100px;
+			width:200px;
+			height:200px;
+			text-align:center;
+			line-height:200px;
+		}
+		.box1{
+			left:100px;
+			background-color:#d0d0d0;
+			box-shadow: 20px 20px 20px #666;
+		
+		}
+		.box2{
+			right:100px;
+			background-color:#d0d0d0;
+			box-shadow:inset 0px 0px 20px 0px #666 ;
+		
+		}
+
+	</style>
+</head>
+<body>
+	<div class="box1">
+		相同点
+	</div>
+
+	<div class="box2">
+		不同点
+	</div>
+
+</body>
+</html>

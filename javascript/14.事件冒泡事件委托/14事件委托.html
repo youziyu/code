@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 200px;
+      height: 240px;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+<button id="btn">动态创建p标签</button>
+<div id="box">
+  <p>我是box内部的p标签</p>
+  <p>我是box内部的p标签</p>
+  <p>我是box内部的p标签</p>
+  <span>我是span</span>
+  <span>我是span</span>
+  <span>我是span</span>
+  <a href="javascript:;">我是a</a>
+  <a href="javascript:;">我是a</a>
+  <a href="javascript:;">我是a</a>
+</div>
+
+<script>
+  var btn = document.getElementById("btn");
+  var box = document.getElementById("box");
+  btn.onclick = function () {
+    var newP = document.createElement("p");
+    newP.innerHTML = "我是新的p标签";
+    box.appendChild(newP);
+  };
+  //我们发现动态创建的p标签没有原先设置的事件，想要有，需要每次单独设置
+  
+  //  ----------------步骤1---------------
+  //解决方式，我们可以利用事件冒泡
+  //通过给父元素设置事件，可以让内部的所有子元素都享受这个事件的效果(包括动态创建的)
+  //box.onclick = function () {
+  //  //console.log("我是内部的标签");
+  //};
+  
+  
+  //  ----------------步骤2---------------
+  //如果我们想要让内部的某些子元素才可以触发（例如p标签）
+  //我们可以检测这个事件真正触发的元素是什么标签，可以通过节点的nodeName属性判断
+  box.onclick = function (e) {
+    var e = e || event;//事件对象的兼容
+    //console.log(this);//this指向事件源，无法得出真正触发事件的元素
+    
+    //在事件中有一种新的方式让我们可以得到真正触发事件的元素
+    var tar = e.target || e.srcElement;//兼容某一个属性
+    
+    //检测这个元素的标签名/nodeName属性
+    //console.log(tar.nodeName);
+    if (tar.nodeName.toLowerCase() == "p" || tar.nodeName.toLowerCase() == "a") {
+      console.log("我是一个标签");
+    } else if (tar.nodeName.toLowerCase() == "span") {
+      console.log("我是一个span标签");
+    } else if (tar.className == "box1") {
+      console.log("我是具有box1类名的元素");
+    }
+  };
+  
+  //ie低版本不支持事件处理程序中接受e的形式
+  //window.event
+  //在ie中不支持target，提供了一个属性srcElement
+  //事件委托，事件代理，代理事件，委托事件
+
+</script>
+</body>
+</html>

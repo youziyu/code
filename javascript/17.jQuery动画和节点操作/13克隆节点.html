@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      $(".sp").click(function () {
+        alert("我是sp");
+      });
+      
+      //clone()  相当于以前js的cloneNode()
+      //参数为false 深复制，复制标签以及内容
+      //var $clone = $(".sp").clone(false);
+      
+      //参数为true 深深复制 复制标签以及内容以及内部的元素的事件
+      var $clone = $(".sp").clone(false);
+      $("#box").append($clone);
+      
+    });
+  </script>
+</head>
+<body>
+<div id="box"></div>
+<span class="sp">我是sp</span>
+</body>
+</html>

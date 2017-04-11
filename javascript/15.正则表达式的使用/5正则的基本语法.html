@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //1 简单类:用于匹配正则内部的所有字符(完整的)
+  //var reg = /abcd/;
+  //正则方法test(字符串) 表示使用正则表达式去匹配传入的字符串，如果匹配成功返回true，否则返回false
+  //只要字符串中含有abcd就可以匹配成功
+  //console.log(reg.test("abcdefg"));//true
+  //console.log(reg.test("abzcdefg"));//false
+  //console.log(reg.test("abzcdefabcdg"));//true
+  
+  
+  //2 字符类:中括号内的所有字符表示匹配某一个位置
+  //注意：中括号作用为标识字符类的范围，与js的数组无关！
+  //只要含有abc中任意一个字符，返回true
+  //var reg = /[abc]/;
+  //console.log(reg.test("fakdhawk"));//true
+  //console.log(reg.test("fbk"));//true
+  //console.log(reg.test("fck"));//true
+  //console.log(reg.test("fk"));//false
+  //console.log(reg.test("faebeck"));//true
+  
+  //3 反向类:将^写在字符类标识的[]里的第一个位置上，表示反向
+  //表示只要含有除abcd以外的任意字符均可匹配成功
+  //var reg = /[^abcd]/;
+  //console.log(reg.test("akljj"));//true
+  //console.log(reg.test("abcdabcdabcd"));//false
+  //console.log(reg.test("abcdabzcdabcd"));//true
+  
+  //4 范围类
+  //表示a-n之间的所有小写字母，只要含有任意一个，就可以匹配成功
+  //var reg = /[a-n]/;
+  //console.log(reg.test("wzvyt"));//true
+  //console.log(reg.test("wzvhyt"));//false
+  //console.log(reg.test("abdefh"));//true
+  
+  //匹配所有小写字母/[a-z]/
+  //匹配大写字母 /[A-Z]/
+  //匹配数字 /[0-9]/   不能匹配大写数字:一壹二贰
+  
+  //5 组合类:作用是可以匹配多种类型的字符
+  //顺序无所谓，匹配的种类个数也不限
+  //var reg = /[a-mF-Q3-7]/;
+  //var reg1 = /[a-z0-9]/;
+  //var reg1 = /[a-z0-9A-Z]/;//用于匹配所有大小写字母和所有数字
+  
+  
+  //6 预定义类
+  //var reg = /[0-9]/;
+  //var reg = /\d/;//匹配所有数字
+  //console.log(reg.test("1ag4"));
+  //console.log(reg.test("hagy"));
+  
+  // \ 转义 ：如果一个字符不含有特殊功能，加上\后可以使用特殊功能
+  
+  // \d [0-9] 数字字符   digit
+  // \D [^0-9] 非数字字符
+  // \w [a-zA-Z0-9_] 匹配所有字符以及_ word
+  // \W [^a-zA-Z0-9_] 非字符
+  // \s 不可见字符（一般作用为匹配空格和换行）  space
+  // \S 可见字符
+  
+  // . 匹配所有的可见内容
+  // .和\S的作用基本相同，只不过 .的范围更广，所以一般使用.
+
+</script>
+</body>
+</html>

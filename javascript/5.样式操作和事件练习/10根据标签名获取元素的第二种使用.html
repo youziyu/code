@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<ul id="list">
+  <li>我是li</li>
+  <li>我是li</li>
+  <li>我是li</li>
+</ul>
+
+<ul>
+  <li>我是另一些li</li>
+  <li>我是另一些li</li>
+  <li>我是另一些li</li>
+</ul>
+
+<script>
+  //1 根据标签名获取时,使用document进行操作会获取到页面中所有满足条件的标签
+  //var lis = document.getElementsByTagName("li");
+  //console.log(lis);//6个
+  
+  //2 在指定的标签内部获取某类标签
+  var list = document.getElementById("list");
+  //在list内部获取li
+  //getELementsByTagName前面的获取位置不仅可以使用document，也可以使用其他标签
+  //在标签内部获取标签
+  var lis = list.getElementsByTagName("li");
+  //console.log(lis);//3个
+  
+  for (var i = 0; i < lis.length; i++) {
+    lis[i].style.backgroundColor = "red";
+  }
+
+
+</script>
+</body>
+</html>

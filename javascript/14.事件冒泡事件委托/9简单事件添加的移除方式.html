@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<button id="btn">按钮</button>
+
+<script>
+  var btn = document.getElementById("btn");
+  
+  btn.onclick = function () {
+    console.log("今天天气不错");
+    this.onclick = null;
+  };
+  
+  //简单事件的移除方式：设置 onclick = null;  btn.onmouseover = null;
+
+
+</script>
+</body>
+</html>

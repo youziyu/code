@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        tbody td {
+            width: 165px;
+            height: 19px;
+        }
+    </style>
+</head>
+<body>
+<!--添加按钮-->
+<a id="add" href="javascript:void(0)">添加</a>
+<!--放置表格的位置-->
+<div id="box"></div>
+
+<script>
+    //------------------------- 创建表格数据-----------------------------
+    //表头的数据
+    var heads = ["姓名", "科目", "成绩", "操作"];
+    //根据datas中对象的个数创建tr行，每个行中的td个数就是这个对象的属性个数
+    var datas = [
+        {"name": "张三1", "subject": "语文1", "score": 99.8},
+        {"name": "张三2", "subject": "语文2", "score": 80.8},
+        {"name": "张三3", "subject": "语文3", "score": 70.8},
+        {"name": "张三4", "subject": "语文4", "score": 100},
+        {"name": "张三5", "subject": "语文5", "score": 60},
+        {"name": "张三6", "subject": "语文6", "score": 70},
+        {"name": "张三7", "subject": "语文7", "score": 89.8}
+    ];
+
+    //1创建表格
+    var box = document.getElementById("box");
+    var table = document.createElement("table");
+    box.appendChild(table);
+    table.border = "1px";
+    table.style.borderCollapse = "collapse";
+    table.style.width = "600px";
+
+    //2 创建表头部分
+    var thead = document.createElement("thead");
+    thead.style.backgroundColor = "#ccc";
+    table.appendChild(thead);
+    //3 创建th 个数有heads中的数据个数确定
+    for (var i = 0; i < heads.length; i++) {
+        var th = document.createElement("th");
+        th.innerHTML = heads[i];
+        //添加到thead中
+        thead.appendChild(th);
+    }
+
+    //4 创建tbody部分
+    var tbody = document.createElement("tbody");
+    tbody.style.textAlign = "center";
+    table.appendChild(tbody);
+    //5 遍历datas，根据datas内的对象个数创建tr行
+    for (var i = 0; i < datas.length; i++) {
+        //6 每一次循环内做的事就是创建一行
+        var tr = document.createElement("tr");
+        tbody.appendChild(tr);
+
+        //7 每一个行内的td个数是根据当前datas[i]中属性的个数来创建的
+        //遍历当前对象
+        var currentObj = datas[i];
+        for (var key in currentObj) {
+            //根据对象的属性创建td
+            var td = document.createElement("td");
+            td.innerHTML = currentObj[key];
+            tr.appendChild(td);
+        }
+        //8 还需要去创建一个删除按钮
+        td = document.createElement("td");
+        tr.appendChild(td);
+        //9 td中创建一个删除按钮
+        var link = document.createElement("a");
+        link.href = "javascript:void(0)";
+        link.innerHTML = "删除";
+        td.appendChild(link);
+
+        //10 点击link时删除数据和当前行
+        //给link添加事件
+        link.onclick = function () {
+            var fafather = this.parentNode.parentNode;
+            //在删除当前tr的时候，需要同时将datas中的对应的对象删除掉
+            //第一步，需要找到当前删除按钮所在的tr，在所有的tr中处于什么位置
+            //目的是得到这个索引，用这个索引去删除datas中对应的一个对象
+            //获取所有tr
+            var trs = tbody.children;
+            //找到当前tr在所有tr中的位置
+            for (var i = 0; i < trs.length; i++) {
+                if (trs[i] == fafather) {
+                    //我们得到这个i了以后，可以使用i去删除datas中对应的一项元素
+                    datas.splice(i, 1);
+                }
+            }
+            //先找到要删除谁，要删除tr，第二部找到谁去调用，tbody。  再看看要删除的tr和当前事件源的关系，爷孙关系
+            tbody.removeChild(fafather);
+            console.log(datas);
+        };
+    }
+
+    //------------------------添加按钮部分-----------------------
+    //1 获取添加按钮
+    var add = document.getElementById("add");
+    add.onclick = function () {
+        //2 点击后会创建一个新行
+        var tr = document.createElement("tr");
+        tbody.appendChild(tr);
+        //3 前三个td中是input，用于获取用户输入的数据
+        for (var i = 0; i < 3; i++) {
+            //4 创建td，并且在td中添加input
+            var td = document.createElement("td");
+            td.innerHTML = "<input type='text' style='width: 70px'>";
+            tr.appendChild(td);
+
+        }
+        //5 创建当前行中最后一个td，用于操作当前行
+        td = document.createElement("td");
+        //6 创建一个确认和一个取消按钮
+        td.innerHTML = "<a href='javascript:void(0)'>确定</a>&nbsp;<a href='javascript:void(0)'>删除</a>";
+        tr.appendChild(td);
+
+        //7 给确定和取消按钮添加事件
+        //取消按钮
+        var cancel = td.children[1];
+        cancel.onclick = function () {
+            //删除当前行，也不需要去考虑数据
+            tbody.removeChild(this.parentNode.parentNode);
+        };
+
+        //8 确认按钮事件
+        var yes = td.children[0];
+        yes.onclick = function () {
+            //9 在点击确认按钮的时候，我们想要把数据添加为datas中的新项
+            //10 第一步，我们需要获取三个input中的内容
+            var name = tr.children[0].children[0].value;
+            var subject = tr.children[1].children[0].value;
+            var score = tr.children[2].children[0].value;
+
+            //11 将上面的三个数据拼接成一个对象，然后放到datas中，作为新元素
+            datas.push({"name": name, "subject": subject, "score": score});
+
+            //12 点击确认后，input就没用了，我们要将input的值保留在原td中
+            tr.children[0].innerHTML = name;
+            tr.children[1].innerHTML = subject;
+            tr.children[2].innerHTML = score;
+
+            //13 先将最后一个td的内容清空，在换为新的删除按钮
+            tr.children[3].innerHTML = "";
+
+            //14 最后差一个删除按钮  创建的步骤跟前面创建别个中的方式相同
+            var link = document.createElement("a");
+            tr.children[3].appendChild(link);
+            link.href = "javascript:void(0)";
+            link.innerHTML = "删除";
+
+            //点击link时删除数据和当前行
+            //给link添加事件
+            link.onclick = function () {
+                var fafather = this.parentNode.parentNode;
+                //在删除当前tr的时候，需要同时将datas中的对应的对象删除掉
+                //第一步，需要找到当前删除按钮所在的tr，在所有的tr中处于什么位置
+                //目的是得到这个索引，用这个索引去删除datas中对应的一个对象
+                //获取所有tr
+                var trs = tbody.children;
+                //找到当前tr在所有tr中的位置
+                for (var i = 0; i < trs.length; i++) {
+                    if (trs[i] == fafather) {
+                        //我们得到这个i了以后，可以使用i去删除datas中对应的一项元素
+                        datas.splice(i, 1);
+                    }
+                }
+                //先找到要删除谁，要删除tr，第二部找到谁去调用，tbody。  再看看要删除的tr和当前事件源的关系，爷孙关系
+                tbody.removeChild(fafather);
+            };
+        };
+    };
+</script>
+</body>
+
+</html>

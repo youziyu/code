@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<div id="box">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<p id="text">
+  呵呵呵
+</p>
+<script>
+  //获取多个标签：根据标签名获取元素
+  //document.getElementsByTagName("标签名")
+  
+  //使用getElementsByTagName获取的结果是伪数组。
+  //var divs = document.getElementsByTagName("div");
+  //console.log(divs);
+  ////操作伪数组divs中的每一个标签，需要遍历伪数组
+  //for (var i = 0; i < divs.length; i++) {
+  //  divs[i].style.width = "100px";
+  //  divs[i].style.height = "100px";
+  //  divs[i].style.backgroundColor = "red";
+  //  divs[i].style.marginBottom = "10px";
+  //}
+  
+  //下面的获取方式会获取到页面中所有的div
+  //document.getElementsByTagName("div")
+  
+  //如果想要操作某个标签内部的指定标签，可以将getElementsByTagName的前面的document更换
+  //1 先获取指定的标签
+  //var box = document.getElementById("box");
+  ////2 从指定标签内部获取某一类标签
+  //var divs = box.getElementsByTagName("div");
+  ////3 进行你需要的操作
+  //for (var i = 0; i < divs.length; i++) {
+  //  divs[i].innerHTML = "我是box的内部子标签";
+  //}
+  
+  
+  //使用getElementsByTagName获取的结果有时只有一个标签，这时要注意获取结果也是伪数组
+  var text = document.getElementsByTagName("p");
+  //使用console.log的方式打印一个标签，无法看到内部的属性
+  console.log(text[0]);
+  //可以使用console.dir进行标签的打印，这时可以查看内部的属性
+  console.dir(text[0]);
+</script>
+</body>
+</html>

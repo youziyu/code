@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    tbody td {
+      width: 165px;
+      height: 19px;
+    }
+  </style>
+</head>
+<body>
+<!--添加按钮-->
+<a id="add" href="javascript:void(0)">添加</a>
+<!--放置表格的位置-->
+<div id="box">
+
+
+</div>
+<script>
+  //------------------------- 创建表格数据-----------------------------
+  //表头的数据 创建th使用
+  var heads = ["姓名", "科目", "成绩", "操作"];
+  //根据datas中对象的个数创建tr行，每个行中的td个数就是这个对象的属性个数
+  var datas = [
+    {"name": "张三1", "subject": "语文1", "score": 99.8},
+    {"name": "张三2", "subject": "语文2", "score": 80.8},
+    {"name": "张三3", "subject": "语文3", "score": 70.8},
+    {"name": "张三4", "subject": "语文4", "score": 100},
+    {"name": "张三5", "subject": "语文5", "score": 60},
+    {"name": "张三6", "subject": "语文6", "score": 70},
+    {"name": "张三7", "subject": "语文7", "score": 89.8}
+  ];
+  
+  //创建表格
+  var table = document.createElement("table");
+  table.border = "1";
+  table.style.width = "600px";
+  table.style.borderCollapse = "collapse";
+  box.appendChild(table);
+  
+  //表头部分
+  var thead = document.createElement("thead");
+  thead.style.backgroundColor = "#ccc";
+  table.appendChild(thead);
+  
+  //创建th
+  for (var i = 0; i < heads.length; i++) {
+    var th = document.createElement("th");
+    th.innerHTML = heads[i];
+    thead.appendChild(th);
+  }
+  
+  //tbody
+  var tbody = document.createElement("tbody");
+  tbody.style.textAlign = "center";
+  table.appendChild(tbody);
+  
+  //创建行，行数
+  for (var i = 0; i < datas.length; i++) {
+    //datas中对象的个数就代表了行数
+    var tr = document.createElement("tr");
+    tbody.appendChild(tr);
+    
+    //给每一行设置内容
+    //td的个数是根据datas[i]的属性个数决定的
+    for (var k in datas[i]) {
+      var td = document.createElement("td");
+      td.innerHTML = datas[i][k];
+      tr.appendChild(td);
+    }
+    
+    //再添加一个放置删除按钮的单元格td
+    td = document.createElement("td");
+    td.innerHTML = "<a href='javascript:;'>删除</a>";
+    tr.appendChild(td);
+    
+    //给删除按钮添加事件
+    td.children[0].onclick = function () {
+      var yy = this.parentNode.parentNode;
+      //删除数据
+      //取出所有的tr
+      var trs = tbody.children;
+      //遍历，用yy去比較
+      for (var i = 0; i < trs.length; i++) {
+        //如果说trs[i]跟yy相等，我就取出这个人的索引值
+        if (trs[i] == yy) {
+          //i就是索引值，我们使用这个索引值去datas中删除对应的一个元素
+          datas.splice(i, 1);
+        }
+      }
+      
+      //必须先删除数据，在删除结构，否则找不到对应的索引值了
+      //删除结构
+      tbody.removeChild(yy);
+      console.log(datas);
+    };
+  }
+
+
+</script>
+
+<table border=1></table>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //日常生活功能
+    function shengHuo(food, fn) {
+      //food = "馅饼"
+      //函数表达式
+      //fn = function () {
+      //    console.log("今天我很累，下班什么也没干，就是回去睡觉了");
+      //}
+      console.log("早上起床");
+      console.log("上厕所");
+      console.log("回屋喝水");
+      console.log("吃点" + food);
+      console.log("坐车上班");
+      console.log("上课");
+      console.log("中午吃饭");
+      console.log("下午上课");
+//      //-----------第一天
+//      console.log("女朋友说晚上想要一起看电影");
+//      console.log("吃了麦当劳");
+//      console.log("逛逛街");
+//      console.log("速8门口买了一根冰棍");
+//      console.log("坐车回家");
+//      //-----------
+
+//      day1();
+
+//      //-----------第二天
+//      console.log("ml说晚上我们要开一个课程会议");
+//      console.log("会议餐吃田老师肥牛饭");
+//      console.log("会议上ml说了一下当前的大好形势");
+//      console.log("又把我们骂了一顿");
+//      console.log("很沮丧的回家了");
+//      //-----------
+
+//      day2();
+      
+      //我们需要在当前这个位置上调用一个函数
+      //但是这个函数不确定，有可能调用的是day1函数，有可能调用的是day2函数
+      //使用的函数不确定，所以设置一个参数接受用户传入的函数体。
+      fn();
+      
+      //使用场景：
+      //什么时候使用普通参数？当我们发现函数中有某些值不确定。这时传入一个普通的参数
+      //什么时候使用函数参数？当我们发现函数中某些功能代码不确定是，使用函数参数
+      
+      console.log("吃完晚饭，洗洗睡了");
+      console.log("----------");
+    }
+    
+    //传入函数参数时可以传入一个有名的函数（命名函数）
+    //第一天
+    shengHuo("面包", day1);
+    
+    //第二天
+    shengHuo("包子", day2);
+    
+    //传入函数参数时也可以传入一个匿名函数
+    //第三天
+    shengHuo("馅饼", function () {
+      console.log("今天我很累，下班什么也没干，就是回去睡觉了");
+    });
+    
+    
+    
+    function day1() {
+      console.log("女朋友说晚上想要一起看电影");
+      console.log("吃了麦当劳");
+      console.log("逛逛街");
+      console.log("速8门口买了一根冰棍");
+      console.log("坐车回家");
+    }
+    
+    function day2() {
+      console.log("ml说晚上我们要开一个课程会议");
+      console.log("会议餐吃田老师肥牛饭");
+      console.log("会议上ml说了一下当前的大好形势");
+      console.log("又把我们骂了一顿");
+      console.log("很沮丧的回家了");
+    }
+  
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

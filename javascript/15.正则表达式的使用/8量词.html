@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //可以限定出现的次数
+  //1 想要匹配a出现3次的情况 /a{3}/
+  //var reg = /aaa/;
+  var reg = /^a{3}$/;
+  //console.log(reg.test("aa"));//false
+  //console.log(reg.test("aaa"));//true
+  //console.log(reg.test("aaaa"));//false
+  
+  
+  //2 想要匹配a的出现次数为3-5之间即可: /a{3,5}/
+  //var reg = /^a{3,5}$/;
+  //console.log(reg.test("aa"));//false
+  //console.log(reg.test("aaa"));//true
+  //console.log(reg.test("aaaa"));//true
+  //console.log(reg.test("aaaaa"));//true
+  //console.log(reg.test("aaaaaa"));//false
+  
+  
+  //3 想要匹配a出现的次数为至少3次: /a{3,}/
+  //var reg = /^a{3,}$/;
+  //console.log(reg.test("aa"));//false
+  //console.log(reg.test("aaa"));//true
+  //console.log(reg.test("aaaa"));//true
+  //console.log(reg.test("aaaaa"));//true
+  //console.log(reg.test("aaaaaa"));//true
+  //console.log(reg.test("aaaaaaaaaaaaaaaa"));//true
+  
+  
+  //预定义量词
+  // * 可以匹配0-n个（出不出现均可） {0,};
+  //var reg = /^a*$/;
+  //console.log(reg.test(""));//true
+  //console.log(reg.test("aaaa"));//true
+  //console.log(reg.test("aaaaaaaaa"));//true
+  //console.log(reg.test("aaaaaaaaaaaaaaa"));//true
+  
+  // + 可以匹配一个到多个 （至少出现一次）  {1,};
+  //var reg = /^a+$/;
+  //console.log(reg.test(""));//false
+  //console.log(reg.test("a"));//true
+  //console.log(reg.test("aaaa"));//true
+  //console.log(reg.test("aaaaaaaaa"));//true
+  //console.log(reg.test("aaaaaaaaaaaaaaa"));//true
+  
+  // ? 可以匹配一个或0个  {0,1};
+  var reg = /^a?$/;
+  console.log(reg.test(""));//true
+  console.log(reg.test("a"));//true
+  console.log(reg.test("aa"));//false
+
+
+</script>
+</body>
+</html>

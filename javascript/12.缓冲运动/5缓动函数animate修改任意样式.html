@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      /*left: 200px;*/
+    }
+  
+  
+  </style>
+</head>
+<body>
+<button id="btn1">运动到200</button>
+<div id="box">box1</div>
+<script>
+  var box1 = document.getElementById("box");
+  var btn1 = document.getElementById("btn1");
+  
+  
+  btn1.onclick = function () {
+    animate(box, "height", 400);
+  };
+  
+  //获取任意样式值的函数
+  function getStyle(tag, attr) {
+    if (tag.currentStyle) {
+      return tag.currentStyle[attr];
+    } else {
+      return getComputedStyle(tag, null)[attr];
+    }
+    //return tag.currentStyle ? tag.currentStyle[attr] : getComputedStyle(tag, null)[attr];
+  }
+  //使用getStyle获取某个没有设置过的样式时，可能会获取到auto字符串（根据浏览器不同，获取结果也不同）
+  //console.log(getStyle(box, "left"));
+  
+  
+  //将animate修改为可以使任意样式运动的函数
+  function animate(tag, attr, target) {
+    clearInterval(tag.timer);
+    tag.timer = setInterval(function () {
+      //-- 获取当前位置需要修改，应该修改为获取指定的某个样式值
+      //1 使用getStyle函数获取的结果是一个字符串，并且含有单位，需要取出数值部分
+      //2 由于getStyle可能会获取到auto，这时使用parseInt转换后会得到NaN
+      //3 可以使用短路操作，保证在取到auto时，使用值为0，可以正常计算
+      var leader = parseInt(getStyle(tag, attr)) || 0;
+      
+      var step = (target - leader) / 10;
+      step = step > 0 ? Math.ceil(step) : Math.floor(step);
+      leader = leader + step;
+      
+      //-- 设置位置也需要修改为设置指定样式
+      tag.style[attr] = leader + "px";
+      
+      if (leader == target) {
+        clearInterval(tag.timer);
+      }
+    }, 17);
+  }
+
+</script>
+</body>
+</html>

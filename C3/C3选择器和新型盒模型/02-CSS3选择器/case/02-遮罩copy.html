@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box{
+            width:320px;
+            height: 320px;
+            margin:50px auto;
+            position: relative;
+        }
+        .box:hover::before{
+            position: absolute;
+            content:"";
+            width:320px;
+            height:320px;
+            background-color:rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <img src="./images/pic.jpg" alt="">
+    </div>
+</body>
+
+</html>

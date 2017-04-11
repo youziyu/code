@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>旋转木马轮播图</title>
+  <link rel="stylesheet" href="css/css.css"/>
+</head>
+<body>
+<div class="wrap" id="wrap">
+  <div class="slide" id="slide">
+    <ul>
+      <li><a href="#"><img src="images/slidepic1.jpg" alt=""/></a></li>
+      <li><a href="#"><img src="images/slidepic2.jpg" alt=""/></a></li>
+      <li><a href="#"><img src="images/slidepic3.jpg" alt=""/></a></li>
+      <li><a href="#"><img src="images/slidepic4.jpg" alt=""/></a></li>
+      <li><a href="#"><img src="images/slidepic5.jpg" alt=""/></a></li>
+    </ul>
+    <div class="arrow" id="arrow">
+      <a href="javascript:;" class="prev" id="arrLeft"></a>
+      <a href="javascript:;" class="next" id="arrRight"></a>
+    </div>
+  </div>
+</div>
+
+<script src="js/animate.js"></script>
+<script>
+  //标注了每个图片要运动到的位置
+  var config = [
+    {
+      width: 400,
+      top: 20,
+      left: 50,
+      opacity: 0.2,
+      zIndex: 2
+    },//0
+    {
+      width: 600,
+      top: 70,
+      left: 0,
+      opacity: 0.8,
+      zIndex: 3
+    },//1
+    {
+      width: 800,
+      top: 100,
+      left: 200,
+      opacity: 1,
+      zIndex: 4
+    },//2
+    {
+      width: 600,
+      top: 70,
+      left: 600,
+      opacity: 0.8,
+      zIndex: 3
+    },//3
+    {
+      width: 400,
+      top: 20,
+      left: 750,
+      opacity: 0.2,
+      zIndex: 2
+    }//4
+  
+  ];//config其实就是一个配置单 规定了每张图片的大小位置层级透明度
+  
+  //1 获取元素
+  var wrap = document.getElementById("wrap");
+  var slide = wrap.children[0];
+  var ul = slide.children[0];
+  var lis = ul.children;//所有要操作的图片
+  var arrow = slide.children[1];//要操作的箭头
+  var arrLeft = arrow.children[0];
+  var arrRight = arrow.children[1];
+  
+  var flag = true;//当flag值为true，这时表示可以进行图片运动
+  
+  
+  //2 先让每个li根据config中对应的位置进行设置
+  changePos();
+  
+  //3 设置箭头的显示和隐藏
+  wrap.onmouseover = function () {
+    animate(arrow, {"opacity": 1});
+  };
+  wrap.onmouseout = function () {
+    animate(arrow, {"opacity": 0});
+  };
+  
+  //4 点击右按钮
+  arrRight.onclick = function () {
+    //根据flag控制图片的运动
+    if (flag) {
+      //当执行完点击后，设置flag值为false，放置连续点击运动
+      flag = false;
+      
+      //需要将config中第一个元素，添加到config最后即可
+      config.push(config.shift());
+      
+      //设置config后，还需要让lis中每个li，运动到新的对应位置上
+      changePos();
+    }
+  };
+  
+  arrLeft.onclick = function () {
+    if (flag) {
+      flag = false;
+      
+      //将config中的最后一个元素移动到最前面
+      config.unshift(config.pop());
+      changePos();
+      
+    }
+  };
+  
+  
+  function changePos() {
+    for (var i = 0; i < config.length; i++) {
+      animate(lis[i], config[i], function () {
+        //这个函数内的代码会在运动结束后执行
+        flag = true;
+      });
+    }
+  }
+  
+  
+  function animate(tag, obj, fn) {
+    
+    clearInterval(tag.timer);
+    tag.timer = setInterval(function () {
+      var flag = true;//假设当前这一次定时器代码执行可以设置清除（每个样式都到达了指定位置）
+      //先遍历obj
+      for (var k in obj) {
+        //由于obj中有一些属性可能是zIndex或者opacity，这时需要单独处理
+        if (k == "opacity") {
+          //将透明度当前值和目标值都设置为扩大后的倍数，设置时除以相应倍数即可
+          var target = obj[k] * 100;
+          var leader = getStyle(tag, k) * 100 || 0;
+          var step = (target - leader) / 10;
+          //给step设置取整
+          step = step > 0 ? Math.ceil(step) : Math.floor(step);
+          leader = leader + step;
+          //透明度的设置需要去掉单位
+          tag.style[k] = leader / 100;
+          
+        } else if (k == "zIndex") {
+          //zIndex不需要渐变，直接设置即可
+          tag.style.zIndex = obj[k];
+          
+        } else {
+          var target = obj[k];
+          var leader = parseInt(getStyle(tag, k)) || 0;
+          var step = (target - leader) / 10;
+          //给step设置取整
+          step = step > 0 ? Math.ceil(step) : Math.floor(step);
+          
+          leader = leader + step;
+          tag.style[k] = leader + "px";
+        }
+        
+        //提取出每种条件都需要的代码
+        if (leader != target) {
+          flag = false;
+        }
+      }
+      
+      if (flag) {
+        clearInterval(tag.timer);
+        fn && fn();
+      }
+      
+    }, 20);
+  }
+  
+  function getStyle(tag, attr) {
+    if (tag.currentStyle) {
+      return tag.currentStyle[attr];
+    } else {
+      return getComputedStyle(tag, null)[attr];
+    }
+  }
+</script>
+</body>
+</html>

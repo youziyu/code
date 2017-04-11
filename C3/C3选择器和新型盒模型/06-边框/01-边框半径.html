@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>边框半径</title>
+    <style type="text/css" media="screen">
+        div {
+            position: absolute;
+            width: 250px;
+            height: 200px;
+            background-color: green;
+            line-height: 200px;
+            color: #fff;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        .box1 {
+            top: 100px;
+            left: 300px;
+            /* 任务1 给box1添加一个边框半径，值为10 */
+            border-radius: 10px;
+ 
+        }
+        .box2 {
+            top: 100px;
+            right: 300px;
+            /* 任务2 给box2添加两个边框半径，值为10px  20px;*/
+            border-radius: 10px 30px;
+        }
+        
+        .box3 {
+            bottom: 100px;
+            left: 300px;
+            /* 任务3 给box3添加三个边框半径，值为10px  20px 40px*/
+            border-radius: 10px 30px 60px;
+
+        }
+        
+        .box4 {
+            bottom: 100px;
+            right: 300px;
+            /* 任务4 给box4添加四个边框半径，值为5  10   15  20*/
+            border-radius: 10px 30px 60px 90px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">box1</div>
+    <div class="box2">box2</div>
+    <div class="box3">box3</div>
+    <div class="box4">box4</div>
+</body>
+
+</html>

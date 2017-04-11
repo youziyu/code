@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<div></div>
+<p></p>
+<span></span>
+<ul>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li id="me">这是我</li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+<script>
+  var me = document.getElementById("me");
+  var list = me.parentNode;
+  
+  //要获取list的所有同级元素
+  //这时由于list没有id，就无法使用getSiblings这个函数，使这个函数的用法出现了局限性
+  
+  console.log(getSiblings(list));
+  
+  function getSiblings(me) {
+    //获取除了me以外的所有同级元素
+    //1 获取me
+//    var me = document.getElementById(id);
+    var resultArr = [];
+    
+    //2 获取所有li：先找爹在找儿子
+    var sibs = me.parentNode.children;
+    
+    //3 遍历sibs
+    for (var i = 0; i < sibs.length; i++) {
+      //4 判断找出不是me的其他元素
+      if (sibs[i] != me) {
+        resultArr[resultArr.length] = sibs[i];
+      }
+    }
+    return resultArr;
+  }
+  
+  //标签和标签判断相等，必须得是同一个标签才会返回true，长得一样，不会相等
+
+</script>
+</body>
+</html>

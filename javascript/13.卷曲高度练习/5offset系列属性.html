@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      border: 10px solid #000;
+      margin: 15px;
+    }
+    
+    #fa {
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+<div id="fa">
+  <div id="box"></div>
+</div>
+<script>
+  var box = document.getElementById("box");
+  //只读属性，值为数值类型
+  //offLeft:当前元素的左边框左侧，计算到定位父盒子的左边框右侧
+  //offsetTop
+  //console.log(box.offsetTop);
+  
+  //offsetWidth  offsetHeight 除了margin以外的宽/高
+  //console.log(box.offsetWidth);
+  //console.log(box.offsetHeight);
+  
+  //offsetParent 获取到offset系列属性所参考的定位父盒子
+  
+  //offsetParent（干爹） 和 parentNode（亲爹） 的区别
+  console.log(box.offsetParent);
+
+</script>
+</body>
+</html>

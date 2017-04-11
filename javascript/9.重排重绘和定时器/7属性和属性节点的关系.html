@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+  var box = document.getElementById("box");
+  
+  //1 获取属性节点的方式 标签.getAttributeNode("属性名");
+  var idNode = box.getAttributeNode("id");
+  console.log(idNode.nodeValue);
+  
+  //通过getAttribute方法可以直接获取到属性节点的节点值，操作起来十分方便
+  console.log(box.getAttribute("id"));
+
+</script>
+</body>
+</html>

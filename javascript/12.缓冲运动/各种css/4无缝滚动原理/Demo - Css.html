@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    img {
+      vertical-align: top;
+    }
+    
+    /*取消图片底部3像素距离*/
+    .box {
+      width: 300px;
+      height: 200px;
+      margin: 100px auto;
+      background-color: pink;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .box ul li {
+      float: left;
+    }
+    
+    .box ul {
+      width: 1500px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+<div class="box" id="screen">
+  <ul>
+    <li><img src="images/01.jpg" alt=""/></li>
+    <li><img src="images/02.jpg" alt=""/></li>
+    <li><img src="images/03.jpg" alt=""/></li>
+    <li><img src="images/04.jpg" alt=""/></li>
+    <!--放置了一个假的第一张，为了制作无缝滚动效果-->
+    <li><img src="images/01.jpg" alt=""/></li>
+  </ul>
+</div>
+<script>
+  //1 获取结构
+  var box = document.getElementById("screen");
+  var imgWid = box.offsetWidth;
+  var list = box.children[0];
+  var timer = null;
+  var lisLen = list.children.length;
+  var step = -10;
+  
+  //2 设置定时器进行运动
+  timer = setInterval(function () {
+    var leader = list.offsetLeft;
+    
+    
+    if (leader > -(lisLen - 1) * imgWid) {
+      leader = leader + step;
+      list.style.left = leader + "px";
+    } else {
+      list.style.left = step + "px";
+    }
+    
+  }, 20);
+  
+  box.onmouseover = function () {
+    step = -3;
+  };
+  
+  box.onmouseout = function () {
+    step = -10;
+  }
+
+
+</script>
+</body>
+</html>

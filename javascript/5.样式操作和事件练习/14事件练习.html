@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div id="box"></div>
+<button id="btn1">改变宽度</button>
+<button id="btn2">改变高度</button>
+<button id="btn3">改变背景色</button>
+<button id="btn4">改变文字</button>
+
+<script>
+  //点击不同按钮，实现按钮的不同效果
+  
+  //1 获取元素
+  var box = document.getElementById("box");
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+  var btn3 = document.getElementById("btn3");
+  var btn4 = document.getElementById("btn4");
+  
+  //2 设置事件
+  btn1.onclick = function () {
+    //3 设置box的宽度修改
+    box.style.width = "200px";
+  };
+  
+  btn2.onclick = function () {
+    box.style.height = "200px";
+  };
+  
+  btn3.onclick = function () {
+    box.style.backgroundColor = "blue";
+  };
+  
+  btn4.onclick = function () {
+    box.innerHTML = "我是新的文本内容";
+  };
+</script>
+</body>
+</html>

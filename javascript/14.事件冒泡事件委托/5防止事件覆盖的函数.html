@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<div id="box">
+  <button>按钮</button>
+</div>
+
+<script>
+  var box = document.getElementById("box");
+  var btn = box.children[0];
+  
+  //小明写的代码
+  btn.onclick = function () {
+    console.log("这是小明的垃圾代码");
+  };
+  addClick(btn, function () {
+    console.log("今天天气不错1");
+  });
+  addClick(btn, function () {
+    console.log("今天天气不错2");
+  });
+  addClick(btn, function () {
+    console.log("今天天气不错3");
+  });
+  
+  /**
+   * 防止点击事件覆盖的函数
+   * @param tag 要设置事件的元素
+   * @param newCode 新的事件处理程序代码
+   */
+  function addClick(tag, newCode) {
+    //每次我进行事件设置的时候，就会进行检测，检测原有的事件是否已经存在了
+    //1 先获取到事件的内容
+    var oldClick = tag.onclick;//获取的结果可能是空或者一个函数
+    
+    //2 判断oldClick的内容
+    //2.1 如果设置过click事件，内部是一个函数
+    if (typeof oldClick == "function") {
+      //需要保证旧的和新的都执行
+      tag.onclick = function () {
+        oldClick();
+        newCode();
+      };
+    } else {
+      //2.2 如果没有设置过click事件
+      tag.onclick = newCode;
+    }
+  }
+  
+  ////我写的代码
+  function newCode() {
+    alert("今天天气不错");
+  }
+
+
+</script>
+
+<!--<script src="1.js"></script>-->
+</body>
+</html>

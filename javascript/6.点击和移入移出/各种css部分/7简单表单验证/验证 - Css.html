@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      width: 250px;
+      height: 100px;
+      padding: 10px;
+      margin: 100px auto;
+      text-align: center;
+      border: 1px solid #000;
+    }
+    
+    .container input {
+      color: gray;
+    }
+    
+    .container span {
+      border: 1px solid #000;
+      width: 240px;
+      display: none;
+      
+    }
+    
+    .container span.show {
+      display: block;
+    }
+    
+    .container span.right {
+      display: block;
+      border: 2px solid #6cff52;
+      background-color: #e5ffd1;
+    }
+    
+    .container span.wrong {
+      display: block;
+      border: 2px solid #f32b35;
+      background-color: #ffc1b4;
+    }
+  
+  </style>
+</head>
+<body>
+<div class="container">
+  用户名：<input id="ipt" type="text" value="请输入用户名">
+  <br>
+  <br>
+  <span id="span">请输入admin</span>
+</div>
+
+<script>
+  //1 获取要操作的元素
+  var ipt = document.getElementById("ipt");
+  var sp = document.getElementById("span");
+  
+  //2 添加获取焦点事件
+  ipt.onfocus = function () {
+    //获取焦点时，如果当前输入框的内容是默认内容，清除输入框的内容
+    if (this.value == "请输入用户名") {
+      this.value = "";
+      //设置提示文本显示
+      sp.className = "show";
+    }
+  };
+  
+  //3 添加失去焦点事件
+  ipt.onblur = function () {
+    //失去焦点时进行内容检测，情况有3种，空，正确，错误
+    //由于错误的情况很多，所以将错误放在最后进行验证，写在else中
+    if (this.value == "") {
+      //设置输入框为默认文本，并且隐藏提示框
+      this.value = "请输入用户名";
+      sp.className = "";
+      //还原提示词sp的内容
+      sp.innerHTML = "请输入admin";
+    } else if (this.value == "admin") {
+      //设置sp内容为输入正确，设置sp的类名为right
+      sp.className = "right";
+      sp.innerHTML = "输入正确";
+    } else {
+      //设置sp内容为输入错误，设置sp的类名为wrong
+      sp.className = "wrong";
+      sp.innerHTML = "输入错误";
+    }
+    
+    
+  };
+
+
+</script>
+</body>
+</html>

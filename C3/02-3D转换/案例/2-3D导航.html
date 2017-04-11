@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3 3D转换</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: '微软雅黑';
+			background-color: #F7F7F7;
+		}
+		
+		ul.nav {
+			height: 80px;
+			margin-top: 50px;
+			text-align: center;
+			list-style: none;
+		}
+		
+		li {
+			width: 120px;
+			height: 80px;
+			float: left;
+			position: relative;
+			transition: all 1s;
+			transform-style: preserve-3d;
+			/*transform: rotateY(30deg) rotateX(45deg);*/
+		}
+		
+		li span {
+			height: 100%;
+			width: 100%;
+			line-height: 80px;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		
+		li span:nth-child(1) {
+			transform: translateZ(40px);
+			background: green;
+		}
+		
+		li span:nth-child(2) {
+			transform: rotateX(90deg) translateZ(40px);
+			background: yellow;
+		}
+		
+	
+		
+		ul:hover li {
+			transform: rotateX(-90deg);
+		}
+	</style>
+</head>
+
+<body>
+	<ul class="nav">
+		<li>
+			<span>Web前端</span>
+			<span>传智播客</span>
+		</li>
+		<li>
+			<span>Web前端</span>
+			<span>传智播客</span>
+		</li>
+		<li>
+			<span>Web前端</span>
+			<span>传智播客</span>
+		</li>
+		<li>
+			<span>Web前端</span>
+			<span>传智播客</span>
+		</li>
+	</ul>
+</body>
+
+</html>

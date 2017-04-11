@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+  //持续的修改left值扩大，可以让box进行运动
+  var box = document.getElementById("box");
+  var leftVal = 0;
+  var timer = null;
+  
+  //设置定时器
+  timer = setInterval(function () {
+    //让box运动到600停止
+    if (leftVal < 600) {
+      leftVal += 10;
+      box.style.left = leftVal + "px";
+    } else {
+      //清除定时器，让box运动停止
+      clearInterval(timer);
+    }
+  }, 20);
+
+</script>
+</body>
+</html>

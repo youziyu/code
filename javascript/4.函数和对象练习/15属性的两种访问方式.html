@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    var obj = {
+      name: "张三",
+      age: 18,
+      sayHi: function () {
+        console.log("这是一个方法");
+      }
+    };
+    
+    //访问属性的第一种形式
+    //    console.log(obj.name);
+    ////访问属性的第二种形式:  对象["属性名"]
+    //    console.log(obj["name"]);
+    
+    //obj.sayHi();
+    //obj["sayHi"]();
+    
+    
+    //console.log(obj["name"]);
+    //console.log(obj["na" + "me"]);
+    //    var str = "am";
+    //    console.log(obj["n" + str + "e"]);
+    
+    var obj2 = {
+      value: "ame"
+    };
+    //             "n" + "ame" => "name"
+    console.log(obj["n" + obj2.value]);
+  
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

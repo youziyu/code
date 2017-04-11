@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //对象的声明
+    //    var obj1 = new Object();
+    //    console.log(obj1);
+    
+    //    function create() {
+    //      //1 创建一个对象
+    //      var objIn = new Object();
+    //      //2 返回一个对象
+    //      return objIn;
+    //    }
+    //正常的调用一个什么内容也没有的函数，结果为undefined
+    //    var obj = create();
+    //    console.log(obj);
+    
+    
+    function CreateFlower(huaName) {
+      //添加属性和方法
+      this.name = huaName;
+      this.color = "red";
+      this.zha = function () {
+        console.log("某人被扎了");
+      };
+    }
+    //使用new再去调用create函数
+    var obj = new CreateFlower("玫瑰");
+    console.log(obj);
+    console.log(obj.name);
+    obj.zha();
+    
+    //new的作用：
+    //1 创建一个对象。
+    //2 将这个创建的对象返回。
+    //3 改变this的指向，指向了新创建的对象。
+    
+    //构造函数的作用：创建对象。
+    //构造函数的调用：需要在前面加new。
+    //构造函数的命名：首字母大写(书写习惯)。
+    //构造函数的设置：内部使用this设置创建出来的对象所具有的属性和方法。
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

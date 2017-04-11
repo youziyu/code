@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style> 
+      form{
+          width:300px;
+          margin: 100px auto;
+      }
+      lable{
+          
+          display: block;
+          margin: 5px 0;
+      }
+    
+    </style>
+</head>
+
+<body>
+    <!--问题：让哪个程序去处理-->
+    <!--问题:用什么样的方式接收-->
+    <form action="12-post.php"  method="post">
+        <fieldset>
+            <legend>用户登录</legend>
+            <lable>
+                用户名<input type="text" name="username" id="username">
+            </lable>
+            <lable>
+                密码：<input type="password" name="password" id="password">
+            </lable>
+            <lable>
+                <input type="submit" value="提交">
+            </lable>
+        </fieldset>
+    </form>
+</body>
+
+</html>

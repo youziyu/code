@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<button id="btn1">设置第一种样式</button>
+<div id="box"></div>
+
+<script>
+  //1 获取元素
+  var box = document.getElementById("box");
+  var btn1 = document.getElementById("btn1");
+  
+  //设置一个变量用于记录当前设置的状态
+  var flag = true;
+  
+  //2 添加事件
+  btn1.onclick = function () {
+    if (flag) {
+      //应用第一个样式
+      box.style.width = "100px";
+      box.style.height = "100px";
+      box.style.backgroundColor = "red";
+      //第一次设置执行完毕后，设置if的条件为false，自然就进入else
+      flag = false;
+    } else {
+      //应用第二个样式
+      box.style.width = "200px";
+      box.style.height = "200px";
+      box.style.backgroundColor = "blue";
+      
+      //第二次执行完后设置flag为true
+      flag = true;
+    }
+    
+  };
+
+
+</script>
+</body>
+</html>

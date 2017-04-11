@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 3D转换</title>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #F7F7F7;
+    }
+    
+    .rotateX {
+        height: 226px;
+        padding-top: 100px;
+        text-align: center;
+        perspective: 1000px;
+    }
+    
+    .rotateX img {
+        transition: all 5s;
+    }
+    body:hover img{
+        transform: rotateX(180deg);
+    }
+    
+
+    </style>
+</head>
+
+<body>
+    <!--所有的3d转换中的视角方向都是从正方向往负方向看-->
+    <div class="rotateX">
+        <img src="images/x.jpg" alt="">
+    </div>
+</body>
+
+</html>

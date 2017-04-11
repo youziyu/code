@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    button {
+      background-color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<script>
+  //1 获取所有的按钮
+  var btns = document.getElementsByTagName("button");
+  
+  //2 遍历
+  for (var i = 0; i < btns.length; i++) {
+    //3 点击事件
+    btns[i].onclick = function () {
+      //4 设置自己改变颜色,改变时需要让其他的按钮恢复成原始颜色
+      // 我们无法确定以前哪个按钮被点击过
+      // 所以先清除掉所有按钮的样式，然后在设置自己
+      
+      //排他思想：先清除所有人，在设置自己
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].style.backgroundColor = "#fff";
+      }
+      //设置自己的颜色
+      this.style.backgroundColor = "red";
+      
+    };
+  }
+
+
+</script>
+</body>
+</html>

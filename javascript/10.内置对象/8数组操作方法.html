@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //  //arr.concat() 连接数组
+  //  var arr = [1, 2, 3];
+  //  //var resultArr = arr.concat(4,5,6);//concat方法操作后返回一个新数组
+  //  //console.log(arr);//没有改变
+  //  //console.log(resultArr);
+  //
+  //  //如果传入的参数是数组,不会将数组直接放入，而是将传入的数组中所有元素一次添加到arr中
+  //  //var resultArr = arr.concat([4,5,6]);
+  //  //console.log(resultArr);
+  //
+  //  //利用返回新数组的特性，可以进行数组的复制
+  //  var arr3 = arr.concat();
+  //  //console.log(arr3);
+  //  arr[0] = 100;
+  //  console.log(arr);//[100,2,3]
+  //  console.log(arr3);//[1,2,3]
+  
+  
+  ////slice()  拷贝数组中的一部分元素
+  ////slice(start,end)  start为要拷贝的起始位置索引值  end拷贝结束位置的索引值,end这个位置取不到
+  //var arr = [1, 2, 3, 4, 5];
+  //console.log(arr.slice(1, 4));
+  ////不会修改原数组
+  //console.log(arr);
+  
+  
+  //splice()  截取/替换数组中的指定部分
+  //会修改原数组，返回值为截取的部分
+  var arr = [1, 2, 3, 4, 5, 6];
+  //截取功能
+  //参数1 要截取的起始位置索引，参数2 要截取的个数
+//  console.log(arr.splice(2, 3));
+//  console.log(arr);
+  
+  //替换功能
+  //参数3 或更多的参数，这时会将这些参数添加到截取的位置上
+  //arr.splice(1, 3, 100, 200, 300, 400);
+  //console.log(arr);
+  
+  //使用splice可以截取/删除数组的指定元素
+  //console.log(arr.splice(2, 1));
+  //console.log(arr);
+  
+  //清空数组
+  //arr.length = 0;
+  //arr = [];
+  //arr.splice(0,arr.length);
+  
+
+</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+
+
+    .android {
+      width: 340px;
+      height: 500px;
+      margin: 50px auto;
+      position: relative;
+    }
+
+
+
+    header {
+      width: 220px;
+      height: 100px;
+      margin: 0 auto;
+      background-color: #94ff00;
+      position: relative;
+      border-top-left-radius: 110px;
+      border-top-right-radius: 110px;
+    }
+
+
+
+    header:before,
+    header:after {
+      content: "";
+      position: absolute;
+      top: 50px;
+
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #fff;
+    }
+
+
+    header:before {
+      left: 60px;
+    }
+
+
+    header:after {
+      right: 60px;
+    }
+
+
+
+    main {
+      width: 220px;
+      height: 180px;
+      background-color: #94ff00;
+      margin: 0 auto;
+      margin-top: 10px;
+      position: relative;
+      border-bottom-right-radius: 15px;
+      border-bottom-left-radius: 15px;
+    }
+
+
+    main:before,
+    main:after {
+      content: "";
+      position: absolute;
+      top: 180px;
+      width: 30px;
+      height: 110px;
+      background-color: #94ff00;
+      border-bottom-right-radius: 15px;
+      border-bottom-left-radius: 15px;
+    }
+
+
+    main:before {
+      left: 60px;
+    }
+
+
+    main:after {
+      right: 60px;
+    }
+
+    aside {
+      position: absolute;
+      width: 340px;
+      height: 180px;
+      top: 110px;
+      left: 0px;
+    }
+
+
+    
+    aside:before,
+    aside:after {
+      content: "";
+      position: absolute;
+      top: 0px;
+      width: 30px;
+      height: 110px;
+      background-color: #94ff00;
+      border-radius: 15px;
+    }
+
+
+    aside:before {
+      left: 0px;
+    }
+
+
+    aside:after {
+      right: 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <!--
+    1.头  眼睛 伪元素
+    2.身体 脚
+    3.胳膊 
+  -->
+  <div class="android">
+    <header></header>
+    <main></main>
+    <aside></aside>
+  </div>
+
+</body>
+
+</html>

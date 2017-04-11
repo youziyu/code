@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //当鼠标在页面中移动时，获取鼠标的坐标
+  //元素.onmousemove 当鼠标在元素内移动时，触发
+  document.onmousemove = function (e) {
+    //兼容事件对象
+    var e = e || window.event;
+    
+    //e.clientX 鼠标针对可视区域的横坐标
+    //e.clientY 鼠标针对可视区域的纵坐标
+    console.log(e.clientX + "-" + e.clientY);
+  };
+
+
+</script>
+</body>
+</html>

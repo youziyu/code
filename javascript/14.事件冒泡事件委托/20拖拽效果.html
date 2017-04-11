@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+      left: 200px;
+      top: 200px;
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+  var box = document.getElementById("box");
+  
+  //onmousedown 鼠标点下触发
+  //onmouseup   鼠标键抬起来触发
+  
+  box.onmousedown = function (e) {
+    var e = e || window.event;
+    //1 点击盒子时，获取鼠标在盒子内的位置
+    //横坐标 = 鼠标横坐标 - box距离定位父盒子的左侧距离
+    //纵坐标 = 鼠标纵坐标 - box距离定位父盒子的顶部距离
+    var posX = e.pageX - box.offsetLeft;
+    var posY = e.pageY - box.offsetTop;
+    
+    //2 点击以后再去设置document.onmousemove让盒子移动
+    document.onmousemove = function (e) {
+      var e = e || window.event;
+      //3 设置移动时对应的减去鼠标点击位置的坐标
+      box.style.left = e.pageX - posX + "px";
+      box.style.top = e.pageY - posY + "px";
+    };
+  };
+  
+  box.onmouseup = function () {
+    document.onmousemove = null;
+  };
+
+
+</script>
+</body>
+</html>

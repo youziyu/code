@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+
+</head>
+<body>
+
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<script>
+  //给每个div设置相同的宽高，但是背景色不同
+  var colorArr = ["red", "yellow", "pink", "green"];
+  
+  //1 获取元素
+  var divs = document.getElementsByTagName("div");
+  
+  //2 遍历伪数组
+  for (var i = 0; i < divs.length; i++) {
+    divs[i].style.width = "100px";
+    divs[i].style.height = "100px";
+    //3 根据colorArr设置不同背景色
+    divs[i].style.backgroundColor = colorArr[i];
+    
+  }
+
+</script>
+</body>
+</html>

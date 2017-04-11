@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    body{
+      /*height: 10000px;*/
+    }
+    img{
+      position: absolute;
+      top: 1000px;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script src=jquery.lazyload.js></script>
+  <script>
+    $(function () {
+      $("img.lazy").lazyload();
+    });
+  </script>
+</head>
+<body>
+<img class="lazy" data-original="2.jpg" >
+</body>
+</html>

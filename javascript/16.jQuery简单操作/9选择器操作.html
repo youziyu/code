@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script src="jquery-1.12.4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      //选择器：给你一些方式可以获取到页面上的元素
+      //jq的选择器跟css选择器十分相似
+      
+      //jq的第一个特性：隐式迭代（偷偷的遍历） 隐式-偷偷的  迭代-遍历
+      
+      //1 标签选择器
+      //$("div").text("我是div的内容");
+      
+      //2 id选择器
+      //$("#box").text("我是box");
+      
+      //3 类选择器
+      //$(".box").text("我是类名为box的元素");
+      
+      //4 交集选择器
+      //$("div.box").text("我是具有box类名的div");
+      
+      //5 并集选择器
+      //$(".box,span,p").text("我是并集选择的元素");
+      
+      //层级选择器
+      //子代选择器:用于操作子元素
+      //$(".list>li").css("backgroundColor","red");
+      
+      //后代选择器：用于操作后代元素
+      //$(".list li").css("backgroundColor","red");
+      
+      //过滤选择器
+      //获取索引值为偶数的元素
+      $("ul>li:even").text("我是偶数");
+      //获取索引值为奇数的元素
+      $("ul>li:odd").text("我是奇数");
+      
+      //如果想要具体的操作某一个索引位置的元素
+      //通过eq获取的元素是jQ对象
+      $("ul>li:eq(2)").text("我是第三个元素");
+      
+      //一下两种获取结果为DOM对象
+      $("ul>li")[2];
+      $("ul>li").get(2);
+      
+      
+    });
+  </script>
+</head>
+<body>
+<ul>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+
+
+<!--<ul class="list">-->
+<!--<li>-->
+<!--<ul>-->
+<!--<li></li>-->
+<!--</ul>-->
+<!--</li>-->
+<!--<li></li>-->
+<!--<li></li>-->
+<!--<li></li>-->
+<!--<li></li>-->
+<!--</ul>-->
+<!--<div id="box"></div>-->
+<!--<div class="box"></div>-->
+<!--<div class="box"></div>-->
+<!--<div class="box"></div>-->
+<!--<div class="box"></div>-->
+<!--<div class="box"></div>-->
+<!--<p class="box"></p>-->
+<!--<span></span>-->
+<!--<span></span>-->
+</body>
+</html>

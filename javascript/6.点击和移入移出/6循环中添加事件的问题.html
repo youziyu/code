@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    div {
+      width: 100px;
+      height: 50px;
+      margin-bottom: 10px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+<div>我是div</div>
+<div>我是div</div>
+<div>我是div</div>
+<script>
+  //给三个标签添加点击事件。点击后打印自己的索引值
+  
+  //1 获取元素
+  var divs = document.getElementsByTagName("div");
+  
+  //2 遍历divs
+  for (var i = 0; i < divs.length; i++) {
+    //给每个标签设置自定义属性，用于保存自己的索引值
+    divs[i].index = i;
+    
+    //3 给每个div添加事件.在内部打印索引值
+    divs[i].onclick = function () {
+      //由于事件执行时，循环已经执行完毕了，这时获取i的值不准确,避免使用
+      //console.log(i);
+      
+      //我们可以使用标签的自定义属性
+      console.log(this.index);
+    };
+  }
+  
+  //divs[0].index = 0;
+  //console.log(divs[0].index);
+  
+  //console.log("今天天气不错");
+
+</script>
+</body>
+</html>

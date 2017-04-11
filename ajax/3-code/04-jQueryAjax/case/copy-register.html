@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Ajax</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		ul {
+			margin: 0;
+			padding: 50px;
+			list-style: none;
+		}
+
+		.register {
+			width: 800px;
+			margin: 50px auto;
+			background-color: #FFF;
+			border: 1px solid #CCC;
+			border-radius: 5px;
+		}
+
+		li {
+			display: flex;
+			margin: 20px 0;
+		}
+		
+		label, input {
+			display: block;
+			float: left;
+			height: 46px;
+			font-size: 24px;
+			box-sizing: border-box;
+			color: #333;
+		}
+
+		label {
+			width: 200px;
+			line-height: 46px;
+			margin-right: 30px;
+			text-align: right;
+		}
+
+		input {
+			width: 320px;
+			padding: 8px;
+			line-height: 1;
+			outline: none;
+			position: relative;
+		}
+
+		input.code {
+			width: 120px;
+		}
+
+		input.verify {
+			width: 190px;
+			margin-left: 10px;
+		}
+
+		input.disabled {
+			background-color: #CCC !important;
+		}
+
+		input[type=button] {
+			border: none;
+			color: #FFF;
+			background-color: #E64145;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		.tips {
+			position: fixed;
+			top: 0;
+			width: 100%;
+			height: 40px;
+			text-align: center;
+		}
+
+		.tips p {
+			min-width: 300px;
+			max-width: 400px;
+			line-height: 40px;
+			margin: 0 auto;
+			color: #FFF;
+			display: none;
+			background-color: #C91623;
+		}
+	</style>
+</head>
+<body>
+	<div class="register">
+		<form id="ajaxForm">
+			<ul>
+				<li>
+					<label for="">用户名</label>
+					<input type="text" name="name" class="name">
+				</li>
+				<li>
+					<label for="">请设置密码</label>
+					<input type="password" name="pass" class="pass">
+				</li>
+				<li>
+					<label for="">请确认密码</label>
+					<input type="password" name="repass" class="repass">
+				</li>
+				<li>
+					<label for="">验证手机</label>
+					<input type="text" name="mobile" class="mobile">
+				</li>
+				<li>
+					<label for="">短信验证码</label>
+					<input type="text" name="code" class="code">
+					<input type="button" value="获取验证码" class="verify">
+				</li>
+				<li>
+					<label for=""></label>
+					<input type="button" class="submit" value="立即注册">
+				</li>
+			</ul>
+		</form>
+	</div>
+	<!-- 提示信息 -->
+	<div class="tips">
+		<p>用户名不能为空</p>
+	</div>
+	<script src="../js/jquery.min.js"></script>
+	<script>
+		$.ajaxSetup({
+			// 有的配置可以全局设置
+			timeout:2000
+		});
+
+
+		$('.submit').on('click',function(){
+
+			// 缓存外部this
+			var _this=$(this);
+			// 获取表单元素
+			var form=$(this).parents('form');
+			// 序列化表单
+			var formData=$('form').serialize();
+			// 禁止表单重复提交
+			if(_this.hasClass('disabled')){
+				return false;
+			}
+			// 发起ajax请求
+			$.ajax({
+				// 1.请求方式
+				type:'get',
+				// 2.请求地址
+				url:'register.php',
+				// 3.请求正文
+				data:formData,
+				// 4.发送前的调用方法
+				beforeSend:function(){
+					// 1.判断用户名是否为空，如果为空，则提示'用户名不能为空'
+					if($('.name').val()==''){
+						// 提示
+						$('.tips p').text('用户名不能为空！')
+						.fadeIn(500)
+						.delay(1500)
+						.fadeOut(500);
+						// 终止请求
+						return false;
+					}
+					// 2.所有数据合法化后，正式提交的时候设置
+					_this.val('正在提交...').addClass('disabled');
+				},
+				// 5.成功时的回调方法
+				success:function(result){
+					if(data.code==10000){
+						location.href=data.result;
+					}else{
+						alert('注册失败');
+					}
+				},
+				// 6.失败的回调
+				error:function(err){
+					console.log(err);
+				},
+				// 7.完成时的回到方法
+				complete:function(){
+					// 当请求完成了，将状态还原
+					_this.val('立即注册').removeClass('disabled');
+				}
+			})
+		})
+
+		// 获取手机验证码
+		$('.verify').on('click',function(){
+			// 缓存外部this
+			var _this=$(this);
+			// 禁止重复提交
+			if(_this.hasClass('disabled')){
+				return false;
+			}
+			// 发起ajax请求
+			$.ajax({
+				// 1.设置请求方式
+				type:'post',
+				// 2.设置请求地址
+				url:'getCode.php',
+				// 3.发送请求正文
+				data:{mobile:$('.mobile').val()},
+				// 4.发送前验证
+				beforeSend:function(){
+					// 验证手机号
+					var regPhone=/^1\d{10}$/;
+					// 判断手机号是否填写正确
+					if(!regPhone.test($('.mobile').val())){
+						// 友情提示
+						$('.tips p').text('请填写正确的手机号').
+						fadeIn(500)
+						.delay(1500)
+						.fadeOut(500);
+
+						return false;//终止请求
+					}
+					// 状态
+					_this.addClass('disabled');
+					// 倒计时
+					var seconds=60；
+					// 定时器
+					var t=setInterval(function(){
+						_this.val(--seconds+'秒后重新获取');
+
+						if(seconds<=0){
+							clearInterval(t);
+							// 还原原始状态
+							_this.removeClass('disabled');
+							_this.val('获取验证码');
+						}
+					},1000)
+				}
+				// 5.成功回调
+				success:function(data){
+					if(data.code==10000){
+						alert(data.msg);
+					}
+				}
+			})
+		})
+	</script>
+</body>
+</html>

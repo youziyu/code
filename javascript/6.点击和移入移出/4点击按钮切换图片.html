@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<img id="pic" src="images/111.jpg" alt="">
+<button >切换为发哥</button>
+<button >切换为星爷</button>
+<script>
+  //作业1 点击两个按钮切换为不同图片
+  //作业2 点击一个按钮轮流显示不同图片
+  
+  //1 获取元素
+  var btns = document.getElementsByTagName("button");
+  var pic = document.getElementById("pic");
+  //2 添加事件
+  btns[0].onclick = function () {
+    pic.src = "images/222.jpg";
+  };
+  
+  btns[1].onclick = function () {
+    pic.src = "images/111.jpg";
+  };
+  
+
+</script>
+</body>
+</html>

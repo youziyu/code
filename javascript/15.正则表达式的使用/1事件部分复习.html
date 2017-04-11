@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<div>
+  <div id="box">box</div>
+</div>
+<script>
+  //简单事件添加的问题：多次添加后添加的事件会对前面的造成覆盖
+  var box = document.getElementById("box");
+  
+  
+  //box.onclick = function () {
+  //  console.log("我是第一个事件1");
+  //};
+  //box.onclick = function () {
+  //  console.log("我是第一个事件2");
+  //};
+  
+  //function fun() {
+  //  console.log("我是新设置的事件代码");
+  //}
+  //
+  //addEvent(box,"click",fun);
+  //addEvent(box,"click",function () {
+  //  console.log("我是第二个新的事件内容");
+  //});
+  //
+  //function addEvent(tag,eventName,fn) {
+  //  //通过检测事件这个属性内部保存的值，来判断是否设置过事件
+  //  var oldFun = tag["on"+eventName];
+  //  if (typeof oldFun == "function") {
+  //    tag["on"+eventName] = function () {
+  //      oldFun();
+  //      fn();
+  //    };
+  //  } else {
+  //    tag["on"+eventName] = fn;
+  //  }
+  //}
+  
+  //多个事件不会造成覆盖
+  // 标签.addEventListener("click",fun);
+  //移除方式：标签.removeEventListener()  移除时，设置的参数必须与设置是完全相同
+  // 注意：事件处理程序，在移除时和设置时必须是同一个函数
+  
+  
+  //ie9以下不支持addEventListener，使用attachEvent
+  //标签.attachEvent("onclick",fun);
+  //移除使用：detachEvent() 移除时，参数必须与设置时完全相同
+  
+  //attachEvent()支持的浏览器为ie10和以下
+  
+  
+  //事件的执行顺序
+  //1 事件冒泡：当前元素触发后，会将事件传递给父级元素，如果过程中某个父级具有相同的事件，触发
+  //设置方式：事件的默认方式都是冒泡，addEventListener的第三个参数不传或者传false表示冒泡
+  
+  //2 事件捕获：当元素事件触发后，会从最外层，依次触发每个经过的父级的同类事件
+  //设置方式：addEventListener的第三个参数为true
+  
+  //3 事件的检索机制： 事件捕获 -> 当前目标阶段 -> 事件冒泡
+  
+  //事件对象：当事件触发时，事件对象中保存了关于本次事件触发的一些信息
+  //获取方式：
+  //1 在事件处理程序中设置形参e
+  //box.onclick = function (e) {
+  //};
+  //2 在ie低版本使用window.event;
+  //3 兼容代码  var e = e ||window.event;
+  
+  //e.eventPhase 查看当前事件所处于的阶段   1 事件捕获 2当前目标阶段 3事件冒泡
+  //e.target 用于获取当前事件真正触发的元素（直接操作，或者通过事件传递触发）
+  //e.srcElement 与e.target相同，兼容ie浏览器
+  //e.type  可以获取当前事件的类型，注意没有on
+  
+  //常用属性
+  //e.clientX 获取鼠标针对页面的可视区域的横坐标
+  //e.clientY 获取鼠标针对页面的可视区域的纵坐标
+  
+  //e.pageX 获取鼠标针对页面的横坐标
+  //e.pageY 获取鼠标针对页面的纵坐标
+  //问题，ie低版本不支持，所以需要使用函数封装去获取
+  
+  function getPageX(e) {
+    return e.clientX + myScroll().left;
+  }
+  
+  function getPageY(e) {
+    return e.clientY + myScroll().top;
+  }
+  
+  function myScroll() {
+    return {
+      left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,
+      top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+    }
+  }
+
+
+</script>
+</body>
+</html>

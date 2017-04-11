@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //1 text()   相当于innerText
+      //$("#box").text("我是设置的内容");
+      //console.log($("#box").text());
+      
+      //2 html()  相当于innerHTML
+      //$("#box").html("我是设置的内容<div></div>");
+      //console.log($("#box").html());
+      
+      //3 表单的文本操作 val()
+      //$("#ipt").val("我是ipt的内容");//设置
+      //console.log($("#ipt").val());//获取
+      
+      //4 表单的事件   focus  blur
+      
+      //当输入框获取焦点时，设置内容为空
+      //失去焦点时，如果内容为空，设置为默认文本
+      
+      $("#ipt").focus(function () {
+        if ($(this).val() == "我是默认的文本") {
+          //清空
+          $(this).val("");
+        }
+      });
+      
+      
+      //失去焦点
+      $("#ipt").blur(function () {
+        if ($(this).val() == "") {
+          $(this).val("我是默认的文本");
+        }
+      })
+      
+    });
+  </script>
+</head>
+<body>
+<input type="text" id="ipt" value="我是默认的文本">
+<!--<div id="box"></div>-->
+</body>
+</html>

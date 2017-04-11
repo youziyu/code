@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<button id="btn">按钮</button>
+<script>
+  var btn = document.getElementById("btn");
+  //新的事件添加方式不会产生覆盖的问题
+  //添加事件监听
+  // 标签.addEventListener(事件类型,事件处理程序) 事件类型不需要加on
+  btn.addEventListener("click", function () {
+    //事件处理程序
+    console.log("我是第一次设置的事件代码");
+  });
+  btn.addEventListener("click", function () {
+    //事件处理程序
+    console.log("我是第2次设置的事件代码");
+  });
+  btn.addEventListener("click", function () {
+    //事件处理程序
+    console.log("我是第3次设置的事件代码");
+  });
+
+
+</script>
+</body>
+</html>

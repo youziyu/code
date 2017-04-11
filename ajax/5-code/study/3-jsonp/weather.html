@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>天气预报</title>
+  <style>
+    table {
+      margin-top: 20px;
+      width: 600px;
+      border-collapse: collapse;
+    }
+    
+    td,
+    th {
+      height: 50px;
+      text-align: center;
+      border: 1px solid #CCC;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="text" id="city" /> <a href="javascript:;" id="search">天气查询</a>
+  <table>
+    <thead>
+      <tr>
+        <th>日期</th>
+        <th>白天</th>
+        <th>晚上</th>
+        <th>温度</th>
+        <th>天气</th>
+        <th>风力</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <!--1.引入库文件-->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/template-native.js"></script>
+  <!--2.创建模板-->
+  <script type="text/template" id="templ">
+    <%for(var i=0;i<weather_data.length;i++){ %>
+      <tr>
+        <td><%=weather_data[i].date%></td>
+        <td><img src="<%=weather_data[i].dayPictureUrl%>" alt=""></td>
+        <td><img src="<%=weather_data[i].nightPictureUrl%>" alt=""></td>
+        <td><%=weather_data[i].temperature%></td>
+        <td><%=weather_data[i].weather%></td>
+        <td><%=weather_data[i].wind%></td>
+      </tr>
+      <%}%>
+
+
+  </script>
+  <!--3.跨域请求数据-->
+  <script>
+    $('#search').click(function () {
+      // 发起请求
+      $.ajax({
+        // 必须用get
+        type: 'get',
+        // url
+        url: 'http://api.map.baidu.com/telematics/v3/weather',
+        // output:返回值的数据类型
+        // ak:开发者密钥  每个人只有一个 
+        // location:可以直接填入一个城市的名称
+        data: { output: 'json', ak: '0A5bc3c4fb543c8f9bc54b77bc155724', location: '三亚' },
+        dataType: 'jsonp',
+        success: function (data) {
+          // console.log(result);
+          // 拼接字符串
+          // console.log(data.results[0]);
+          var result = template('templ', data.results[0]);
+          // console.log(result);
+          $('tbody').append(result);
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>

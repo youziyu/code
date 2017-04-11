@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3 颜色</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+
+		}
+
+		.item {
+			width: 320px;
+			height: 320px;
+			margin: 100px auto;
+			border: 1px solid #CCC;
+			position: relative;
+		}
+
+	/*任务1  请实现遮罩效果*/
+	/*补充:在工作中，是写单冒号还是双冒号
+	
+	*/
+		.item:hover:before{
+			position: absolute;
+			content:"";
+			display: block;
+			width:320px;
+			height:320px;
+			background-color: rgba(0,0,0,0.3);
+		}
+	</style>
+</head>
+<body>
+	<div class="item">
+		<img src="./images/pic.jpg" alt="">
+	</div>
+</body>
+</html>

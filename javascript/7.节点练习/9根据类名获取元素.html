@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="fl"></div>
+<div></div>
+<script>
+  //根据id名获取元素
+  //document.getElementById();
+  
+  //根据标签名获取元素
+  //document.getElementsByTagName();
+  
+  
+  //根据类名获取元素，获取结果是伪数组，传入类名
+  //ie9以下不支持
+  //var boxes = document.getElementsByClassName("box");
+  //console.log(boxes[0]);
+  
+  
+  //自己实现根据类名获取元素的功能
+  
+  
+  //1 先检测当前浏览器是否支持getElementsByClassName
+  //if(document.getElementsByClassName){
+  //  //检测的时候不要书写调用语句,不要加括号
+  //  //进入if，说明浏览器支持这个功能
+  //  document.getElementsByClassName("box");
+  //}else{
+  //进入else说明不支持，我们需要自己实现根据类名获取元素的功能
+  //1 获取页面中的标签
+  var resultArr = [];//用于保存最终的获取结果
+  var tags = document.body.getElementsByTagName("*");//获取body中的所有标签
+  
+  //2 依次检测每个标签的类名属性className
+  for (var i = 0; i < tags.length; i++) {
+    //3 如果某个标签的className属性值为我想要的类名，获取出来
+    if (tags[i].className == "box") {
+      //4 放入到结果数组中
+      resultArr[resultArr.length] = tags[i];
+    }
+  }
+  console.log(resultArr);
+  
+  //}
+
+
+</script>
+</body>
+</html>

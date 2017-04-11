@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //内置对象字符串
+  
+  //基本类型：字符串
+  //复杂类型：对象
+  
+  //字符串就是基本类型值，不是对象
+  //  var str = "abcdefg";
+  //  console.log(str.length);
+  
+  //字符串作为一个非常常用的数据类型，在使用中会执行许多复杂操作，js为了方便用户使用字符串
+  //在我们使用字符串的属性（方法）时，js会帮助你创建一个字符串对象 new String(),这个对象中
+  //包含了许多的字符串属性和方法，实际上使用基本类型字符串的属性方法时，使用的就是这个对象的属性或方法
+  
+  var str = "abcdefg";
+  //console.log(str.length);
+  var temp = new String("abcdefg");
+  console.log(temp.length);
+  //当属性或者方法使用完毕后，这个会被回收
+  temp = null;
+  
+  //console.log(str.length);
+  
+  //这种对象我们称为基本包装类型对象
+  //我们自己不使用基本包装类型对象，js会自己帮我们创建
+  
+  //有时在使用基本包装类型对象时，会让代码出现尴尬的错误
+  //new String("")
+  //new Boolean(false);
+
+
+</script>
+</body>
+</html>

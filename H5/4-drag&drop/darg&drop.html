@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .drag{
+      width:20px;
+      height:20px;
+      /*position:absolute;
+      top:0;
+      right:0;*/
+      background-color:red;
+    }
+    .target{
+      width:200px;
+      height:200px;
+      background-color:pink;
+      position: absolute;
+      right:100px;
+      top:100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="drag" draggable="true"></div>
+  <div class="target"></div>
+  <script>
+    var drag=document.querySelector('.drag');
+    var target=document.querySelector('.target');
+
+    target.ondragover=function(e){
+      e.preventDefault();
+    }
+    target.ondrop=function(){
+      this.appendChild(drag);
+    }
+  </script>
+</body>
+</html>

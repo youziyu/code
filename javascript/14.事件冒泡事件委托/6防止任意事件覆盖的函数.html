@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<div id="box">
+  <button>按钮</button>
+</div>
+
+<script>
+  var box = document.getElementById("box");
+  var btn = box.children[0];
+  
+  //小明写的代码
+  //  btn.onclick = function () {
+  //    console.log("这是小明的垃圾代码");
+  //  };
+  addEvent(btn, "mouseover", function () {
+    console.log("今天天气不错1");
+  });
+  addEvent(btn, "mouseover", function () {
+    console.log("今天天气不错2");
+  });
+  addEvent(btn, "mouseover", function () {
+    console.log("今天天气不错3");
+  });
+  
+  addEvent(btn, "click", function () {
+    console.log("今天天气不错3");
+  });
+  
+  function addEvent(tag, eventName, newCode) {
+    //每次我进行事件设置的时候，就会进行检测，检测原有的事件是否已经存在了
+    //1 先获取到事件的内容
+    var oldEvent = tag["on" + eventName];//获取的结果可能是空或者一个函数
+    
+    //2 判断oldEvent的内容
+    //2.1 如果设置过对应事件，内部是一个函数
+    if (typeof oldEvent == "function") {
+      //需要保证旧的和新的都执行
+      tag["on" + eventName] = function () {
+        oldEvent();
+        newCode();
+      };
+    } else {
+      //2.2 如果没有设置过对应事件
+      tag["on" + eventName] = newCode;
+    }
+  }
+  
+  ////我写的代码
+  function newCode() {
+    alert("今天天气不错");
+  }
+
+
+</script>
+
+<!--<script src="1.js"></script>-->
+</body>
+</html>

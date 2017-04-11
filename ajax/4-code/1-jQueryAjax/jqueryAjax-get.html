@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        table {
+            width: 800px;
+            border-collapse: collapse;
+        }
+        
+        td {
+            height: 40px;
+            text-align: center;
+            border: 1px solid #CCC;
+        }
+    </style>
+</head>
+<body>
+    <button>点击加载数据</button>
+    <table>
+        <!--<tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>    -->
+    </table>
+       <!--引入jquery库-->
+    <script src="js/jquery.min.js"></script>
+    <script>
+      $('button').click(function(){
+          $.get('stars.php',null,function(result){
+              console.log(result);
+          })
+      })
+    </script> 
+</body>
+</html>

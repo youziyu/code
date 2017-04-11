@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<div id="box">
+  <span></span>
+  <p></p>
+  <div></div>
+  <a href="javascript:;"></a>
+  <div>
+    <p></p>
+    <span></span>
+    <span></span>
+    <span></span>
+    <div></div>
+    <span></span>
+    <span></span>
+    <span></span>
+    <a href="javascript:;"></a>
+    <div>
+      <div class="me">呵呵，改我哦！~</div>
+      <span></span>
+      <div></div>
+    </div>
+  </div>
+  <input type="text">
+  <ul></ul>
+</div>
+
+<script>
+  var box = document.getElementById("box");
+  //要求，从box开始，使用节点访问关系获取到类名为me的div，并修改其内容为"今天天气不错"
+  
+  var son1 = box.children[4];
+  var son2 = son1.children[son1.children.length - 1];
+  son2.children[0].innerHTML = "今天天气不错";
+
+
+</script>
+</body>
+</html>

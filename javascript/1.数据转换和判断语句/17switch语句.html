@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //注意：switch的比較，为全等比較
+    
+    //switch适用于单值判断
+    //    var num = 100;
+    //    switch (num) {
+    //      case 100:
+    //        alert("值为100");
+    //        break;
+    //      case 99 :
+    //        alert("值为99");
+    //        break;
+    //      default:
+    //        alert("没猜中");
+    //    }
+    
+    //根据数值判断星期几
+    //    var num = 3;
+    //    switch (num) {
+    //      case 1 :
+    //        alert("今天星期一");
+    //        break;
+    //      case 2 :
+    //        alert("今天星期2");
+    //        break;
+    //      case 3 :
+    //        alert("今天星期3");
+    //        break;
+    //      case 4 :
+    //        alert("今天星期4");
+    //        break;
+    //      case 5 :
+    //        alert("今天星期5");
+    //        break;
+    //      case 6 :
+    //        alert("今天星期6");
+    //        break;
+    //      case 7 :
+    //        alert("今天星期7");
+    //        break;
+    //      default:
+    //        alert("没有这个日子");
+    //    }
+    
+    
+    //使用switch进行判断判断
+    //使用过switch判断学生的成绩为优良及格不及格
+    var num = 102;
+    switch (true) {
+      case num > 100 || num < 0:
+        alert("输入的值不对");
+        break;
+      case num > 90:
+        alert("优秀");
+        break;
+      case num > 70:
+        alert("良");
+        break;
+      case num > 60:
+        alert("及格");
+        break;
+      default:
+        alert("不及格");
+    }
+    
+    
+    //小总结：
+    //我们一般使用switch进行单值比較
+    //       使用ifelse进行范围比較
+  </script>
+</head>
+<body>
+
+</body>
+</html>

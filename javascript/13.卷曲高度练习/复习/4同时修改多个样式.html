@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      
+    }
+  </style>
+</head>
+<body>
+<button id="btn1">运动到200</button>
+<button id="btn2">运动到400</button>
+<div id="box"></div>
+<script>
+  var box = document.getElementById("box");
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+  var timer = null;
+  
+  btn1.onclick = function () {
+    animate(box, {
+      "width": 400,
+      "height": 200,
+      "left": 130,
+      "top": 260
+    });
+    
+  };
+  
+  
+  function animate(tag, obj) {
+    clearInterval(tag.timer);
+    tag.timer = setInterval(function () {
+      var flag = true;//假设当前这一次定时器代码执行可以设置清除（每个样式都到达了指定位置）
+      //先遍历obj
+      for (var k in obj) {
+        //k 属性名 attr 要操作的样式
+        //obj[k] 属性值 target 要运动到的位置
+        
+        //获取要使用的数据
+        var target = obj[k];
+        var leader = parseInt(getStyle(tag, k)) || 0;
+        var step = (target - leader) / 10;
+        //给step设置取整
+        step = step > 0 ? Math.ceil(step) : Math.floor(step);
+        
+        leader = leader + step;
+        tag.style[k] = leader + "px";
+        
+        //如果当前样式没有运动到指定位置，这时阻止清除
+        if (leader != target) {
+          flag = false;
+        }
+      }
+      
+      if (flag) {
+        clearInterval(tag.timer);
+      }
+      
+    }, 20);
+  }
+  
+  
+  function getStyle(tag, attr) {
+    if (tag.currentStyle) {
+      return tag.currentStyle[attr];
+    } else {
+      return getComputedStyle(tag, null)[attr];
+    }
+  }
+
+</script>
+</body>
+</html>

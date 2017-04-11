@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<div id="box">
+  <p class="text">
+    我是一个p标签
+    <span></span>
+  </p>
+</div>
+<script>
+  var box = document.getElementById("box");
+  var text = box.children[0];
+  
+  // 节点.cloneNode(); 会返回克隆后的标签,这个标签不存在于页面中
+  //如果想要显示，需要插入到页面执行位置
+  
+  //1 调用cloneNode不传入参数或者传入参数false，这时表示浅复制（仅复制标签本身，不复制内部内容）
+  //var newP = text.cloneNode();
+  //box.appendChild(newP);
+  
+  //2 传入参数true，表示深复制（复制标签和内部的内容）
+  //var newP = text.cloneNode(true);
+  //box.appendChild(newP);
+  
+  //注意：如果要使用cloneNode克隆节点，不要给这个节点设置id，否则会导致id的重复
+  
+  //注意：克隆后的标签，不具有原有标签的事件(只是结构上长得一样)
+  text.onclick = function () {
+    alert("我是text");
+  };
+  var newP = text.cloneNode(true);
+  box.appendChild(newP);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //方式1 构造函数创建方式:适用于创建多个相似内容的对象
+    //var obj = new Object();
+    
+    
+    //方式2 对象字面量：某一个对象，与其他的对象相关性不强
+    //var obj = {};
+    //对象字面量可以设置初始的属性和方法
+    //下面的写法相当于创建一个obj，并且设置 obj.name = "张三";
+    //多个属性使用逗号,分隔 , 最后一个属性后面不需要加逗号,
+    
+    //键值对集合：键-属性名  值-属性值
+    var obj = {
+      name: "张三",
+      age: 18,
+      sayHi: function () {
+        console.log("这是一个方法");
+      }
+    };
+    //设置属性方法时，同样也可以使用普通的设置方式
+    obj.gender = "男";
+    
+    //获取属性值时与以前的方式没有区别，方法的使用也没有区别
+    console.log(obj.name);
+    obj.sayHi();
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

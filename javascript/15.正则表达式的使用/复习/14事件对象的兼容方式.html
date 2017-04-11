@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+  var box = document.getElementById("box");
+  box.onclick = function (e) {
+    //在ie低版本中不支持参数e的形式
+    //通过window.event这个对象进行使用
+    //window.event 与接受的参数 e 是相同的
+    //console.log(window.event.type);
+    
+    //兼容事件对象的代码
+    //由于window的属性可以不加window，我们可以直接使用event去操作ie中的事件对象
+    var e = e || event;
+    
+    console.log(e.type);
+    
+  };
+  
+  
+
+
+</script>
+</body>
+</html>

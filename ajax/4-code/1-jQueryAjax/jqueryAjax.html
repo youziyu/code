@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        table {
+            width: 800px;
+            border-collapse: collapse;
+        }
+        
+        td {
+            height: 40px;
+            text-align: center;
+            border: 1px solid #CCC;
+        }
+    </style>
+</head>
+
+<body>
+    <button>点击加载数据</button>
+    <table>
+        <!--<tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>    -->
+    </table>
+    <!--要使用jquery ajax方法  1.引入jquery-->
+    <script src="./js/jquery.min.js"></script>
+    <script>
+        // 1.获取button
+        // 2.添加点击事件
+        $('button').click(function () {
+            // 3.发起ajax请求
+            $.ajax({
+                // 1.请求方式
+                type: 'get',
+                // 2.请求地址
+                url: './stars.php',
+                
+                // 3.请求的数据  jquery会根据data数据的类型做判断 不是只能传入对象了
+                data:null,
+                // jquery的配置参数  ---超时设置 100毫秒
+        
+                // dataType 预期服务器的内容返回类型 html(文本) script(文本) text(文本) json(当成文本 会转成js对象)  xml(xml的格式返回)   (jsonp(一种跨域的方案))
+                // 如果不写 会根据MIME类型进行自动识别
+                // 4.成功时的回调
+                // timeout:1000,
+                //  请求发起前调用
+                // 一般用在ajax请求发起前作数据校验
+                beforeSend:function(){
+                    console.log("请求发起前");
+                },
+                success: function (result) {
+                    console.log('请求成功');
+                    console.log(result);
+                },
+                // 错误发生时调用
+                error:function(error){
+                    console.log('请求错误');
+                    // "timeout" 
+                    console.log(error);
+                },
+                complete:function(){
+                    // 成功或失败时都会调用的一个方法
+                    console.log("响应完成");
+                }
+            })
+        })
+
+    </script>
+
+
+</body>
+
+</html>

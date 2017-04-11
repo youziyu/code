@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      /*left: 200px;*/
+    }
+  
+  
+  </style>
+</head>
+<body>
+<button id="btn1">运动到200</button>
+<div id="box">box1</div>
+<script>
+  var box1 = document.getElementById("box");
+  var btn1 = document.getElementById("btn1");
+  
+  
+  btn1.onclick = function () {
+    //如果我们想要设置一个标签的多个样式同时运动，这时后调用的会清除先调用的函数
+    animate(box, {
+      "width": 400,
+      "height": 300,
+      "top": 170,
+      "left": 210
+    });
+
+  };
+
+  function animate(tag, obj) {
+    clearInterval(tag.timer);
+    tag.timer = setInterval(function () {
+      var flag = true;//3 假设本次定时器代码执行，每个样式都走到了指定位置，可以清除
+
+      //1 需要根据用户传入的对象属性个数进行运动设置
+      //遍历对象  forin
+      //每一次定时器执行时，会让每一个传入的属性都运动一个step的距离
+      for (var k in obj) {
+        //k  属性名   attr
+        //obj[k]  属性值   target
+        //2 以下代码是一个样式运动所需要执行的
+        var leader = parseInt(getStyle(tag, k)) || 0;
+        var target = obj[k];//设置target为obj[k]的值，使用比較方便
+        var step = (target - leader) / 10;
+        step = step > 0 ? Math.ceil(step) : Math.floor(step);
+        leader = leader + step;
+        tag.style[k] = leader + "px";
+
+        //5 如果有任意一个样式没有到达指定位置，这时阻止清除
+        if (leader != target) {
+          flag = false;
+        }
+      }
+      //由于每个属性的运动速度不同，这时如果某个样式先到达指定位置，这时进行定时器的清除
+      //导致其余样式没有到达指定位置
+      //我们需要的是，每个传入的样式均到达指定位置后，在设置清除
+//      if (leader == target) {
+//        clearInterval(tag.timer);
+//      }
+
+      //4 根据假设条件进行判断，如果成立
+      if (flag) {
+        clearInterval(tag.timer);
+      }
+
+    }, 17);
+  }
+  function getStyle(tag, attr) {
+    if (tag.currentStyle) {
+      return tag.currentStyle[attr];
+    } else {
+      return getComputedStyle(tag, null)[attr];
+    }
+  }
+
+</script>
+</body>
+</html>

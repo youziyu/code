@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div id="box"></div>
+<script>
+  var box = document.getElementById("box");
+  //可以通过style进行标签的样式设置
+  //box.style.width = "100px";
+  //box.style.height = "100px";
+  //box.style.backgroundColor = "red";
+  
+  //使用style进行样式值的获取操作,获取结果是样式的值，字符串形式，带单位
+  //console.log(box.style.width);
+  
+  //使用style进行样式获取时，只能获取行内样式的值
+  //如果使用style获取行内以外设置的样式：这时无法取到具体的值
+  //console.log(box.style.width);
+  
+  //万能的样式获取方式1：
+  //getComputedStyle()这个方法可以取出指定标签的指定样式值
+  //getComputedStyle(标签,null).具体样式名
+  //console.log(getComputedStyle(box, null).width);//100px
+  
+  //万能的样式获取方式2：
+  //ie9以下不支持getComputedStyle()，但是自己推出了一个属性，功能和getComputedStyle()一样
+  //标签.currentStyle.具体样式名
+  //console.log(box.currentStyle.width);//100px
+  
+  
+  //能力检测：检测浏览器支持哪一个功能
+  //注意：由于这个样式的兼容中有一个是函数，所以不能先检测函数
+  //因为如果浏览器不支持，会进行报错，意味着后面的代码都无法执行
+  
+  //if (box.currentStyle) {
+  //  //如果进入if，说明标签支持currentStyle
+  //  //    console.log(box.currentStyle.width);
+  //  console.log(box.currentStyle["width"]);
+  //} else {
+  //  //进入else说明不支持currentStyle
+  //  //console.log(getComputedStyle(box, null).width);
+  //  console.log(getComputedStyle(box, null)["width"]);
+  //}
+  
+  
+  //封装函数
+  /**
+   *
+   * @param tag 要进行获取样式的标签
+   * @param attr 要获取的样式属性名
+   * @returns {*} 返回值为获取到的样式值
+   */
+  function getStyle(tag, attr) {
+    if (tag.currentStyle) {
+      //如果进入if，说明标签支持currentStyle
+      return tag.currentStyle[attr];
+    } else {
+      //进入else说明不支持currentStyle
+      return getComputedStyle(tag, null)[attr];
+    }
+  }
+  console.log(getStyle(box, "height"));
+
+
+</script>
+</body>
+</html>

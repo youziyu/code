@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<div id="box">
+  <span></span>
+  <p></p>
+</div>
+<script>
+  //获取box内部的子节点
+  var box = document.getElementById("box");
+  
+  //节点.childNodes 获取标签的所有子节点
+  //获取的时候，不仅可以获取元素子节点（子标签），还会获取到内部的文本节点（空格和换行）
+  //console.log(box.childNodes);
+  
+  //children 在获取的时候只能获取到元素节点（标签），使用很方便，一般使用这个方式
+  //节点.children 获取标签的所有元素子节点
+  console.log(box.children);
+  
+  //childNodes和children获取结果均为伪数组。
+
+
+</script>
+</body>
+</html>

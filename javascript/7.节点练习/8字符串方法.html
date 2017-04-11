@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //split 用于将字符串分隔为多个部分
+  var str = "a-b-c-d";
+  //str.split(字符串) 会将str按照传入的字符串分隔为多个部分，按照数组的形式返回
+  var resultArr = str.split("-");
+  
+  //所有的字符串方法都不会修改原字符串
+  //console.log(str);
+  console.log(resultArr);
+  
+  
+  var str1 = "1,2,3,4,5";
+  console.log(str1.split(","));
+
+  var str2 = "a b c d";
+  console.log(str2.split(" "));
+
+
+  ////数组的join方法
+  //var arr = [1, 2, 3, 4, 5];
+  ////arr.join(字符串)  使用传入的字符串将数组的每个元素进行连接
+  //console.log(arr.join("-"));
+
+
+</script>
+</body>
+</html>

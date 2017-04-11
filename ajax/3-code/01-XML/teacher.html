@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        table {
+            width: 800px;
+            border-collapse: collapse;
+        }
+
+
+        td {
+            height: 40px;
+            text-align: center;
+            border: 1px solid #CCC;
+        }
+    </style>
+</head>
+
+<body>
+    <button>点击我触发ajax请求</button>
+    <table>
+        <tr>
+            <td>老段</td>
+            <td>38</td>
+            <td>抽烟喝酒吃</td>
+        </tr>
+    </table>
+    <script>
+        // 1.获取button按钮
+        var btn = document.querySelector('button');
+        // 2.给button按钮添加点击事件
+        btn.onclick = function () {
+            // 3.实例化xmlhttprequest对象
+            var xhr = new XMLHttpRequest();
+            // 4.设置请求行
+            xhr.open('post', 'teacher.php');
+            // 5.设置请求头
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            // 6.设置请求正文
+            xhr.send(null);
+            // 7.监听并处理响应
+            xhr.onreadystatechange = function () {
+                if(xhr.readyState==4&&xhr.status==200){
+                    // console.log(xhr.responseXML);
+                    var result=xhr.responseXML;
+                    // console.log(result);
+                    var itcast=result.getElementsByTagName('itcast')[0];
+                    // console.log(itcast);
+                    var teacher=itcast.getElementsByTagName('teacher');
+                    // console.log(teacher);
+                    // 
+                    var html="";
+                    for(var i =0;i <teacher.length;i++){
+                        var name=teacher[i].getElementsByTagName('name')[0];
+                        var age=teacher[i].getElementsByTagName('age')[0];
+                        var hobby=teacher[i].getElementsByTagName('hobby')[0];
+                        html+='<tr>'+
+                                '<td>'+name.innerHTML+'</td>'+
+                                '<td>'+age.innerHTML+'</td>'+
+                                '<td>'+hobby.innerHTML+'</td>'+
+                            '</tr>';
+                    }
+                    // console.log(html);
+                    document.querySelector('table').innerHTML=html;
+                }
+            }
+        }
+        
+    </script>
+</body>
+
+</html>

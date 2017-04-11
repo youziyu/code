@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS 颜色</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		
+		.outer {
+			width: 300px;
+			height: 300px;
+			margin: 100px auto;
+			background-color: green;
+			/*如何设置outer这个元素为半透明  opacity 透明 具有继承性 */
+			opacity: 0.3;
+		
+		}
+
+		.inner {
+			width: 100px;
+			height: 100px;
+			margin: 100px auto;
+			background-color: red;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="inner">你好</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: #1d23dd;
+            position: absolute;
+            line-height: 100px;
+            font-size: 50px;
+            text-align: center;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    var arr = ["!", "哦", "错", "不", "气", "天", "儿", "今"];
+
+    //根据数组内容创建div
+    //1 遍历数组取出每一个值，并且根据数组中元素的个数创建div
+    for (var i = 0; i < arr.length; i++) {
+        //2 创建div
+        var div = document.createElement("div");
+        document.body.appendChild(div);
+
+        //3 设置内容
+        div.innerHTML = arr[i];
+
+        //4 想要在点击的时候让最上面的div显示在最下面，可以将其添加到最前面
+        div.onclick = function () {
+            document.body.insertBefore(this,document.body.children[0]);
+
+        };
+
+
+    }
+
+
+
+
+    //每个图片在点击的时候，会被插入到所有图片的最低端，并显示出下面的一张图片
+
+
+
+
+</script>
+
+</body>
+</html>

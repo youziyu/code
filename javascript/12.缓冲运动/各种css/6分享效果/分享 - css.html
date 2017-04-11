@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    #share {
+      position: fixed;
+      width: 100px;
+      height: 200px;
+      background-color: lightblue;
+      left: -100px;
+      top: 100px;
+    }
+    
+    #share span {
+      width: 20px;
+      height: 60px;
+      line-height: 20px;
+      text-align: center;
+      left: 100px;
+      top: 70px;
+      position: absolute;
+      background-color: yellow;
+      
+    }
+  </style>
+
+</head>
+<body>
+<div id="share">
+  <span>分享到</span>
+</div>
+
+<script>
+  var share = document.getElementById("share");
+  var sp = share.children[0];
+  
+  //给sp添加事件（错的）:操作时，由于sp会进行移动，导致多次触发移入移出（抽搐）
+  
+  //事件设置给share就不会出现问题
+  share.onmouseover = function () {
+    animate(share, "left", 0);
+  };
+  
+  share.onmouseout = function () {
+    animate(share, "left", -100);
+  }
+  
+  
+  function animate(tag, attr, target) {
+    clearInterval(tag.timer);
+    tag.timer = setInterval(function () {
+      var leader = parseInt(getStyle(tag, attr)) || 0;
+      
+      var step = (target - leader) / 10;
+      step = step > 0 ? Math.ceil(step) : Math.floor(step);
+      leader = leader + step;
+      
+      //-- 设置位置也需要修改为设置指定样式
+      tag.style[attr] = leader + "px";
+      
+      if (leader == target) {
+        clearInterval(tag.timer);
+      }
+    }, 17);
+  }
+  
+  //获取任意样式值的函数
+  function getStyle(tag, attr) {
+    if (tag.currentStyle) {
+      return tag.currentStyle[attr];
+    } else {
+      return getComputedStyle(tag, null)[attr];
+    }
+  }
+
+</script>
+</body>
+</html>

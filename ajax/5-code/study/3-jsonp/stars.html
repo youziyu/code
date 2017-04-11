@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        table {
+            width: 700px;
+            border-collapse: collapse;
+        }
+        
+        td {
+            height: 40px;
+            text-align: center;
+            border: 1px solid #CCC;
+        }
+    </style>
+</head>
+
+<body>
+    <button>点我获取内容</button>
+    <table>
+        <!--<tr>
+			<td>王力宏</td>
+			<td>./images/wlh.jpg</td>
+			<td>39</td>
+			<td>男</td>
+			<td><<改变自已>></td>
+		</tr>-->
+    </table>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/template-native.js"></script>
+    <!--模板-->
+    <script type="text/template" id="temp">
+        <%for(var i=0;i<data.length;i++){%>
+            <tr>
+                <td>
+                    <%=data[i].name%>
+                </td>
+                <td>
+                    <%=data[i].age%>
+                </td>
+                <td>
+                    <%=data[i].sex%>
+                </td>
+                <td>
+                    <%=data[i].photo%>
+                </td>
+                <td>
+                    <%=data[i].ablum%>
+                </td>
+            </tr>
+            <%}%>
+    </script>
+   <script>
+
+    //    jsonp实现跨域
+    $('button').click(function(){
+        $.ajax({
+            // 绝对不能用post
+            type:'get',
+            url:'http://api.study.com/stars.php',
+            data:null,
+            // 使用jsonp跨域
+            // 当dataType变成jsonp以后就已经改变了ajax方法的本质 
+            // 由一个异步请求变成了get请求
+            dataType:'jsonp',
+            success:function(result){
+                console.log(result);
+// fn("司音")
+// <script src="http://api.study.com/10-7.php?callback=fn"></script>  get请求
+ 
+// jQuery17203359006786947203_1489397335727([
+// 	{
+// 		"name": "王力宏",
+// 		"photo": "./images/wlh.jpg",
+// 		"ablum": "<<改变自已>>",
+// 		"age": 39,
+// 		"sex": "男"
+// 	},
+// 		{
+// 		"name": "张三",
+// 		"photo": "./images/wlh.jpg",
+// 		"ablum": "<<不是我>>",
+// 		"age": 39,
+// 		"sex": "男"
+// 	}
+// ])
+            }
+        })
+    })
+   </script>
+
+</body>
+
+</html>

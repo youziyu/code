@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>五角星评分案例</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    
+    .comment {
+      font-size: 40px;
+      color: teal;
+    }
+    
+    .comment li {
+      float: left;
+    }
+    
+    ul {
+      list-style: none;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //文本显示
+      var kXin = "☆";
+      var sXin = "★";
+      
+      //第一步 当鼠标移入到某个li上的时候，改变当前li和前面li的内容
+      $(".comment li").mouseenter(function () {
+        //$(this).text(sXin).prevAll().text(sXin);
+        //$(this).nextAll().text(kXin);
+        //end() 可以得到上一个操作的对象
+        $(this).text(sXin).prevAll().text(sXin).end().nextAll().text(kXin);
+      });
+      //第二步 当鼠标移出父盒子时，设置所有选项清空
+      $(".comment").mouseleave(function () {
+        $(this).children().text(kXin);
+        
+        //第四步 检测，如果有某一个li具有类名current，这时设置这个li和前面的所有li内容为实心
+        $(".comment .current").text(sXin).prevAll().text(sXin);
+      });
+      //第三步，点击某一个星星的时候。给当前点击的li添加标记(类名)
+      $(".comment li").click(function () {
+        //给this添加类名
+        $(this).addClass("current").siblings().removeClass("current");
+      });
+      
+    });
+  </script>
+</head>
+
+<body>
+<ul class="comment">
+  <li>☆</li>
+  <li>☆</li>
+  <li>☆</li>
+  <li>☆</li>
+  <li>☆</li>
+</ul>
+</body>
+
+</html>

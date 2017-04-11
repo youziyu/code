@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>跨域</title>
+</head>
+<body>
+	<!--跨域肯定不能操作对方的文件-->
+	<iframe id="iframe" src="http://api.study.com/iframe.html" frameborder="0"></iframe>
+	<script>
+		document.domain = 'study.com';
+		var iframe=document.getElementById('iframe');
+		// onload事件 window.onload
+		iframe.onload=function(){
+			var contentWindow=iframe.contentWindow;
+			// console.log(contentWindow);//window
+			// document.querySelector();
+			contentWindow.document.getElementById('txt').style.color='red';
+		}
+		// 为什么要跨域
+		// 1.www.hao123.com 网易 可以告诉用户今天的天气信息
+		// 2.www.qixiangju.com天气信息在气象局
+		// 但是有这样一个需求 要去跨域
+		// 怎么样才能跨域
+
+
+// 1.有一天 小明 已经有10年没见了 给你发了一个短信或qq 哥们 好久不见了 我送你一个好消息 包你发财
+//  我这有一个网站 网站 只要通过qq登陆 就会送你500块  这个网站为了网络客户
+//  www.wanlum.com  打开是一个qq网页版的登陆界面
+//  看见了一个熟悉的界面 就是你经常去的qq网页版
+//  高兴的输入了qq号  密码  告诉你的朋友 我已经登陆了 快打钱
+
+//  稍等一下 给我你的账号  过了5分钟 朋友的qq灰了  你的qq被盗了
+// 为了阻止发生这样的事情 浏览器厂商制订了一种策略 叫同源策略 要求 域名 协议 端口完全一致才能操作
+	</script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*#box {*/
+            /*width: 1152px;*/
+            /*margin: 0 auto;*/
+        /*}*/
+
+        img {
+            vertical-align: middle;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        #box ul {
+            /*padding: 5px;*/
+            /*border: 1px solid #ccc;*/
+            float: left;
+            list-style: none;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">
+</div>
+
+<script>
+    var datas = [
+        {"src": "images/P_000.jpg", "height": 288},
+        {"src": "images/P_001.jpg", "height": 288},
+        {"src": "images/P_002.jpg", "height": 288},
+        {"src": "images/P_003.jpg", "height": 129},
+        {"src": "images/P_004.jpg", "height": 284},
+        {"src": "images/P_005.jpg", "height": 253},
+        {"src": "images/P_006.jpg", "height": 245},
+        {"src": "images/P_007.jpg", "height": 343},
+        {"src": "images/P_008.jpg", "height": 238},
+        {"src": "images/P_009.jpg", "height": 159},
+        {"src": "images/P_010.jpg", "height": 289},
+        {"src": "images/P_011.jpg", "height": 127},
+        {"src": "images/P_012.jpg", "height": 282},
+        {"src": "images/P_013.jpg", "height": 144},
+        {"src": "images/P_014.jpg", "height": 269},
+        {"src": "images/P_015.jpg", "height": 282},
+        {"src": "images/P_016.jpg", "height": 142},
+        {"src": "images/P_017.jpg", "height": 279},
+        {"src": "images/P_018.jpg", "height": 289},
+        {"src": "images/P_019.jpg", "height": 262},
+        {"src": "images/P_020.jpg", "height": 274},
+        {"src": "images/P_000.jpg", "height": 288},
+        {"src": "images/P_001.jpg", "height": 288},
+        {"src": "images/P_002.jpg", "height": 288},
+        {"src": "images/P_003.jpg", "height": 129},
+        {"src": "images/P_004.jpg", "height": 284},
+        {"src": "images/P_005.jpg", "height": 253},
+        {"src": "images/P_006.jpg", "height": 245},
+        {"src": "images/P_007.jpg", "height": 343},
+        {"src": "images/P_008.jpg", "height": 238},
+        {"src": "images/P_009.jpg", "height": 159},
+        {"src": "images/P_010.jpg", "height": 289},
+        {"src": "images/P_011.jpg", "height": 127},
+        {"src": "images/P_012.jpg", "height": 282},
+        {"src": "images/P_013.jpg", "height": 144},
+        {"src": "images/P_014.jpg", "height": 269},
+        {"src": "images/P_015.jpg", "height": 282},
+        {"src": "images/P_016.jpg", "height": 142},
+        {"src": "images/P_017.jpg", "height": 279},
+        {"src": "images/P_018.jpg", "height": 289},
+        {"src": "images/P_019.jpg", "height": 262},
+        {"src": "images/P_020.jpg", "height": 274}
+    ];
+
+
+    window.onload = function () {
+
+        //瀑布流，每次添加图片的时候，找到高度最小的一个数列进行插入
+        var box = document.getElementById("box");
+        //第一步，根据图片的宽度确定可以放多少列
+        //根据页面的宽度/图片宽，求出可以放置的列数
+        var winWidth = box.offsetWidth;
+        //这个图片可以动态获取
+        var picWid = 192;
+        //计算列表个数
+        var listCount = Math.floor(winWidth / picWid);
+
+        //设置一个数组去记录高度
+        var heightArr = [];
+
+        //根据个数创建ul
+        for (var i = 0; i < listCount; i++) {
+            var ul = document.createElement("ul");
+            box.appendChild(ul);
+            //设置heightArr的每一个初始值
+            heightArr[i] = ul.offsetHeight;
+        }
+        //获取所有ul
+        var lists = box.children;
+
+        //第一次创建图片
+        createPic(datas);
+//        console.log(heightArr);
+
+        //页面滚动的时候检测触底
+        window.onscroll = function () {
+            //取出页面卷曲高度和可视区域高度
+            var scrollTop = myScroll().scrollTop;
+            var clientHei = myClient().height;
+
+            //取出最小的一个列表高
+            var minHeight = getMin(heightArr).value;
+            console.log(minHeight);
+            //如果scrollTop+clientHei > minHeight ，加载新图片
+            if (scrollTop + clientHei > minHeight) {
+                createPic(datas);
+            }
+        };
+
+
+        function createPic(datas) {
+            //根据datas对象的个数创建li
+
+            for (var i = 0; i < datas.length; i++) {
+                var li = document.createElement("li");
+                li.innerHTML = '<img src="' + datas[i].src + '" alt="">';
+
+                //取出高度的最小值
+                var minIndex = getMin(heightArr).index;
+//                console.log("------------");
+//                console.log(getMin(heightArr).index);
+//                console.log(getMin(heightArr).value);
+//                console.log("------------");
+                //使用这个索引值去lists中取出某一个ul
+                lists[minIndex].appendChild(li);
+                //更新heightArr中每个ul的高度
+//                li.style.height = datas[minIndex].height + "px";
+                //-----------bug出现的位置------------
+                //由于图片有加载时间，我们可以从服务器先接回图片信息
+                //但是我们没有服务器，可以在datas中添加当前图片的信息，在这里进行获取
+//                heightArr[minIndex] += datas[minIndex].height;
+//                heightArr[minIndex] = lists[minIndex].offsetHeight;
+//                console.log(heightArr);
+                heightArr[minIndex] += datas[i].height;
+
+                //-----------bug出现的位置------------
+            }
+        }
+    }
+
+
+    //计算数组最小值
+    function getMin(arr) {
+        var minValue = arr[0];
+        var minIndex = 0;
+        for (var i = 0; i < arr.length; i++) {
+            if (minValue > arr[i]) {
+                minValue = arr[i];
+                minIndex = i;
+            }
+        }
+        return {
+            index: minIndex,
+            value: minValue
+        };
+    }
+
+    function myClient() {
+        return {
+            width: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0,
+            height: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0
+        }
+    }
+
+    function myScroll() {
+        return {
+            scrollTop: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0,
+            scrollLeft: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0
+        };
+    }
+</script>
+
+</body>
+</html>

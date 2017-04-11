@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //转换为数值类型
+    //1 Number()
+    //console.log(Number("1000"));//1000
+    //console.log(Number(true));//1
+    //console.log(Number(false));//0
+    //console.log(Number(undefined));//NaN
+    //console.log(Number(null));//0
+    
+    //Number转换的时候只能转换纯数的字符串
+    //console.log(Number("100a"));//NaN
+    
+    //2 parseInt(); 转换方式，从字符串的左侧第一个数获取，一直找到不是数为止
+    //console.log(parseInt("10000"));
+    //console.log(parseInt("10000aq"));
+    //console.log(parseInt("10000aq123"));
+    //如果字符串第一个字符就不是数值。直接返回NaN
+    //console.log(parseInt("hehe10000"));
+    
+    //转换的时候，只会取出整数部分
+    //console.log(parseInt("100.12223aaa"));
+    
+    //3 parseFloat() 转换方式与parseInt基本相同，但是可以取出小数部分
+    //console.log(parseFloat("100.12223aaa"));
+    //注意以下问题，字符串中没有小数部分，同样可以取出正数
+    //console.log(parseFloat("100"));
+    
+    
+    //隐式转换 - 偷偷的转换
+    //-*/%
+    //console.log("100" / 5);//数值类名20
+    //不要改变数据的原数据
+    //console.log("100" - 0);
+    //console.log("100" * 1);
+    //console.log("100" / 1);
+    //console.log("100" % ("100"/1+1));//取余的时候需要跟一个比自己大的数取余，太罗嗦，我们不用
+    
+    //+  放在需要转换的数据前，不加空格，前面也不要写其他内容
+    console.log(+"100");
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

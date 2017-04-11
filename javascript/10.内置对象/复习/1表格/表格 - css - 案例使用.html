@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    tbody td {
+      width: 165px;
+      height: 19px;
+    }
+  </style>
+</head>
+<body>
+<!--添加按钮-->
+<a id="add" href="javascript:void(0)">添加</a>
+<!--放置表格的位置-->
+<div id="box">
+
+</div>
+<script>
+  //------------------------- 创建表格数据-----------------------------
+  //表头的数据
+  var heads = ["姓名", "科目", "成绩", "操作"];
+  //根据datas中对象的个数创建tr行，每个行中的td个数就是这个对象的属性个数
+  var datas = [
+    {"name": "张三1", "subject": "语文1", "score": 99.8},
+    {"name": "张三2", "subject": "语文2", "score": 80.8},
+    {"name": "张三3", "subject": "语文3", "score": 70.8},
+    {"name": "张三4", "subject": "语文4", "score": 100},
+    {"name": "张三5", "subject": "语文5", "score": 60},
+    {"name": "张三6", "subject": "语文6", "score": 70},
+    {"name": "张三7", "subject": "语文7", "score": 89.8}
+  ];
+  
+  //创建表格
+  var table = document.createElement("table");
+  table.border = "1";
+  table.style.width = "600px";
+  table.style.borderCollapse = "collapse";
+  box.appendChild(table);
+  
+  //表头部分
+  var thead = document.createElement("thead");
+  thead.style.backgroundColor = "#ccc";
+  table.appendChild(thead);
+  
+  //创建th
+  for (var i = 0; i < heads.length; i++) {
+    var th = document.createElement("th");
+    th.innerHTML = heads[i];
+    thead.appendChild(th);
+  }
+  
+  //tbody
+  var tbody = document.createElement("tbody");
+  tbody.style.textAlign = "center";
+  table.appendChild(tbody);
+  
+  //创建行，行数
+  for (var i = 0; i < datas.length; i++) {
+    //datas中对象的个数就代表了行数
+    var tr = document.createElement("tr");
+    tbody.appendChild(tr);
+    
+    //给每一行设置内容
+    //td的个数是根据datas[i]的属性个数决定的
+    for (var k in datas[i]) {
+      var td = document.createElement("td");
+      td.innerHTML = datas[i][k];
+      tr.appendChild(td);
+    }
+    
+    //再添加一个放置删除按钮的单元格td
+    td = document.createElement("td");
+//    td.innerHTML = "<a href='javascript:;'>删除</a>";
+    tr.appendChild(td);
+    var del = document.createElement("a");
+    del.href = "javascript:;";
+    del.innerHTML = "删除";
+    td.appendChild(del);
+    
+    //给删除按钮添加事件
+    del.onclick = function () {
+      
+      //删除数据，第一步是找到当前删除按钮所在行对应的数据
+      //根据当前按钮所在行，去找到对应的datas，需要利用索引值操作
+      //我们通过实践发现，设置自定义属性索引，在操作中会导致错误（删除后，后面的tr索引值不会自动修改）
+      //我们需要每次删除的时候，依次遍历，找到自己的索引值
+      var trs = tbody.children;
+      for (var i = 0; i < trs.length; i++) {
+        if (trs[i] === this.parentNode.parentNode) {
+          //使用这个i，去datas中删除对应的数据
+          datas.splice(i, 1);
+        }
+      }
+      
+      //删除结构 - 简单
+      this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+      
+      console.log(datas);
+    };
+  }
+  
+  
+  //添加按钮操作
+  var add = document.getElementById("add");
+  add.onclick = function () {
+    //1 创建一个新的行
+    var tr = document.createElement("tr");
+    //2 给tr创建前三个td
+    for (var i = 0; i < 3; i++) {
+      var td = document.createElement("td");
+      tr.appendChild(td);
+      //3 给每个td设置输入框
+      td.innerHTML = "<input type='text' style='width: 80px;'>";
+    }
+    
+    //4 创建确定取消按钮
+    td = document.createElement("td");
+    tr.appendChild(td);
+    td.innerHTML = "<a href='javascript:;'>确定</a> <a href='javascript:;'>取消</a>"
+    
+    //5 取消按钮
+    td.children[1].onclick = function () {
+      this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+    };
+    
+    //6 确定按钮
+    td.children[0].onclick = function () {
+      var tr = this.parentNode.parentNode;
+      //7 取出每个输入框的值
+      var nameVal = tr.children[0].children[0].value;
+      var subVal = tr.children[1].children[0].value;
+      var scoVal = tr.children[2].children[0].value;
+      
+      //8 datas添加数据
+      datas.push({"name": nameVal, "subject": subVal, "score": scoVal});
+      
+      //9 将数据固定在页面上
+      tr.children[0].innerHTML = nameVal;
+      tr.children[1].innerHTML = subVal;
+      tr.children[2].innerHTML = scoVal;
+      tr.children[3].innerHTML = "<a href='javascript:;'>删除</a>";
+      
+      
+      //给删除按钮添加事件
+      tr.children[3].children[0].onclick = function () {
+        //删除数据，第一步是找到当前删除按钮所在行对应的数据
+        //根据当前按钮所在行，去找到对应的datas，需要利用索引值操作
+        //我们通过实践发现，设置自定义属性索引，在操作中会导致错误（删除后，后面的tr索引值不会自动修改）
+        //我们需要每次删除的时候，依次遍历，找到自己的索引值
+        var trs = tbody.children;
+        for (var i = 0; i < trs.length; i++) {
+          if (trs[i] === this.parentNode.parentNode) {
+            //使用这个i，去datas中删除对应的数据
+            datas.splice(i, 1);
+          }
+        }
+        
+        //删除结构 - 简单
+        this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+        
+        console.log(datas);
+      };
+    };
+    
+    
+    tbody.appendChild(tr);
+  };
+
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+  var box = document.getElementById("box");
+  
+  //当鼠标在页面中移动的时候，获取鼠标针对可视区域的坐标
+  //onmousemove 鼠标移动时触发事件
+  document.onmousemove = function (e) {
+    var e = e || window.event;
+    
+    //将鼠标坐标赋值给box的left和top
+    //想让盒子居中跟随，需要让盒子的left和top相应减少自身宽高的一半
+    box.style.left = e.clientX - box.offsetWidth / 2 + "px";
+    box.style.top = e.clientY - box.offsetHeight / 2 + "px";
+    
+  };
+
+
+</script>
+</body>
+</html>

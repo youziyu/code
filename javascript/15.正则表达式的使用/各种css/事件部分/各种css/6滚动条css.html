@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      height: 1000px;
+    }
+    
+    .box {
+      width: 300px;
+      height: 500px;
+      border: 1px solid red;
+      margin: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .content {
+      padding: 5px 18px 5px 5px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    
+    .scroll {
+      width: 18px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: #eee;
+    }
+    
+    .bar {
+      height: 100px;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: red;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div class="box" id="box">
+  <div class="content" id="content">
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，111111111111111
+    我是文字内容，你是谁，你饿不饿是文字内容
+    我是文字内容，你是谁，111111111111111
+  </div>
+  <div id="scroll" class="scroll">
+    <div class="bar" id="bar"></div>
+  </div>
+</div>
+<script>
+  //第一步是根据box和content的高度比例，计算出bar滚动条的高度
+  //第二步拖拽滚动条
+  //第三部设置运动边界
+  //第四步让content运动
+  
+  //1 获取元素
+  var box = document.getElementById("box");//大盒子
+  var content = box.children[0];//文本
+  var scrollGD = box.children[1];//滚动条的轨道
+  var bar = scrollGD.children[0];//滚动条
+  
+  //2 计算box和content的高度比
+  var bili = box.offsetHeight / content.offsetHeight;
+  bar.style.height = bili * scrollGD.offsetHeight + "px";
+  
+  //3 拖拽滚动条
+  bar.onmousedown = function (e) {
+    var e = e || window.event;
+    //获取鼠标在盒子内的位置
+    //计算鼠标在滚动条内的位置时，需要考虑多次拖拽的情况，减去bar顶部的距离
+    var y = e.clientY - box.offsetTop - bar.offsetTop;
+    
+    //设置拖拽效果
+    document.onmousemove = function (e) {
+      var e = e || window.event;
+      
+      //检测要设置给bar的top值
+      var newY = e.clientY - y - box.offsetTop;
+      
+      //检测y的极限值
+      newY = newY < 0 ? 0 : newY;
+      newY = newY > scrollGD.offsetHeight - bar.offsetHeight ? scrollGD.offsetHeight - bar.offsetHeight : newY;
+      
+      //设置给bar的top值
+      bar.style.top = newY + "px";
+      
+      //设置content的运动
+      content.style.marginTop = -newY / bili + "px";
+    };
+    //可以防止拖拽时选中文字
+    return false;
+  };
+  
+  //鼠标抬起时，可能鼠标不位于bar内，最好设置给document
+  document.onmouseup = function () {
+    document.onmousemove = null;
+  }
+
+</script>
+</body>
+</html>

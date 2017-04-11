@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<div id="box">
+  我是box的内容
+  <span>我是span的内容</span>
+</div>
+<script>
+  //节点的分类：元素节点 ， 文本节点 , 属性节点
+  var box = document.getElementById("box");//元素节点
+  var text = box.firstChild;//文本节点
+  
+  //每个节点都具有三个属性
+  //1 节点类型 nodeType
+  //console.log(box.nodeType);//数值，1 代表元素节点
+  //console.log(text.nodeType);//数值，3 代表了文本节点
+  //          2代表属性节点  9代表document
+  
+  //2 节点值 nodeValue
+  //console.log(text.nodeValue);//文本节点的nodeValue就是文本内容
+  //元素节点没有节点值，值为null
+  //console.log(box.nodeValue);//永远是null
+  
+  //3 节点名 nodeName
+  console.log(box.nodeName);//元素节点的节点名是标签名，在html中是大写的，在xhtml中是小写的标签名
+  console.log(text.nodeName);//#text是文本节点的节点名
+
+</script>
+</body>
+</html>

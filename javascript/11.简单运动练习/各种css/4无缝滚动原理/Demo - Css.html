@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    img {
+      vertical-align: top;
+    }
+    
+    /*取消图片底部3像素距离*/
+    .box {
+      width: 300px;
+      height: 200px;
+      margin: 100px auto;
+      background-color: pink;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .box ul li {
+      float: left;
+    }
+    
+    .box ul {
+      width: 1500px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+<div class="box" id="screen">
+  <ul>
+    <li><img src="images/01.jpg" alt=""/></li>
+    <li><img src="images/02.jpg" alt=""/></li>
+    <li><img src="images/03.jpg" alt=""/></li>
+    <li><img src="images/04.jpg" alt=""/></li>
+    <!--放置了一个假的第一张，为了制作无缝滚动效果-->
+    <li><img src="images/01.jpg" alt=""/></li>
+  </ul>
+</div>
+<script>
+  //1 获取元素
+  var screen = document.getElementById("screen");//可视区域，大盒子
+  var list = screen.children[0];//需要进行运动的ul
+  var lisLen = list.children.length;//图片张数
+  var imgWid = screen.offsetWidth;//图片宽度
+  var step = -10;
+  var timer = null;
+  
+  //无缝滚动效果的制作方式：
+  //1 需要在list最后放置假的第一张
+  //2 制作简单运动（先运动起来）
+  //3 找到list进行抽回的时机（当假的第一张完全显示时）
+  //4 进行抽回
+  
+  timer = setInterval(function () {
+    //1 获取list的当前位置
+    var leader = list.offsetLeft;
+    
+    //4 在运动的过程中进行判断。如果当前显示的张数为4张，还要继续运动，不进行运动，进行抽回
+    if (leader > -(lisLen - 1) * imgWid) {
+      //2 套用运动公式
+      leader = leader + step;
+      //3 将leader设置给list的left属性
+      list.style.left = leader + "px";
+    } else {
+      //进入else，说明list已经运动到可以抽回的位置
+      
+      //由于抽回后的状态和抽回前最后一步完全重合，我们可以在抽回时，不设置为0，而是设置为1步的距离
+      list.style.left = step + "px";
+    }
+    
+  }, 20);
+  
+  //当鼠标移入到盒子内时，让盒子运动速度减慢
+  screen.onmouseover = function () {
+    //修改运动的步长降低
+    step = -3;
+  };
+  
+  //鼠标移出盒子，让盒子的运动速度还原
+  screen.onmouseout = function () {
+    step = -10;
+  }
+
+
+</script>
+</body>
+</html>

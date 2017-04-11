@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+
+      .cube{
+        width:300px;
+        height:300px;
+        margin: 100px auto;
+        position: relative;
+        transform-style: preserve-3d;
+        /*调试代码*/
+        transform: rotateX(30deg) rotateY(26deg);
+      }
+      .cube span{
+        position:absolute;
+        top:0;
+        left:0;
+        opacity: 0.5;
+        width:300px;
+        height:300px;
+      }
+      .front{
+        background-color: palevioletred;
+        transform: translateZ(150px);
+      }
+      .back{
+        background-color: hotpink;
+        transform: translateZ(-150px);
+      }
+      .left{
+        background-color: orange;
+        transform: rotateY(-90deg) translateZ(150px);
+      }
+      .right{
+        background-color: springgreen;
+        transform: rotateY(90deg) translateZ(150px);
+      }
+      .top{
+        background-color: orangered;
+        transform: rotateX(-90deg) translateZ(150px);
+      }
+      .bottom{
+        background-color: lightskyblue;
+        transform: rotateX(90deg) translateZ(150px);
+      }
+
+
+  </style>
+</head>
+<body>
+  <!--立方体
+  1.新建一个div
+  2.在新建好的div中新建6个面
+  3.把这6个面要做定位
+  4.给这六个面加背景
+  5.给父元素添加转换方式---给子元素创建一个3D空间
+  -->
+  <div class="cube">
+    <!--前-->
+    <span class="front"></span>
+    <!--后-->
+    <span class="back"></span>
+    <!--左-->
+    <span class="left"></span>
+    <!--右-->
+    <span class="right"></span>
+    <!--上-->
+    <span class="top"></span>
+    <!--下-->
+    <span class="bottom"></span>
+  </div>
+</body>
+</html>

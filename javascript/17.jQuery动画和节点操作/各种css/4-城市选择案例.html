@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    select {
+      width: 200px;
+      background-color: teal;
+      height: 200px;
+      font-size: 20px;
+    }
+    
+    .btn-box {
+      width: 30px;
+      display: inline-block;
+      vertical-align: top;
+    }
+  </style>
+  <script src="../jquery-1.12.4.js"></script>
+  <script>
+    //入口函数
+    $(function () {
+      //1 点击右移按钮，将左侧被选中的选项，移动到右侧
+      $("#btn-right").click(function () {
+        //先获取左侧所有选项，在找到被选中的，添加到右侧
+        $("#tar-city").append($("#src-city>option:selected"));
+      });
+      
+      //2 点击左移按钮
+      $("#btn-left").click(function () {
+        $("#src-city").append($("#tar-city>option:selected"));
+      });
+      
+      //3 点击全部右移按钮
+      $("#btn-allRight").click(function () {
+        $("#tar-city").append($("#src-city>option"));
+      });
+      
+      //4 点击全部左移按钮
+      $("#btn-allLeft").click(function () {
+        $("#src-city").append($("#tar-city>option"));
+      });
+    });
+  </script>
+</head>
+<body>
+<h1>城市选择：</h1>
+<select id="src-city" name="src-city" multiple>
+  <option value="1">北京</option>
+  <option value="2">上海</option>
+  <option value="3">深圳</option>
+  <option value="4">广州</option>
+  <option value="5">西红柿</option>
+</select>
+
+<div class="btn-box">
+  <!--实体字符-->
+  <button id="btn-allRight"> &gt;&gt; </button>
+  <button id="btn-allLeft"> &lt;&lt; </button>
+  <button id="btn-right"> &gt;</button>
+  <button id="btn-left"> &lt; </button>
+</div>
+<select id="tar-city" name="tar-city" multiple>
+</select>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>json</title>
+	<style>
+		table {
+			width: 700px;
+			border-collapse: collapse;
+		}
+		td {
+			height: 40px;
+			text-align: center;
+			border: 1px solid #CCC;
+		}
+	</style>
+</head>
+<body>
+	<div class="btn"><input type="button" value="获取数据"></div>
+	<table>
+		<!--<tr>
+			<td>王力宏</td>
+			<td>./images/wlh.jpg</td>
+			<td>39</td>
+			<td>男</td>
+			<td><<改变自已>></td>
+		</tr>-->
+	</table>
+	<!--把后台的数据读取到前端显示到页面上-->
+	<!--引入库-->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/template-native.js"></script>
+	<!--创建模板-->
+	<script type="text/template" id="tmpl">
+	<%for(var i=0;i<arr.length;i++){%>
+		<tr>
+			<td><%=arr[i].name%></td>
+			<td><%=arr[i].age%></td>
+			<td><%=arr[i].sex%></td>
+			<td><%=arr[i].ablum%></td>
+			<td><%=arr[i].photo%></td>
+		</tr>
+	<%}%>
+
+	</script>
+	<!--代码-->
+	<script>
+		// 1.获取按钮添加事件
+		$('input').click(function(){
+		// 2.发起ajax请求
+		$.ajax({
+			type:'get',
+			url:'stars.php',
+			data:null,
+			success:function(result){
+				// console.log(result);
+		// 3.模板绑定数据
+		var data={
+			arr:result //[Object, Object]
+		}
+		var jieguo=template('tmpl',data)
+		// 4.把绑定好的数据添加到html中就可以啦
+		// console.log(jieguo);
+		$('table').append(jieguo);
+			}
+		})
+
+		})
+
+	</script>
+</body>
+</html>

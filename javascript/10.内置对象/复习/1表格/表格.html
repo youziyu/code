@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<script src="common.js"></script>-->
+</head>
+<body>
+<!--添加按钮-->
+<a id="add" href="javascript:void(0)">添加</a>
+<!--放置表格的位置-->
+<div id="box"></div>
+
+<script>
+    //-------------------------1 创建表格数据-----------------------------
+    //表头的数据
+    var heads = ["姓名", "科目", "成绩", "操作"];
+    var datas = [
+        {"name": "张三1", "subject": "语文1", "score": 99.8},
+        {"name": "张三2", "subject": "语文2", "score": 80.8},
+        {"name": "张三3", "subject": "语文3", "score": 70.8},
+        {"name": "张三4", "subject": "语文4", "score": 100},
+        {"name": "张三5", "subject": "语文5", "score": 60},
+        {"name": "张三6", "subject": "语文6", "score": 70},
+        {"name": "张三7", "subject": "语文7", "score": 89.8}
+    ];
+
+    var box = document.getElementById("box");
+
+    var table = document.createElement("table");
+    table.border = "1px";
+    table.style.width = "600px";
+    table.style.borderCollapse = "collapse";
+
+    box.appendChild(table);
+
+    //thead部分
+    var thead = document.createElement("thead");
+    thead.style.backgroundColor = "#ccc";
+    table.appendChild(thead);
+
+    for (var i = 0; i < heads.length; i++) {
+        var th = document.createElement("th");
+        th.innerHTML = heads[i];
+        thead.appendChild(th);
+    }
+
+    var tbody = document.createElement("tbody");
+    tbody.style.textAlign = "center";
+    table.appendChild(tbody);
+
+    //创建行
+    for (var j = 0; j < datas.length; j++) {
+        var tr = document.createElement("tr");
+        tbody.appendChild(tr);
+
+        //datas中的每一项都是对象，对象中有多少个属性，就创建多少个td
+        for (var key in datas[j]) {
+            //datas[j][key]
+            var td = document.createElement("td");
+            td.innerHTML = datas[j][key];
+            tr.appendChild(td);
+        }
+        //创建每行中最后一个删除标签
+        var td = document.createElement("td");
+//        td.innerHTML = "<a></a>";
+        var link = document.createElement("a");
+        link.href = "javascript:void(0)";
+        link.innerHTML = "删除";
+        td.appendChild(link);
+
+        tr.appendChild(td);
+
+        //给link添加删除的事件
+        link.onclick = function () {
+            //先看一下我这个tr在所有tr中的位置
+            var trs = box.getElementsByTagName("tr");
+            //console.log(trs);
+            for (var i = 0; i < trs.length; i++) {
+                if (this.parentNode.parentNode == trs[i]) {
+                    datas.splice(i, 1);
+                }
+            }
+
+            //表格的删除必须在数据删除之后
+            tbody.removeChild(this.parentNode.parentNode);
+            console.log(datas);
+        };
+    }
+
+    //添加按钮
+    var add = document.getElementById("add");
+    add.onclick = function () {
+        var tr = document.createElement("tr");
+        tbody.appendChild(tr);
+        for (var i = 0; i < 3; i++) {
+            var td = document.createElement("td");
+            td.innerHTML = "<input type='text' style='width:60px'>";
+            tr.appendChild(td);
+        }
+        var td = document.createElement("td");
+        td.innerHTML = "<a href='javascript:void(0)'>确定</a>&nbsp;<a href='javascript:void(0)'>取消</a>";
+
+        tr.appendChild(td);
+
+        var cancel = td.lastElementChild;
+        cancel.onclick = function () {
+            tbody.removeChild(this.parentNode.parentNode);
+        };
+
+        var yes = td.firstElementChild;
+        yes.onclick = function () {
+            var name = tr.children[0].children[0].value;
+            var subject = tr.children[1].children[0].value;
+            var score = tr.children[2].children[0].value;
+
+            datas.push({"name": name, "subject": subject, "score": score});
+            //console.log(datas);
+            //tbody.appendChild(this.parentNode.parentNode);
+//            tbody.removeChild(this.parentNode.parentNode);
+
+            tr.children[0].innerHTML = name;
+            tr.children[1].innerHTML = subject;
+            tr.children[2].innerHTML = score;
+
+//        td.innerHTML = "<a></a>";
+            var link = document.createElement("a");
+            tr.children[3].innerHTML = link;
+            link.href = "javascript:void(0)";
+            link.innerHTML = "删除";
+            td.appendChild(link);
+
+            tr.appendChild(td);
+
+            //给link添加删除的事件
+            link.onclick = function () {
+                //先看一下我这个tr在所有tr中的位置
+                var trs = box.getElementsByTagName("tr");
+                var index;
+                //console.log(trs);
+                for (var i = 0; i < trs.length; i++) {
+                    if (this.parentNode.parentNode == trs[i]) {
+                        index = i;
+                    }
+                }
+                datas.splice(index, 1);
+                //表格的删除必须在数据删除之后
+                tbody.removeChild(this.parentNode.parentNode);
+                console.log(datas);
+            };
+
+            console.log(datas);
+
+        };
+
+
+    };
+</script>
+</body>
+
+</html>

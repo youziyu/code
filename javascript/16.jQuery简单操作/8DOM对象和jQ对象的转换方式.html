@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script src="jquery-1.12.4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      //获取DOM对象
+      //var box = document.getElementById("box");
+      
+      //想要让一个DOM对象使用jQ的属性或者方法，需要将DOM对象转换为jQ对象
+      //转换方式 使用 $()将DOM对象包裹
+      //$(box).text("我是jq方法设置的文本");
+      
+      //将jQ对象转换为DOM对象
+      var $divs = $("div");//如果使用一个变量保存jQ对象，需要在变量名前加$
+      
+      //如果想要将jQ对象转换为DOM对象，需要jQ对象中的DOM对象取出
+      //1 使用 [索引] 的方式
+      $divs[2].innerHTML = "我是第三个div";
+      
+      //2 使用 get(索引值);
+      $divs.get(1).innerHTML = "我是第二个div";
+      
+      
+    });
+  </script>
+</head>
+<body>
+<!--<div id="box"></div>-->
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

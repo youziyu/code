@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script src="jquery-1.12.4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      //1 使用css进行设置操作，值可以为纯数值
+      //2 如果设置的样式名为字符串形式，可以写成css形式，但是不推荐，统一使用驼峰命名法
+      
+      //使用css方法进行样式单个设置
+      //$("#box").css("backgroundColor","red").css("width","100px").css("height","100px");
+      
+      //使用css方法同时设置多种样式
+      //$("#box").css({
+      //  "width": "100px",
+      //  "height": "100px",
+      //  "backgroundColor": "red"
+      //});
+      
+      //3 使用css方法进行样式值获取 : 获取结果为字符串，带单位
+      //console.log($("#box").css("width"));
+      
+      //4 获取型操作后无法链式编程
+      
+      
+      $("div").css({
+        "width": "100px",
+        "height": "100px",
+        "backgroundColor": "red",
+        "marginBottom": "10px"
+      });
+      
+      //5 获取型操作无法隐式迭代
+      
+      //如果想要设置的操作相同，可以使用隐式迭代，但是如果设置的内容不同，需要显示迭代(自己手动写)
+      for (var i = 0; i < $("div").length; i++) {
+        //每次取div中的一个，设置为不同的宽度，最后获取查看
+        $("div").eq(i).css("width", 110 + i * 30 + "px");
+      }
+      
+      //通过获取操作，如果获取的对象为多个，这时返回的结果为第一个元素的对应样式值
+      console.log($("div").css("width"));
+      
+    });
+  </script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

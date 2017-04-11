@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<button id="back">后退</button>
+<script>
+  var back = document.getElementById("back");
+  
+  //点击back进行页面后退
+  back.onclick = function () {
+    //go方法可以进行前进和后退，-1表示后退
+    //history.go(-1);
+    //back方法表示后退
+    history.back();
+  };
+
+
+</script>
+</body>
+</html>

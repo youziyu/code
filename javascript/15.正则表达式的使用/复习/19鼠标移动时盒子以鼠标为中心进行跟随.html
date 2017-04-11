@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+  var box = document.getElementById("box");
+  //1 当鼠标在页面中移动时，获取鼠标坐标
+  document.onmousemove = function (e) {
+    var e = e || window.event;
+    //2 盒子居中跟随
+    // 获取鼠标位置,设置给box的left和top的同时，减去盒子宽高的一半
+    box.style.left = e.clientX - box.offsetWidth / 2 + "px";
+    box.style.top = e.clientY - box.offsetHeight / 2 + "px";
+  };
+
+</script>
+</body>
+</html>

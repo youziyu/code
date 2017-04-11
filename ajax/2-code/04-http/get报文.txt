@@ -1,0 +1,64 @@
+请求报文
+
+格式:请求行 请求方式 请求地址  协议/版本
+GET http://localhost/day02-HTTP&Ajax/4-code/04-http/login.php?username=wanlum&password=123456 HTTP/1.1
+
+请求头 
+格式: key:value
+//主机名称
+Host: localhost 
+// 长连接
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+// 用户浏览器信息 系统的信息
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36
+// 告诉服务器浏览器能接受什么样的类型的内容
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+// 当前页面之前的一个页面是什么 
+Referer: http://localhost/day02-HTTP&Ajax/4-code/04-http/login.html
+// 浏览器可接受的服务器发送内容的压缩格式
+Accept-Encoding: gzip, deflate, sdch, br
+// 浏览器可接受的语言 
+Accept-Language: zh-CN,zh;q=0.8
+
+请求正文
+格式: key=value&key1=value1&key2=value2
+
+
+
+
+
+
+
+响应报文
+响应行
+格式: 协议及版本  状态码  状态码描述
+HTTP/1.1 200 OK(200 代表刘浏览器成功受到成功响应)
+
+响应头
+//响应信息的生成时间
+Date: Thu, 09 Mar 2017 06:48:57 GMT
+// 服务器的信息
+Server: Apache/2.2.21 (Win32) PHP/5.3.10
+// 用何种技术开发的网站
+X-Powered-By: PHP/5.3.10
+// 响应正文的长度
+Content-Length: 47
+// 保持长连接  5秒以后算超时   尝试连接  失败一次max-1  直到max的值为0 就不再尝试了
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+// 响应内容的类型及编码
+Content-Type: text/html;charset=UTF-8
+
+响应正文
+
+你所输入的账号是:wanlum密码是:123456
+
+
+
+
+
+
+text/javascript   text/html text/css   大格式/具体格式  写法 MIME类型
+
+image/jpg image/png  image/bmp  MIME类型

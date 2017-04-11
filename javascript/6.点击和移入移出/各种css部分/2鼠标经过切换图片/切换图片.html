@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点击切换图片</title>
+    <style>
+        html, body, img {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+    </style>
+</head>
+<body>
+<img src="images/jd1.png" id="pic" alt="">
+<script>
+    var img = document.getElementById("pic");
+   img.onmouseover = function () {
+       //更改当前img的背景为jd2.png
+       this.src = "images/jd2.png";
+   };
+
+    img.onmouseout = function () {
+        //更改当前img的背景为jd1.png
+        this.src = "images/jd1.png";
+
+    };
+
+</script>
+</body>
+</html>

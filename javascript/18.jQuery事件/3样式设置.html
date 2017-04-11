@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      padding: 10px;
+      border: 10px solid #000;
+      margin: 10px;
+      background-color: red;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //console.log($("#box").css("width"));//100px
+      
+      //设置操作
+      //width(); 修改时，修改的是width的值
+//      console.log($("#box").width(200));
+//      console.log($("#box").height());
+//
+      //innerWidth() 获取的值含width + padding  修改的值为width，padding不会变
+//      console.log($("#box").innerWidth(200));
+      //console.log($("#box").innerHeight());
+      
+      //outerWidth() 获取的值含width + padding + border 修改的值为width，padding.border不会变
+//      console.log($("#box").outerWidth(200));
+      //console.log($("#box").outerHeight());
+      
+      //outerWidth(true); 获取的值含width + padding + border + margin
+      //同样修改的为width，设置时注意先设置值在设置true
+      //console.log($("#box").outerWidth(200, true));
+      //console.log($("#box").outerHeight(true));
+      
+      //通常我们使用$(window).innerWidth()获取页面可视区域的宽度
+      //$(window).innerWidth()获取页面可视区域高度
+    });
+  </script>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>

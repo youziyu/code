@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		span {
+			color: red;
+		}
+	</style>
+</head>
+
+<body>
+	<p></p>
+	<!--模板-->
+	<!--type="text/template"告诉浏览器如何执行其中所包含的内容  
+		不让浏览器按照javascript的方式执行其中的代码还让该标签不显示-->
+	<script type="text/template" id="tmpl">
+	<!--这些像变量的东西 就是对象的属性-->
+		我叫<span><% name %></span>，我今年<span><% age %></span>岁了，我在
+		<% school %>学习;
+	</script>
+	<script>
+		var str = document.getElementById('tmpl').innerHTML;
+		// 封装函数
+		/**
+		 * 名称 template 
+		 * 参数: id
+		 * 参数: 对象
+		 * 返回: 拼接好的字符串
+		*/
+		function 　template(id, data) {
+			var reg = /<%\s*([^%>]\S+)\s*%>/;
+			var match = null;
+			// 1.拿字符串
+			var html = document.getElementById(id).innerHTML;
+			while (match = reg.exec(html)) {
+				html = html.replace(match[0], data[match[1]]);
+			}
+			return html;
+		};
+		var data = {
+			name: '小明',
+			age: 18,
+			school: '传智番客',
+			sex: '男'
+		}
+		// 调用
+		//  id  对象
+		//  在模板引擎中  template方法 第一个参数传入的是id 第二个参数传入的是对象 
+		// 而模板里的变量是对象的属性
+		var result = template('tmpl',data);
+		// console.log(result);
+		document.querySelector('p').innerHTML=result;
+	</script>
+</body>
+
+</html>

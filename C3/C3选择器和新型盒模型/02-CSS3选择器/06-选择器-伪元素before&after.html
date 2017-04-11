@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+    </title>
+    <style>
+        .box {}
+        /*
+        注意:如果要加伪元素一定要给伪元素添加content:'';
+             伪元素是一个行内元素
+             伪元素只能添加给真实元素 不能独立存在
+             推荐 大家都是用单冒号
+        */
+        .box:before {
+            content:"今天天气不错";
+            display: block;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        
+        .box:after {
+            content:"";
+            display: block;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin-top:10px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <!--<span class="before">今天天气不错</span>
+        <span class="after"></span>-->
+    </div>
+</body>
+
+</html>

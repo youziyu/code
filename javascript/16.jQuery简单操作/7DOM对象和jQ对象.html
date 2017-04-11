@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script src="jquery-1.12.4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      
+      //1 DOM对象：通过DOM的方式获取的元素
+      //  jQ对象:通过jQ的方式获取的对象
+      
+      //2 DOM对象无法使用jq的属性和方法
+      //  jQ对象也无法使用DOM的属性和方法
+      
+      //3 jQ对象实际上是DOM对象的包装集（集合）
+      
+      //js对象在操作时需要一个一个操作
+      //jq对象在操作时，内部会帮我们操作所有，我们只需要一次找到所有元素即可
+      $("div").text("我是文本");
+      
+      //衣服和洗衣机的功能是独立，相互没有对方的功能。
+      //DOM对象和jQ对象同样也不具备对方的功能
+  
+      //通过观察发现，jq对象中实际上是一个数组形式的数据，可以尝试使用索引值取出内部的DOM元素
+      //console.log($("div"));
+      //我们发现从jQ对象中取出的元素可以使用DOM的属性，说明其就是一个DOM对象
+      $("div")[0].innerHTML = "我是使用innerHTML设置的文本";
+  
+  
+    });
+  </script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<script>
+
+</script>
+</body>
+</html>

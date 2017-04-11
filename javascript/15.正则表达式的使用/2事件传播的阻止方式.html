@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box1 {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+    
+    #box2 {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+<div id="box1">
+  <div id="box2"></div>
+</div>
+<script>
+  var box1 = document.getElementById("box1");
+  var box2 = document.getElementById("box2");
+  
+  box1.onclick = function (e) {
+    //阻止事件传播的方式：冒泡和捕获均可以阻止
+    //其他浏览器使用：stopPropagation方法
+    //e.stopPropagation();
+    
+    //在ie低版本中使用cancelBubble属性，设置值为true
+    //window.event.cancelBubble = true;
+    
+    console.log("box1");
+  };
+  box2.onclick = function (e) {
+    e.stopPropagation();
+    console.log("box2");
+  };
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //数组可以同时存储多个数据,数据的类型也可以不同
+    //var arr = [1, 2, 3, "呵呵", true, undefined, null];
+    //但是我们不推荐在一个数组中保存多个类型的数据，需要保持数组中数据的类型一致
+    
+    
+    //数组中元素的操作方式
+    var arr = ["a", "b"];
+    //1 数组中的元素是按照索引排列，索引是一个数值，从0开始
+    
+    //2 我们可以根据元素的索引操作对应的元素
+    // 数组[对应的索引值]  arr[1]
+    //console.log(arr[1]);
+    //console.log(arr[3]);
+    
+    //3 数组中最后一项的索引值为arr.length-1
+    //console.log(arr[arr.length - 1]);
+    
+    //4 访问数组中不存在的元素，值为undefined
+    //console.log(arr[4]);//undefined
+    
+    // *根据索引值访问的第二种方式
+    //console.log(arr["1"]); //使用字符串的形式同样可以获取对应的元素值，但是不常用
+    
+    
+    //根据索引值设置元素的值
+    var arr = ["a", "b", "c", "d", "e"];
+    //设置方式，根据索引值取到对应的元素，进行赋值即可修改
+    //arr[1] = 100;
+    //arr[3] = "z";
+    
+    //向数组中添加新的元素，可以使用数组的length属性作为索引值
+    //数组的length属性会随着数组元素的增加而增加
+    //arr[arr.length] = "f";
+    //arr[arr.length] = "g";
+    //console.log(arr);["a", "b", "c", "d", "e", "g"]
+  
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

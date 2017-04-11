@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0
+    }
+    
+    img {
+      vertical-align: top;
+    }
+    
+    .main {
+      margin: 0 auto;
+      width: 1000px;
+      margin-top: 10px;
+    }
+    
+    .fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+<div class="top" id="topPart">
+  <img id="pic" src="images/top.png" alt=""/>
+</div>
+<div class="nav" id="navBar">
+  <img src="images/nav.png" alt=""/>
+</div>
+<div class="main" id="mainPart">
+  <img src="images/main.png" alt=""/>
+</div>
+<script>
+  //1 获取元素
+  var topPart = document.getElementById("topPart");
+  var navBar = document.getElementById("navBar");
+  var mainPart = document.getElementById("mainPart");
+  
+  //2 当页面滚动的时候
+  window.onscroll = function () {
+    //3 实时的检测页面的卷曲高度，如果这个高度大于了顶部的高度，让导航固定
+    
+    //注意，检测页面卷曲高度时，由于事件不是每像素都会触发，所以不要检测相等
+    if (myScroll().top > topPart.offsetHeight) {
+      navBar.className = "fixed";
+      //由于导航定位后脱标，这时为了防止主体部分突兀的插入，给主体部分设置marginTop
+      mainPart.style.marginTop = 10 + navBar.offsetHeight + "px";
+    } else {
+      //取消定位
+      navBar.className = "";
+      mainPart.style.marginTop = 10 + "px";
+    }
+    
+  };
+  
+  function myScroll() {
+    return {
+      top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0,
+      left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0
+    };
+  }
+</script>
+</body>
+</html>

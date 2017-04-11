@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>五角星评分案例</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    
+    .comment {
+      font-size: 40px;
+      color: teal;
+    }
+    
+    .comment li {
+      float: left;
+    }
+    
+    ul {
+      list-style: none;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //1 准备两种星星
+      var sXin = "★";
+      var kXin = "☆";
+      
+      //2 设置移入效果
+      $(".comment>li").mouseenter(function () {
+        //prevAll() 获取当前元素前面的所有同级元素
+        //nextAll() 获取当前元素后面的所有同级元素
+        
+        //3 设置当前操作的li为实心，前面的元素也为实心
+        //$(this).text(sXin).prevAll().text(sXin);
+        
+        //4 设置后面的元素内容为空心
+        //$(this).nextAll().text(kXin);
+        
+        //代码写成多句，无法使用链式编程，可以使用end()进行继续链式编程操作
+        //end()  可以返回上一次操作的对象，继续进行新操作
+        $(this).text(sXin).prevAll().text(sXin).end().nextAll().text(kXin);
+        
+      });
+      
+      //5 当移出盒子时，设置清空
+      $(".comment").mouseleave(function () {
+        //设置所有的li为kXin
+        $(this).children().text(kXin);
+        
+        //7 需要去找到内部可能被标记的元素，设置这个元素和他前面的元素内容为实心
+        $(this).children(".current").text(sXin).prevAll().text(sXin)
+        
+      });
+      
+      //6 点击某一个li时，设置一个标记，标记可以使用添加类名的方式
+      $(".comment li").click(function () {
+        //设置当前标记后，需要清除其余旧的标记
+        $(this).addClass("current").siblings().removeClass("current");
+      });
+      
+    })
+  </script>
+</head>
+
+<body>
+<ul class="comment">
+  <li>☆</li>
+  <li>☆</li>
+  <li>☆</li>
+  <li>☆</li>
+  <li>☆</li>
+</ul>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script src="jquery-1.12.4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      //1 直接使用过滤选择器获取到奇数行和偶数行
+      //:even-偶数
+      //:odd-奇数
+      
+      $("ul>li:even").css("backgroundColor", "red");
+      $("ul>li:odd").css("backgroundColor", "blue");
+      
+    });
+  </script>
+</head>
+<body>
+<ul>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+</body>
+</html>

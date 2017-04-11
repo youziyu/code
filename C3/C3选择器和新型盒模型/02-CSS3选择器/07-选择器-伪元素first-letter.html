@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>伪元素first-letter</title>
+    <style>
+        html,
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: 'Microsoft YaHei';
+            font-size: 20px;
+        }
+        
+        div {
+            width: 200px;
+            margin: 100px auto;
+        }
+        p::first-letter{
+            color:red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p>我爱我的祖国</p>
+        <p>I love my country</p>
+        <p>私は私の祖国を愛し</p>
+        <p>나는 내 조국을 사랑</p>
+    </div>
+</body>
+
+</html>

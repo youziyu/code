@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //break 跳出
+    //switch语句
+    // 循环中 :直接跳出当前循环（循环结束了）
+    
+    //适当的时机使用break可以提高我们代码的执行效率
+    //for (var i = 0; i < 10; i++) {
+    //  //当i等于3时打印并跳出
+    //  if(i == 3){
+    //    console.log(i);
+    //    break;
+    //  }
+    //
+    //}
+    
+    //continue  循环中使用：当执行continue时会将本次循环结束,从下一次循环开始（循环顶部的i++位置）
+    for (var i = 0; i < 5; i++) {
+      //当i为3时打印，其他时候什么也不做
+      if (i != 3) {
+        continue;
+      }
+      //代码可以执行到这个位置，说明上面的if没有被进入，说明i为3
+      console.log(i);
+    }
+    
+    //小总结：break作为循环的跳出使用很多，continue的使用是可以通过其他代码避免的，所以使用场景较少
+  
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

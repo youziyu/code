@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<button id="btn">按钮</button>
+<script>
+  var btn = document.getElementById("btn");
+  
+  //在ie中使用attachEvent()  支持ie10以下，ie11开始不支持
+  //  标签.attachEvent(事件类型,事件处理程序)  事件类型需要加on
+  //在ie6-8执行时，执行的顺序与添加顺序相反（对程序执行的影响不大）
+  
+  btn.attachEvent("onclick", function () {
+    console.log("我是点击事件的代码1");
+  });
+
+  btn.attachEvent("onclick", function () {
+    console.log("我是点击事件的代码2");
+  });
+
+  btn.attachEvent("onclick", function () {
+    console.log("我是点击事件的代码3");
+  });
+</script>
+</body>
+</html>

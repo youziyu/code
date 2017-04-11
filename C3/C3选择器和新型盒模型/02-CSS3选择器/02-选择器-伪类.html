@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>伪类选择器</title>
+    <style>
+        /*CSSRest*/
+        html,
+        body,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            font: 12px Arial, sans-serif, 'Microsoft YaHei';
+        }
+        /*我的样式*/
+        
+        ul {
+            width: 350px;
+            margin: 100px auto;
+            /*清除浮动*/
+            overflow: hidden;
+        }
+        
+        li {
+            float: left;
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            border-radius: 50%;
+            background-color: #333;
+            color: #fefefe;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            /*鼠标的样式  小手*/
+            cursor: pointer;
+        }
+        /*1. 选中ul中的li的第一个元素*/
+        /*li:first-child{
+            background-color:red;
+        }*/
+        /*2.选中ul中的最后一个li让背景色变成红色*/
+        li:last-child{
+            /*background-color:red;*/
+        }
+        /*3.选择到ul中的第16个li元素背景变成红色*/
+        li:nth-child(16){
+            /*background-color: red;*/
+        }
+        /*4.nth-child(n)是从几开始的 含义:元素是从几开始的 */
+        li:nth-child(1){
+            /*background-color:red;*/
+        }
+                    /*元素从1开始*/
+        /*5.如果想要选择到3 6 9 12 15*/
+        /*li:nth-child(3n){
+            background-color:red;
+        }*/
+        /*元素是从1开始的 n从0开始的*/
+
+        /*6.如果想要选择到前5个元素呢？
+            -n+5
+            n的值 元素的值
+             0     5
+             1     4
+             2     3
+             3     2
+             4     1
+             5     0
+             6     -1
+        */
+        /*不能写成5-n*/
+        /*li:nth-child(-n+5){
+            background-color:red;
+        }*/
+        /*7.能不能选中奇数或偶数 odd even */
+        /*li:nth-child(odd){
+            background-color: red;
+        }*/
+
+        /*8.选中后5个元素让背景变红色*/
+        /*li:nth-last-child(-n+5){
+            background-color: #f00;
+        }*/
+
+
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        <li>11</li>
+        <li>12</li>
+        <li>13</li>
+        <li>14</li>
+        <li>15</li>
+        <li>16</li>
+        <li>17</li>
+        <li>18</li>
+        <li>19</li>
+        <li>20</li>
+        <li>21</li>
+        <li>22</li>
+        <li>23</li>
+        <li>24</li>
+        <li>25</li>
+        <li>26</li>
+        <li>27</li>
+        <li>28</li>
+        <li>29</li>
+        <li>30</li>
+        <li>31</li>
+        <li>32</li>
+        <li>33</li>
+        <li>34</li>
+        <li>35</li>
+    </ul>
+</body>
+
+</html>

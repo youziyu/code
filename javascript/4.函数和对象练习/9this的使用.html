@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //this只能在函数内使用，并且这个函数应当是作为某个对象的方法存在
+    //this指向了当前这个方法所属于的对象
+    
+    //1 创建一个对象stu
+    var stu = new Object();
+    stu.name = "张三";
+    stu.age = 18;
+    
+    //设置方法
+    stu.sayHi = function () {
+      //console.log("嗨，你好，我是" + stu.name);
+      console.log("嗨，你好，我是" + this.name);
+//      console.log(this);//stu
+      
+    };
+    
+    console.log(stu.name);//张三
+    stu.sayHi();
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

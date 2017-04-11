@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    div {
+      width: 100px;
+      height: 50px;
+      margin-bottom: 10px;
+      background-color: #ffad8d;
+    }
+  </style>
+</head>
+<body>
+
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<script>
+  //给每个div添加事件，点击以后打印出当前操作的div的索引值
+  
+  //1 获取元素
+  var divs = document.getElementsByTagName("div");
+  
+  //2 遍历
+  for (var i = 0; i < divs.length; i++) {
+//    console.log(i);
+    //3 添加事件
+    divs[i].onclick = function () {
+      //4 打印索引值，发现i的值跟我们想象的不一样，值为5
+      
+      //在循环添加事件时，不要在事件内部使用循环变量
+      //因为事件内的代码执行时，循环早已经结束了
+      console.log(i);
+    };
+  }
+  
+  //在循环结束后查看i的值
+  console.log(i);
+
+</script>
+</body>
+</html>

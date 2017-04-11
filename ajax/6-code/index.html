@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>后台管理</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Microsoft YaHei
+    }
+    
+    .table-bordered>thead>tr>th {
+      border-bottom-width: 1px;
+      background: #f5f5f5;
+      text-align: center
+    }
+    
+    .pagination {
+      margin: 0
+    }
+    
+    .pagination>li>a {
+      padding: 2px 15px;
+    }
+    
+    .disabled {
+      cursor: not-allowed;
+    }
+    
+    .panel-body {
+      position: relative;
+    }
+    
+    .loading {
+      width: 80px;
+      height: 30px;
+      border-radius: 5px;
+      background: url("images/loading.gif") center center no-repeat;
+      background-color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+    
+    input {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!--container这个元素是bootstrap要求的 固定宽度布局就要使用container这个class-->
+    <div class="page-header">
+      <h1>后台管理系统
+        <small>用户管理</small>
+      </h1>
+    </div>
+    <!--面板-->
+    <div class="panel panel-default">
+      <div class="panel-heading">用户管理</div>
+      <div class="panel-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>序号</th>
+              <th>用户名</th>
+              <th>密码</th>
+              <th>教师姓名</th>
+              <th>所属学院</th>
+              <th>年龄</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+        <nav>
+          <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#edit">添加</button>
+          <!--pagination 分页-->
+          <ul class="pagination pull-right">
+            <li><a href="javascript:;"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+            <li><a href="javascript:;"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+          </ul>
+        </nav>
+        <div class="loading"></div>
+      </div>
+    </div>
+    <!--fade这个类名代表一个动画-->
+    <div class="modal fade" id="edit">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">信息录入</h4>
+          </div>
+          <div class="modal-body">
+            <form action="javascript:;" id="form">
+              <input name="username" class="form-control" placeholder="请输入用户名" type="text" />
+              <input name="password" class="form-control" placeholder="请输入密码" type="password" />
+              <input name="name" class="form-control" placeholder="请输入姓名" type="text" />
+              <input name="school" class="form-control" placeholder="请输入学校" type="text" />
+              <input name="age" class="form-control" placeholder="请输入年龄" type="text" />
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary" id="save">保存</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!--写模板-->
+  <script type="text/template" id="list-templ">
+
+    <%for(var i=0;i<list.length;i++){ %>
+      <tr class="text-center">
+        <td>
+          <%=(pageNum-1)*pageSize+i+1%>
+        </td>
+        <td>
+          <%=list[i].username %>
+        </td>
+        <td>
+          <%=list[i].password %>
+        </td>
+        <td>
+          <%=list[i].name %>
+        </td>
+        <td>
+          <%=list[i].school %>
+        </td>
+        <td>
+          <%=list[i].age %>
+        </td>
+        <td>
+          <a href="javascript:;" class="delete" data-id="<%=list[i].id %>" title="删除">
+            <span class="glyphicon glyphicon-remove"></span>
+          </a>
+        </td>
+      </tr>
+      <%}%>
+  </script>
+  <script type="text/template" id="pagin-templ">
+  <li><a href="javascript:;" data-pageNum="<%=pageNum-1%>" class="<%= pageNum<=1?'disabled':'' %>"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+  <li><a href="javascript:;" data-pageNum="<%=pageNum+1%>" class="<%= pageNum>=pageCount?'disabled':'' %>"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+  </script>
+  <!--引入库-->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/template-native.js"></script>
+  <!--正式代码-->
+  <script src="js/main.js"></script>
+</body>
+
+</html>

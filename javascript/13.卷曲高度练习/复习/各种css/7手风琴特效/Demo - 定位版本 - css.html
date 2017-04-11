@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    ul {
+      list-style: none
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    div {
+      position: relative;
+      width: 1200px;
+      height: 400px;
+      margin: 50px auto;
+      border: 1px solid red;
+      overflow: hidden;
+    }
+    
+    div li {
+      width: 1200px;
+      height: 400px;
+      /*float: left;*/
+      position: absolute;
+    }
+    
+    div ul {
+      width: 1200px;
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+<script>
+  //1 获取元素
+  var box = document.getElementById("box");
+  var list = box.children[0];//ul
+  var lis = list.children;//需要操作的li
+  
+  //2 遍历
+  for (var i = 0; i < lis.length; i++) {
+    //3 设置每个li的背景
+    lis[i].style.backgroundImage = "url(images/" + (i + 1) + ".jpg)";
+    
+    //4 根据索引值设置每个li的left位置
+    lis[i].style.left = i * 240 + "px";
+    
+    //6 设置自定义属性：索引值
+    lis[i].index = i;
+    
+    //5 移入效果
+    //this和前面的所有li，设置left为 索引值*100
+    //后面的li设置 索引值*100+700
+    lis[i].onmouseover = function () {
+      for (var i = 0; i < lis.length; i++) {
+        //判断索引值
+        if (i <= this.index) {
+          animate(lis[i], {"left": 100 * i});
+        } else {
+          animate(lis[i], {"left": 100 * i + 700});
+        }
+      }
+    };
+    
+    lis[i].onmouseout = function () {
+      for (var i = 0; i < lis.length; i++) {
+        animate(lis[i], {"left": i * 240});
+      }
+    };
+    
+  }
+  
+  function animate(tag, obj) {
+    clearInterval(tag.timer);
+    tag.timer = setInterval(function () {
+      //每一次定时器代码执行时，假设当前这次可以清除
+      var flag = true;
+      
+      //需要修改的不是一个属性，而是obj中的每个属性名都作为需要修改的属性
+      //遍历obj
+      for (var k in obj) {
+        //k - 属性名 - attr 要让哪个属性运动
+        //obj[k] - 属性值 - target 要运动到多少
+        
+        //想要修改为任意的样式运动，首先获取需要修改
+        var leader = parseInt(getStyle(tag, k)) || 0;//预防auto的问题，防止计算失败
+        var target = obj[k];
+        var step = (target - leader) / 10;
+        step = step > 0 ? Math.ceil(step) : Math.floor(step);
+        leader = leader + step;
+        //设置的位置需要修改
+        tag.style[k] = leader + "px";
+        
+        //原始的清除位置是每一个属性运动时都进行检测
+        //每个属性运动的距离不同，有可能某个属性先运动完毕了
+        //这时如果清除定时导致其他属性没有到达指定位置
+        //如果有某一个属性没有到达指定位置，阻止清除
+        if (leader != target) {
+          flag = false;
+        }
+      }
+      
+      //不能在内部清除，而是在外面进行判断
+      if (flag) {
+        clearInterval(tag.timer);
+      }
+    }, 20);
+  }
+  
+  function getStyle(tag, attr) {
+    return tag.currentStyle ? tag.currentStyle[attr] : getComputedStyle(tag, null)[attr];
+  }
+
+</script>
+</body>
+</html>

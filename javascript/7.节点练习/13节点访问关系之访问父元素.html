@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<div>
+  <span id="sp"></span>
+</div>
+<script>
+  
+  //node节点的意思
+  //父节点的访问  节点.parentNode
+  //任意节点的父节点永远是元素节点(标签)
+  var sp = document.getElementById("sp");
+  
+  //我们可以通过访问sp的parentNode属性获取到sp的父元素，从而对div进行操作
+  //console.log(sp.parentNode);
+  var div = sp.parentNode;
+  div.style.width = "100px";
+  div.style.height = "100px";
+  div.style.backgroundColor = "red";
+
+
+</script>
+</body>
+</html>

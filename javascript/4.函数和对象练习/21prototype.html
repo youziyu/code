@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    
+    //1 创建一个构造函数。用于创建多个学生对象
+    function CreateStu(name) {
+      //2 设置创建出来的对象的属性和方法
+      this.name = name;
+    }
+    
+    //每个构造函数都有一个属性prototype,这个属性是一个对象，可以将一些函数保存在其中
+    CreateStu.prototype.sayHi = function () {
+      console.log("哈喽，我是一个男生");
+    };
+    
+    CreateStu.prototype.learning = function () {
+      console.log("我今天学习了构造函数的使用，好简单");
+    }
+    
+    CreateStu.prototype.learningMath = function () {
+      console.log("我今天学习了构造函数的使用，好简单");
+    }
+    
+    
+    //每个由CreateStu创建的对象都会具有一个属性__proto__
+    //这个属性相当于CreateStu的prototype,通过比較，我们发现，两者相等
+    var stu1 = new CreateStu("张三");
+    console.log(stu1);
+    //console.log(stu1.__proto__ == CreateStu.prototype);//true
+    
+    //如果一个对象在使用某一个方法时，自身不存在这个方法，向这个对象的__proto__属性中查找,
+    //相当于查找CreateStu.prototype
+    
+    stu1.sayHi();
+    stu1.learning();
+    
+    var stu2 = new CreateStu("李四");
+    //    stu2.sayHi();
+    //    stu2.learning();
+  
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

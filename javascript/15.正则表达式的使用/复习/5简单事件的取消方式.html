@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<button id="btn">按钮</button>
+<script>
+  var btn = document.getElementById("btn");
+  btn.onclick = function () {
+    console.log("我执行了");
+    
+    //在执行中将事件清除，可以让这个事件只生效一次
+    btn.onclick = null;
+  };
+  
+  //事件的清除方式：设置事件处理程序为null
+</script>
+</body>
+</html>

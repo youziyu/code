@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    ul {
+      list-style: none
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    div {
+      position: relative;
+      width: 1200px;
+      height: 400px;
+      margin: 50px auto;
+      border: 1px solid red;
+      overflow: hidden;
+    }
+    
+    div li {
+      width: 1200px;
+      height: 400px;
+      /*float: left;*/
+      position: absolute;
+    }
+    
+    div ul {
+      width: 1200px;
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+<script>
+  //1 获取元素
+  var box = document.getElementById("box");
+  var list = box.children[0];
+  var lis = list.children;
+  
+  //2 遍历，添加图片和操作设置
+  for (var i = 0; i < lis.length; i++) {
+    //3 设置背景图
+    lis[i].style.backgroundImage = "url(images/" + (i + 1) + ".jpg)";
+    
+    //4 设置每个li初始的定位位置
+    lis[i].style.left = i * 240 + "px";
+    
+    //6 设置每个li的索引属性
+    lis[i].index = i;
+    
+    //5 设置移入效果
+    lis[i].onmouseover = function () {
+      //当移入某个li时，设置每个li的left值
+      //left值设置时，分为两组
+      //组1：当前元素和前面的元素 设置为 i * 100
+      //组2：后面的元素  设置为 i * 100 + 700
+      
+      //使用索引进行判断
+      for (var i = 0; i < lis.length; i++) {
+        //检测i和this.index的大小关系
+        if (i <= this.index) {
+          animate(lis[i], "left", i * 100);
+        } else {
+          animate(lis[i], "left", i * 100 + 700);
+        }
+      }
+    };
+    
+    //7 设置移出效果
+    lis[i].onmouseout = function () {
+      for (var i = 0; i < lis.length; i++) {
+        animate(lis[i], "left", i * 240);
+      }
+    };
+    
+    
+  }
+  function animate(tag, attr, target) {
+    clearInterval(tag.timer);
+    tag.timer = setInterval(function () {
+      var leader = parseInt(getStyle(tag, attr)) || 0;
+      
+      var step = (target - leader) / 10;
+      step = step > 0 ? Math.ceil(step) : Math.floor(step);
+      leader = leader + step;
+      
+      //-- 设置位置也需要修改为设置指定样式
+      tag.style[attr] = leader + "px";
+      
+      if (leader == target) {
+        clearInterval(tag.timer);
+      }
+    }, 17);
+  }
+  
+  //获取任意样式值的函数
+  function getStyle(tag, attr) {
+    if (tag.currentStyle) {
+      return tag.currentStyle[attr];
+    } else {
+      return getComputedStyle(tag, null)[attr];
+    }
+  }
+</script>
+</body>
+</html>

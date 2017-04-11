@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      
+    }
+  </style>
+</head>
+<body>
+<button id="btn1">运动到200</button>
+<button id="btn2">运动到400</button>
+<div id="box"></div>
+<script>
+  var box = document.getElementById("box");
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+  var timer = null;
+  
+  btn1.onclick = function () {
+    animate(box, {
+      "width": 400,
+      "height": 200,
+      "left": 130,
+      "top": 260,
+      "zIndex": 6,
+      "opacity": 0.4
+    }, function () {
+//      alert("今天天气不错");
+//      console.log("呵呵，我打印了");
+      
+      animate(box, {
+        "width": 300,
+        "height": 100,
+        "left": 230,
+        "top": 160,
+        "zIndex": 3,
+        "opacity": 0.7
+      }, function () {
+        box.innerHTML = "我是一个字";
+        animate(box, {"fontSize": 40});
+      });
+      
+    });
+
+//    animate(box, {"width": 100}, function () {
+//      animate(box, {"height": 200}, function () {
+//        animate(box, {"top": 130}, function () {
+//
+//        });
+//      });
+//    });
+    
+    
+    //我们想要第二个运动在第一个运动结束后进行执行
+    //由于顺序书写，会导致后设置的清除前面的运动，我们需要找到上一个运动的结束位置
+//    animate(box, {
+//      "width": 300,
+//      "height": 100,
+//      "left": 230,
+//      "top": 160,
+//      "zIndex": 3,
+//      "opacity": 0.7
+//    });
+    
+  };
+  
+  
+  function animate(tag, obj, fn) {
+    //我们需要让fn在当前运动结束后执行
+    //fn = function(){
+    //  alert("今天天气不错");
+    //}
+    clearInterval(tag.timer);
+    tag.timer = setInterval(function () {
+      var flag = true;//假设当前这一次定时器代码执行可以设置清除（每个样式都到达了指定位置）
+      //先遍历obj
+      for (var k in obj) {
+        //由于obj中有一些属性可能是zIndex或者opacity，这时需要单独处理
+        if (k == "opacity") {
+          //将透明度当前值和目标值都设置为扩大后的倍数，设置时除以相应倍数即可
+          var target = obj[k] * 100;
+          var leader = getStyle(tag, k) * 100 || 0;
+          var step = (target - leader) / 10;
+          //给step设置取整
+          step = step > 0 ? Math.ceil(step) : Math.floor(step);
+          leader = leader + step;
+          //透明度的设置需要去掉单位
+          tag.style[k] = leader / 100;
+          
+        } else if (k == "zIndex") {
+          //zIndex不需要渐变，直接设置即可
+          tag.style.zIndex = obj[k];
+          
+        } else {
+          var target = obj[k];
+          var leader = parseInt(getStyle(tag, k)) || 0;
+          var step = (target - leader) / 10;
+          //给step设置取整
+          step = step > 0 ? Math.ceil(step) : Math.floor(step);
+          
+          leader = leader + step;
+          tag.style[k] = leader + "px";
+        }
+        
+        //提取出每种条件都需要的代码
+        if (leader != target) {
+          flag = false;
+        }
+      }
+      
+      if (flag) {
+        clearInterval(tag.timer);
+        //clearInterval表示当前这一次定时器的代码执行是最后一次，但是执行到清除时，这次定时器代码不会立刻结束
+        //清除定时器后表示当前运动完毕
+        
+        //情景1 在定时器结束后弹出1
+        //alert(1);
+        //情景2 执行新运动
+        //animate(box, {
+        //  "width": 300,
+        //  "height": 100,
+        //  "left": 230,
+        //  "top": 160,
+        //  "zIndex": 3,
+        //  "opacity": 0.7
+        //});
+        
+        //当前运动结束后要进行的操作不确定，这一步骤是用户根据实际的使用需求设置的
+        //当函数的内某些值不确定，设置普通参数，当某些功能不确定，这时设置函数参数(回调函数)
+        //fn();
+        
+        //由于某些运动结束后可能不需要执行新的操作，这时允许用户不传入第三个参数
+        //我们需要检测fn的值，如果是函数才进行执行，否则什么也不错
+        //if (typeof fn == "function") {
+        //  fn();
+        //}
+        
+        //使用短路操作简化fn的判断
+        //这种方式使用时比較简便，但是检测不是非常验证
+        fn && fn();
+      }
+      
+    }, 20);
+  }
+  
+  
+  //  function fun(fn) {
+  //    //这个函数的内部功能为打印一句话
+  //    console.log("今天天气不错");
+  //    //做完这个功能后，索要执行的代码不确定
+  //    fn();
+  //  }
+  //
+  //  fun(function () {
+  ////    console.log("我是新的代码");
+  //    console.log("我是最新的代码");
+  //  });
+  //
+  
+  
+  //animate无法进行颜色的渐变，原因是，常用的演示为十六进制或者纯英文
+  //只能使用rgb进行每个数值的相应变化，但是又无法知道每个数是多少，所以想要制作这个效果,请参考UI学院课程
+  //rgb(1,1,1);
+  //rgb(5,200,6);
+  
+  
+  function getStyle(tag, attr) {
+    if (tag.currentStyle) {
+      return tag.currentStyle[attr];
+    } else {
+      return getComputedStyle(tag, null)[attr];
+    }
+  }
+
+</script>
+</body>
+</html>

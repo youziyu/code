@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //在head的位置上获取元素时，由于body中标签还没有生成，无法获取
+    //可以通过 入口函数 解决这个问题
+    window.onload = function () {
+      //入口函数的作用：这个函数内的所有代码会在页面完全加载（页面结构，图片，文件）后执行
+      console.log(document.getElementById("box"));
+    };
+  
+  </script>
+</head>
+<body>
+<div id="box"></div>
+<script>
+  //id具有唯一性，我们可以根据id名准确的获取某一个标签
+  // 文档.获取  元素  通过  标签的唯一标识
+  // 在DOM中，我们将标签称为元素，页面元素
+  
+  //传入一个字符串形式的id名
+  console.log(document.getElementById("box"));
+
+</script>
+</body>
+</html>

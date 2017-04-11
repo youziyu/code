@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <!--key=value-->
+        <input type="text" name="username" id="username">
+        <input type="password" name="password" id="password">
+    </form>
+    <button>惦记我查看效果</button>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $('button').click(function(){
+            var result=$('form').serialize();//得到的结果就是key=value&key=value
+            console.log(result);
+        })
+    </script>
+</body>
+</html>

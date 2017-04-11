@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .drag {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+
+        .target {
+            position: absolute;
+            right: 10px;
+
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <!--拖拽元素-->
+    <!--如何让一个元素变成拖拽元素-->
+    <!--注意：图片是天生的拖拽元素-->
+    <div class="drag" draggable="true"></div>
+    <!--目标元素-->
+    <div class="target"></div>
+    <script>
+        var drag = document.querySelector('.drag');
+        var target = document.querySelector('.target');
+
+        // 开始拖拽
+        drag.addEventListener('dragstart', function () {
+            console.log("拖拽开始");
+        })
+        // 拖拽过程中 不停触发的事件
+        drag.addEventListener('drag', function () {
+            console.log("拖拽过程中");
+        })
+        // 拖拽结束
+        drag.addEventListener('dragend', function () {
+            console.log("拖拽结束");
+        })
+
+        // 拖拽离开(特殊的事件) 既可以用于拖拽元素又可以用于目标元素 用于检测鼠标是否离开了拖拽元素的范围
+        // drag.addEventListener('dragleave', function () {
+        //     console.log("拖拽元素离开自己的范围");
+        // })
+
+        // 目标元素的事件
+        // 拖拽元素进入目标元素时触发
+        target.addEventListener('dragenter', function () {
+            console.log("拖拽元素进入目标元素时触发");
+        })
+        // 拖拽元素在目标元素上时触发 不断触发的
+        target.addEventListener('dragover', function (e) {
+            // 阻止浏览器不让一个元素直接放到另外一个元素上的事件
+            e.preventDefault();
+            console.log("拖拽元素在目标元素上时触发");
+        })
+
+        target.addEventListener('drop', function () {
+            console.log("拖拽元素被放下");
+        })
+
+
+        target.addEventListener('dragleave', function () {
+            console.log("拖拽元素离开");
+        })
+    </script>
+</body>
+
+</html>

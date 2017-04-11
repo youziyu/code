@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  window.onresize = function () {
+    //>960  pc
+    //小于960  大于640  平板 tablet
+    //小于640  手机 mobile
+    
+    //先获取可视区域的宽度
+    var wid = myClient().width;
+    if (wid > 960) {
+      //修改body的背景色
+      document.body.style.backgroundColor = "red";
+    } else if (wid > 640) {
+      document.body.style.backgroundColor = "pink";
+    } else {
+      document.body.style.backgroundColor = "orange";
+    }
+  };
+  
+  function myClient() {
+    return {
+      width: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0,
+      height: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0
+    };
+  }
+
+</script>
+</body>
+</html>

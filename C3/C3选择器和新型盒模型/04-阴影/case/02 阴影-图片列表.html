@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3 边框</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		img {
+			width: 200px;
+			height: 200px;
+			display: block;
+		}
+
+		.items {
+			padding:5px 10px;
+			overflow: hidden;
+			text-align:center;
+		}
+
+		.item {
+			display:inline-block;
+			padding-bottom: 100px;
+			margin:0 10px;
+			border: 1px solid #CCC;
+			background-color: #FFF;
+			/*过渡 all所有变化的属性  0.2s代表属性从初始变化到结束所用的时间*/
+			transition: all 0.2s;
+/* 任务1 请给每个item 添加一个向 右下偏移5  模糊为3  颜色为#ccc 的阴影 */
+			
+		}
+		.item:hover{
+				box-shadow: 5px 5px  3px  #CCC;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="items">
+		<a href="" class="item">
+			<img src="./images/pic_1.jpg">
+		</a>
+		<a href="" class="item">
+			<img src="./images/pic_2.jpg">
+		</a>
+		<a href="" class="item">
+			<img src="./images/pic_3.jpg">
+		</a>
+		<a href="" class="item">
+			<img src="./images/pic_4.jpg">
+		</a>
+	</div>
+</body>
+</html>

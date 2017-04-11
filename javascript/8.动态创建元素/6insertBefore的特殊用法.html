@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<div id="box">
+  <div id="son"></div>
+</div>
+<div id="out"></div>
+<script>
+  var box = document.getElementById("box");
+  var son = document.getElementById("son");
+  var out = document.getElementById("out");
+  
+  //insertBefore在使用时，第二个参数传入null，这时也可以进行插入
+  //这时如果box内部具有子元素，这时新插入的标签会被插入到所有子节点的最后（这一点与我们的期望不符）
+  box.insertBefore(out, undefined);
+
+</script>
+</body>
+</html>

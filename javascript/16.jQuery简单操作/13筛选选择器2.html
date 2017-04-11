@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script src="jquery-1.12.4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      
+      // find() 获取后代元素中满足条件的
+      // 注意：  find中必须传入参数
+      //$("ul li")
+      //console.log($("ul"));
+      //$("ul").find("li").css("backgroundColor", "red");
+      
+      //parent() 获取父元素 相当于parentNode
+      //$("#text").parent().css("backgroundColor","red");
+      //$("p").parent().css("backgroundColor","red");
+      
+      //siblings() 获取同级元素
+      //$("#me").siblings().text("这是我得同级元素");
+      //$("#me").siblings(".qian").text("这是我得同级元素");
+      
+      //eq() 传入一个索引值，可以获取索引值对应的元素(jq对象)
+      //$("ul>li").eq(3).text("我是第四个");
+      
+      var index = 3;
+      //$("ul>li:eq("+index+")").text("这是第四个");
+      //使用eq方法，比过滤选择器中的eq使用更加简便
+      $("ul>li").eq(index).text("这是第四个");
+      
+    });
+  </script>
+</head>
+<body>
+
+
+<ul>
+  <li class="qian"></li>
+  <li class="qian"></li>
+  <li id="me">这是我</li>
+  <li></li>
+  <li></li>
+</ul>
+<!--<div>-->
+<!--<p>111</p>-->
+<!--</div>-->
+<!--<div>-->
+<!--<p>111</p>-->
+<!--</div>-->
+<!--<div>-->
+<!--<p>111</p>-->
+<!--</div>-->
+<!--<div id="box">-->
+<!--<p>111</p>-->
+<!--<p id="text">111</p>-->
+<!--<p>111</p>-->
+<!--<p>111</p>-->
+<!--</div>-->
+
+
+<!--<ul>-->
+<!--<li>-->
+<!--<ul>-->
+<!--<li></li>-->
+<!--<li></li>-->
+<!--<li></li>-->
+<!--<li></li>-->
+<!--</ul>-->
+<!--</li>-->
+<!--<li></li>-->
+<!--<li></li>-->
+<!--<li></li>-->
+<!--<li></li>-->
+<!--</ul>-->
+
+
+</body>
+</html>

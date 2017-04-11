@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      /*left: 200px;*/
+    }
+    
+    #box2 {
+      top: 150px;
+    }
+  </style>
+</head>
+<body>
+<button id="btn1">运动到200</button>
+<button id="btn2">运动到400</button>
+<div id="box1">box1</div>
+<div id="box2">box2</div>
+<script>
+  var box1 = document.getElementById("box1");
+  var box2 = document.getElementById("box2");
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+  var timer = null;
+  
+  //var leftVal = 0;//设置left的默认值
+  
+  //1 给btn1设置点击事件
+  btn1.onclick = function () {
+    animate(box1, 200);
+    animate(box2, 200);
+  }
+  
+  
+  //  //2 给btn2设置点击事件
+  //  btn2.onclick = function () {
+  //    animate(box, 400)
+  //  }
+  
+  
+  function animate(tag, target) {
+    //由于多个标签公用了一个定时器的变量保存
+    //如果对timer进行清除，对相互产生影响
+    //我们可以通过自定义属性的方式，将定时器保存在每个标签自身的属性上
+    clearInterval(tag.timer);//防止多次触发导致加速
+    tag.timer = setInterval(function () {
+      var leader = tag.offsetLeft;//实时获取box的当前位置
+      var step = 9;
+      //根据leader和target的关系修改步长的正负
+      step = leader > target ? -step : step;
+      
+      //判断条件
+      if (Math.abs(leader - target) > Math.abs(step)) {
+        //简单运动公式：  leader = leader + step;
+        //              新的当前位置 = 旧的当前位置 +步长
+        leader = leader + step;
+        //将新的位置设置给box
+        tag.style.left = leader + "px";
+      } else {
+        //如果距离终点的距离不够一个step，这时直接让tag运动到目标位置target上
+        tag.style.left = target + "px";
+        clearInterval(tag.timer);
+      }
+      
+    }, 20);
+  }
+</script>
+</body>
+</html>

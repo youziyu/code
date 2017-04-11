@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0
+    }
+    
+    ul {
+      list-style: none
+    }
+    
+    img {
+      vertical-align: top
+    }
+    
+    .box {
+      width: 490px;
+      height: 170px;
+      margin: 100px auto;
+      padding: 5px;
+      border: 1px solid #ccc;
+    }
+    
+    .inner {
+      width: 490px;
+      height: 170px;
+      background-color: pink;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .inner ul {
+      width: 1000%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    
+    .inner li {
+      float: left;
+    }
+    
+    .square {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+    
+    .square span {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background-color: #fff;
+      text-align: center;
+      line-height: 16px;
+      cursor: pointer;
+    }
+    
+    .square span.current {
+      background-color: orangered;
+      color: #fff;
+    }
+  
+  </style>
+</head>
+<body>
+<div class="box" id="box">
+  <div class="inner">
+    <ul>
+      <li><a href="#"><img src="images/01.jpg" alt=""/></a></li>
+      <li><a href="#"><img src="images/02.jpg" alt=""/></a></li>
+      <li><a href="#"><img src="images/03.jpg" alt=""/></a></li>
+      <li><a href="#"><img src="images/04.jpg" alt=""/></a></li>
+      <li><a href="#"><img src="images/05.jpg" alt=""/></a></li>
+    </ul>
+    <div class="square">
+      <span class="current">1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+      <span>5</span>
+    </div>
+  </div>
+</div>
+<script>
+  //1 获取页面元素
+  var box = document.getElementById("box");
+  var inner = box.children[0];
+  var list = inner.children[0];
+  var square = inner.children[1];
+  var sps = square.children;
+  var imgWid = inner.offsetWidth;//必须获取inner的宽度，而不能获取图片
+  
+  //设置每个span的事件
+  for (var i = 0; i < sps.length; i++) {
+    sps[i].index = i;
+    
+    sps[i].onclick = function () {
+      //点击按钮变色
+      for (var i = 0; i < sps.length; i++) {
+        sps[i].className = "";
+      }
+      this.className = "current";
+      
+      //设置运动效果
+      //运动的位置为当前标签的索引值*图片宽度*-1
+      var target = -this.index * imgWid;
+      animate(list,target);
+      
+    }
+  }
+  
+  
+  function animate(tag, target) {
+    clearInterval(tag.timer);
+    tag.timer = setInterval(function () {
+      //标签.offsetLeft  获取标签的位置
+      var leader = tag.offsetLeft;
+      var step = 9;
+      step = leader < target ? step : -step;
+      
+      //判断当前位置和目标位置之前的距离
+      if (Math.abs(leader - target) > Math.abs(step)) {
+        leader = leader + step;//计算新的位置
+        tag.style.left = leader + "px";
+      } else {
+        tag.style.left = target + "px";
+        clearInterval(tag.timer);
+      }
+    }, 20);
+  }
+
+</script>
+</body>
+</html>

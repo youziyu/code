@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #box{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+  //鼠标移入移出盒子的时候，打印不同的内容
+  //移入事件 onmouseover   移出事件 onmouseout
+  
+  var box = document.getElementById("box");
+  
+  //添加移入事件
+  box.onmouseover = function () {
+    console.log("呵呵，我移入了");
+  };
+  
+  //添加移出事件
+  box.onmouseout = function () {
+    console.log("哈哈，我出来啦");
+  };
+
+</script>
+</body>
+</html>

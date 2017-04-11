@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    ul {
+      list-style-type: none;
+    }
+    
+    .box {
+      width: 400px;
+      height: 300px;
+      border: 1px solid #ccc;
+      margin: 100px auto;
+      /*overflow: hidden;*/
+    }
+    
+    .hd {
+      height: 45px;
+    }
+    
+    .hd span {
+      display: inline-block;
+      width: 90px;
+      background-color: pink;
+      line-height: 45px;
+      text-align: center;
+      cursor: pointer;
+    }
+    
+    .hd span.current {
+      background-color: purple;
+    }
+    
+    .bd li {
+      height: 255px;
+      background-color: purple;
+      display: none;
+      padding: 10px;
+      color: white;
+    }
+    
+    .bd li.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <div class="hd">
+    <span class="current">体育</span>
+    <span>娱乐</span>
+    <span>新闻</span>
+    <span>综合</span>
+  </div>
+  <div class="bd">
+    <ul>
+      <li class="show">我是体育模块</li>
+      <li>我是娱乐模块</li>
+      <li>我是新闻模块</li>
+      <li>我是综合模块</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  
+  //1 获取元素
+  var sps = document.getElementsByTagName("span");//要点击的按钮
+  var lis = document.getElementsByTagName("li");//下面要显示的所有选项卡
+  
+  //2 遍历sps
+  for (var i = 0; i < sps.length; i++) {
+    //6 给每个span设置索引属性
+    sps[i].index = i;
+    //3 点击事件
+    sps[i].onclick = function () {
+      //4 点击按钮变色
+      //4.1 排他
+      for (var i = 0; i < sps.length; i++) {
+//        sps[i].className = "";
+        //7 由于span和li的个数相同，我们可以借用span的排他的循环对li进行排他
+        //lis[i].className = "";
+
+
+          sps[i].style.background='white';
+          lis[i].style.display = "none";
+
+
+      }
+      //4.2 设置自己的类名
+      //this.className = "current";
+        this.style.background='purple';
+      //5 点击某个sp时，设置下面的对应li进行显示
+//      lis[this.index].className = "show";
+        lis[this.index].style.display = "block";
+    };
+  }
+
+
+</script>
+
+
+</body>
+</html>

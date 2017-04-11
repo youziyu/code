@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度换肤</title>
+    <style>
+        html, body, div {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            background: url(../百度换肤/images/1.jpg) no-repeat;
+        }
+
+        .back {
+            width: 100%;
+            height: 180px;
+            background: rgba(255, 255, 255, 0.3);
+            padding-top: 50px;
+            text-align: center;
+        }
+
+        .back img {
+            width: 200px;
+            cursor: pointer;
+            /*background: url(images/111.jpg);*/
+
+        }
+    </style>
+    <script>
+
+    </script>
+</head>
+<body>
+<div class="back">
+    <img id="pic1" src="../百度换肤/images/1.jpg" alt="1">
+    <img id="pic2" src="../百度换肤/images/2.jpg" alt="2">
+    <img id="pic3" src="../百度换肤/images/3.jpg" alt="3">
+    <img id="pic4" src="../百度换肤/images/4.jpg" alt="4">
+    <img id="pic5" src="../百度换肤/images/5.jpg" alt="5">
+</div>
+
+<script>
+    //需求：点击每个img标签，都可以更改body的背景图片为当前点击的img的图片地址
+
+
+    //1 获取要操作的元素
+    var pic1 = myId("pic1");
+    var pic2 = myId("pic2");
+    var pic3 = myId("pic3");
+    var pic4 = myId("pic4");
+    var pic5 = myId("pic5");
+
+
+
+    //2 添加事件
+    pic1.onclick = changePic;
+    pic2.onclick = changePic;
+    pic3.onclick = changePic;
+    pic4.onclick = changePic;
+    pic5.onclick = changePic;
+
+    function changePic() {
+        document.body.style.backgroundImage = "url(" + this.src + ")";
+    }
+
+    //使用函数封装去实现根据id获取元素的功能
+    function myId(id) {
+        return document.getElementById(id);
+    }
+
+    //设置型操作不需要返回值
+    //获取型操作需要返回值
+
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        section{
+            width:530px;
+            height:500px;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between
+        }
+        .circle {
+            width: 30px;
+            height: 30px;
+            background-color: #aaa;
+            border-radius: 50%;
+        }
+        
+        .touzi {
+            width: 130px;
+            height: 130px;
+            float:left;
+            margin-right: 5px;
+            background-color: #f7f7f7;
+            border-radius: 15px;
+            display: flex;
+            box-shadow: 0px 0px 5px rgba(0,0,0,0.6);
+        }
+        .one{
+            /*justify-content: center;
+            align-items: center;*/
+            /*justify-content: center;
+            align-items: flex-end;*/
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+        .two{
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            /*justify-content: space-around;*/
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="touzi one">
+        <span class="circle"></span>
+    </div>
+        <div class="touzi two">
+        <span class="circle"></span>
+        <span class="circle"></span>
+    </div>
+        </div>
+        <!--<div class="touzi four">
+            <div class="row">
+                <span class="circle"></span>
+                <span class="circle"></span>
+            </div>
+            <div class="row2">
+                <span class="circle"></span>
+                <span class="circle"></span>
+            </div>
+        </div>-->
+        <!--
+    <div class="touzi five">
+        <span class="circle"></span>
+        <span class="circle"></span>
+        <span class="circle"></span>
+        <span class="circle"></span>
+        <span class="circle"></span>
+    </div>
+    <div class="touzi six">
+        <span class="circle"></span>
+        <span class="circle"></span>
+        <span class="circle"></span>
+        <span class="circle"></span>
+        <span class="circle"></span>
+        <span class="circle"></span>
+    </div>-->
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!--把用户填写的用户名 密码提交到后台(php)去-->
+    <!--1.是不是得知道是那个php
+    action="01-get.php" 告诉浏览器去请求那个php程序(应用程序)处理
+
+    -->
+    <!--2.用什么存储用户提交的密码和用户名
+        输入框中的name属性用来携带用户填写的信息
+    -->
+    <!--3. 提交方式
+        get提交方式 是默认的
+    -->
+    <form action="01-get.php" method="get" >
+        用户名:<input type="text" name="username">
+        密码: <input type="password" name="password">
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    body{
+      height: 10000px;
+      width: 10000px;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //获取页面的卷曲高度和宽度
+      
+      //在页面卷曲时，获取页面卷曲的高度和宽度
+      $(window).scroll(function () {
+        //scrollLeft() 获取元素的卷曲宽度
+        //scrollTop() 获取元素的卷曲高度
+  
+        console.log($(this).scrollLeft() + "-" + $(this).scrollTop());
+  
+      });
+      
+      
+    });
+  </script>
+</head>
+<body>
+
+</body>
+</html>

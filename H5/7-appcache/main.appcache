@@ -1,0 +1,17 @@
+CACHE MANIFEST
+#代表缓存清单
+#这是注释
+
+
+
+CACHE:
+# 代表你准备缓存那些文件 比如你要缓存
+./images/54.jpg
+
+NETWORK:
+# 代表的是当在线的时候哪些数据需要更新
+*
+
+FALLBACK:
+# 代表在线文件在离线的时候可以被替换
+./images/9.jpg  ./images/54.jpg

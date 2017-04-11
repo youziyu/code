@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //括号：提高计算/操作的优先级
+  //var reg = /ab|gh/;
+  
+  
+  //a然后是b或者g，然后是h
+  var reg = /a(b|g)h/;
+  console.log(reg.test("abc"));//false
+  console.log(reg.test("abh"));//true
+  console.log(reg.test("agh"));//true
+
+</script>
+</body>
+</html>

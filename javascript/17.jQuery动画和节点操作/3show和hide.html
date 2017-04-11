@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #box{
+      width: 400px;
+      height: 400px;
+      background-color: red;
+      display: none;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(document).ready(function () {
+      //点击按钮1，让box显示
+      $("#btn1").click(function () {
+        // show() 用于让元素从display:none 到display:block
+        // 在show()中传入参数1 表示运动的时间，单位为毫秒
+        // "slow"600   "normal"400   "fast"200
+        // 如果传入的字符串，不是以上3个,会默认采用normal的值400毫秒
+        
+        // 运动过程中会修改元素的width  height opacity
+//        $("#box").show(3000);
+        //$("#box").show("呵呵");
+        
+        //参数2 回调函数：当运动结束后做的事情
+        $("#box").show(1000,function () {
+          //这里的代码会在show运动完毕后执行
+          alert("今天天气不错");
+        })
+      });
+  
+      //点击按钮2，让box隐藏
+      $("#btn2").click(function () {
+        // hide() 用于让元素从 display:block到display:none
+        // hide()中传入参数1 表示运动的时间，单位为毫秒
+        // hide方法同样可以接受字符串参数，设置方式参考show
+        $("#box").hide(1000,function () {
+          alert("我隐藏了，哈哈");
+        });
+      });
+      
+      
+      //函数的书写形式：命名函数  匿名函数
+      //使用方式：
+      // 自调用函数（立即执行函数）  (function(){});
+      // 函数表达式：  var fun = function(){};
+      // 回调函数： 将一个函数作为另一个函数的参数使用
+      
+      
+    });
+  </script>
+</head>
+<body>
+<button id="btn1">显示</button>
+<button id="btn2">隐藏</button>
+<div id="box"></div>
+</body>
+</html>

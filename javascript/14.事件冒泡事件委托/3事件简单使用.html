@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<div id="box">
+  <button>按钮</button>
+</div>
+
+<script>
+  var box = document.getElementById("box");
+  var btn = box.children[0];
+  
+  //我写的代码
+  btn.onclick = function () {
+    alert("今天天气不错");
+  };
+  
+  
+  
+  //小明写的代码
+  btn.onclick = function () {
+    alert("这是小明的垃圾代码");
+  };
+
+
+</script>
+
+<!--<script src="1.js"></script>-->
+</body>
+</html>

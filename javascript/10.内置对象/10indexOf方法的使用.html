@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //indexOf方法在ie9以下不支持
+  
+  //找到数组中所有a元素的出现的索引值
+  var arr = ["d", "a", "b", "a", "f", "r", "a", "b", "a", "f", "r", "a", "b", "a", "f", "r", "a", "b", "a"];
+  
+  //  //1 先找到第一次找到的索引值
+  //  var index = arr.indexOf("a");
+  //  console.log(index);
+  
+  //2 第二次从index+1开始查找
+  //  index = arr.indexOf("a",index+1);
+  //  console.log(index);
+  //
+  //  //3 第三次操作重复第二步
+  //  index = arr.indexOf("a",index+1);
+  //  console.log(index);
+  
+  //我们发现数组中的指定元素的个数不能确定，意味着上述代码需要重复执行的次数不定
+  //设置判断条件：当现在还可以继续找到新的a时，继续执行，如果找不到，跳出循环
+  //  while (arr.indexOf("a", index + 1) != -1) {
+  //    index = arr.indexOf("a", index + 1);
+  //    console.log(index);
+  //  }
+  
+  
+  //化简代码
+  //1 先找到第一次找到的索引值
+  //var index = arr.indexOf("a");
+  //console.log(index);
+  //需要给index设置初始值
+  //  var index = -1;
+  //
+  //  while (arr.indexOf("a", index + 1) != -1) {
+  //    index = arr.indexOf("a", index + 1);
+  //    console.log(index);
+  //  }
+  
+  
+  //这种方式与上一种相同，只不过写法有所区别
+  //var index = 0;
+  //while (arr.indexOf("a", index) != -1) {
+  //  index = arr.indexOf("a", index);
+  //  console.log(index);
+  //
+  //  //手动给index++;
+  //  index++;
+  //}
+</script>
+</body>
+</html>

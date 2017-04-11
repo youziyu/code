@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //事件 onresize
+  //窗口的大小改变时，触发事件
+  window.onresize = function () {
+    
+    //window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0;
+    //window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
+    
+    console.log(myClient().width);
+    console.log(myClient().height);
+    
+  };
+  
+  
+  function myClient() {
+    return {
+      width: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0,
+      height: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0
+    };
+  }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      padding: 10px;
+      border: 10px solid #000;
+      margin: 10px;
+      background-color: red;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //console.log($("#box").css("width"));//100px
+      
+      //获取操作
+      //width(); 获取的值为设置的width宽度
+      //console.log($("#box").width());
+      //console.log($("#box").height());
+      
+      //innerWidth() 获取的值含width + padding
+      //console.log($("#box").innerWidth());
+      //console.log($("#box").innerHeight());
+      
+      //outerWidth() 获取的值含width + padding + border
+      //console.log($("#box").outerWidth());
+      //console.log($("#box").outerHeight());
+      
+      //outerWidth(true); 获取的值含width + padding + border + margin
+      //console.log($("#box").outerWidth(true));
+      //console.log($("#box").outerHeight(true));
+      
+      
+    });
+  </script>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>

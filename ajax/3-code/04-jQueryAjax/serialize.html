@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <input type="email"  name="email">
+    </form>
+    <button class="ccc">提交</button>
+    <!--引包-->
+    <script src="js/jquery.min.js"></script>
+    <script>
+    $('.ccc').on('click',function(){
+       var formData=$('form').serialize();
+        console.log(formData);
+    })
+ 
+    </script>
+</body>
+</html>

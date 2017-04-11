@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    select {
+      width: 150px;
+      background-color: #0099cc;
+    }
+  </style>
+</head>
+<body>
+<!--左边的下拉菜单   multiple：可以让下拉菜单多选 -->
+<select id="leftSel" size="10" multiple="multiple">
+  <option>苹果</option>
+  <option>香蕉</option>
+  <option>西瓜</option>
+  <option>牛油果</option>
+  <option>西红柿</option>
+</select>
+
+<!--四个选择按钮位置-->
+<input type="button" value=">>" id="allRight">
+<input type="button" value="<<" id="allLeft">
+<input type="button" value=">" id="right">
+<input type="button" value="<" id="left">
+
+<!--右边的下拉菜单-->
+<select id="rightSel" size="10" multiple="multiple">
+</select>
+<script>
+  //1 获取元素
+  var leftSel = document.getElementById("leftSel");//左侧下拉菜单
+  var rightSel = document.getElementById("rightSel");//右侧下拉菜单
+  
+  var rightBtn = document.getElementById("right");//右移按钮
+  var leftBtn = document.getElementById("left");//左移按钮
+  var allRight = document.getElementById("allRight");//全部右移
+  var allLeft = document.getElementById("allLeft");//全部左移
+  
+  var leftOpt = leftSel.children;
+  var rightOpt = rightSel.children;
+  
+  
+  //2 右移按钮点击事件
+  rightBtn.onclick = function () {
+    //判断左侧所有按钮的选中状态，如果被选中selected为true，移动到右侧
+    //3 遍历
+    //正常的遍历可以取到 0 1 2 3 4  length值为5
+    //   当移动走一个元素以后，length变成4
+    //          这时只能获取到0 1 2 3
+    //每次移动走一个元素，都会减少一次遍历次数
+    
+    //为了保证循环的总次数一定，每次可以取到对应的一个元素
+    //length降低无法避免，我们可以让i相应的不增加
+    for (var i = 0; i < leftOpt.length; i++) {
+      //4 判断
+      if (leftOpt[i].selected == true) {
+        //5 右侧添加子节点
+        rightSel.appendChild(leftOpt[i]);
+        //我们遇到的问题：当我们同时移动多个时，会有一部分被选中的选项没有移动成功
+        //由于我们将左侧的选项移动到右侧，这时左侧的选项个数减少，导致leftOpt.length降低
+        //length降低导致i无法取到所有需要的值，会使遍历不完整，最后的几个元素无法被取到
+        //console.log(leftOpt.length);
+        
+        //进入if后，移动元素造成length降低，我们可以相应的抵消掉i的增加即可
+        i--;
+      }
+    }
+  };
+  
+  //6 左移按钮
+  leftBtn.onclick = function () {
+    //将右侧下拉菜单中的被选中的选项移动到左侧
+    //遍历
+    for (var i = 0; i < rightOpt.length; i++) {
+      if (rightOpt[i].selected) {
+        //如果被选中，移动到左侧
+        leftSel.appendChild(rightOpt[i]);
+        //每次移动走一个选项时，i--
+        i--;
+        
+      }
+    }
+    
+  };
+  
+  //全部右移按钮
+  allRight.onclick = function () {
+    //遍历左侧所有选项，依次移动到右侧
+    for (var i = 0; i < leftOpt.length; i++) {
+      rightSel.appendChild(leftOpt[i]);
+      i--;//每次移动后都需要进行抵消，也可以直接去掉循环中的i++
+    }
+  };
+  
+  //全部左移按钮
+  allLeft.onclick = function () {
+    for (var i = 0; i < rightOpt.length;) {
+      leftSel.appendChild(rightOpt[i]);
+    }
+  };
+
+
+</script>
+
+
+</body>
+</html>

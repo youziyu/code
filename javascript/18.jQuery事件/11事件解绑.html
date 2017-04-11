@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //off()  移除指定的事件
+      function fun() {
+        console.log("我是点击事件");
+      }
+      
+      $("#box").on("click", fun);
+//      $("#box").on("mouseenter", function () {
+//        console.log("我是移入事件");
+//      });
+      $("#box").on("click", "p", function () {
+        console.log("我是事件委托的代码");
+      });
+      
+      $("#btn").click(function () {
+        //1 解绑click事件:解绑所有的click事件（事件委托与普通事件）
+        //$("#box").off("click");
+        //2 解绑多个事件
+        //$("#box").off("click mouseenter");
+        //3 只解绑事件委托
+        //$("#box").off("click","**");
+        //4 可以解绑指定事件处理程序对应的事件(传入第二个参数为函数)
+        $("#box").off("click", fun);
+        //5 解绑元素的所有事件
+        $("#box").off();
+      });
+      
+    });
+  </script>
+</head>
+<body>
+<button id="btn">解绑</button>
+<div id="box">
+  <p>我是p标签</p>
+</div>
+</body>
+</html>

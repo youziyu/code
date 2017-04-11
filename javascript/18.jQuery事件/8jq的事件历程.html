@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 300px;
+      border: 1px solid #000;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //1 普通事件添加
+      //$("#btn").click(function () {
+      //  console.log("我执行了");
+      //});
+      //$("#btn").mouseenter(function () {
+      //  console.log("我执行了");
+      //});
+      
+      
+      //2 bind()  可以统一设置多个事件以及事件处理程序
+      //$("#btn").bind("click mouseenter mouseleave",function () {
+      //    console.log("我执行了");
+      //});
+      
+      //$("#btn").bind({
+      //  "click": function () {
+      //    console.log("我是点击事件，我执行了");
+      //  },
+      //  "mouseenter": function () {
+      //    console.log("我是移入事件，我执行了");
+      //  }
+      //});
+      
+      
+      ////场景1 给box内部的p标签添加事件
+      //$("#box>p").bind("click",function () {
+      //  console.log("我是p标签，我执行了点击");
+      //})
+      //
+      ////按钮点击后：给box内部创建一个子元素p
+      $("#btn").click(function () {
+        $("#box").append("<p>我是新的p标签</p>");
+      });
+      
+      //场景1 的问题，如果元素设置完事件后，在动态添加，这时新的元素不具有事件
+      
+      //3 delegate()  事件委托 事件代理
+      //参数设置方式 参数1 内部子元素的选择器  参数2 事件类型 参数3 事件处理程序
+      //给box设置事件委托，事件由内部p标签执行
+      $("#box").delegate("p","click",function () {
+        console.log("我是内部的p标签");
+      });
+      
+      
+    });
+  </script>
+</head>
+<body>
+<button id="btn">按钮</button>
+<div id="box">
+  <p>我是原始的p标签</p>
+</div>
+</body>
+</html>

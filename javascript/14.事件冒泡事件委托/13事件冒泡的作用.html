@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 200px;
+      height: 240px;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+<button id="btn">动态创建p标签</button>
+<div id="box">
+  <p>我是box内部的p标签</p>
+  <p>我是box内部的p标签</p>
+  <p>我是box内部的p标签</p>
+  <span>我是span</span>
+</div>
+
+<script>
+  var btn = document.getElementById("btn");
+  var box = document.getElementById("box");
+  
+  //给box内部的所有p标签设置点击事件
+  var ps = box.getElementsByTagName("p");//获取到了三个元素
+  for (var i = 0; i < ps.length; i++) {
+    ps[i].onclick = function () {
+      console.log("我是一个p标签");
+    };
+  }
+  
+  //给btn设置事件，动态在box内部创建一些新的p标签
+  btn.onclick = function () {
+    var newP = document.createElement("p");
+    newP.innerHTML = "我是新的p标签";
+    box.appendChild(newP);
+  };
+  
+  //我们发现动态创建的p标签没有原先设置的事件，想要有，需要每次单独设置
+
+
+</script>
+</body>
+</html>

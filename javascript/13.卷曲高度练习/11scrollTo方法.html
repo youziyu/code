@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    body {
+      height: 10000px;
+      width: 5000px;
+    }
+  </style>
+</head>
+<body>
+<button id="btn">跳转到1000</button>
+<script>
+  var btn = document.getElementById("btn");
+  btn.onclick = function () {
+    //参数1 为横向滚到多少的位置  参数2 纵向
+    window.scrollTo(2000, 2000);
+  };
+
+</script>
+</body>
+</html>

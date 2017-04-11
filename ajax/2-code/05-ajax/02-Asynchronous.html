@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.实例化对象
+        var xhr=new XMLHttpRequest();
+        // 2.设置请求行  open方法里如果有布尔值false 代表代码是同步的 没有是异步的
+        xhr.open('post','02-Asynchronous.php',false);
+        // 3.设置请求头
+        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+        // 4.设置请求正文
+        xhr.send(null);
+        // 5.监听并处理响应
+        // xhr.onreadystatechange=function(){
+        //     if(xhr.readyState==4&&xhr.status==200){
+        //         console.log(xhr.responseText);
+        //     }
+        // }
+         console.log(xhr.responseText);
+        console.log('处理完成');
+    </script>
+</body>
+</html>

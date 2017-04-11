@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    .clock {
+      width: 600px;
+      height: 600px;
+      margin: 100px auto;
+      background: url(images/clock.jpg) no-repeat;
+      position: relative;
+    }
+    
+    .clock div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(images/hour.png) no-repeat center center;
+    }
+    
+    #m {
+      background-image: url(images/minute.png);
+    }
+    
+    #s {
+      background-image: url(images/second.png);
+      /*让盒子旋转*/
+      /*旋转 度数*/
+      /*transform: rotate(30deg);*/
+      
+    }
+  </style>
+</head>
+<body>
+<div class="clock">
+  <div id="h"></div>
+  <div id="m"></div>
+  <div id="s"></div>
+</div>
+
+<script>
+  //1 获取元素
+  var h = document.getElementById("h");//小时
+  var m = document.getElementById("m");//分钟
+  var s = document.getElementById("s");//秒
+  
+  //2 需要根据时间的变化实时的进行旋转
+  setInterval(function () {
+    var date = new Date();
+    //3 计算旋转角度
+    //秒 360/60 = 6度
+    s.style.transform = "rotate(" + date.getSeconds() * 6 + "deg)";
+    
+    //分钟 360/60 = 6度
+    m.style.transform = "rotate(" + date.getMinutes() * 6 + "deg)";
+    
+    //小时  360/12 = 30度
+    h.style.transform = "rotate(" + date.getHours() * 30 + "deg)";
+    
+    
+  }, 1000);
+
+
+</script>
+</body>
+</html>

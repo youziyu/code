@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 400px;
+      height: 400px;
+      background-color: red;
+      display: none;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#btn1").click(function () {
+        //slideDown() 下拉效果
+        //如果不传参数，默认执行时间为400毫秒
+        //参数1为运动时间，可以为数值表示多少毫秒
+        //也可以为字符串，slow  normal  fast
+        //参数2 回调函数，运动完成后执行什么功能
+        $("#box").slideDown(1000, function () {
+          alert("我拉下来了");
+        });
+      });
+      
+      $("#btn2").click(function () {
+        //slideUp()  拉上去
+        $("#box").slideUp(1000, function () {
+          alert("我拉上去了");
+        });
+      });
+      
+      $("#btn3").click(function () {
+        //slideToggle()  如果当前为隐藏状态，会执行slideDown，如果当前为显示完全的状态，执行slideUp
+        $("#box").slideToggle(1000, function () {
+          alert("我切换了");
+        });
+      })
+      
+    });
+  </script>
+</head>
+<body>
+<button id="btn1">显示</button>
+<button id="btn2">隐藏</button>
+<button id="btn3">切换</button>
+<div id="box"></div>
+</body>
+</html>

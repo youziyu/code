@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<button id="btn">我是按钮，点击在页面中创建一个div</button>
+<script>
+  //在页面加载过程中使用document.write不会出现问题。
+  document.write("今天天气不错");
+  document.write("今天天气不错");
+  document.write("今天天气不错");
+  document.write("今天天气不错");
+  
+  var btn = document.getElementById("btn");
+  btn.onclick = function () {
+    //当我们在页面加载后使用document.write时，会开启一个新的输出流，这时会将原有的页面内容进行清空
+    //所有的事件执行都是在页面加载后的。
+    //结论：不要在事件中使用document.write();
+    
+    document.write("<div>我是新的div</div>");
+  };
+
+
+</script>
+</body>
+</html>

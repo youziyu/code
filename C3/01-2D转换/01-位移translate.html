@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>2D转换--位移translate</title>
+    <style type="text/css" media="screen">
+        html {
+            width: 100%;
+            height: 100%;
+        }
+        
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            /* 声明为伸缩容器 */
+            display: flex;
+            /* 调整主轴方向 */
+            flex-direction: column;
+            /* 调整主轴对齐 */
+            justify-content: space-between;
+            /* 调整侧轴对齐 */
+            align-items: center;
+        }
+        
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+        
+        .translate-x {
+           transition: all 1s;
+        }
+        .translate-y {
+          transition: all 1s;
+        }
+        .translate {
+           transition: all 1s;
+        }
+ /*任务1  让translate-x 向右移动500px;
+         学习的属性:transform 转换
+         translate走的距离是相对于自身的位置来说的
+         2D转换和3D转换都是假(全部都是视觉效果
+          不要去思考 转换后的元素的显示方式  不要考虑脱标与否
+         )
+ */
+ /*body:hover .translate-x{
+     transform: translateX(-300px);
+ }*/
+
+ /*body:hover .translate-y{
+     transform: translateY(300px);
+ }*/
+
+/*  注意:translate()一个值的时候代表的是X轴的位移
+*/
+body:hover  .translate{
+    transform: translate(-100px,-300px);
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="translate-x">
+        translateX()
+    </div>
+
+    <div class="translate-y">
+        transilateY()
+    </div>
+
+    <div class="translate">
+        translate()
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .outer{
+            width:500px;
+            height:500px;
+            border:1px solid red;
+            box-sizing: border-box;
+            margin: 100px auto;
+            position: relative;
+        }
+        .inner{
+            position: absolute;
+            top:-10px;
+            left:-10px;
+            width:20px;
+            height:20px;
+            background-color: hotpink;
+            border-radius: 50%;
+            transition:all 1s;
+
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <span class="inner"></span>
+    </div>
+</body>
+</html>

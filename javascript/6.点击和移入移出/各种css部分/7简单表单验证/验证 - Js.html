@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 250px;
+            height: 100px;
+            padding: 10px;
+            margin: 100px auto;
+            text-align: center;
+            border: 1px solid #000;
+        }
+
+        .container input {
+            color: gray;
+        }
+
+        .container span {
+            border: 1px solid #000;
+            width: 240px;
+            display: none;
+
+        }
+
+        .container span.show {
+            display: block;
+        }
+
+        .container span.right {
+            display: block;
+            border: 2px solid #6cff52;
+            background-color: #e5ffd1;
+        }
+
+        .container span.wrong {
+            display: block;
+            border: 2px solid #f32b35;
+            background-color: #ffc1b4;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    用户名：<input id="ipt" type="text" value="请输入用户名">
+    <br>
+    <br>
+    <span id="span">请输入admin</span>
+
+    <script>
+        //1 获取页面元素
+        var ipt = document.getElementById("ipt");
+        var span = document.getElementById("span");
+
+        //2 input添加事件
+        //3 当input获得焦点时做一些事
+        ipt.onfocus = function () {
+            //4 当ipt的值为默认值时，先清空value然后显示提示词
+            if (ipt.value == "请输入用户名") {
+                //让span显示
+                span.className = "show";
+                ipt.value = "";
+
+            }
+        };
+
+        //失去焦点事件
+        ipt.onblur = function () {
+            //当文本为空，我们将ipt.value还原为原始值，同时让span不显示
+            if(ipt.value == ""){
+                span.className = "";
+                ipt.value = "请输入用户名";
+                span.innerHTML = "请输入admin";
+            }else if(ipt.value =="admin"){
+                //对了就让span的类名设置为right
+                span.className = "right";
+                span.innerHTML = "恭喜你输入正确!";
+            }else{
+                //输入错误
+                span.className = "wrong";
+                span.innerHTML = "输入错误";
+            }
+        };
+
+
+    </script>
+</div>
+</body>
+</html>

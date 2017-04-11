@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //push() 返回值为数组的新长度  pop() 返回值为删除的元素
+  //unshift() 从数组最前面添加 shift() 返回值为删除的元素
+  
+  var arr = [1, 2, 3, 4, 5];
+  //将5添加到最前面 [5,1,2,3,4];
+  //var temp = arr.pop();//保存数组最后一个元素
+  //arr.unshift(temp);//将数组最后一个元素添加到最前面
+  //console.log(arr);
+  
+  //将1添加到数组最后
+  arr.push(arr.shift());
+  console.log(arr);
+
+
+</script>
+</body>
+</html>

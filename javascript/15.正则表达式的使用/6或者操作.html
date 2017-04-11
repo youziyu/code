@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  // 正则中的或者操作  |
+  //跟[abcd]相同，表示或，其中满足任意一个即可
+  //var reg = /a|b|c|d/;
+  
+  //如果有多种情况，并且每种情况的字符数不是一个，需要使用或者
+  var reg = /ab|bc/;
+  console.log(reg.test("abcd"));//true
+  console.log(reg.test("ad"));//false
+  console.log(reg.test("adbc"));//true
+
+</script>
+</body>
+</html>

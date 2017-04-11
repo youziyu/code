@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+
+</head>
+<body>
+<div id="box">
+  今天天气不错
+  <p>我是一个p标签</p>
+</div>
+<script>
+  //通过innerHTML属性去操作标签的内部内容
+  
+  //1 获取元素
+  var box = document.getElementById("box");
+  
+  //2 获取标签的文本内容和内部的子标签
+  //console.log(box.innerHTML);
+  
+  //3 设置box的内容，使用innerHTML设置标签内容，会将标签内的所有内容替换为新设置的值
+  //box.innerHTML = "呵呵";
+  
+  //4 在设置新内容的同时，保存旧的内容
+  //由于innerHTML在设置的时候会覆盖旧的内容
+  // 即使使用旧的内容进行拼接，生产后的子标签跟原来的子标签也不是同一个了，只不过长得一样
+  box.innerHTML = box.innerHTML + "我是新设置的内容";
+
+</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav {
+      height: 30px;
+      background: #036663;
+      border-bottom: 1px solid #369;
+      line-height: 30px;
+      padding-left: 30px;
+    }
+    
+    .nav a {
+      color: #fff;
+      text-align: center;
+      font-size: 14px;
+      text-decoration: none;
+      
+    }
+    
+    .d-box {
+      width: 400px;
+      height: 300px;
+      border: 5px solid #eee;
+      box-shadow: 2px 2px 2px 2px #666;
+      position: absolute;
+      top: 40%;
+      left: 40%;
+      background-color: white;
+    }
+    
+    .hd {
+      width: 100%;
+      height: 25px;
+      background-color: #7c9299;
+      border-bottom: 1px solid #369;
+      line-height: 25px;
+      color: white;
+      cursor: move;
+    }
+    
+    #box_close {
+      float: right;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div class="nav">
+  <a href="javascript:;" id="register">注册信息</a>
+</div>
+
+<!--盒子-->
+<div class="d-box" id="d_box">
+  <div class="hd" id="drop">注册信息 (可以拖拽)
+    <span id="box_close">【关闭】</span>
+  </div>
+  <div class="bd"></div>
+</div>
+<script src="common.js"></script>
+<script>
+  var d_box = document.getElementById("d_box");
+  var drop = d_box.children[0];
+  
+  //拖拽的部分为drop
+  
+  //1 点住的时候获取鼠标在盒子内的位置
+  drop.onmousedown = function (e) {
+    var e = e || window.event;
+    //获取盒子到定位父元素的距离时，不要使用drop，需要使用d_box
+    var x = e.clientX - d_box.offsetLeft;
+    var y = e.clientY - d_box.offsetTop;
+    //2 让盒子跟随鼠标
+    document.onmousemove = function (e) {
+      var e = e || window.event;
+      d_box.style.left = e.clientX - x + "px";
+      d_box.style.top = e.clientY - y + "px";
+    };
+  };
+  
+  //3 鼠标抬起时，清除移动的事件
+  drop.onmouseup = function () {
+    document.onmousemove = null;
+  };
+
+
+</script>
+</body>
+</html>

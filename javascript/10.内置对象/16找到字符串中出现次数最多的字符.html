@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //找出以上字符串中出现次数最多的字符和出现的次数
+  var str = "abaasfdffggghhjjkkgfddsssss334444343";
+  //使用对象进行操作
+  
+  //对象作为一种数据存储形式，可以使用名和值对应的存储方式
+  //使用对象模拟案例中的货物单
+  //var list = {
+  //  yu:2,
+  //  apple:1,
+  //  chaZi:3
+  //};
+  
+  //字符的记录单
+  var list = {};
+  //1 遍历字符串
+  for (var i = 0; i < str.length; i++) {
+    //str[i] 这是某一个字符
+    //根据str[i]在list中判断是否存在这个属性
+    //如果有某个字符的属性，让计数增加
+    //如果没有，设置属性，并且设置值为1
+    var temp = str[i];
+    if (list[temp]) {
+      //进入if，说明以前出现过，说明已经有了计数
+      list[temp]++;
+    } else {
+      //进入else，说明这个字符第一次出现
+      list[temp] = 1;
+    }
+  }
+  console.log(list);
+
+
+</script>
+</body>
+</html>

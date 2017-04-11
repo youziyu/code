@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>百度换肤</title>
+  <style>
+    html, body, div {
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      width: 100%;
+      background: url(images/1.jpg) no-repeat;
+    }
+    
+    .back {
+      width: 100%;
+      height: 180px;
+      background: rgba(255, 255, 255, 0.3);
+      padding-top: 50px;
+      text-align: center;
+    }
+    
+    .back img {
+      width: 200px;
+      cursor: pointer;
+      /*background: url(images/111.jpg);*/
+    }
+  </style>
+  <script>
+  
+  </script>
+</head>
+<body>
+<div class="back">
+  <img id="pic1" src="images/1.jpg" alt="">
+  <img id="pic2" src="images/2.jpg" alt="">
+  <img id="pic3" src="images/3.jpg" alt="">
+  <img id="pic4" src="images/4.jpg" alt="">
+  <img id="pic5" src="images/5.jpg" alt="">
+</div>
+
+<script>
+  //1 先获取要操作的元素
+  var pic1 = document.getElementById("pic1");
+  var pic2 = document.getElementById("pic2");
+  var pic3 = document.getElementById("pic3");
+  var pic4 = document.getElementById("pic4");
+  var pic5 = document.getElementById("pic5");
+  
+  //2 添加事件
+  pic1.onclick = function () {
+    //                                  注意字符串的匹配方式，从左往右看
+    document.body.style.backgroundImage = "url(" + pic1.src + ")";
+  };
+  
+  pic2.onclick = function () {
+    //在一个字符串中间添加内容，找到要添加的位置，两个引号，两个+，在书写要设置的内容
+    document.body.style.backgroundImage = "url(" + pic2.src + ")";
+  };
+  
+  pic3.onclick = function () {
+    document.body.style.backgroundImage = "url(" + pic3.src + ")";
+  };
+  
+  pic4.onclick = function () {
+    document.body.style.backgroundImage = 'url(' + pic4.src + ')';
+  };
+  
+  pic5.onclick = function () {
+    document.body.style.backgroundImage = "url(" + pic5.src + ")";
+  };
+
+</script>
+</body>
+</html>

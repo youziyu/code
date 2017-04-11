@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      transform: rotate(45deg);
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+  var box = document.getElementById("box");
+  var degs = 45;
+  
+  box.onclick = function () {
+    degs+=5;
+    this.style.transform = "rotate("+degs+"deg)";
+  };
+
+</script>
+</body>
+</html>

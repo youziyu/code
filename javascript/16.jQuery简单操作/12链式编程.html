@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script src="jquery-1.12.4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      //只有在设置型操作完成后，才可以使用链式编程
+//      $("#box").text("hehehe");
+      
+      //原因是，只有获取操作才需要设置返回值，设置型操作不需要返回值
+      //可以利用设置型操作的返回值，返回一个this
+      
+      
+      var obj = {};
+      obj.name = "张三";
+      
+      //设置name属性的方法
+      obj.setName = function (name) {
+        this.name = name;
+        //在设置型操作中，进行返回this
+        return this;//obj
+      };
+      
+      //获取name属性的放法
+      obj.getName = function () {
+        return this.name;
+      };
+      
+      obj.setName("hehe").setName("haha").getName();
+      
+      console.log(obj.name);//haha
+      
+    });
+  </script>
+</head>
+<body>
+<div id="box">我是box的内容</div>
+</body>
+</html>

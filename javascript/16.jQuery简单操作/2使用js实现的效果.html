@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    div{
+      height: 200px;
+      background-color: pink;
+      margin-bottom: 10px;
+      display: none;
+    }
+  </style>
+  <script>
+    //如果js书写在head中需要使用入口函数
+    //1 入口函数只能有一个
+    //window.onload = function () {
+    //};
+    
+    //2 简单的dom遍历操作，使用起来十分繁琐
+    //3 兼容性
+    //4 容错性差
+    //5 制作简单的运动十分麻烦
+    
+    
+  </script>
+</head>
+<body>
+<button id="btn1">让div显示</button>
+<button id="btn2">给div添加文本</button>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+<script>
+  //1 获取元素
+  var btn1 = document.getElementById("btn10");
+  var divs = document.getElementsByTagName("div");
+  
+  //2 点击事件，点击btn1时，让div显示
+ btn1.onclick = function () {
+   //遍历
+   for (var i = 0; i < divs.length; i++) {
+     divs[i].style.display = "block";
+   }
+ };
+ 
+ //3 点击按钮2 ，设置文本
+  var btn2 = document.getElementById("btn2");
+  btn2.onclick = function () {
+    for (var i = 0; i < divs.length; i++) {
+      //设置divs[i]的文本内容
+      divs[i].innerText = "我是div";
+    }
+  };
+
+</script>
+</body>
+</html>

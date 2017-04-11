@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+
+<script>
+  //1 根据id名获取元素
+  //console.log(document.getElementById("box"));
+  
+  //2 操作标签的样式
+  //document.getElementById("box").style;//访问标签的所有样式
+  
+  //在操作样式的时候需要指定要访问哪一种样式
+  document.getElementById("box").style.width = "100px";//设置box的宽度为100px
+  document.getElementById("box").style.height = "100px";
+  
+  //在css中加-的样式名,例如 background-color  font-size
+  //在js中书写数,去掉-,并且将后面的首字母大写 - 驼峰命名法
+  document.getElementById("box").style.backgroundColor = "red";
+  
+  //3 通过js设置的样式，显示在行内
+
+
+</script>
+</body>
+</html>

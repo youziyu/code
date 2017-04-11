@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    
+    //表达式：通过一段代码可以得到一个结果的式子
+    //返回值：通过一个式子得到的结果
+    
+    //bool表达式：返回值是bool类型的表达式
+    
+    
+    //三元（目）运算符
+    // bool表达式 ？ 条件为true执行 ： 条件为false执行；
+    //2 > 1 ? alert("呵呵") : alert("哈哈");
+    //如果使用三元运算符时，第一个表达式的值不是bool值，这时会进行隐式转换
+    //"hehe" ? alert("呵呵") : alert("哈哈");
+    
+    
+    //三元运算符在使用的同时，不仅可以指向性后面的某一个代码，还可以进行返回
+    // bool表达式 ？ 条件为true执行 ： 条件为false执行；
+    //根据bool表达式的结果选择返回值
+    //console.log(2 > 1 ? "2大" : "1大");
+    
+    //比較两个数的大小
+    var num1 = 20;
+    var num2 = 30;
+    
+    if (num1 > num2) {
+      console.log(num1);
+    } else {
+      console.log(num2);
+    }
+    
+    //使用三元运算符化简if else语句
+    //var max;
+    //max = num1 > num2 ? num1 : num2;
+    //console.log(max);
+    
+    
+    //又可以执行也有返回值的式子
+    //max = num1 > num2 ? parseInt("100") : parseInt("200");
+
+    //千万不要写这种形式，因为后期代码量大了以后，这种形式会是结构非常难看
+    //if (true)  console.log("hehe"); else alert("呵呵");
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

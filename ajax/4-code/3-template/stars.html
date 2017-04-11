@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JSON</title>
+	<style>
+		table {
+			width: 700px;
+			border-collapse: collapse;
+		}
+		td {
+			height: 40px;
+			text-align: center;
+			border: 1px solid #CCC;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<!--<tr>
+			<td>王力宏</td>
+			<td>./images/wlh.jpg</td>
+			<td>39</td>
+			<td>男</td>
+			<td><<改变自已>></td>
+		</tr>-->
+	</table>
+	<div class="btn"><input type="button" value="获取数据"></div>
+	<!--1.创建模板-->
+	<script type="text/template" id="temp">
+	<%for(var i=0;i<con.length;i++){%>
+		<tr>
+			<td><%=con[i].name%></td>
+			<td><%=con[i].photo%></td>
+			<td><%=con[i].ablum%></td>
+			<td><%=con[i].age%></td>
+			<td><%=con[i].sex%></td>
+		</tr>
+		<%}%>
+	</script>
+	<script src="js/template-native.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<!--2.引入库文件-->
+	<!--3.发起ajax请求-->
+	<script>
+		$('.btn input').click(function(){
+			$.ajax({
+				type:'post',
+				url:'stars.php',
+				data:null,
+				success:function(data){
+					console.log(data);
+					var flag={
+						con:data
+					}
+					var result=template('temp',flag);
+					// console.log(result);
+					$('table').html(result);
+
+				}
+			})
+		})
+	</script>
+</body>
+</html>

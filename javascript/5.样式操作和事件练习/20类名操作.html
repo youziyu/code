@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    .current{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div id="box" class="box6"></div>
+<script>
+  var box = document.getElementById("box");
+  //由于class是js的关键字，在访问标签的类名属性时，不能使用box.class
+  //使用box.className,这个属性相当于操作标签的行内class属性值
+  //console.log(box.className);
+  
+  box.className = "current";
+
+</script>
+</body>
+</html>

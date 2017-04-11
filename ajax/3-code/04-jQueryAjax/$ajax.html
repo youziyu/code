@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        table {
+            width: 800px;
+            border-collapse: collapse;
+        }
+        
+        td {
+            height: 40px;
+            text-align: center;
+            border: 1px solid #CCC;
+        }
+    </style>
+
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>王力宏</td>
+            <td>39</td>
+            <td>男</td>
+        </tr>
+    </table>
+    <input type="button" value="获取数据">
+    <!--引包-->
+   <script src="js/jquery.min.js"></script>
+   <!--2.书写js代码-->
+   <script>
+   $('input').on('click',function(){
+       $.ajax({
+           type:'post',
+           url:'stars.php',
+           data:null,
+           timeout:100000,
+           dataType:'html',
+           beforeSend:function(){
+               console.log('请求发起前');
+           },
+           success:function(result){
+               var arr=JSON.parse(result);
+               console.log(arr);
+            //    console.log(result);
+            var html='';
+            for(var i=0;i<arr.length;i++){
+                html+=
+                        '<tr>'+
+                            '<td>'+arr[i].name+'</td>'+
+                            '<td>'+arr[i].photo+'</td>'+
+                            '<td>'+arr[i].ablum+'</td>'+
+                             '<td>'+arr[i].age+'</td>'+
+                              '<td>'+arr[i].sex+'</td>'+
+                        '</tr>';
+            }
+            // console.log(html);
+            $('table').html(html);
+           },
+           error:function(error){
+               console.log('--------------')
+               console.log(error);
+               console.log('--------------')
+           },
+           complete:function(){
+               console.log('请求完成(无论请求成功还是失败都会触发)')
+           }
+       })
+   })
+   
+   </script>
+</body>
+
+</html>

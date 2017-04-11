@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        select {
+            width: 150px;
+            background-color: #0099cc;
+        }
+    </style>
+</head>
+<body>
+<!--左边的下拉菜单-->
+<select id="all" size="10" multiple="multiple">
+    <option>苹果</option>
+    <option>香蕉</option>
+    <option>西瓜</option>
+    <option>牛油果</option>
+    <option>西红柿</option>
+</select>
+
+<!--四个选择按钮位置-->
+<input type="button" value=">>" id="allRight">
+<input type="button" value="<<" id="allLeft">
+<input type="button" value=">" id="right">
+<input type="button" value="<" id="left">
+
+<!--右边的下拉菜单-->
+<select id="select" size="10" multiple="multiple">
+</select>
+
+<script>
+    //1 获取页面元素
+    var right = my$("right");
+    var left = my$("left");
+    var all = my$("all");
+    var opts = all.children;
+    var select = my$("select");
+    var allRight = my$("allRight");
+    var allLeft = my$("allLeft");
+
+
+    //点击右按钮
+    right.onclick = function () {
+        //遍历all中所有的opt
+        for (var i = opts.length - 1; i >= 0; i--) {
+            if (opts[i].selected === true) {
+                //添加到右面
+                select.appendChild(opts[i]);
+            }
+        }
+    };
+    //    right.onclick = function () {
+    //        //遍历all中所有的opt
+    //        moveSelect(all, select);
+    //    };
+
+    left.onclick = function () {
+//        var son = select.children;
+//        for (var i = 0; i < son.length; i++) {
+//            if (son[i].selected) {
+//                all.appendChild(son[i]);
+//
+//            }
+//        }
+        moveSelect(select, all);
+    };
+
+
+    //-------------------全移动部分--------------------
+    allRight.onclick = function () {
+        for (var i = 0; i < opts.length; i++) {
+            select.appendChild(opts[i]);
+            i--;
+        }
+    };
+
+    allLeft.onclick = function () {
+        for (var j = 0; j < select.length; j++) {
+            all.appendChild(select[j]);
+            j--;
+        }
+    };
+
+
+    /**
+     *
+     * @param current 当前的元素在哪个区域
+     * @param tar     要移动到哪个区域
+     */
+    function moveSelect(current, tar) {
+        var son = current.children;
+        for (var i = 0; i < son.length; i++) {
+            if (son[i].selected) {
+                tar.appendChild(son[i]);
+                i--;
+            }
+        }
+    }
+
+    function my$(id) {
+        return document.getElementById(id);
+    }
+
+</script>
+</body>
+</html>

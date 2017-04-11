@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box1 {
+      width: 400px;
+      height: 400px;
+      background-color: pink;
+    }
+    
+    #box2 {
+      width: 200px;
+      height: 200px;
+      background-color: orange;
+    }
+    
+    #box3, #box4 {
+      width: 100px;
+      height: 100px;
+      background-color: cadetblue;
+    }
+    
+    #box4 {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+<div id="box1">
+  <div id="box2">
+    <div id="box3">box3</div>
+    <div id="box4">box4</div>
+  </div>
+</div>
+<script>
+  var box1 = document.getElementById("box1");
+  var box2 = document.getElementById("box2");
+  var box3 = document.getElementById("box3");
+  var box4 = document.getElementById("box4");
+  
+  //给三个盒子添加点击事件
+  //通过观察我们发现，某些元素在触发事件时，不仅执行了自身的事件，还会触发父级的事件
+  
+  //原因： 事件的默认执行方式为事件冒泡
+  //事件冒泡：当前元素触发后，向父元素传播，一直再向父元素传递，传递过程中，任何一个父级具有相同事件，都会进行触发
+  // （从最特定的元素触发到最不特定的元素）
+  
+  //事件冒泡在传播的过程中只涉及到父级，不会触发同级
+  //  box1.onclick = function () {
+  //    console.log("box1");
+  //  };
+  //  box2.onclick = function () {
+  //    console.log("box2");
+  //  };
+  //  box3.onclick = function () {
+  //    console.log("box3");
+  //  };
+  //  box4.onclick = function () {
+  //    console.log("box4");
+  //  };
+  
+  //使用addEventListener的第三个参数为false表示冒泡，默认值为false，所以一般不传这个参数
+  box1.addEventListener("click", function () {
+    console.log("box1");
+  }, false);
+  box2.addEventListener("click", function () {
+    console.log("box2");
+  }, false);
+  
+  
+  //attachEvent不支持第三个参数，在ie低版本中只存在事件冒泡
+
+</script>
+</body>
+</html>

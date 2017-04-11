@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<button id="jump">跳转</button>
+<button id="up">前进</button>
+<script>
+  //window.history
+  
+  var jump = document.getElementById("jump");
+  var up = document.getElementById("up");
+  
+  //点击按钮jump将页面跳转
+  jump.onclick = function () {
+    location.href = "test.html";
+  };
+  up.onclick = function () {
+    //前进 go(1)
+    //history.go(1);
+    //forward() 前进方法
+    history.forward();
+    
+  };
+
+</script>
+</body>
+</html>

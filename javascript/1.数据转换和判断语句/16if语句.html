@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //if语句掌握三种使用方式
+    //1 单if
+    //根据判断条件，选择是否执行，如果条件为true，执行，条件为false，什么也不做
+    //if (false) {
+    //  alert("今天天气不错");
+    //}
+    
+    //2 if else  适用于两种情况，两者必选其一
+    //if(false){
+    //  //条件为true，执行if内的代码
+    //  console.log("买苹果");
+    //}else{
+    //  //条件为false，执行else内的代码
+    //  console.log("买橘子");
+    //}
+    
+    //3 多种情况 if else if  else if....  else
+    //var num = 100;
+    ////判断相等的推荐写法
+    //if (90 == num) {
+    //  console.log("我是90");
+    //} else if (80 == num) {
+    //  console.log("我是80");
+    //}else if (70 == num) {
+    //  console.log("我是70");
+    //}else{
+    //  console.log("对不起，没有猜对");
+    //}
+    
+    //if语句的条件判断会进行隐式转换
+    //if(0){
+    //  console.log("我执行了");
+    //}else{
+    //  console.log("我进入else了");//可以执行
+    //}
+    
+    
+    //根据学生的成绩，判断 优良 及格 不及格
+    //1 需要使用的数据：成绩（让用户输入，自己随便设置一个）
+    var score = parseInt(prompt("请输入考试成绩", 0));
+    //console.log(typeof score);//通过prompt获取的结果是一个字符串类型
+    
+    //2 分析结构，代码执行的情况4种，额外情况还有一种（取值超出范围）
+    //3 根据代码结构选用if语句
+    if (score > 100 || score < 0) {//判断数值是否超出范围
+      alert("哥们，你的成绩逆天了");
+    } else if (score >= 90) {
+      alert("优秀，厉害啊");
+    } else if (score >= 70) {
+      alert("良");
+    } else if (score >= 60) {
+      alert("及格");
+    } else {
+      alert("sorry，没过");
+    }
+  
+    
+    
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

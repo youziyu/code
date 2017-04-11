@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>瀑布流案例</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+			font-family: '微软雅黑';
+		}
+		
+		.wrapper {
+			padding: 50px;
+		}
+		
+		img {
+			display: block;
+			width: 100%;
+			height: 300px;
+		}
+		
+		.items {
+			position: relative;
+		}
+		
+		.item {
+			width: 228px;
+			position: absolute;
+		}
+		
+		.tips {
+			width: 280px;
+			height: 40px;
+			margin: 30px auto 0;
+			text-align: center;
+			line-height: 40px;
+			background-color: #CCC;
+			border-radius: 6px;
+			font-size: 24px;
+			cursor: pointer;
+		}
+		
+		.tips.loading {
+			background-color: transparent;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="items">
+			<!--<div class="item" style="top: 0px; left: 0px;">
+				<img src="./images/1.jpg" alt="">
+				<p>一支素笔，一杯花茶，一段时光，浅笑又安然一场盛世的繁华，愿不倾城，不倾国，只倾我所有。只为过简单安稳的生活，单纯不平凡。一支素笔，一杯花茶，一段时光，浅笑又安然。早安！</p>
+			</div>-->
+		</div>
+		<p class="tips loading">正在加载...</p>
+	</div>
+
+</body>
+<!--引入库文件-->
+<script src="js/jquery.min.js"></script>
+<!--waterFall是一个jquery瀑布流插件-->
+<script src="js/jquery.waterFall.js"></script>
+<!--template-native是一个js的工具 模板引擎库文件-->
+<script src="js/template-native.js"></script>
+<!--写模板-->
+<script type="text/template" id="templ">
+	<%for(var i=0;i<items.length;i++){%>
+		<div class="item">
+			<img src="<%=items[i].path%>" alt="">
+			<p>
+				<%=items[i].text%>
+			</p>
+		</div>
+		<%}%>
+</script>
+<!--1.首屏加载-->
+<!--1.1 按钮文字从正在加载变成点击加载 按钮背景由透明变成灰色-->
+<!--2.点击加载-->
+<!--3.滚动加载-->
+<script>
+	// 当页面加载完成 请发起ajax请求
+	$(document).ready(function () {
+		function getData(pageNum) {
+			$.ajax({
+				type: 'post',
+				url: 'data.php',
+				// name=itcast
+				data: {page:pageNum},//'page='+pageNum
+				beforeSend: function () {
+					// 变按钮
+					$('.tips').text('正在加载...').addClass('loading');
+				 },
+				success: function (result) {
+					// var result={
+					// items:Array[10]
+					// page:2
+					// }
+					// console.log(result);
+					// 把模板和数据绑定到一块
+					var tempResult = template('templ', result);
+					// console.log(tempResult);
+					$('.items').append(tempResult);
+					// 瀑布流布局
+					$('.items').waterFall();
+					// 把数据缓存到一个标签上作为标签的属性值
+					$('.tips').attr('data-page',result.page);
+				},
+				complete: function () {
+					$('.tips').text('点击加载').removeClass('loading');
+				}
+			})
+		}
+		getData(1);
+		// 1.首屏加载 声明一个函数
+		// 2.在函数中 直接就来ajax请求 
+		// 3. 返回的数据和模板绑定起来
+		// 4. 写入到页面上  所有数据都在页面上叠加了
+		// 5. 用瀑布流插件一调用完事
+
+		// 点击加载
+		$('.tips').click(function(){
+			var page=$(this).attr('data-page');
+			getData(page);
+		})
+
+		// 滚动加载
+		$(window).scroll(function(){
+			// 1.获取items的高度
+			var itemsHeight=$('.items').height();
+			// 2.获取items距离html页面顶部的距离
+			var itemsTop=$('.items').offset().top;
+			// 3.获取浏览器的高度
+			var windowHeight=$(window).height();
+			// 4.卷曲高度
+			var windowTop=$(window).scrollTop();
+
+			// 5.计算剩余的高度
+			var offset=itemsHeight+itemsTop-windowHeight-windowTop;
+			// offset的值不是连续的 因此我们可以判断 offset的值小于多少的时候去加载
+			if(offset<200&&!$('.tips').hasClass('loading')){
+				// var page=$(this).attr('data-page'); 错误的
+				// 原因在于 $(this)代表的是window page这个数字在$('.tips')中
+				var page=$('.tips').attr('data-page');
+				getData(page);
+			}
+		})
+	})
+
+</script>
+
+
+
+</html>

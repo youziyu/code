@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      display: none;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //1 点击按钮后，先手动成一种动画的积累状态
+      $("#btn1").click(function () {
+        $("#box").slideDown(1000).slideUp(1000).slideDown(1000).slideUp(1000).slideDown(1000).slideUp(1000).slideDown(1000).slideUp(1000).slideDown(1000).slideUp(1000).slideDown(1000).slideUp(1000);
+      });
+      
+      //2 按钮2 点击后，使用stop方法进行插队
+      $("#btn2").click(function () {
+        //stop(是否清除动画队列,是否跳到当前动画的最终效果)
+        
+        //true,true 清除动画队列，同时跳到当前运动的最终效果
+        //由于运动的比較突兀，一般不使用这一种操作
+        //$("#box").stop(true,true);
+        
+        //true,false 暂停
+        //$("#box").stop(true,false);
+        
+        //false,true 不清除动画队列，并且跳到当前运动最终效果
+        //$("#box").stop(false,true);
+        
+        //false,false 不清除动画队列，并且不跳到当前运动的最终效果
+        //两个参数的默认值均为falsefalse
+        //$("#box").stop(false,false);
+        $("#box").stop();
+        
+      });
+      
+    });
+  </script>
+</head>
+<body>
+<button id="btn1">运动</button>
+<button id="btn2">插队</button>
+<div id="box"></div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    
+    img {
+      position: absolute;
+      display: none;
+    }
+  
+  </style>
+</head>
+<body>
+<img src="images/tianshi.gif" id="ts">
+<script>
+  var ts = document.getElementById("ts");
+  
+  //跟着鼠标移动的小天使
+  document.onmousemove = function (e) {
+    
+    //1 兼容事件对象
+    var e = e || window.event;
+    //2 获取鼠标位置。设置给ts
+    ts.style.left = e.clientX + "px";
+    ts.style.top = e.clientY + "px";
+    ts.style.display = "block";
+  };
+
+
+</script>
+</body>
+</html>

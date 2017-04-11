@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //创建多个同学
+    
+    //    var stu1 = new Object();
+    //    stu1.name = "张三";
+    //    stu1.age = 18;
+    //    stu1.sayHi = function () {
+    //      console.log("hello");
+    //    };
+    //
+    //    var stu2 = new Object();
+    //    stu1.name = "李四";
+    //    stu1.age = 24;
+    //    stu1.sayHi = function () {
+    //      console.log("hello");
+    //    };
+    
+    function createStu(xingMing, nianLing) {
+      //1 创建一个对象
+      var stu1 = new Object();
+      //2 设置属性方法
+      stu1.name = xingMing;
+      stu1.age = nianLing;
+      stu1.sayHi = function () {
+        console.log("hello");
+      };
+      //3 返回这个创建的对象
+      return stu1;
+    }
+    
+    
+    //使用函数创建第一个对象
+    var stu1 = createStu("张三", 18);
+    console.log(stu1.name);
+    
+    //创建第二个对象
+    var stu2 = createStu("李四", 20);
+    console.log(stu2.name);
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //cloneNode() 参数为false，浅复制（只复制标签不复制内部内容） 默认值为false
+  //参数为true表示深复制，复制标签和内部内容，无法复制事件
+  
+  //节点的属性
+  //nodeType 节点类型   1表示元素节点  2属性节点  3文本节点  9document  11documentFragment
+  //nodeValue 节点值   元素节点没有节点值，值为null  文本节点为内部文本  属性节点为属性值
+  //nodeName 节点名   元素节点的节点名是标签名：在html是大写形式 在xhtml中是小写形式
+  //                  文本节点的节点名是#text  属性节点的节点名是属性名
+  
+  //标签的行内属性操作：
+  //使用标签.行内属性名   可以操作标签行内自带的属性
+  //使用getAttribute操作标签行内的任意属性
+  //设置行内属性使用setAttribute()
+  //移除使用removeAttribute()
+  
+  //属性和属性节点，属性操作实际上是操作属性节点的节点值，如果操作属性节点反而十分复杂
+  
+  
+  //BOM:浏览器对象模型：给用户提供一些方式让用户可以使用浏览器的一些功能(了解)
+  //window是BOM的顶级对象，所有的window的属性和方法都可以不加window使用。
+  //所有的全局变量都是window的属性
+  // 如果想在局部作用域中使用一个全局变量(并且当前作用域中声明了同名的局部变量)，可以使用window.变量名
+  
+  //  var num = 100;
+  //  function fun() {
+  //    var num = 1000;
+  //    window.num
+  //  }
+  
+  //定时器
+  //timeout:延迟执行代码
+  //设置方式  setTimeout(function(){},1000);  //设置后可以返回这个定时器的标识
+  //清除方式  clearTimeout(定时器标识)
+  
+  //interval：间隔一段时间重复执行代码
+  //设置方式   setInterval(function(){},1000);
+  //清除方式   clearInterval(定时器标识)
+  
+  
+  //单线程和多线程：做事情的人数不同，单线程只有一个人，多线程有多个人
+  //同步和异步：同步代码设置在主线程中，按照顺序一个一个执行
+  //      异步任务：当一个任务比較耗时或者执行时间不确定
+  //      异步任务：事件，定时器，Ajax
+  //      异步任务不会直接添加到主线程中，而是添加到任务队列，等待可以执行时，添加到主线程的最后
+  
+  
+
+
+</script>
+</body>
+</html>

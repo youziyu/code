@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		h3 {
+			text-align: center;
+		}
+
+		.chatbox {
+			width: 500px;
+			height: 500px;
+			margin: 0 auto;
+			border: 1px solid #CCC;
+			background-color: #FFF;
+			border-radius: 5px;
+		}
+
+		.messages {
+			height: 350px;
+			padding: 20px 40px;
+			box-sizing: border-box;
+			border-bottom: 1px solid #CCC;
+			overflow: scroll;
+		}
+
+		.messages h5 {
+			font-size: 20px;
+			margin: 10px 0;
+		}
+
+		.messages p {
+			font-size: 18px;
+			margin: 0;
+		}
+
+		.self {
+			text-align: left;
+		}
+
+		.other {
+			text-align: right;
+		}
+
+		.form {
+			height: 150px;
+		}
+
+		.form .input {
+			height: 110px;
+			padding: 10px;
+			box-sizing: border-box;
+		}
+
+		.form .btn {
+			height: 40px;
+			box-sizing: border-box;
+			border-top: 1px solid #CCC;
+		}
+
+		.form textarea {
+			display: block;
+			width: 100%;
+			height: 100%;
+			box-sizing: border-box;
+			border: none;
+			resize: none;
+			outline: none;
+			font-size: 20px;
+		}
+
+		.form input {
+			display: block;
+			width: 100px;
+			height: 30px;
+			margin-top: 5px;
+			margin-right: 20px;
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<h3>简单的Ajax实例</h3>
+	<div class="chatbox">
+		<!-- 聊天内容 -->
+		<div class="messages">
+
+		</div>
+		<!-- 表单 -->
+		<div class="form">
+			<!-- 输入框 -->
+			<div class="input">
+				<textarea></textarea>
+			</div>
+			<!-- 按钮 -->
+			<div class="btn">
+				<input type="button" value="发送">
+			</div>
+		</div>
+	</div>
+	<!--1.新建一个模板-->
+	<script type="text/template" id="templ">
+		<div class="<%=flag%>">
+			<%if(flag=='self'){%>
+			<h5>我说</h5>
+			<%}else{%>
+			<h5>对方说</h5>	
+			<%}%>
+			<p><%=content%></p>
+		</div>
+	</script>
+	<!--2.引入模板库-->
+	<script src="js/template-native.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<!--3.引入jquery-->
+<!--
+总结:如何使用模板引擎
+    1.引入模板引擎库
+	2.新建模板 模板里的变量是对象的属性
+	3.data是对象
+	4.使用template(id,data)
+-->
+<script>
+//我说
+// 1.获取按钮 给按钮添加点击事件
+$('.btn input').on('click', function () {
+    // 2.获取自己说的话
+    var selfMsg = $('.input textarea').val();
+    // 3.绑定模板 数据
+    var data = {
+        flag: 'self',
+        content: selfMsg
+    };
+    var result = template('templ', data);
+    // console.log(result);
+    // 4.把绑定完成的结构和数据添加到对话显示窗口
+    $('.messages')[0].innerHTML+=result;
+    // 情况输入框
+    $('.input textarea').val('');
+
+
+// 对方说
+$.ajax({
+    type: 'post',
+    url: 'chat.php',
+    data: null,
+    success: function (result) {
+        var odata = {
+            flag: 'other',
+            content: result
+        }
+	var otherMsg=template('templ',odata);
+		$('.messages')[0].innerHTML+=otherMsg;
+    }
+})
+})
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<button id="stop">停止</button>
+<script>
+  //interval 间隔一段时间重复执行代码
+  
+  //1 设置interval
+  var timer = setInterval(function () {
+    //内部代码每间隔一秒重复执行一次
+    console.log("我执行了");
+  }, 1000);
+  
+  //根据个人喜好不同会有多种书写方式，没有本质区别
+  //var timer = null;
+  //timer = setInterval(function () {
+  //}, 1000);
+  
+  //2 清除interval
+  var btn = document.getElementById("stop");
+  btn.onclick = function () {
+    clearInterval(timer);
+  };
+
+
+</script>
+</body>
+</html>

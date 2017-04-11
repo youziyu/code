@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    body {
+      width: 10000px;
+      height: 10000px;
+    }
+  </style>
+</head>
+<body>
+
+
+<script>
+  //offset系列5个
+  //offsetLeft 当前元素到定位父盒子的左侧距离（当前元素的左边框外侧到定位父盒子左边框内侧）
+  //offsetTop  当前元素到定位父盒子的顶部距离（当前元素的顶边框外侧到定位父盒子顶边框内侧）
+  
+  //offsetWidth  宽度（除了margin以外的所有宽度）
+  //offsetHeight 高度（除了margin以外的所有宽度）
+  
+  //offsetParent-干爹  获取定位父盒子  跟parentNode进行区分-亲爹
+  
+  //scroll系列
+  //scrollWidth  内部内容的真实宽度
+  //scrollHeight  内部内容的真实高度
+  //情况1 ： 内容的高超出了当前元素，计算方式为顶边框内侧计算到内容底部
+  //情况2 ： 内容没有超出当前元素，计算方式为顶边框和底边框之间的距离
+  
+  //scrollLeft  当我们拖动滚动条时，左侧滚出元素边框的部分
+  //scrollTop   当我们拖动滚动条时，顶部滚出元素边框的部分
+  
+  //client系列
+  //clientWidth   元素内部的真实宽度（左边框和右边框之间的距离）
+  //clientHeight  元素内部的真实高度（顶边框和底边框之间的距离）
+  
+  //clientLeft  相当于borderLeft  如果元素的滚动条在左侧显示，clientLeft会包含滚动条的宽度17px
+  //clientTop   相当于borderTop
+  
+  
+  //页面的卷曲高度和宽度
+  function myScroll() {
+    return {
+      top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0,
+      left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0
+    };
+  }
+  
+  
+  //window.onscroll = function () {
+  //  //如果想要实时获取页面卷曲的高度，需要在事件内获取
+  //  var pos = myScroll();
+  //
+  //  //获取页面的卷曲高度
+  //  console.log(pos.top);
+  //  console.log(pos.left);
+  //};
+  
+  function myClient() {
+    return {
+      width: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0,
+      height: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0
+    };
+  }
+  
+  window.onresize = function () {
+    var size = myClient();
+    console.log(size.width);
+    console.log(size.height);
+  };
+
+</script>
+</body>
+</html>

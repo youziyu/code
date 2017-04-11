@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>2D转换--旋转rotate</title>
+	<style type="text/css" media="screen">
+	html{
+		width:100%;
+		height:100%;
+	}
+	body{
+		width:100%;
+		height:100%;
+		margin:0;
+		padding:0;
+
+		/* 声明为伸缩容器 */
+		display:flex;
+		/* 调整主轴方向 */
+		flex-direction:column;
+		/* 调整主轴对齐 */
+		justify-content:space-around;
+		/* 调整侧轴对齐 */
+		align-items:center;
+	}
+		div{
+			width:100px;
+			height:100px;
+			background-color:green;
+			transition:all 3s;
+		}
+
+		/*鼠标移入body 让clockwise 顺时针旋转90deg*/
+		body:hover .clockwise{
+			transform:rotate(0deg);
+		}
+		/*鼠标移入body 让anti-clockwise逆时针旋转90deg*/
+		body:hover div:last-child{
+			transform: rotate(-90deg);
+		}
+	
+	</style>
+</head>
+<body>
+	<div class="clockwise">
+		顺时针旋转
+	</div>
+	
+	
+	<div class="anti-clockwise">
+		逆时针旋转
+	</div>
+	
+</body>
+</html>

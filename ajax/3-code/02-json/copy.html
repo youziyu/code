@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // json 符合js对象格式的字符串
+    // var obj={
+    //   "name":"tome",
+    //   "age":10
+    // }
+    // 在js中或html中的写法  当然还有一种写法
+    var jsonObj='{"name":"tom","age":10,"sex":"男"}';
+    // 如果数据较多  就用数组
+    var jsonArr='[{"name":"liLy","age":18},{"name":"tom","age":10}]';
+
+// 还有一种方法  但是现在早就不用了
+// eval() 能把传入的字符串当作javascript代码执行
+  // var objx=eval('('+jsonArr+')');
+  // console.log(objx);
+
+
+    // json的解析
+    // 1. 如何把json字符串变成对象
+    // var obj(对象)=  JSON.parse(json字符串)
+    // var obj=JSON.parse(jsonObj);
+    var obj=JSON.parse(jsonArr);
+    console.log(obj);
+
+    // 2.如何把对象变成json
+    var objs={
+      name:"刘备",
+      age:45,
+      son:'刘禅'
+    };
+    
+    // JSON.stringify(obj);
+    // var jsonStr=JSON.stringify(objs);
+    // console.log(typeof jsonStr);
+  </script>
+</body>
+</html>

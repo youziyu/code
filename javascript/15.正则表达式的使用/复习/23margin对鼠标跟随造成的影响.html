@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      margin-left: 100px;
+      margin-top: -50px;
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+  var box = document.getElementById("box");
+  
+  document.onmousemove = function (e) {
+    var e = e || window.event;
+    //如果元素设置了margin，在进行跟随时，要减去设置的值
+    box.style.left = e.clientX - 100 + "px";
+    box.style.top = e.clientY + 50 + "px";
+  }
+
+</script>
+</body>
+</html>

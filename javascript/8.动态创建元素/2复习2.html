@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<!--<div id="box"></div>-->
+<!--<div></div>-->
+<!--<div></div>-->
+<!--<div></div>-->
+
+
+<div id="box">
+  <p id="oldP">我是旧的p标签</p>
+</div>
+<p id="text">我是一个p标签</p>
+<script>
+  //1 节点:节点是对页面中所有内容的统称
+  //  标签：元素节点、页面元素
+  //  文本：文本节点
+  //  属性：属性节点
+  //  注释：注释节点
+  //  document：根节点
+  
+  //2 节点树、树模型
+  
+  //3 我们可以通过节点树之间每个节点的关系，进行访问
+  
+  //4 节点访问关系分为两种：父子关系（上下级）  同级关系（同级）
+  
+  //5 访问父节点   节点.parentNode  任意节点的父节点永远是元素节点
+  
+  //6 访问所有子节点  节点.childNodes  结果是伪数组  会包含空格和换行
+  //    访问所有元素子节点  节点.children   结果是伪数组  --- 一般使用这种形式
+  
+  //7 获取子节点
+  // firstChild 第一个子节点 会包含空格和换行
+  // firstElementChild 第一个元素子节点 ie9以下不支持
+  // 使用 节点.children[0] 进行替换使用即可
+  
+  // lastChild 最后一个子节点 会包含空格和换行
+  //lastElementChild 最后一个元素子节点 ie9以下不支持
+  // 使用 节点.children[节点.children.length - 1];
+  
+  
+  //8 同级元素
+  // nextSibling 下一个同级节点 会包含空格和换行
+  // nextElementSibling 下一个同级元素节点 ie9以下不支持
+  // previousSibling 上一个同级节点 会包含空格和换行
+  // previousElementSibling 上一个同级元素节点 ie9以下不支持
+  
+  // 同级元素的访问中，如果获取不到结果，这时返回null
+  //var box = document.getElementById("box");
+  
+  //console.log(box.previousElementSibling);
+  //console.log(box.previousSibling);
+  
+  
+  //节点的移动
+  //父节点.appendChild(要添加的元素) 追加子节点   添加位置是所有子节点的最后
+  
+  //父节点.insertBefore(要插入的节点，要参考的子节点)  插入子节点
+  
+  var box = document.getElementById("box");
+  var text = document.getElementById("text");
+  var oldP = document.getElementById("oldP");
+  
+  //  box.onclick = function () {
+  //    box.appendChild(text);
+  //  };
+  
+  box.onclick = function () {
+    box.insertBefore(text, oldP);
+  };
+</script>
+</body>
+</html>

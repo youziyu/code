@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>上传</title>
+    <style>
+        form {
+            width: 250px;
+            margin: 100px auto;
+        }
+
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+        input[type="file"]{
+            width:140px;
+        }
+        input[type="submit"] {
+            display: inline-block;
+            width: 100%;
+            background-color: lawngreen;
+            border: none;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="upload.php" method="POST" enctype="multipart/form-data">
+        <!--1. 设置提交地址-->
+        <!--2. 设置提交方式  在文件上传只能用post-->
+        <!--3. 设置name属性-->
+        <!--4. enctype属性(上传文件的时候必须写) enctype="multipart/form-data"
+        -->
+        <fieldset>
+            <legend>用户登录</legend>
+            <label>
+                账户: <input type="text" name="username" >
+            </label>
+            <label>
+                密码: <input type="password"  name="password">
+            </label>
+            <label>
+                上传图片: <input type="file" name="file" >
+            </label>
+            <label>
+                <input type="submit" value="保存">
+            </label>
+        </fieldset>
+    </form>
+</body>
+
+</html>

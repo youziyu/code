@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3 选择器-not</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+
+		.test {
+			width: 100px;
+			height: 100px;
+			margin: 10px;
+			background-color: green;
+		}
+		li:not(".special"){
+			background-color:red;
+		}
+</style>
+</head>
+<body>
+	<ul>
+		<li class="test"></li>
+		<li class="test"></li>
+		<li class="test special"></li>
+	</ul>
+</body>
+</html>

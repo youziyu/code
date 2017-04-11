@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      /*left: 50px;*/
+    }
+  </style>
+</head>
+<body>
+<button id="btn1">运动到200</button>
+<button id="btn2">运动到400</button>
+<div id="box"></div>
+<script>
+  //1 获取元素
+  var box = document.getElementById("box");
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+  var timer = null;
+  //var leftVal = 0;//手动设置box的初始值，这种操作不好维护
+  //可以使用一个属性直接获取需要的值 offsetLeft:当前元素到定位父盒子的左侧距离
+  
+  //2 点击按钮1 让box运动到200
+  btn1.onclick = function () {
+    //3 防止加速，先设置定时器的清除
+    clearInterval(timer);
+    timer = setInterval(function () {
+      //4 在运动开始之前，先去获取运动需要的数据
+      //4.1 获取元素当前的位置
+      var leader = box.offsetLeft;
+      //4.2 设置步长
+      var step = 10;
+      if (leader < 200) {
+        //5 设置box运动
+        // 简单运动公式 leader = leader + step
+        //        当前位置（新的） = 当前位置（旧的） + 步长
+        leader = leader + step;
+        //将新的当前位置设置给box的left属性
+        box.style.left = leader + "px";
+      } else {
+        clearInterval(timer);
+      }
+    }, 20);
+  };
+  
+  
+  //点击按钮2 让box运动到400
+  btn2.onclick = function () {
+    animate();
+  };
+  
+  function animate() {
+    clearInterval(timer);
+    timer = setInterval(function () {
+      //1 获取offsetLeft和step的设置
+      var leader = box.offsetLeft;
+      var step = 10;
+      
+      //4 给运动设置条件
+      if (leader < 400) {
+        //2 根据运动公式计算新的位置
+        leader = leader + step;
+        //3 将新的位置设置给box
+        box.style.left = leader + "px";
+      } else {
+        //5 设置停止
+        clearInterval(timer);
+      }
+      
+    }, 17);
+  }
+
+
+</script>
+</body>
+</html>

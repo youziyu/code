@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    span {
+      display: inline-block;
+      width: 80px;
+    }
+  </style>
+  <script>
+    
+    //document.write() 在页面上书写一段内容
+    //document.write("hehehehe");
+    //document.write("<div class='box'>我是一个小盒子</div>");
+    
+    
+    //1 打印正方形 10 * 10
+    //有10行星星，每行里面有10个星星
+    
+    //循环的作用重复执行每行的代码，一共10行，执行10次
+    //    for (var i = 0; i < 10; i++) {
+    //      //我们发现每行内打印的星星也是代码重复，次数为10次，可以使用循环解决
+    //      for (var j = 0; j < 10; j++) {
+    //        document.write("*&nbsp;&nbsp;&nbsp;");
+    //      }
+    //      //每一行结束时添加一个换行的标签
+    //      document.write("<br>");
+    //    }
+    
+    
+    //2  打印直角三角形
+    //外层循环控制行数
+    //    for (var i = 0; i < 10; i++) {
+    //      //每一行的星星个数都呈现递增状态
+    //      //内层循环的判断条件需要是一个增量
+    //      for (var j = 0; j < i + 1; j++) {
+    //        document.write("*&nbsp;&nbsp;&nbsp;");
+    //      }
+    //      document.write("<br>");//换行
+    //    }
+    
+    
+    //3 打印9*9乘法表
+    //1 外层循环控制行数
+    for (var i = 1; i <= 9; i++) {
+      //2 内层循环控制每一行代印的次数
+      //每一行打印的次数跟当前行的行号一样
+      for (var j = 1; j <= i; j++) {
+        //拼接要显示的结构
+        document.write("<span>" + j + "*" + i + "=" + i * j + " </span>");
+      }
+      //3 换行
+      document.write("<br>");
+    }
+  
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度换肤</title>
+    <style>
+        html, body, div {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            background: url(images/1.jpg) no-repeat;
+        }
+
+        .back {
+            width: 100%;
+            height: 180px;
+            background: rgba(255, 255, 255, 0.3);
+            padding-top: 50px;
+            text-align: center;
+        }
+
+        .back img {
+            width: 200px;
+            cursor: pointer;
+
+        }
+        .back div{
+            display: inline-block;
+            width: 50px;
+            height: 125px;
+            line-height: 125px;
+            background: rgba(189, 189, 189, 0.3);
+            position: relative;
+            top: -51px;
+            color: #d8d8d8;
+            font-size: 30px;
+
+        }
+    </style>
+    <script>
+
+    </script>
+</head>
+<body>
+<div class="back" id="back">
+    <div><</div>
+    <img id="pic1" src="images/1.jpg" alt="1">
+    <img id="pic2" src="images/2.jpg" alt="2">
+    <img id="pic3" src="images/3.jpg" alt="3">
+    <img id="pic4" src="images/4.jpg" alt="4">
+    <img id="pic5" src="images/5.jpg" alt="5">
+    <div>></div>
+
+</div>
+
+<script>
+    //获取img图片
+    var img1 = document.getElementById("pic1");
+    var img2 = document.getElementById("pic2");
+    var img3 = document.getElementById("pic3");
+    var img4 = document.getElementById("pic4");
+    var img5 = document.getElementById("pic5");
+
+
+    function changePic() {
+        document.body.style.backgroundImage = "url(" + this.src + ")";
+        pic = this.alt;
+    }
+
+    var imgs = document.getElementsByTagName("img");
+    for (var i = 0; i < imgs.length; i++) {
+        imgs[i].onclick = changePic;
+    }
+
+
+    var divs = document.getElementById("back").getElementsByTagName("div");
+    var pic = 1;
+    divs[1].onclick = function () {
+        if(pic>4){
+            pic = 4;
+        }else{
+            pic++;
+            console.log(pic);
+            document.body.style.backgroundImage = "url(images/"+pic+".jpg)";
+        }
+    };
+
+    divs[0].onclick = function () {
+        if(pic>1){
+            pic--;
+            document.body.style.backgroundImage = "url(images/"+pic+".jpg)";
+        }else{
+            pic = 1;
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

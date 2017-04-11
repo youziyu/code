@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //while循环
+    //while的条件为true，会一直进行重复执行
+    //死循环是while的时候经常出现的问题,所以我们必须在while的内部代码执行中去修改判断条件
+    
+    //死循环演示，没事别试
+    //while (true) {
+    //  console.log("今天天气不错");
+    //}
+    
+    //var bool = true;
+    //while(bool){
+    //  bool = false;
+    //    console.log("今天天气不错");
+    //}
+    
+    //计算1-100的和
+    //1 找到需要使用的值
+    var sum = 0;//存储和的变量
+    var i = 1;//每次得到1-100中的一个值
+    //2 每次让i进行累加，并且让sum累加i
+    //手动重复执行多次代码，观察规律
+    //sum = sum + i;//0 + 1
+    //i++;//2
+    //sum = sum + i;//0 + 1 + 2
+    //i++;//3
+    //sum = sum + i;//0 + 1 + 2 + 3
+    //.....
+    
+    //4 考虑循环的结束条件
+    while (i <= 100) {
+      //3 先找到代码中重复的部分。找到其中一个放入while中
+      sum = sum + i;
+      i++;
+    }
+    console.log(sum);//5050
+    
+    //通过书写这个案例，我们发现，向这种有规律有次数限制的循环，还是for循环比較简单
+    
+    //while适用于没有规律执行次数不定的循环
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

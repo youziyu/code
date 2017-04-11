@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script src="jquery-1.12.4.min.js"></script>
+  <script>
+    //js的入口函数执行：当页面完全加载（结构，图片，文件）后
+    //jq的入口函数执行：当页面结构加载后
+    //jq的入口函数执行时机比js的入口函数早
+    
+    //js的入口函数
+    window.onload = function () {
+      console.log("我是js的入口函数")
+    };
+    
+    //第一种：第一天咱们使用第一种，加深记忆
+    $(document).ready(function () {
+      console.log("我是jq的入口函数");
+    });
+    
+    //第二种
+    $(function () {
+      console.log("我是jq的入口函数");
+    });
+  
+  
+  </script>
+</head>
+<body>
+
+<script>
+
+</script>
+</body>
+</html>

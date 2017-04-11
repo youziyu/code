@@ -1,0 +1,2 @@
+这种情况适合 两个域的顶级域名相同的情况
+两个域下必须同时设置 document.domain = 'study.com';

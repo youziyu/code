@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //使用html("");
+      //如果box内部的子元素具有事件，这时这些事件无法清除（会继续占用内存）
+      //$("#box").html("");
+      
+      //1 empty()  用于清除标签内的所有内容  感觉被掏空
+      //$("#box").empty();
+      
+      //2 remove()  删除box以及内部所有内容  自杀
+      //$("#box").remove();
+      
+      //使用多个元素，同时调用remove，可以选定其中的一些元素进行移除
+      $("div").text("我是box").remove(".box");
+      //比下面这种方式使用要灵活一些
+      $("div.box").remove()
+    });
+  </script>
+</head>
+<body>
+<!--<div id="box">-->
+<!--<p id="text">我是box内部的p标签</p>-->
+<!--</div>-->
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div></div>
+<div></div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    
+    img {
+      position: absolute;
+    }
+    
+    #box {
+      height: 10000px;
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+<img src="images/tianshi.gif" id="ts">
+<script>
+  var ts = document.getElementById("ts");
+  
+  //跟着鼠标移动的小天使
+  document.onmousemove = function (e) {
+    //1 兼容事件对象
+    var e = e || window.event;
+    
+    
+    //2 获取鼠标位置。设置给ts
+    //如果页面滚动。这时我们使用可视区域的坐标不准确
+    //新的属性：鼠标针对页面的坐标
+    //page系列属性在ie低版本不支持
+    //console.log(e.pageX);
+    //console.log(e.pageY);
+    
+    ts.style.left = getPageX(e) + "px";
+    ts.style.top = getPageY(e) + "px";
+  };
+  
+  function getPageX(e) {
+    if (e.pageX) {
+      return e.pageX;
+    } else {
+      return e.clientX + myScroll().left;
+    }
+  }
+  
+  function getPageY(e) {
+    if (e.pageY) {
+      return e.pageY;
+    } else {
+      return e.clientY + myScroll().top;
+    }
+  }
+  
+  function myScroll() {
+    return {
+      top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0,
+      left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0
+    };
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<div id="box" hehe="a"></div>
+<script>
+  //属性和属性节点不是一个概念
+  
+  var box = document.getElementById("box");
+  //如果想要操作标签的自带的行内属性，可以使用标签.属性名
+  //console.log(box.id);
+  
+  //如果要获取标签的行内自定义属性，无法通过标签.属性名的形式直接操作
+  
+  //通过一个方法可以获取行内的属性值（自带的和自定义的都可以获取）
+  //标签.getAttribute("属性名");
+  //console.log(box.getAttribute("hehe"));
+  //console.log(box.getAttribute("id"));
+  
+  //设置行内属性值 标签.setAttribute("属性名","属性值");
+  //box.setAttribute("hehe","b");
+  //box.setAttribute("id","box6");
+  
+  //移除行内属性 标签.removeAttribute("属性名");
+  //box.removeAttribute("hehe");
+  //box.removeAttribute("id");
+
+
+</script>
+</body>
+</html>

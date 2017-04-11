@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //concat() 连接字符串  一般不使用这个方式，更多的是使用+进行字符串连接
+  //var str = "abc";
+  //console.log(str.concat("hehehe", "heiheihei"));
+  
+  //slice(start,end) 拷贝字符串中的一部分字符  start和end都是索引值,不含end
+  //var str = "abcdefg";
+  //console.log(str.slice(2, 5));
+  
+  //substr(start,len) 拷贝字符串中的一部分字符串  len表示拷贝的字符个数
+  //var str = "abcdefg";
+  //console.log(str.substr(1, 4));
+  
+  //substring(start,end) 跟slice一样，一般使用slice
+  //var str = "abcdefg";
+  //console.log(str.substring(1, 4));
+  
+  
+  //lastIndexOf()
+  //indexOf() 返回指定字符串的索引值
+  //var str = "abcdaefcajjcak";
+  ////console.log(str.indexOf("c"));
+  //var index = -1;
+  //while (str.indexOf("a", index + 1) != -1) {
+  //  index = str.indexOf("a", index + 1);
+  //  console.log(index);
+  //}
+  
+  
+  //replace(要替换的字符串,替换成什么字符串)
+  //replace在进行替换时，只可以替换从左开始第一个找到的字符串
+  //  var str = "abcdecgcf";
+  //  //str = str.replace("c", "z");//abzdecgcf
+  //  //str = str.replace("c", "z");//abzdezgcf
+  //  //str = str.replace("c", "z");//abzdezgzf
+  //
+  //  //判断条件：
+  //  while (str.indexOf("c") != -1) {
+  //    str = str.replace("c", "z");//abzdezgzf
+  //  }
+  //  console.log(str);
+  
+  
+  //split() 按照传入的字符串，将原字符串进行分隔，返回结果是一个数组
+  //var str = "a-b-c-d-e";
+  //console.log(str.split("-"));
+  
+  //数组的join() 按照传入的字符串，将数组中每个元素进行连接，返回一个字符串
+  //var arr = [1,2,3,4,5];
+  //console.log(arr.join("-"));
+  
+  
+  //使用split和join进行结合使用
+  //将c换成z
+  //var str = "abcdecgcf";
+  //var arr = str.split("c");
+  //console.log(arr);
+  //console.log(arr.join("z"));
+  
+  //替换字符串中的指定部分
+  //console.log(str.split("c").join("z"));
+  
+  //去除字符串中的指定部分
+  //console.log(str.split("c").join(""));
+  
+  //大小写转换方法
+  //var str = "abcd";
+  //console.log(str.toUpperCase());//转换为大写字母
+  
+  //var str = "ABCDEF";
+  //console.log(str.toLowerCase());//转换为小写字母
+  
+  //trim()  去除空格方法:去除字符串两端的空格
+  //var str = "     a b c d e      ";
+  //console.log(str.trim());
+  
+  //去除字符串中所有空格
+  //console.log(str.split(" ").join(""));
+
+</script>
+</body>
+</html>

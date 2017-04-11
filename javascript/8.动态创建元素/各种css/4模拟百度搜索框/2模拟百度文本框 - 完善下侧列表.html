@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    fieldset, img, input, button {
+      border: none;
+      padding: 0;
+      margin: 0;
+      outline-style: none;
+    }
+    
+    ul, ol {
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+    }
+    
+    #box {
+      width: 405px;
+      margin: 200px auto;
+      position: relative;
+    }
+    
+    #txtSearch {
+      float: left;
+      width: 300px;
+      height: 32px;
+      padding-left: 4px;
+      border: 1px solid #b6b6b6;
+      border-right: 0;
+    }
+    
+    #btnSearch {
+      float: left;
+      width: 100px;
+      height: 34px;
+      font: 400 14px/34px "microsoft yahei";
+      color: white;
+      background: #3385ff;
+      cursor: pointer;
+    }
+    
+    #btnSearch:hover {
+      background: #317ef3;
+    }
+    
+    #pop {
+      width: 303px;
+      border: 1px solid #ccc;
+      padding: 0px;
+      position: absolute;
+      top: 34px;
+    }
+    
+    #pop ul li {
+      padding-left: 5px;
+    }
+    
+    #pop ul li:hover {
+      background-color: #CCC;
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+  <input type="text" id="txtSearch">
+  <input type="button" value="百度一下" id="btnSearch">
+  <!-- 下拉列表显示的位置-->
+
+</div>
+
+<script>
+  //模拟的词库
+  var datas = ["a", "abc", "abbbb", "abxxxx", "xyz", "abcdef", "abzzzz"];
+  var box = document.getElementById("box");
+  
+  //onkeyup  键盘上的按键按下去抬起来后触发
+  var txtSearch = document.getElementById("txtSearch");
+  
+  txtSearch.onkeyup = function () {
+    //1 根据用户当前输入的内容，去词库中找到满足条件的词汇（需要以用户输入为开头）
+    var resultArr = [];
+    
+    //2 遍历datas
+    for (var i = 0; i < datas.length; i++) {
+      //3 检测datas[i]是否是以输入内容为起始
+      if (datas[i].indexOf(this.value) == 0) {
+        //4 放入数组中
+        resultArr[resultArr.length] = datas[i];
+      }
+    }
+    
+    //5 获取的结果为可以匹配到的内容，一会儿用于在底部创建列表
+    //console.log(resultArr);
+    
+    
+    //不能直接创建pop放入到box中，需要先进行检测，如果页面中已经具有了pop，将其删除
+    //1 先尝试获取id为pop的元素
+    var pop = document.getElementById("pop");
+    
+    //2 检测pop的值，值有两种情况，第一中可能是一个标签，第二种是null
+    if (pop) {
+      //进入if说明pop是一个标签,将其删除
+      box.removeChild(pop);
+    }
+    
+    //3 设置细节检测：如果当前词库中没有匹配到词，这时不进行pop的创建了
+    if (resultArr.length == 0) {
+      return;
+    }
+    
+    //4 如果输入内容为空，由于空字符串可以被任意字符串进行匹配，所以我们不进行显示
+    if (this.value == "") {
+      return;
+    }
+    
+    
+    //6 为了样式可以使用，需要先创建一个div，并且div的id设置为pop
+    var div = document.createElement("div");
+    div.id = "pop";
+    box.appendChild(div);
+    
+    //7 在pop中创建ul
+    var list = document.createElement("ul");
+    div.appendChild(list);
+    
+    //8 li的个数根据resultArr中元素的个数创建
+    for (var i = 0; i < resultArr.length; i++) {
+      //9 每次创建一个li用于保存词库的词
+      var li = document.createElement("li");
+      li.innerHTML = resultArr[i];
+      list.appendChild(li);
+    }
+    
+  };
+
+
+</script>
+</body>
+</html>

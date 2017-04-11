@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    div {
+      width: 100px;
+      height: 50px;
+      margin-bottom: 10px;
+      background-color: #ffad8d;
+    }
+  </style>
+</head>
+<body>
+
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<script>
+  
+  var divs = document.getElementsByTagName("div");
+  
+  //2 遍历
+  for (var i = 0; i < divs.length; i++) {
+    //3 给每个div设置索引属性
+    divs[i].suoyin = i;
+    
+    //4 添加事件
+    divs[i].onclick = function () {
+      //当事件内的代码执行时，循环早就执行完毕了，意味着每个div都已经设置了索引属性
+      //this指向当前这个函数属于谁
+      //在事件中的简便记法：this在事件内指向触发这个事件的事件源
+      console.log(this.suoyin);
+    };
+  }
+  
+  
+  //1 标签可以访问属性和方法，说明标签实际上就是一个对象
+  //divs[0].innerHTML
+  
+  //2 既然标签是对象，我们就可以给标签添加属性或者方法
+  //  divs[0].suoyin = 0;
+  //  divs[1].suoyin = 1;
+  //  divs[2].suoyin = 2;
+  //  divs[3].suoyin = 3;
+  //  divs[4].suoyin = 4;
+  //
+  //  console.log(divs[0].suoyin);
+  //  console.log(divs[1].suoyin);
+
+
+</script>
+</body>
+</html>

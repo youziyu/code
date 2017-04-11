@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        ul {
+            list-style: none
+        }
+
+        .box {
+            width: 600px;
+            margin: 100px auto;
+            border: 1px solid #000;
+            padding: 20px;
+        }
+
+        textarea {
+            width: 450px;
+            height: 160px;
+            outline: none;
+            resize: none;
+        }
+
+        ul {
+            width: 450px;
+            padding-left: 80px;
+        }
+
+        ul li {
+            /*line-height: 25px;*/
+            border-bottom: 1px dashed #cccccc;
+            word-break: break-all;
+        }
+
+        input {
+            float: right;
+        }
+    </style>
+
+</head>
+<body>
+<div class="box" id="weibo">
+    <span>微博发布</span>
+    <textarea name="" id="txt" cols="20" rows="10"></textarea>
+    <button id="btn">发布</button>
+    <ul id="ul">
+
+    </ul>
+</div>
+
+
+<script>
+
+    var txt = document.getElementById("txt");
+    var ul = document.getElementById("ul");
+    var btn = document.getElementById("btn");
+
+    //点击事件
+    btn.onclick = function () {
+        //如果空，提示用户重新输入
+        if (txt.value == "") {
+            alert("哥们你什么都没写");
+        } else {
+            //在添加新的微博时，应该去判断，如果以前已经发过了，
+            var li = document.createElement("li");
+            li.innerHTML = txt.value + "<input type='button' value='删除'>";
+
+            //判断以前有没有发过
+            var lis = ul.children;
+            if (lis.length != 0) {
+                //说明以前发过微博了
+                ul.insertBefore(li, lis[0]);
+            } else {
+                ul.appendChild(li);
+            }
+
+            //获取删除按钮
+//            var ipts = ul.getElementsByTagName("input");
+//            console.log(ipts);
+            //给每一个删除按钮添加事件
+
+//            for (var i = 0; i < ipts.length; i++) {
+                li.firstElementChild.onclick = function () {
+                    //删除的是 this.parentNode
+                    ul.removeChild(this.parentNode);
+
+                };
+
+//            }
+
+
+        }
+
+
+    };
+
+</script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <!--<script src="script.js"></script>-->
+  <script>
+    //内嵌式书写位置一般有两种
+    //1 head标签底部
+    //2 body标签底部
+    
+    
+    //命名规范
+    //1 开头部分$_ 英文字母
+    //2 不能使用关键字和保留字
+    //3 js区分大小写
+    //4 不能含有空格
+    //5 命名要有意义
+    
+    //变量操作
+    //1 声明： var num;
+    //2 赋值（重新赋值）：var num;  num = 100;  num = "呵呵";//不推荐在变量使用的后期去修改类型
+    //3 变量初始化：var num = 100; //在变量声明的同时给值
+    
+    //数据在内存中的保存 ： 简便来记，使用变量就是使用变量中保存的数据
+    
+    //数据类型
+    //类型检测方式：typeof 100;   typeof(100);
+    //五大基本类型：字符串string   数值类型number  布尔类型boolean   undefined  null
+    
+    //类型转换
+    //1 转换为字符串
+    //1.1 变量.toString();  null和undefined没有toString()方法
+    //1.2 String(变量);
+    //1.3 任意类型+任意字符串: 为了不改变数据的原值，一般加上一个空字符串 ""
+    
+    //2 转换为数值类型
+    //转换失败NaN
+    //2.1 Number()  转换字符串时，只能转换纯数字的字符串    true 1  false 0
+    //2.2 parseInt("100a")  从左往右看，找到不是数为止    结果为整数
+    //2.3 parseFloat("100.1a")   结果（可能）为小数
+    //2.4 -*/% 正常使用   +转换为数值需要前置
+    
+    //3 转换为boolean
+    //3.1 Boolean()  转换为false的结果：0 "" NaN undefined null false
+    //3.2 !!"100"   隐式转换
+    
+    //运算符部分
+    //逻辑运算符
+    //1 操作数均为bool值时   &&   ||   !
+    //2 操作数不是bool值时   "100" && 0   短路操作
+    //2.1 从左往右看
+    //2.2 如果当前操作数不是bool值，隐式转换
+    //2.3 那个操作数可以决定当前式子的结果，就返回这个原操作数
+    
+    
+    //==特殊部分
+    //console.log(NaN == NaN);//false
+    //规定上说，NaN参与比較的时候永远返回false
+    //console.log(isNaN("111"));//false  //检测一个数据是否是NaN
+    //console.log(isNaN(NaN));//true
+    //console.log(isNaN(10));//false
+    
+    //console.log(null == undefined);//true
+    
+    
+    //条件判断语句（分支结构）
+    //当我们的程序执行中不是一种固定的情况了
+    //1 单if  适用于一段代码选择性进行执行
+    //var age = 13;
+    ////看电影
+    //if (age >= 18) {
+    //  alert("可以看电影了");
+    //}
+    
+    //2 if else  适用于两种情况
+    //var age = 21;
+    ////看电影
+    //if (age >= 18) {
+    //  alert("可以看电影了");
+    //}else{
+    //  alert("可以看动画片");
+    //}
+    
+    //3 if elseif  elseif ....  else
+    //var age = 61;
+    ////看电影
+    //if (age >= 60) {
+    //  alert("可以看建国大业");
+    //}else if(age>=18){
+    //  alert("可以看动作片");
+    //}else{
+    //    alert("可以看动画片");
+    //}
+    
+    //if语句更适用于范围比較
+    
+    //switch语句 跟适用于单值比較
+    //var num = 100;
+    //switch(num){
+    //  case 100:
+    //    alert("这是100");
+    //    break;
+    //  case 90:
+    //    alert("这是90");
+    //    break;
+    //  default:
+    //    alert("猜不对");
+    //}
+    
+    //如果使用switch进行范围比較，需要在条件中书写true
+    
+    
+    //三元运算符
+    //1 可执行代码   2>1?alert("2"):alert("1");
+    //2 可返回代码   var result = 2>1?2:1;
+    //3 可执行也可返回  var result = 2>1?parseInt("100"):parseInt("200");
+    
+    //循环语句
+    //while  适用于次数不定的重复执行代码
+    //do..while   区别：无论条件是否满足，先执行一次do内部的代码
+    
+    //1 计算用户输入的数值的位数
+    //    var iptVal = parseInt(prompt("请输入数字"));
+    //2 观察规律：一个数除以十的次数就是这个数的位数
+    //    var count = 0;
+    //
+    //    while (iptVal != 0) {
+    //      iptVal = parseInt(iptVal / 10);             //舍弃小数部分，为了最后可以检测到0
+    //      count++;          //让计数自增
+    //    }
+    //    console.log(count);
+    //
+    //    do{
+    //      iptVal = parseInt(iptVal / 10);
+    //      count++;          //让计数自增
+    //    }while(iptVal!=0);
+    //    console.log(count);
+    
+    
+    //倒着打印每一位
+    //1 获取需要的值
+        var iptVal = parseInt(prompt("请输入数值"));
+    //2 想要最后面的每一位  跟10取余
+    //    var result; //保存最后一个位数的值
+    //    while(iptVal != 0){
+    //      result = iptVal % 10;
+    //      console.log(result);
+    //      iptVal = parseInt(iptVal / 10);
+    //    }
+    
+    
+    //使用dowhile完善
+//        do{
+//          result = iptVal % 10;
+//          //Math.abs(-100) 获取绝对值
+//          console.log(Math.abs(result));
+//          iptVal = parseInt(iptVal / 10);
+//        }while(iptVal != 0)
+
+    for (;iptVal != 0;) {
+      result = iptVal % 10;
+      //Math.abs(-100) 获取绝对值
+      console.log(Math.abs(result));
+      iptVal = parseInt(iptVal / 10);
+      
+    }
+    
+    //    var num = -123;
+    //    console.log(Math.abs(num));
+    //    num = Math.abs(num);
+    //    console.log(num);
+    
+    
+//    var str = "100";
+//    console.log(parseInt(str));
+//    console.log(str);
+  
+  
+  </script>
+</head>
+<body>
+<!--<div onclick="alert(1)"></div>-->
+
+<script>
+
+</script>
+</body>
+</html>

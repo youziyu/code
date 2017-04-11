@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style type="text/css">
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      border: 0;
+    }
+    
+    .all {
+      width: 500px;
+      height: 200px;
+      padding: 7px;
+      border: 1px solid #ccc;
+      margin: 100px auto;
+      position: relative;
+    }
+    
+    .screen {
+      width: 500px;
+      height: 200px;
+      /*overflow: hidden;*/
+      position: relative;
+    }
+    
+    .screen li {
+      width: 500px;
+      height: 200px;
+      overflow: hidden;
+      float: left;
+    }
+    
+    .screen ul {
+      position: absolute;
+      left: 0;
+      top: 0px;
+      width: 3000px;
+    }
+    
+    .all ol {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      line-height: 20px;
+      text-align: center;
+    }
+    
+    .all ol li {
+      float: left;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border: 1px solid #ccc;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    
+    .all ol li.current {
+      background: yellow;
+    }
+    
+    #arr {
+      display: none;
+    }
+    
+    #arr span {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      margin-top: -20px;
+      background: #000;
+      cursor: pointer;
+      line-height: 40px;
+      text-align: center;
+      font-weight: bold;
+      font-family: '黑体';
+      font-size: 30px;
+      color: #fff;
+      opacity: 0.3;
+      border: 1px solid #fff;
+    }
+    
+    #arr #right {
+      right: 5px;
+      left: auto;
+    }
+  </style>
+</head>
+<body>
+<div class="all" id='box'>
+  <div class="screen">
+    <ul>
+      <li><img src="images/1.jpg" width="500" height="200"/></li>
+      <li><img src="images/2.jpg" width="500" height="200"/></li>
+      <li><img src="images/3.jpg" width="500" height="200"/></li>
+      <li><img src="images/4.jpg" width="500" height="200"/></li>
+      <li><img src="images/5.jpg" width="500" height="200"/></li>
+    </ul>
+    <ol>
+      <!-- 动态创建的小方块，添加在这里，样式已经给写好了-->
+    </ol>
+  </div>
+  <div id="arr"><span id="left">&lt;</span><span id="right">&gt;</span></div>
+</div>
+<script>
+  //-------数据获取
+  var box = document.getElementById("box");
+  var screen = box.children[0];//可视区域
+  var imgWid = screen.offsetWidth;//获取图片的宽度
+  var ul = screen.children[0];//要进行滚动的ul
+  var lisUl = ul.children;//顶部的图片个数
+  var ol = screen.children[1];//用于保存要点击的小方块
+  var arrBox = box.children[1];//左右箭头的父盒子
+  var arrLeft = arrBox.children[0];
+  var arrRight = arrBox.children[1];
+  
+  //-------动态创建与小方块的操作
+  //小方块的个数需要顶部图片的个数创建
+  for (var i = 0; i < lisUl.length; i++) {
+    var li = document.createElement("li");
+    li.innerHTML = i + 1;//设置内容
+    ol.appendChild(li);//放入到ol中
+  }
+  
+  //设置ol中li的操作
+  var lisOl = ol.children;
+  //设置第一个小方块的默认选中
+  lisOl[0].className = "current";
+  
+  for (var i = 0; i < lisOl.length; i++) {
+    lisOl[i].index = i;
+    //设置事件
+    lisOl[i].onclick = function () {
+      //后期加入的代码
+      //当页面显示假的第一张时，如果点击第一张，这时会出现图片回滚
+      //我们可以直接将列表抽回到0的位置
+      if (picCount == lisUl.length - 1) {
+        ul.style.left = 0 + "px";
+      }
+      
+      //点击按钮变色
+      for (var i = 0; i < lisOl.length; i++) {
+        lisOl[i].className = "";
+      }
+      this.className = "current";
+      
+      //设置list进行运动
+      var target = -this.index * imgWid;
+      animate(ul, target);
+      
+      //点击小方块时，同步picCount，让左右按钮和小方块进行结合
+      picCount = this.index;
+    }
+  }
+  
+  
+  //-------左右按钮点击效果
+  //-------无缝滚动效果：结合到了左右按钮操作中
+  
+  //1 设置移入移出效果
+  //放置到了最后自动播放部分
+  
+  //2 设置一个变量记录滚过的图片张数
+  var picCount = 0;
+  
+  //3 由于左右点击需要添加无缝的效果，需要对图片第一张进行克隆
+  var firstPic = lisUl[0].cloneNode(true);
+  ul.appendChild(firstPic);
+  
+  arrRight.onclick = function () {
+    //5 针对无缝效果进行单独判断
+    //如果当前显示的是假的第一张，这时picCount的值为lisUl.length-1
+    //需要先抽回到原始位置0，在进行滚动
+    if (picCount == lisUl.length - 1) {
+      ul.style.left = 0 + "px";
+      //设置picCount归0，否则picCount会继续增加为6
+      picCount = 0;
+    }
+    //4 设置正常滚动代码
+    picCount++;
+    //根据picCount设置运动位置
+    var target = -picCount * imgWid;
+    animate(ul, target);
+    
+    //设置lisOl中对应的小方块进行变色
+    for (var i = 0; i < lisOl.length; i++) {
+      lisOl[i].className = "";
+    }
+    //使用picCount作为索引值设置下面的小方块样式
+    //图片的张数比小按钮的个数多了一个
+    //当页面中显示假的第一张时，需要单独处理picCount，设置为lisOl中索引值为0的元素显示
+    if (picCount == lisUl.length - 1) {
+      lisOl[0].className = "current";
+    } else {
+      lisOl[picCount].className = "current";
+    }
+    
+  };
+  
+  arrLeft.onclick = function () {
+    //如果picCount为0，这时先抽回到假的第一张显示的位置，然后再进行滚动
+    if (picCount == 0) {
+      ul.style.left = -(lisUl.length - 1) * imgWid + "px";
+      picCount = lisUl.length - 1;
+    }
+    
+    picCount--;
+    animate(ul, -picCount * imgWid);
+    
+    //在左按钮的点击中，运动后不会出现picCount为5的情况
+    //使用picCount作为索引值直接设置小按钮显示即可
+    for (var i = 0; i < lisOl.length; i++) {
+      lisOl[i].className = "";
+    }
+    lisOl[picCount].className = "current";
+    
+  };
+  
+  
+  //-------自动播放
+  
+  //开启定时器，每隔2秒进行自动播放
+  var timer = null;
+  
+  
+  timer = setInterval(function () {
+    //1 可以直接拷贝arrRight点击事件中的代码，也可以封装为函数，在两个地方调用
+    //2 可以采用直接触发标签事件的方式 click() 用于直接触发某个标签的点击事件
+    arrRight.click();
+    
+    //自动播放的时间不要给的太短，需要保证时间内可以完成一次滚动
+  }, 2000);
+  
+  box.onmouseover = function () {
+    arrBox.style.display = "block";
+    //停止自动播放
+    clearInterval(timer);
+  };
+  box.onmouseout = function () {
+    arrBox.style.display = "none";
+    //再次设置自动播放:必须将新设置的定时器赋值给timer
+    timer = setInterval(function () {
+      arrRight.click();
+    }, 2000);
+  };
+  
+  
+  function animate(tag, target) {
+    clearInterval(tag.timer);
+    tag.timer = setInterval(function () {
+      var leader = tag.offsetLeft;//当前位置
+      var step = (target - leader) / 10;
+      
+      //对步长进行取整，可以避免四舍五入的问题
+      //取整时需要根据step的正负采取不同的方式
+      step = step > 0 ? Math.ceil(step) : Math.floor(step);
+      
+      leader = leader + step;
+      tag.style.left = leader + "px";
+      //运动停止后，设置定时器清除
+      if (leader == target) {
+        clearInterval(tag.timer);
+      }
+      
+    }, 17);
+  }
+</script>
+</body>
+</html>

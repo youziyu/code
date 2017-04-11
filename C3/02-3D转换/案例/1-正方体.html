@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>正方体</title>
+    <style>
+    /*做正方体
+    1.新建一个容纳正方体的盒子
+    2.给.cube设置preserve-3d以让正方体显示成3D效果
+    3.给.cube设置转换，让我们更好的寻找每个面的位置
+    4.前后两面 给两个面设置translateZ，一前一后，各走100px;
+    5.左右两面 给两面设置绕着y轴旋转，接着translateZ走100px
+    6.上下两面 给他们设置绕着X轴旋转，接着translateZ走100px;
+    */
+        .cube {
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            transform-style: preserve-3d;
+            transform: rotateX(10deg) rotateY(35deg);
+            position: relative;
+        }
+        
+        .cube span {
+            display: block;
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            opacity: 0.4;
+        }
+        
+        .front {
+            background-color: red;
+            transform: translateZ(100px);
+        }
+        
+        .back {
+            background-color: yellow;
+            transform: translateZ(-100px);
+        }
+        
+        .left {
+            background-color: gray;
+            transform: rotateY(90deg) translateZ(-100px);
+        }
+        
+        .right {
+            background-color: pink;
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        
+        .top {
+            background-color: blue;
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        
+        .bottom {
+            background-color: green;
+            transform: rotateX(90deg) translateZ(-100px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cube">
+        <span class="front"></span>
+        <span class="back"></span>
+        <span class="left"></span>
+        <span class="right"></span>
+        <span class="top"></span>
+        <span class="bottom"></span>
+    </div>
+</body>
+
+</html>

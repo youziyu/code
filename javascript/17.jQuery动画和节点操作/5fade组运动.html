@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      display: none;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#btn1").click(function () {
+        //fadeIn()  渐入
+        $("#box").fadeIn(1000, function () {
+//          alert("我渐入了");
+        });
+      });
+      $("#btn2").click(function () {
+        //fadeOut() 渐出
+        $("#box").fadeOut(1000, function () {
+//          alert("我渐出了");
+        });
+      });
+      $("#btn3").click(function () {
+        //切换，根据显示与否，设置渐入或者渐出
+        $("#box").fadeToggle(1000, function () {
+//          alert("我切换了");
+        });
+      });
+      //渐到fadeTo方法，由于会对其他效果造成影响，所以通常不使用，只使用fadeIn和fadeOut和fadeToggle
+      $("#btn4").click(function () {
+        //参数1 运动时间  参数2 渐到什么程度  参数3 回调函数
+        //fadeTo(1000,"0.4",function(){})
+        $("#box").fadeTo(1000, 0.4, function () {
+//          alert("我渐到了0.4");
+        })
+      });
+      
+    });
+  </script>
+</head>
+<body>
+<button id="btn1">渐入</button>
+<button id="btn2">隐藏</button>
+<button id="btn3">切换</button>
+<button id="btn4">渐到什么程度</button>
+<div id="box"></div>
+</body>
+</html>

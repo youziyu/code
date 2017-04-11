@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //要匹配以abc开头的字符串
+  //  ^书写在中括号外，/^/ 书写在正则的起始位置
+  //var reg = /^abc/;
+  //console.log(reg.test("abcfeghjrjd"));//true
+  //console.log(reg.test("aabcfeghjrjd"));//false
+  
+  //要匹配以abc结尾的字符串
+  //  $ 书写在正则的最后一个位置   /dwada$/
+  //var reg = /abc$/;
+  //console.log(reg.test("dhwadaabc"));
+  //console.log(reg.test("dhwadaabcc"));
+  
+  //当^和$同时使用时，表示严格匹配：必须跟正则中的内容完全相同
+  var reg = /^abc$/;
+  console.log(reg.test("abc"));//true
+  //console.log(reg.test("aabc"));//false
+  //console.log(reg.test("abca"));//false
+  console.log(reg.test("abcabc"));//false
+
+
+</script>
+</body>
+</html>

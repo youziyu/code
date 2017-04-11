@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    div {
+      width: 200px;
+      height: 150px;
+      border: 1px solid #000;
+      float: left;
+      margin: 10px;
+      padding: 10px;
+    }
+    
+    p {
+      background-color: #ff1f30;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div id="box1">
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+</div>
+<div id="box2"></div>
+
+<script>
+  var box1 = document.getElementById("box1");
+  var box2 = document.getElementById("box2");
+  var p1 = box1.children;//左侧的p标签
+  var p2 = box2.children;//右侧的p标签
+  
+  //方式1：简易方式
+  //  //1 根据左右的p标签设置不同的事件
+  //  for (var i = 0; i < p1.length; i++) {
+  //    p1[i].onclick = function () {
+  //      if (this.parentNode == box1) {
+  //        //移动到右侧
+  //        box2.appendChild(this);
+  //      } else {
+  //        //移动到左侧
+  //        box1.appendChild(this);
+  //      }
+  //    };
+  //  }
+  
+  //方式2：复杂方式使用flag
+  //var flag = true;// flag为true，（标签在左侧）需要向右侧移动
+  //以往我们使用flag控制一个事件执行两种代码时，是单独控制一个标签
+  //我们现在使用一个flag控制了多个标签，会造成状态的混乱
+  //我们希望每个标签可以进行单独的状态判断
+  
+  //1 遍历添加事件
+  for (var i = 0; i < p1.length; i++) {
+    //2 给每个标签单独设置flag属性，用于控制自身的状态
+    p1[i].flag = true;
+    p1[i].onclick = function () {
+      if (this.flag) {
+        //移动到右侧
+        box2.appendChild(this);
+        //设置自身的flag为false
+        this.flag = false;
+      } else {
+        //移动到左侧
+        box1.appendChild(this);
+        //设置自身的flag为true
+        this.flag = true;
+      }
+    };
+  }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .android{
+            width:340px;
+            height:390px;
+            margin:100px auto;
+            position: relative;
+        }
+        header{
+            width:220px;
+            height:100px;
+            background-color: #A4CA39;
+            margin: 0 auto;
+            position: relative;
+            border-top-left-radius: 110px;
+             border-top-right-radius: 110px;
+        }
+        header:before{
+            position: absolute;
+            top: 40px;
+            left: 55px;
+            content: '';
+            display: block;
+            width:16px;
+            height:16px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+        header:after{
+            position: absolute;
+            top: 40px;
+            right: 55px;
+            content: '';
+            display: block;
+            width:16px;
+            height:16px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        main{
+            width:220px;
+            height:180px;
+            background-color: #A4CA39;
+            margin: 10px auto;
+            position: relative;
+            border-bottom-left-radius: 20px;
+             border-bottom-right-radius: 20px;
+        }
+
+        main:before{
+            position: absolute;
+            top: 180px;
+            left: 55px;
+            content: '';
+            display: block;
+            width:40px;
+            height:100px;
+            background-color: #A4CA39;
+            border-bottom-left-radius: 20px;
+             border-bottom-right-radius: 20px;
+        }
+        main:after{
+            position: absolute;
+            top: 180px;
+            right: 55px;
+            content: '';
+            display: block;
+            width:40px;
+            height:100px;
+            background-color: #A4CA39;
+            border-bottom-left-radius: 20px;
+             border-bottom-right-radius: 20px;
+        }
+
+
+
+
+
+        aside{
+            position: absolute;
+            /*计算 方法 注意在运算符两边一定要加空格*/
+            top:calc(100px + 10px);
+            width:340px;
+            height:150px;
+        }
+
+           aside:before{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            content: '';
+            display: block;
+            width:40px;
+             height:120px;
+            background-color: #A4CA39;
+            border-radius: 20px;
+        }
+        aside:after{
+            position: absolute;
+            top: 0px;
+            right:0px;
+            content: '';
+            display: block;
+            width:40px;
+            height:120px;
+            background-color: #A4CA39;
+            border-radius: 20px;
+        }
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="android">
+        <!--头-->
+        <header></header>
+        <!--身体-->
+        <main></main>
+        <!--胳膊-->
+        <aside></aside>
+    </div>
+</body>
+
+</html>

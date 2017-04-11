@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 200px;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+<button id="btn">点击将p移入到box中</button>
+<div id="box">
+  <p>我是旧的p</p>
+  <p id="oldP">我是oldP</p>
+  <p>我是旧的p</p>
+  <p>我是旧的p</p>
+</div>
+<p id="text">我是一个p标签</p>
+<script>
+  //1 获取元素
+  var box = document.getElementById("box");
+  var btn = document.getElementById("btn");
+  var text = document.getElementById("text");
+  var oldP = document.getElementById("oldP");
+  
+  // 父节点.appendChild(要移动的子节点)   追加子节点
+  // 添加到父节点的所有子节点最后
+  
+  //btn.onclick = function () {
+  //  box.appendChild(text);
+  //};
+  
+  // 父节点.insertBefore(要插入的子节点，参考的子节点)   插入节点
+  btn.onclick = function () {
+    box.insertBefore(text, oldP);
+  };
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    function jiSuan(n, m, fn) {
+      var sum = 0;
+      var ji = 1;
+      for (var i = n; i <= m; i++) {
+        sum += i;
+        ji *= i;
+      }
+      return fn(sum, ji);
+    }
+    console.log(jiSuan(1, 3, getSum));
+    console.log(jiSuan(1, 3, getCha));
+    jiSuan(1, 3, function (a, b) {
+      return a * b;
+    });
+    function getSum(a, b) {
+      return a + b;
+    }
+    function getCha(a, b) {
+      return a - b;
+    }
+    
+    
+    //函数的注释写法
+    
+    /**
+     * 描述函数的功能，可以计算两个数的和
+     * @param n   n是需要计算的第一个数，数值类型
+     * @param m   m也是数值类型
+     * @param z   m也是数值类型
+     * @returns {*} 描述返回值，两个数的和，数值类型
+     */
+    function getSum(n, m, z) {
+      return n + m;
+    }
+  
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //在body中添加10个span
+  
+  //方式1：使用单个放入，这时会引发多次重排
+  //for (var i = 0; i < 10; i++) {
+  //  var span = document.createElement("span");
+  //  document.body.appendChild(span);
+  //}
+  
+  //方式2 使用另一个元素进行存储，然后整体放入:只会引发一次重排
+  //var div = document.createElement("div");
+  //for (var i = 0; i < 10; i++) {
+  //  var span = document.createElement("span");
+  //  div.appendChild(span);
+  //}
+  //document.body.appendChild(div);//最后放入
+  
+  //方式3 DocumentFragment 类似一个标签（可以进行节点操作），但是不是标签
+  var df = document.createDocumentFragment();//创建方式
+  
+  //作用是，当我们将DocumentFragment添加到页面中时，不会显示这个元素，而是显示内部的子元素
+  for (var i = 0; i < 10; i++) {
+    var span = document.createElement("span");
+    df.appendChild(span);
+  }
+  document.body.appendChild(df);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        p{
+            width:0px;
+            height:18px;
+            background-color: red;
+            overflow: hidden;
+            animation-name: typing;
+            animation-duration: 2s;
+            /*ease linear ease-in ease-in-out steps()*/
+            animation-timing-function: steps(5);
+            animation-fill-mode: forwards;
+        }
+
+        /*1.定义动画*/
+        @keyframes typing{
+            0%{
+                width:0px;
+            }
+            100%{
+                width:80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <p>前端工程师</p>
+</body>
+</html>

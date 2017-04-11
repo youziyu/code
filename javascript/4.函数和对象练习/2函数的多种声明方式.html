@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //函数声明语句
+    //function fun(){
+    //}
+    
+    //fun();函数表达式在使用的时候无法在声明前进行使用
+    //函数表达式:将函数作为一个值保存在一个变量中，使用函数直接使用 变量名即可
+    var fun = function () {
+      console.log("今天天气不错");
+    };
+    //fun();
+    
+    //匿名函数：没有名字的函数,不能单独使用
+    
+    //自调用函数（立即执行函数）
+    (function () {
+      //执行方式：在书写的位置上执行一次
+      //由于函数内具有作用域，可以利用自调用函数减少对全局变量的使用
+      var num = 100;
+      num += 20;
+      console.log(num);
+    })();
+  
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+[
+	{
+		"name": "王力宏",
+		"photo": "./images/wlh.jpg",
+		"ablum": "《改变自已》",
+		"age": 39,
+		"sex": "男"
+	},
+	{
+		"name": "李易峰",
+		"photo": "./images/lyf.jpg",
+		"ablum": "《改变世界》",
+		"age": 26,
+		"sex": "男"
+	},
+	{
+		"name": "李云迪",
+		"photo": "./images/lyd.jpg",
+		"ablum": "《野蜂飞舞》",
+		"age": 39,
+		"sex": "男"
+	},
+	{
+		"name": "朗郎",
+		"photo": "./images/ll.jpg",
+		"ablum": "《英雄》",
+		"age": 32,
+		"sex": "男"
+	}
+]

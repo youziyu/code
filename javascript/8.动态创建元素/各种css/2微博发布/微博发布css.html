@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0
+    }
+    
+    ul {
+      list-style: none
+    }
+    
+    .box {
+      width: 600px;
+      margin: 100px auto;
+      border: 1px solid #000;
+      padding: 20px;
+    }
+    
+    textarea {
+      width: 450px;
+      height: 160px;
+      outline: none;
+      resize: none;
+    }
+    
+    ul {
+      width: 450px;
+      padding-left: 80px;
+    }
+    
+    ul li {
+      height: 25px;
+      line-height: 25px;
+      border-bottom: 1px dashed #cccccc;
+    }
+    
+    input {
+      float: right;
+    }
+  </style>
+
+</head>
+<body>
+<div class="box" id="weibo">
+  <span>微博发布</span>
+  <textarea name="" id="txt" cols="20" rows="10"></textarea>
+  <button id="btn">发布</button>
+  <!-- 用于装每次发布的微博-->
+  <ul id="ul"></ul>
+  <div></div>
+</div>
+
+<script>
+  //1 获取元素
+  var txt = document.getElementById("txt");
+  //textArea设置文本内容时使用value属性和innerHTML属性均可
+  //txt.value = "我是新设置的内容";
+  //txt.innerHTML = "我是新设置的内容";
+  
+  var btn = document.getElementById("btn");//发布按钮
+  var list = document.getElementById("ul");
+  
+  //2 给btn添加点击事件
+  btn.onclick = function () {
+    //3 检测txt的内容
+    if (txt.value == "") {
+      alert("对不起，请输入内容");
+    } else {
+      //4 根据用户的输入内容，创建新的微博
+      var li = document.createElement("li");
+      li.innerHTML = txt.value;
+      
+      //5 将微博插入到list中
+      //当我们进行新微博插入时，需要考虑，如果list中没有微博，直接放入
+      //如果已经有了旧的微博，将这个新微博放到list中所有li的最前面
+      var lis = list.children;//获取到list中所有的子元素
+      
+      //检测lis的元素个数
+      if (lis.length == 0) {
+        list.appendChild(li);
+      } else {
+        //放入到lis[0]的前面
+        list.insertBefore(li, lis[0]);
+      }
+      
+      //使用insertBefore的特殊方式，可以对这个操作进行化简（我不喜欢）
+      //list.insertBefore(li,lis[0]);
+      
+      
+      //6 为了让用户输入更加方便， 在每次创建完毕一个微博后，将txt的内容清空
+      txt.value = "";
+    }
+  };
+  
+  
+  //如何使用微博发布一个新的消息：
+  
+  //1 第一步是在文本域中输入内容，这时我们就可以通过文本域的value属性获取到这个输入的内容
+  //2 点击发布按钮
+  //3 我们需要在底部的ul列表中创建一个新的li，用于保存新发布的微博
+  //4 将当前用户输入的内容添加到新创建的li中
+  //5 将li放入到ul中进行显示
+  //6 根据ul中li的个数，判断放置的位置,如果已经具有了微博，放到第一个微博的前面，如果没有，直接appendChild
+  //7 如果用户没有输入内容，这时不进行放入。
+  //
+
+
+</script>
+</body>
+</html>

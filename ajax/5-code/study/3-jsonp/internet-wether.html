@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>天气预报</title>
+    <style>
+        table {
+            margin-top: 20px;
+            width: 600px;
+            border-collapse: collapse;
+        }
+        
+        td,
+        th {
+            height: 50px;
+            text-align: center;
+            border: 1px solid #CCC;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="city" /> <a href="javascript:;" id="search">天气查询</a>
+    <table>
+        <thead>
+            <tr>
+                <th>日期</th>
+                <th>白天</th>
+                <th>晚上</th>
+                <th>温度</th>
+                <th>天气</th>
+                <th>风力</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/template-native.js"></script>
+    <script type="text/template" id="tmpl">
+    <%for(var i = 0 ; i < weather_data.length ; i++){%>
+        <tr>
+            <td><%=weather_data[i].date%></td>
+            <td><img src="<%=weather_data[i].dayPictureUrl%>" alt=""/></td>
+            <td><img src="<%=weather_data[i].nightPictureUrl%>" alt=""/></td>
+            <td><%weather_data[i].temperature%></td>
+            <td><%=weather_data[i].weather%></td>
+            <td><%=weather_data[i].wind%></td>
+        </tr>
+    <%};%>
+</script>
+<script>
+    $('#search').on('click',function(){
+        var city=$('#city').val()||'北京';
+        $.ajax({
+            type:'get',
+            url:'http://api.map.baidu.com/telematics/v3/weather',
+            data:{output:'json',ak:'0A5bc3c4fb543c8f9bc54b77bc155724',location:city},
+            dataType:'jsonp',
+            success:function(data){
+                // console.log(data);
+                var result=template('tmpl',data.results[0]);
+                // console.log(result);
+                $('table').html(result);
+            }
+        })
+    })
+</script>
+</body>
+
+</html>

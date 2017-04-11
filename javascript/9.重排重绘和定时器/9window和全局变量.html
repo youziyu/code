@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //全局变量实际上是window的属性
+  var num = 100;
+  //console.log(window.num);
+  //console.log(num);
+  
+  //在局部作用域中使用全局变量
+  function fun() {
+    //在局部作用域中声明了num，这时使用num使用的是局部变量num
+    var num = 1000;
+    console.log(num);
+    
+    //访问全局变量num，可以通过window.num
+    console.log(window.num);
+  }
+  fun();
+
+</script>
+</body>
+</html>

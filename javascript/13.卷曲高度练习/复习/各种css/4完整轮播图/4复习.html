@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style type="text/css">
+    * {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      border: 0;
+    }
+    
+    .all {
+      width: 500px;
+      height: 200px;
+      padding: 7px;
+      border: 1px solid #ccc;
+      margin: 100px auto;
+      position: relative;
+    }
+    
+    .screen {
+      width: 500px;
+      height: 200px;
+      /*overflow: hidden;*/
+      position: relative;
+    }
+    
+    .screen li {
+      width: 500px;
+      height: 200px;
+      overflow: hidden;
+      float: left;
+    }
+    
+    .screen ul {
+      position: absolute;
+      left: 0;
+      top: 0px;
+      width: 3000px;
+    }
+    
+    .all ol {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      line-height: 20px;
+      text-align: center;
+    }
+    
+    .all ol li {
+      float: left;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border: 1px solid #ccc;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    
+    .all ol li.current {
+      background: yellow;
+    }
+    
+    #arr {
+      display: none;
+    }
+    
+    #arr span {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      margin-top: -20px;
+      background: #000;
+      cursor: pointer;
+      line-height: 40px;
+      text-align: center;
+      font-weight: bold;
+      font-family: '黑体';
+      font-size: 30px;
+      color: #fff;
+      opacity: 0.3;
+      border: 1px solid #fff;
+    }
+    
+    #arr #right {
+      right: 5px;
+      left: auto;
+    }
+  </style>
+</head>
+<body>
+<div class="all" id='box'>
+  <div class="screen">
+    <ul>
+      <li><img src="images/1.jpg" width="500" height="200"/></li>
+      <li><img src="images/2.jpg" width="500" height="200"/></li>
+      <li><img src="images/3.jpg" width="500" height="200"/></li>
+      <li><img src="images/4.jpg" width="500" height="200"/></li>
+      <li><img src="images/5.jpg" width="500" height="200"/></li>
+    </ul>
+    <ol>
+      <!-- 动态创建的小方块，添加在这里，样式已经给写好了-->
+    </ol>
+  </div>
+  <div id="arr"><span id="left">&lt;</span><span id="right">&gt;</span></div>
+</div>
+<script>
+  //----------获取和创建-----------
+  var box = myId("box");
+  var screen = box.children[0];//可视区域
+  var list = screen.children[0];//运动的ul
+  var lisUl = list.children;//图片个数
+  var ol = screen.children[1];//放置小方块按钮
+  var arr = box.children[1];//放置箭头的父盒子
+  var arrLeft = arr.children[0];//操作的箭头
+  var arrRight = arr.children[1];//操作的箭头
+  var imgWid = screen.offsetWidth;
+  
+  
+  //1  根据图片张数创建下面的小方块
+  for (var i = 0; i < lisUl.length; i++) {
+    var li = document.createElement("li");
+    li.innerHTML = i + 1;
+    ol.appendChild(li);
+  }
+  
+  //2 获取所有ol中的li，设置默认类名
+  var lisOl = ol.children;
+  lisOl[0].className = "current";
+  
+  for (var i = 0; i < lisOl.length; i++) {
+    lisOl[i].index = i;
+    //给每个li添加事件效果
+    lisOl[i].onclick = function () {
+      //检测如果是假的第一张时点击按钮，这时抽回到第一张
+      if (pic == lisUl.length - 1) {
+        list.style.left = 0 + "px";
+      }
+      
+      
+      for (var i = 0; i < lisOl.length; i++) {
+        lisOl[i].className = "";
+      }
+      this.className = "current";
+      
+      //点击时让ul运动
+      animate(list, -this.index * imgWid);
+      
+      //让pic跟this.index同步
+      pic = this.index;
+    };
+  }
+  
+  //左右效果
+  //为了制作无缝滚动，我们需要克隆第一张图片放入到ul的最后
+  list.appendChild(lisUl[0].cloneNode(true));
+  
+  
+  var pic = 0;//滚过的图片张数
+  arrRight.onclick = function () {
+    //先检测当前list的状态
+    if (pic == lisUl.length - 1) {
+      list.style.left = 0 + "px";//抽回
+      pic = 0;
+    }
+    pic++;
+    animate(list, -pic * imgWid);
+    
+    
+    for (var i = 0; i < lisOl.length; i++) {
+      lisOl[i].className = "";
+    }
+    //检测list运动的位置，如果显示的是假的第一张，对应让lisOl中第一个按钮变色
+    if (pic == lisUl.length - 1) {
+      lisOl[0].className = "current";
+    } else {
+      lisOl[pic].className = "current";
+    }
+  };
+  
+  
+  arrLeft.onclick = function () {
+    if (pic == 0) {
+      list.style.left = -(list.offsetWidth - imgWid) + "px";
+      pic = lisUl.length - 1;
+    }
+    
+    pic--;
+    animate(list, -pic * imgWid);
+    
+    for (var i = 0; i < lisOl.length; i++) {
+      lisOl[i].className = "";
+    }
+    lisOl[pic].className = "current";
+  };
+  
+  
+  //自动播放
+  var timer = null;
+  timer = setInterval(function () {
+    arrRight.click();
+  }, 1500);
+  
+  box.onmouseover = function () {
+    arr.style.display = "block";
+    clearInterval(timer);
+  };
+  
+  box.onmouseout = function () {
+    arr.style.display = "none";
+    timer = setInterval(function () {
+      arrRight.click();
+    }, 1500);
+  };
+  
+  
+  //缓动的animate
+  function animate(tag, target) {
+    clearInterval(tag.timer);
+    tag.timer = setInterval(function () {
+      var leader = tag.offsetLeft;//取值时，会进行四舍五入
+      //var step = 10;//步长是固定值，导致运动是匀速效果
+      // 缓动公式： （目标位置 - 当前位置）/10
+      var step = (target - leader) / 10;
+      //对step进行取整操作
+      step = step > 0 ? Math.ceil(step) : Math.floor(step);
+      leader = leader + step;
+      tag.style.left = leader + "px";
+      //尽管盒子会在到达位置时停住但是我们还要清除定时器
+      if (leader == target) {
+        clearInterval(tag.timer);
+      }
+    }, 20);
+  }
+  function myId(id) {
+    return document.getElementById(id);
+  }
+</script>
+</body>
+</html>

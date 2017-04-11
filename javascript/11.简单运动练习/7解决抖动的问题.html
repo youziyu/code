@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      /*left: 50px;*/
+    }
+  </style>
+</head>
+<body>
+<button id="btn1">运动到200</button>
+<button id="btn2">运动到400</button>
+<div id="box"></div>
+<script>
+  //1 获取元素
+  var box = document.getElementById("box");
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+  var timer = null;
+  //var leftVal = 0;//手动设置box的初始值，这种操作不好维护
+  //可以使用一个属性直接获取需要的值 offsetLeft:当前元素到定位父盒子的左侧距离
+  
+  //2 点击按钮1 让box运动到200
+  btn1.onclick = function () {
+    animate(box, 200);
+  };
+  
+  
+  //点击按钮2 让box运动到400
+  btn2.onclick = function () {
+    animate(box, 400);
+  };
+  
+  /**
+   * 让某一个标签，运动到left为几的位置上
+   * @param tag 要运动的标签
+   * @param target 运动到的left值
+   */
+  function animate(tag, target) {
+    clearInterval(timer);//防止加速
+    timer = setInterval(function () {
+      //1 获取offsetLeft和step的设置
+      var leader = tag.offsetLeft;
+      var step = 7;//步数如果一直为正数，导致无法进行后退
+      //1.1 step的正负设置根据leader和target的关系
+      //step = target>leader?step:-step;
+      step = leader > target ? -step : step;//与上一种相同
+      
+      //4 给运动设置条件
+      //判断条件的修改：有时候我们设置的步数无法正好到达指定位置，可能会超出，造成抖动
+      //可以通过判断leader和target之间的距离与step的大小关系来解决
+      if (Math.abs(leader - target) > Math.abs(step)) {
+        //2 根据运动公式计算新的位置
+        leader = leader + step;
+        //3 将新的位置设置给box
+        tag.style.left = leader + "px";
+      } else {
+        //如果进入else，先设置tag的运动位置为target，然后再设置清除
+        tag.style.left = target + "px";
+        //5 设置停止
+        clearInterval(timer);
+      }
+    }, 17);
+  }
+  
+  //DOM操作所消耗的时间最低为13-16毫秒
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+    }
+    
+    /*button{*/
+    /*margin-top: 100px;*/
+    /*}*/
+  </style>
+</head>
+<body>
+<button id="btn">点击运动</button>
+<div id="box"></div>
+<script>
+  var box = document.getElementById("box");
+  var btn = document.getElementById("btn");
+  
+  var leftVal = 0;
+  var timer = null;
+  
+  //设置btn的点击事件,手动点击后让box的left值增加，进行运动
+  //  btn.onclick = function () {
+  //    //让当前位置的值增加
+  //    leftVal += 10;
+  //
+  //    //将leftVal设置给box的left属性
+  //    box.style.left = leftVal + "px";
+  //  };
+  
+  
+  //点击按钮，设置盒子进行运动
+  btn.onclick = function () {
+    //每次点击按钮开启新的定时器，为了不产生加速效果，在新定时器开始之前，先清除旧的定时器
+    clearInterval(timer);
+    
+    //可以使用定时器进行自动运动（自动修改left值）
+    timer = setInterval(function () {
+      //进行位置判断，如果没有到达指定位置才进行运动，如果到达，进行定时器清除
+      if (leftVal < 800) {
+        //让当前位置的值增加
+        leftVal += 10;
+        //将leftVal设置给box的left属性
+        box.style.left = leftVal + "px";
+      } else {
+        //如果>=400说明到达位置，清除定时器
+        clearInterval(timer);
+      }
+    }, 17);//17毫秒，运动起来十分顺滑
+  };
+
+
+</script>
+</body>
+</html>

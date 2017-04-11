@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        table {
+            width: 800px;
+            border-collapse: collapse;
+        }
+        
+        td {
+            height: 40px;
+            text-align: center;
+            border: 1px solid #CCC;
+        }
+    </style>
+</head>
+<body>
+    <button>点击加载数据</button>
+    <table>
+        <!--<tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>    -->
+    </table>
+       <!--引入jquery库-->
+    <script src="js/jquery.min.js"></script>
+    <script>
+       $('button').click(function(){
+           $.ajax({
+               type:'post',
+               url:'stars.php',
+              //    timeout:1000,//如果大于10s算超时
+               data:{},
+            //    dataType 预期服务器返回格式  建议   格式:xml  json html text javascrit  (最重要的一个jsonp)
+            dataType:'script',
+            //    请求发起前调用
+              beforeSend:function(){
+                //   所有的表单验证都在这个地方写
+                console.log('请求发起前');
+              },
+               success:function(data){
+                   console.log(data);
+               },
+               error:function(error){
+                   console.log(error);
+               },
+               complete:function(){
+                   console.log("请求完成(不论成功还是失败的)");
+               }
+           })
+       })
+    </script> 
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 200px;
+            height: 150px;
+            border: 1px solid #000;
+            float: left;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        p {
+            background-color: #ff1f30;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+</div>
+<div id="box2"></div>
+
+
+
+<script>
+    //针对这道题的解法
+    //某一个p标签在点击的时候究竟是向左移动还是向右移动可以根据他的父元素是谁来决定
+    //1 获取元素
+    //var box1 = document.getElementById("box1");
+    //var box2 = document.getElementById("box2");
+    //var ps = document.getElementsByTagName("p");
+    //2 需要给每一个p标签添加点击事件
+    //for (var i = 0; i < ps.length; i++) {
+    //    ps[i].onclick = function () {
+    //        //3 检测当前事件源的父元素
+    //        if(this.parentNode == box1){
+    //            //4 往右侧box2中移动
+    //            box2.appendChild(this);
+    //        }else{
+    //            //5 将this移动到box1
+    //            box1.appendChild(this);
+    //        }
+    //    };
+    //}
+
+
+    //假设成立法 - 通解
+    //1 获取元素
+    var box1 = document.getElementById("box1");
+    var box2 = document.getElementById("box2");
+    var ps = document.getElementsByTagName("p");
+    //在使用全局flag时，由于一个flag控制多个p的移动顺序，会导致移动位置出错
+    //我们想要的是每个人的flag值控制自己，别人不要使用我得flag
+    //var flag = true;
+
+    //2 先去给每一个p标签添加事件
+    for (var i = 0; i < ps.length; i++) {
+        //添加一个自定义属性
+        //添加一个flag，每个人是依据自身的flag变化去进行相应移动
+        ps[i].flag = true;
+
+        ps[i].onclick = function () {
+            //3 两种情况每次只可能执行一种
+            if (this.flag) {
+                box2.appendChild(this);
+                this.flag = false;
+            } else {
+                box1.appendChild(this);
+                this.flag = true;
+            }
+
+        };
+    }
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>跨域</title>
+</head>
+<body>
+	<!--请求当前网站下的文件不是跨域，是同源-->
+	<iframe id="iframe" src="./iframe.html" frameborder="0"></iframe>
+	<!--通过js操作iframe.html中的文字变成红色-->
+	<script>
+		var iframe=document.getElementById('iframe');
+		// onload事件 window.onload
+		iframe.onload=function(){
+			var contentWindow=iframe.contentWindow;
+			// console.log(contentWindow);//window
+			// document.querySelector();
+			contentWindow.document.getElementById('txt').style.color='red';
+		}
+	</script>
+</body>
+</html>

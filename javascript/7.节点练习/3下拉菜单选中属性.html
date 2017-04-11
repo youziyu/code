@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<select name="" id="">
+  <option>吃饭</option>
+  <option id="sleep">睡觉</option>
+  <option>打豆豆</option>
+</select>
+<button id="btn">点击选中睡觉</button>
+<script>
+  //设置下拉菜单选中的属性selected
+  var btn = document.getElementById("btn");
+  var sleep = document.getElementById("sleep");
+  
+  btn.onclick = function () {
+   sleep.selected = true;
+  };
+
+</script>
+</body>
+</html>

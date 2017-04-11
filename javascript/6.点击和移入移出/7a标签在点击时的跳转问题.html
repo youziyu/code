@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<a id="link" href="1复习.html">跳转到某个页面</a>
+<script>
+  //1 获取元素
+  var link = document.getElementById("link");
+  
+  //2 给a设置点击事件，弹出一个提示框
+  //由于a标签具有默认的跳转效果，尽管我们自己设置了点击事件，先执行点击事件代码后，还是会进行跳转
+  //有的时候我们不想要这个跳转效果，在自己设置的点击事件最后添加return false;
+  link.onclick = function () {
+    alert("今天天气不错");
+    
+    return false;//阻止标签的默认效果
+  };
+
+</script>
+</body>
+</html>

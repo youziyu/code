@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/font-awesome.min.css">
+  <style>
+    .view {
+      width: 560px;
+      height: 300px;
+      margin: 100px auto;
+      position: relative;
+    }
+
+    .view ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .view ul li {
+      float: left;
+      width: 112px;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: all 1s;
+      transform: rotateX(0deg);
+    }
+
+    .view li span {
+      position: absolute;
+      top: 0;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+    }
+
+    span:nth-child(1) {
+      background-image: url('./images/1.jpg');
+      transform: rotateX(90deg) translateZ(150px);
+    }
+
+    span:nth-child(2) {
+      background-image: url('./images/2.jpg');
+      transform: rotateX(180deg) translateZ(150px);
+    }
+
+    span:nth-child(3) {
+      background-image: url('./images/3.jpg');
+      transform: rotateX(270deg) translateZ(150px);
+    }
+
+    span:nth-child(4) {
+      background-image: url('./images/4.jpg');
+      transform: rotateX(360deg) translateZ(150px);
+    }
+    li:nth-child(2) span{
+      background-position: -112px;
+    }
+     li:nth-child(3) span{
+      background-position: -224px;
+    }
+     li:nth-child(4) span{
+      background-position: -336px;
+    }
+     li:nth-child(5) span{
+      background-position: -448px;
+    }
+
+    .view ul li:nth-child(2){
+      transition-delay: 0.25s;
+    }
+     .view ul li:nth-child(3){
+      transition-delay: 0.5s;
+    }
+     .view ul li:nth-child(4){
+      transition-delay: 0.75s;
+    }
+     .view ul li:nth-child(5){
+      transition-delay: 1s;
+    }
+
+    .prev,.next{
+      position: absolute;
+      top:50%;
+      transform: translateY(-50%);
+      font-size:40px;
+      text-decoration: none;
+      color:rgba(0,0,0,0.6);
+      background-color: rgba(255,255,255,0.4);
+    }
+ .prev{
+  left:0;
+ }
+ .next{
+  right:0;
+ }
+  </style>
+</head>
+
+<body>
+  <div class="view">
+    <ul>
+      <li>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </li>
+         <li>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </li>
+         <li>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </li>
+         <li>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </li>
+         <li id="last">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </li>
+    </ul>
+    <a class="prev fa fa-chevron-left" href="javascript:;"></a>
+    <a class="next fa fa-chevron-right" href="javascript:;"></a>
+  </div>
+  <script>
+    // 1.实现切割轮播图的切换
+    // 步骤:
+      // 1.获取元素  prev  next 
+      var prev=document.querySelector('.prev');
+      var next=document.querySelector('.next');
+      var aLi=document.querySelectorAll('li');
+      // 取到最后一个li
+      var lastLi=document.querySelector('ul').lastElementChild;
+      // 定义一个变量
+      var isTransition=true;
+      // 监听最后一个li 过渡结束
+      lastLi.addEventListener('transitionend',function(){
+        isTransition=true;
+      })
+
+      // 定义一个数字
+      var num=0;
+      // 2.给prev next添加点击事件
+      prev.onclick=function(){
+        //如果if语句在大括号中只有一条语句 则可以省略大括号 
+        // 0 连点两次
+        // 1.第一次点击prev按钮 
+        // 2.因为isTransition的初始值为true
+        // 3.true不等于false 所有if语句不执行
+        // 4.第二次因为 点击事件里边已经有一个isTransition=false;
+        // 5.执行if语句的时候 flase==false 所以把第二次的事件给终止了，因此不会触发
+        if(isTransition==false) return false;
+        isTransition=false;
+        num++;
+        for(var i=0;i<aLi.length;i++){
+           // 3.给li设置tranform样式  transform:rotate(1*90deg) 原生js设置transform
+          aLi[i].style.transform="rotateX("+num*90+"deg)";
+        }
+      }
+
+
+       next.onclick=function(){
+        num--;
+        for(var i=0;i<aLi.length;i++){
+           // 3.给li设置tranform样式  transform:rotate(1*90deg) 原生js设置transform
+          aLi[i].style.transform="rotateX("+num*90+"deg)";
+        }
+      }
+     
+  </script>
+</body>
+
+</html>

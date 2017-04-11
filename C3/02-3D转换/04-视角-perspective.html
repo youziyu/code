@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>perspective视角(透视)</title>
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+    }
+    
+    .outer {
+        width: 500px;
+        height: 500px;
+        margin: 100px auto;
+        /*如果想看到Z轴的效果，那么就在父元素或者自己身上添加一个perspective属性或属性方法*/
+        perspective: 100px;
+    }
+    
+    .perspective {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -100px;
+        margin-top: -100px;
+        /*perspective 视角
+        perspective(0px)眼睛就贴在屏幕上
+        */
+        transform: translateZ(0px);
+        background-color: hotpink;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="perspective">传智播客</div>
+    </div>
+</body>
+
+</html>

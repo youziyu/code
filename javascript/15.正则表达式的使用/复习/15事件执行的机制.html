@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box1 {
+      width: 400px;
+      height: 400px;
+      background-color: pink;
+    }
+    
+    #box2 {
+      width: 200px;
+      height: 200px;
+      background-color: orange;
+    }
+    
+    #box3, #box4 {
+      width: 100px;
+      height: 100px;
+      background-color: cadetblue;
+    }
+    
+    #box4 {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+<div id="box1">
+  <div id="box2">
+    <div id="box3">box3</div>
+  </div>
+</div>
+<script>
+  var box1 = document.getElementById("box1");
+  var box2 = document.getElementById("box2");
+  var box3 = document.getElementById("box3");
+  
+  //e.eventPhase 可以得到事件执行的阶段,结果为一个数值，对应不同阶段
+  //阶段1 事件捕获阶段
+  //阶段2 当前目标阶段（执行到你触发的那个元素了）
+  //阶段3 事件冒泡阶段:说明当前这个事件的执行是由事件冒泡执行的
+  
+  //（了解：知道概念即可）
+  //js事件机制的检索顺序：事件捕获 -> 当前目标阶段 -> 事件冒泡
+  //事件机制的检索是每次事件触发都会产生的
+  //我们设置的事件冒泡或者捕获只是决定是事件在那个阶段触发
+  
+  box1.addEventListener("click", function (e) {
+    console.log(e.eventPhase);
+    console.log("box1");
+  }, false);
+  box2.addEventListener("click", function (e) {
+    console.log(e.eventPhase);
+    
+    console.log("box2");
+  }, false);
+  box3.addEventListener("click", function (e) {
+    console.log(e.eventPhase);
+    
+    console.log("box3");
+  }, false);
+</script>
+</body>
+</html>

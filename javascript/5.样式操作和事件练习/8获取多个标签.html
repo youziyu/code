@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+
+</head>
+<body>
+<div>呵呵</div>
+<div>这是我</div>
+<div>呵呵</div>
+<div>呵呵</div>
+<div>呵呵</div>
+<div>呵呵</div>
+
+<script>
+  //根据标签名获取元素
+  //getElementsByTagName的获取结果是一个伪数组。
+  var divs = document.getElementsByTagName("div");
+  //divs.push();//报错，说明divs不是一个数组
+  
+  //统一操作伪数组中的所有元素
+  for (var i = 0; i < divs.length; i++) {
+    //console.log(divs[i]);
+    //设置每个标签的样式
+    divs[i].style.height = "100px";
+    divs[i].style.backgroundColor = "red";
+    divs[i].style.marginBottom = "10px";
+    
+    //我们需要让每个div的宽度呈现递增的趋势
+    divs[i].style.width = 100 + 40 * i + "px";
+    
+  }
+  
+  //divs[0].style.width = 100+0+"px";
+  //divs[1].style.width = 100+20+"px";
+  //divs[2].style.width = 100+20+20+"px";
+  //divs[3].style.width = 100+20+20+20+"px";
+  //divs[n].style.width = 100 + 20*n +"px";
+
+
+</script>
+
+
+</body>
+</html>

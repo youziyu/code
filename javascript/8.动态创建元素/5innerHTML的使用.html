@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+  var box = document.getElementById("box");
+  //box.innerHTML = "我是一个文本<span>我是一个span</span>";
+  
+  //使用innerHTML进行多次元素创建，这时会出现非常严重的效率问题
+  
+  //console.time("hehe");
+  ////向box中添加5000个div
+  //for (var i = 0; i < 2000; i++) {
+  //  box.innerHTML += "<div></div>";
+  //}
+  //console.timeEnd("hehe");//执行时间8.71秒
+  
+  
+  //在循环中多次使用innerHTML进行累加创建时效率很差
+  //使用字符串进行替换操作，可以很大的提升效率
+  //  console.time("heihei");
+  //  var str = "";
+  //  for (var i = 0; i < 5000; i++) {
+  //    str += "<div></div>";
+  //  }
+  //  box.innerHTML = str;
+  //  console.timeEnd("heihei");//25ms
+  
+  
+  //console.time("haha");
+  //for (var i = 0; i < 5000; i++) {
+  //  var div = document.createElement("div");
+  //  box.appendChild(div);
+  //}
+  //console.timeEnd("haha");//47.4ms
+
+
+</script>
+</body>
+</html>

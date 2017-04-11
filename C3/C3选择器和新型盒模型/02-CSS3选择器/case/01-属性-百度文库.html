@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>百度文库</title>
+    <style>
+        html,
+        body,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei';
+            font-size: 16px;
+            line-height: 24px;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: red;
+        }
+        /*wanlun样式*/
+        
+        ul {
+            width: 300px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+        }
+        
+        a {
+            color: #333;
+            padding-left: 20px;
+            background-repeat: no-repeat;
+            background-position: left 5px;
+        }
+        /**
+    *名称：模仿百度文库效果
+    *功能：1.当href的属性值中含有doc的时，a标签出现对应的word图标
+    *     2.当href的属性值中含有txt的时，a标签出现对应的text图标
+    *     3.当href的属性值中含有ppt的时，a标签出现对应的ppt图标
+    *     4.当href的属性值中含有pdf的时，a标签出现对应的pdf图标
+    *     5.当href的属性值中含有excel的时，a标签出现对应的excel图标
+    */
+    a[href$="doc"]{
+        background-image: url('images/doc.png');
+    }
+    a[href$="txt"]{
+        background-image: url("images/txt.png");
+    }
+ 
+     a[href$="ppt"]{
+        background-image: url("images/ppt.png");
+    }
+    a[href$="pdf"]{
+        background-image: url("images/pdf.png");
+    }
+    a[href$="excel"]{
+        background-image: url("images/excel.png");
+    }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><a href="www.baidu.com/doc/qianxi.doc">浅析Web前端开发行业的发展</a></li>
+        <li><a href="www.baidu.com/txt/Webqianduan.txt">Web前端开发前景何去何存</a></li>
+        <li><a href="www.baidu.com/ppt/ruhechengwei.ppt">如何成为一名前端开发工程师</a></li>
+        <li><a href="www.baidu.com/pdf/alibaba2016.pdf">阿里巴巴2016前端开发工程师笔试</a></li>
+        <li><a href="www.baidu.com/excel/itcastBeautifulGirl.excel">传智播客班主任颜值排行榜</a></li>
+        <li><a href="www.baidu.com/excel/itcastBeautifulGirl.txt">传智播客十大未解之谜</a></li>
+    </ul>
+</body>
+
+</html>

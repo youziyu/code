@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+<div id="box"></div>
+
+<script>
+  //第一种是在普通浏览器中 在事件处理程序的小括号中写一个参数e
+  //第二种，在ie低版本中使用window.event对象
+  
+  //事件对象的作用：记录了关于当前这一次事件触发时的一些信息
+  
+  var box = document.getElementById("box");
+  box.onmouseover = fun;
+  box.onclick = fun;
+  
+  
+  function fun(e) {
+    //type  当前事件的类型
+    //console.log(e.type);
+    //可以使用一个函数同时作为多个事件的处理程序使用
+    
+    if (e.type == "click") {
+      console.log("这是点击事件需要执行的代码");
+    } else if (e.type == "mouseover") {
+      console.log("这是移入事件需要执行的代码");
+    }
+  }
+
+
+</script>
+</body>
+</html>

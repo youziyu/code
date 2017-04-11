@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 有一个字符串
+		var html = '我叫<% name %>，我今年<% age %>岁了，性别<%sex%>，我在<% school %>学习';
+
+		// 数据
+		var data = {
+			name: '小明',
+			age: 18,
+			school: '传智番客',
+			sex: '男'
+		}
+
+      var reg = /<%\s*([^%>]\S+)\s*%>/;
+	  var match=null;
+		console.log(Boolean(null));
+		// while(match=reg.exec(html)){
+		// 	html=html.replace(match[0],data[match[1]]);
+		// }
+		// console.log(html);
+	</script>
+</body>
+</html>

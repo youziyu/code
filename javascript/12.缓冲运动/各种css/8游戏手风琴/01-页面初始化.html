@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #box {
+            width: 1090px;
+            height: 230px;
+            border: 2px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #box li {
+            width: 626px;
+            height: 230px;
+            float: left;
+            position: absolute;
+        }
+
+        #box .hd {
+            width: 116px;
+            height: 230px;
+            float: left;
+        }
+
+        #box .bd {
+            width: 510px;
+            height: 230px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li>
+            <h2 class="hd"></h2>
+            <div class="bd"></div>
+        </li>
+        <li>
+            <h2 class="hd"></h2>
+            <div class="bd"></div>
+        </li>
+        <li>
+            <h2 class="hd"></h2>
+            <div class="bd"></div>
+        </li>
+        <li>
+            <h2 class="hd"></h2>
+            <div class="bd"></div>
+        </li>
+        <li>
+            <h2 class="hd"></h2>
+            <div class="bd"></div>
+        </li>
+    </ul>
+</div>
+
+<script src="animate.js"></script>
+<script>
+
+    //1. 找对象
+    var box = document.getElementById("box");
+    var ul = box.children[0];
+    var lis = ul.children;
+    var heads = document.getElementsByClassName("hd");
+    var divs = document.getElementsByClassName("bd");
+    for (var i = 0; i < lis.length; i++) {
+        //设置hd的背景图片
+        heads[i].style.backgroundImage = "url(images/img" + (i + 1) + ".jpg)";
+        //设置db的背景图片
+        divs[i].style.backgroundImage = "url(images/pic" + (i + 1) + ".jpg)";
+
+        //设置每一个li的left值
+        if (i == 0) {
+            lis[i].style.left = "0";
+        } else {
+            lis[i].style.left = 116 * i + 510 + "px";
+        }
+
+        //给每一个li注册鼠标经过事件
+        lis[i].index = i;
+        lis[i].onmouseover = function () {
+            var idx = this.index;
+            for (var i = 0; i < lis.length; i++) {
+                if(i <= idx) {
+                    animate(lis[i], {"left":116*i});
+                }else {
+                    animate(lis[i], {"left":116*i + 510});
+                }
+            }
+        }
+
+    }
+</script>
+
+</body>
+</html>

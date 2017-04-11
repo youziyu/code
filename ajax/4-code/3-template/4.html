@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="result"></div>
+	<!--模板-->
+	<!--type属性告诉浏览器如何执行标签中的内容-->
+	<script type="text/tmpl" id="tmpl">
+		<h1><%=title %></h1>
+		<ul>
+			<% for(var i=0;i<list.length;i++){ %>
+				<li><%=list[i] %></li>
+			<% } %>
+
+		</ul>
+	</script>
+	<script src="js/template-native.js"></script>
+	<script>
+		var data = {
+			title: '标签',
+			list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
+		};
+	</script>
+	<script>
+			//  在模板引擎中  template方法 第一个参数传入的是id 第二个参数传入的是对象 
+		// 而模板里的变量是对象的属性
+
+		var result=template('tmpl',data);
+		// console.log(result);
+		document.querySelector('.result').innerHTML=result;
+	</script>
+
+</body>
+
+</html>

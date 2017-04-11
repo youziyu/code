@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0
+    }
+    
+    img {
+      vertical-align: top;
+    }
+    
+    .main {
+      margin: 0 auto;
+      width: 1000px;
+      margin-top: 10px;
+    }
+    
+    .fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  </style>
+  <script src="../jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //1 当页面滚动时，获取页面卷曲的高度   scrollTop() 获取元素的卷曲高度
+      $(window).scroll(function () {
+        //2 使用卷曲高度和顶部topPart的高度进行比較，如果卷曲高度>顶部的盒子高度，让导航定位
+        if ($(this).scrollTop() > $("#topPart").height()) {
+          $("#navBar").addClass("fixed");
+          //3 由于定位会脱标，我们需要给底部设置顶部外边距，值为导航的高+10
+          $("#mainPart").css("marginTop", $("#navBar").height() + 10 + "px");
+        } else {
+          $("#navBar").removeClass("fixed");
+          //取消掉marginTop
+          $("#mainPart").css("marginTop", "10px");
+        }
+      });
+  
+      console.log($("#topPart").width(150));
+    })
+
+
+  </script>
+</head>
+<body>
+<div class="top" id="topPart">
+  <img src="images/top.png" alt=""/>
+</div>
+<div class="nav" id="navBar">
+  <img src="images/nav.png" alt=""/>
+</div>
+<div class="main" id="mainPart">
+  <img src="images/main.png" alt=""/>
+</div>
+</body>
+</html>

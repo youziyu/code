@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    
+    .wrap {
+      width: 300px;
+      margin: 100px auto 0;
+    }
+    
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border: 1px solid #c0c0c0;
+      width: 300px;
+    }
+    
+    th,
+    td {
+      border: 1px solid #d0d0d0;
+      color: #404060;
+      padding: 10px;
+    }
+    
+    th {
+      background-color: #09c;
+      font: bold 16px "微软雅黑";
+      color: #fff;
+    }
+    
+    td {
+      font: 14px "微软雅黑";
+    }
+    
+    tbody tr {
+      background-color: #f0f0f0;
+    }
+    
+    tbody tr:hover {
+      cursor: pointer;
+      background-color: #fafafa;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <table>
+    <!--全选反选按钮所在行-->
+    <thead>
+    <tr>
+      <th>
+        <input type="checkbox" id="selectAll"/>
+      </th>
+      <th>菜名</th>
+      <th>饭店</th>
+    </tr>
+    </thead>
+    
+    <!--每一个菜的选项-->
+    <tbody id="cai">
+    <tr>
+      <td>
+        <input type="checkbox"/>
+      </td>
+      <td>红烧肉</td>
+      <td>田老师</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox"/>
+      </td>
+      <td>西红柿鸡蛋</td>
+      <td>田老师</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox"/>
+      </td>
+      <td>红烧狮子头</td>
+      <td>田老师</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox"/>
+      </td>
+      <td>日式肥牛</td>
+      <td>田老师</td>
+    </tr>
+    
+    </tbody>
+  </table>
+</div>
+<script>
+  //1 获取元素
+  var selectAll = document.getElementById("selectAll");//顶部操作的全选按钮
+  var cai = document.getElementById("cai");
+  var ipts = cai.getElementsByTagName("input");
+  
+  //2 给顶部selectAll设置点击事件
+  selectAll.onclick = function () {
+    //3 根据全选按钮的选中状态进行设置
+    for (var i = 0; i < ipts.length; i++) {
+      ipts[i].checked = selectAll.checked;
+    }
+  };
+  
+  
+  //3 操作底部的小按钮
+  //给底部的小按钮添加点击事件
+  
+  
+  for (var i = 0; i < ipts.length; i++) {
+    ipts[i].onclick = function () {
+      //假设全选按钮可以选中
+      var flag = true;
+      
+      //什么时候选中全选按钮？4个小按钮全部选中时才可以选中全选按钮
+      for (var i = 0; i < ipts.length; i++) {
+        //检测每个ipts中小按钮的状态
+        if (ipts[i].checked == false) {
+          //如果某一个小按钮没有选中，阻止全选按钮的选中
+          flag = false;
+          //如果有某一个选项没有选中，设置完false后，进行跳出，提高效率
+          break;
+        }
+      }
+      
+      //我们发现flag的值和要设置给selectAll的状态值相同
+      selectAll.checked = flag;
+    };
+  }
+  
+  
+  var arr = [1, 2, 3, 1, 2, 3];
+  //想要从arr中取出不重复的元素[1,2,3]
+  var resultArr = [];
+  resultArr[0] = arr[0];
+  
+  //遍历arr，使用arr中的元素到resultArr中进行对比
+  for (var i = 0; i < arr.length; i++) {
+    //假设arr中当前这个元素可以放入
+    var flag = true;
+    
+    //遍历resultArr
+    for (var j = 0; j < resultArr.length; j++) {
+      //使用arr[i]与resultArr中的每一个元素进行比較
+      if (resultArr[j] == arr[i]) {
+        //说明resultArr中已经含有了arr当前这个元素，阻止放入
+        flag = false;
+        break;
+      }
+    }
+    
+    //根据假设条件进行判断
+    if (flag) {
+      resultArr[resultArr.length] = arr[i];
+    }
+    
+  }
+
+
+</script>
+</body>
+</html>

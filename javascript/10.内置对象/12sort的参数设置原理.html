@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  //var arr = [4,6,3,5,2,1];
+  //arr.sort(function (a,b) {
+  //  return a-b;
+  //});
+  ////升序排列
+  //console.log(arr);
+  
+  
+  //自己封装一个排序方法
+  function sorted(arr, fn) {
+    //1 外层循环控制轮数
+    for (var i = 0; i < arr.length - 1; i++) {
+      //2 内层循环控制每一轮比較的次数
+      for (var j = 0; j < arr.length - 1 - i; j++) {
+        //3 比較当前项和后项的大小
+        //  升序  arr[j] > arr[j + 1]
+        //       arr[j] - arr[j+1] >0
+        //  降序  arr[j+1] > arr[j]
+        //        arr[j+1] - arr[j] >0
+        // 我们发现，升序和降序的判断条件的区别在于到底是 "谁减谁",所以这一步交给用户进行设置
+        if (fn(arr[j], arr[j + 1]) > 0) {
+          var temp = arr[j];
+          arr[j] = arr[j + 1];
+          arr[j + 1] = temp;
+        }
+      }
+    }
+  }
+  var arr = [4, 6, 3, 5, 2, 1];
+  sorted(arr, function (a, b) {
+    //参数a代表了前项  参数b代表了后项
+    return b - a;
+  });
+  console.log(arr);
+
+  
+  
+
+</script>
+</body>
+</html>

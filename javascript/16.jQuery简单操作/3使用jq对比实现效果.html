@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    div {
+      height: 200px;
+      background-color: pink;
+      margin-bottom: 10px;
+      display: none;
+    }
+  </style>
+  <script src="jquery-1.12.4.min.js"></script>
+  <script>
+    //入口函数的写法
+    $(document).ready(function () {
+      
+      //1 点击按钮1，设置所有div显示
+      $("#btn1").click(function () {
+        $("div").show(1000);
+      });
+      
+      //2 点击按钮2，设置文本
+      $("#btn2").click(function () {
+        $("div").text("我是div");
+      });
+    });
+  
+  </script>
+</head>
+<body>
+<button id="btn1">让div显示</button>
+<button id="btn2">给div添加文本</button>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+<script>
+
+</script>
+</body>
+</html>

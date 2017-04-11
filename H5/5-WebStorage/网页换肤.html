@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html,body{
+            width:100%;
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+    <button class="red">红色</button>
+    <button class="blue">蓝色</button>
+    <script>
+        var red=document.querySelector('.red');
+        var blue=document.querySelector('.blue');
+        // 网页换肤
+        // 步骤:
+            // 1.点击red的时候，把红色存储进loclocalStorage中  给body赋值颜色
+            // 2.点击blue的时候，把蓝色存储进loclocalStorage中  给body赋值颜色
+            // 3.当文档载入的时候，获取存储的颜色，给body赋值颜色
+
+            red.onclick=function(){
+                window.localStorage.setItem('color','red');
+                document.body.style.backgroundColor='red';
+            }
+            blue.onclick=function(){
+                window.localStorage.setItem('color','blue');
+                document.body.style.backgroundColor='blue';
+            }
+            window.onload=function(){
+                document.body.style.backgroundColor=window.localStorage.getItem('color');
+            }
+    </script>
+</body>
+</html>

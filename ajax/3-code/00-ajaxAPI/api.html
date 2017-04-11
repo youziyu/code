@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+      var xhr=new XMLHttpRequest();
+
+      xhr.open('get','api.php?name=itcast&age=10');
+      // xhr.setRequestHeader  get方式可以不写
+      xhr.send(null);
+
+      xhr.onreadystatechange=function(){
+        if(xhr.readyState==4&&xhr.status==200){
+          console.log(xhr.responseText);
+         // console.log(xhr.status);//200
+          //console.log(xhr.statusText); //OK
+
+          // xhr.getAllResponseHeaders() 获取全部响应头信息
+
+// Date: Fri, 10 Mar 2017 02:02:07 GMT
+// Server: Apache/2.2.21 (Win32) PHP/5.3.10
+// X-Powered-By: PHP/5.3.10
+// Content-Length: 6
+// Keep-Alive: timeout=5, max=99
+// Connection: Keep-Alive
+// Content-Type: text/html
+console.log(xhr.getAllResponseHeaders());
+console.log(xhr.getResponseHeader('Date'));
+        }
+      }
+  </script>
+</body>
+</html>

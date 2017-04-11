@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //1 数组的类型访问方式
+    //var arr = [1,2,3];
+    //console.log(Array.isArray(arr));//true
+    //console.log(arr instanceof Array);//true
+    //console.log(Object.prototype.toString.call(arr));//"[object Array]"
+    
+    //2 数组是一个复杂类型的数据
+    //基本类型和复杂类型的区别
+    //2.1 保存数据的个数上不同
+    //2.2 在内存中的保存方式不同
+    //    基本类型在内存单元中保存的具体的值
+    //    复杂类型在内存单元中保存的是具体值的指针（箭头，引用）
+    //2.3 基本类型和复杂类型的操作上也有所不同
+    //var num = 100;
+    //var num2 = num;//复制num的值，复制的是num的内存单元中的具体值
+    //num++;
+    //console.log(num);
+    //console.log(num2);
+    
+    //var arr = [1,2,3];
+    //var arr3 = arr;//复制的是arr的内存单元中保存的指针，arr和arr3的指针相同，指向同一个数据
+    //arr[0] = 100;
+    //console.log(arr);
+    //console.log(arr3);
+    
+    
+    //如果我们对一个复制后的引用类型进行重新赋值。这时arr3会指向新的一个数组，就不再操作arr的数据了
+    //    var arr = [1,2,3];
+    //    var arr3 = arr;
+    //
+    //    //将arr3赋值为一个新的数组
+    //    arr3 = [6,7,8];
+    //    console.log(arr);//123 678
+    //    console.log(arr3);
+    
+    
+    //函数：
+    //函数的作用：重用
+    //函数的声明方式：函数声明语句   function fun (){  }
+    //函数的执行方式：调用，调用方式 函数名();
+    //函数的参数：当一个函数中的某些值不确定时使用参数。
+    //参数的分类：形参，写在函数体的小括号中，本身没有值
+    //          实参，写在调用语句中，执行函数时将值传递给形参，进行代码执行
+    //设置函数的返回值：在函数内设置 return 数据;
+    //返回值的接受：通过函数的调用语句
+    //返回值的默认值：undefined
+    //return的作用：1返回值  2跳出函数
+    
+    //    function getSum(n, m) {
+    //      var sum = 0;
+    //      for (var i = n; i <= m; i++) {
+    //        sum += i;
+    //      }
+    //      return sum;
+    //
+    //    }
+    ////    console.log(getSum(1, 100) + 1);
+    //    var result = getSum(1,100);
+    //    console.log((result + 2) / 10);
+    
+    
+    //1 求n的阶乘   求10的阶乘
+    //    function getJC(n) {
+    //      var ji = 1;
+    //      for (var i = 1; i <= n; i++) {
+    //        ji *= i;
+    //      }
+    //      return ji;
+    //    }
+    //    //2 求1!+2!+3!+....+n!
+    //
+    //    //求1-6直接所有数的阶乘的和
+    //    function getJCSUM(n) {
+    //      var sum = 0;
+    //      for (var i = 1; i <= n; i++) {
+    //        sum += getJC(i);
+    //      }
+    //      return sum;
+    //    }
+    //    getJCSUM(2);
+    
+    
+    //    4 求一组数中的最小值
+    //    function getMin(arr) {
+    //      var min = arr[0];//假设最小值
+    //      for (var i = 0; i < arr.length; i++) {
+    //        //使用假定最小值和arr中的每个元素进行比較
+    //        if (arr[i] < min) {
+    //          min = arr[i];
+    //        }
+    //      }
+    ////     console.log(min);
+    //      return min;
+    //    }
+    //    var arr = [3, 2, 5, 1];
+    //    var minValue = getMin(arr);
+    //    console.log(minValue);
+    
+    
+    //    5 翻转数组，返回一个新数组
+    //    function reverse2(arr) {
+    ////      var arr = [1, 2, 3];
+    //      var resultArr = [];
+    //      //反向遍历arr
+    //      for (var i = arr.length - 1; i >= 0; i--) {
+    //        resultArr[resultArr.length] = arr[i];
+    //      }
+    //      return resultArr;
+    //    }
+    //    var arr = [1, 2, 3];
+    //    var result = reverse2(arr);
+    //    console.log(result);
+    //    console.log(arr);
+    
+    
+    //    6 对数组排序，从小到大
+    //    var arr = [5, 4, 3, 2, 1];
+    //    sorted(arr);
+    //    console.log(arr);
+    //
+    //    function sorted(arr) {
+    //      //外层循环控制轮数
+    //      for (var i = 0; i < arr.length - 1; i++) {
+    //        //假设当前的这一轮可以进行跳出
+    //        var flag = true;
+    //        //内层循环控制每一轮比較的次数
+    //        for (var j = 0; j < arr.length - 1 - i; j++) {
+    //          //比較当前项和后项的大小
+    //          if (arr[j] > arr[j + 1]) {
+    //            var temp = arr[j];
+    //            arr[j] = arr[j + 1];
+    //            arr[j + 1] = temp;
+    //            //阻止跳出
+    //            flag = false;
+    //          }
+    //        }
+    //        //验证假设条件
+    //        if (flag == true) {
+    //          //两种都可以
+    //          //break;
+    //          return;
+    //        }
+    //      }
+    //    }
+    
+    
+    //作用域
+    //分类：全局作用域和 局部作用域（函数内）- （函数作用域）
+    //全局变量是在全局作用域下声明的变量，在全局（任意作用域）均可以访问
+    //局部变量是声明在局部作用域下，只能在声明这个变量的局部作用域内使用
+    
+    //作用域链访问规则：
+    
+    //    function fun1() {
+    //      function fun2() {
+    //        function fun3() {
+    //          //console.log(num);//如果找到全局作用域中还是没有，报错
+    //          //num = 100;//如果任意一个作用域中都没有num的声明语句，这时相当于声明了一个全局变量
+    //          var a = b = c = 3;
+    //        }
+    //
+    //        fun3();
+    //      }
+    //
+    //      fun2();
+    //    }
+    //    fun1();
+    //    //console.log(num);
+    //    console.log(b);//3
+    //    console.log(c);//3
+    //    console.log(a);//报错
+    
+    
+    //预解析
+    //1 找到当前作用域中的var变量声明语句，将声明语句提升到当前作用域顶端，赋值语句保留在原地
+    //2 找到当前作用域中的function函数声明语句，将函数题提升到当前作用域顶端，调用语句保留在原地
+    //    var num;
+    //    function fun() {
+    //
+    //    }
+    //    //---------------
+    //    num = 100;
+    //
+    //    fun();
+    //
+    //    fun();
+    
+    
+    //变量和函数重名
+    //1 取决于变量，如果变量有赋值，这时取变量的值
+    //2 如果变量没有值，取函数体
+    
+    //    var a;
+    //    function a() {
+    //
+    //    }
+    //    //-------
+    //    a = 100;
+    //
+    //    console.log(a);//100
+    
+    
+    //js中的函数不能重名，重名的话后面的覆盖前面的
+    //    function fun() {
+    //      console.log(1);
+    //    }
+    //    function fun() {
+    //      console.log(2);
+    //    }
+    //    function fun() {
+    //      console.log(3);
+    //    }
+    
+    //js中没有重载的概念，可以通过arguments进行模拟
+    //arguments是一个伪数组：没有数组方法，但是有长度和索引
+    //arguments是函数的实参列表：保存了函数某一次调用所传入的所有实参
+    function fun() {
+      console.log(arguments);
+    }
+    fun(1, 7, 9, 2, 3);
+  
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

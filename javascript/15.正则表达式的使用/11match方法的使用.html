@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<script>
+  var str = "小明：你好，大神，你是个好人，我的邮箱是 xiaoming@qq.com," +
+    "小红：好人一生平安 xiaoHong@sina.com.cn," +
+    "李雷：谢谢大神，我要 把这个种子作为生日礼物，" +
+    "送给韩梅梅。我得邮箱是lilei@163.com," +
+    "我: 求了好久了终于找到你了，" +
+    "谢谢大神，给你跪了，我的邮箱是wuyou@itcast.cn";
+  
+  //字符串的match方法，匹配和提取
+  console.log(str.match(/\w+@\w+(\.\w+)+/g));
+  
+  //使用match设置时的注意点
+  //1 最好不要加^$
+  //2 加g(通常加g)
+  //3 返回结果是一个数组，内部为匹配到的值
+  
+  
+
+</script>
+</body>
+</html>

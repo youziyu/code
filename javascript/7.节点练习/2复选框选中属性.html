@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<input type="checkbox" id="cb">
+<button id="btn1">点击选中</button>
+<button id="btn2">点击取消选中</button>
+
+<script>
+  //设置复选框选中的属性checked
+  var cb = document.getElementById("cb");
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+
+  //点击按钮1设置选中
+  btn1.onclick = function () {
+    //设置标签的checked属性时，一般使用bool值，如果设置的值不是bool值，会进行隐式转换
+    //cb.checked = "hehehe";
+    cb.checked = true;
+  };
+  
+
+  //点击按钮2取消选中
+  btn2.onclick = function () {
+    //cb.checked = 0;
+    cb.checked = false;
+  }
+
+</script>
+</body>
+</html>

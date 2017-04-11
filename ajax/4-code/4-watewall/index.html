@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Plugin</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+			font-family: '微软雅黑';
+		}
+
+		.wrapper {
+			padding: 50px;
+		}
+
+		img {
+			display: block;
+			width: 100%;
+			height: 300px;
+		}
+
+		.items {
+			position: relative;
+		}
+
+		.item {
+			width: 228px;
+			position: absolute;
+		}
+
+		.tips {
+			width: 280px;
+			height: 40px;
+			margin: 30px auto 0;
+			text-align: center;
+			line-height: 40px;
+			background-color: #CCC;
+			border-radius: 6px;
+			font-size: 24px;
+			cursor: pointer;
+		}
+
+		.tips.loading {
+			background-color: transparent;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="items">
+		</div>
+		<p class="tips loading">正在加载...</p>
+	</div>
+	<!--引入库-->
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/template-native.js"></script>
+	<script src="./js/jquery.waterFall.js"></script>
+	<script>
+	function getData(page){
+		// 请求数据
+		$.ajax({
+			type:'post',
+			url:'data.php',
+			data:{page:page},
+			beforeSend:function(){
+				$('p.tips').text('正在加载...').addClass('loading');	
+			},
+			success:function(info){
+				console.log(info)
+				// 调用模板
+				var html=template('item',info);
+				// 添加元素
+				$('.items').append(html);
+				// 瀑布流
+				$('.items').waterFall();
+				// 缓存页码
+				$('p.tips').attr('data-page',info.page);
+			},
+			complete:function(){
+				$('p.tips').text('点此加载更多').removeClass('loading');
+			}
+		})
+	}
+	// 首次加载
+	getData(1);
+	// 下一页
+
+	$('p.tips').on('click',function(){
+		if($(this).hasClass('loading')){
+			return false;
+		}
+		// 获取页码
+		var page=$(this).attr('data-page');
+		getData(page);
+	})
+	// 滚动加载
+	$(window).on('scroll',function(){
+		var offsetTop=$('.items').offset().top;
+		var height=$('.items').height();
+		var scrollTop=$(this).scrollTop();
+		var winHeight=$(this).height();
+
+		// 计算滚动条的位置
+		var offset=offsetTop+height-scrollTop-winHeight;
+		// 判断滚动条位置并禁止重复加载
+		if(offset<=200&&$('p.tips').hasClass('loading')){
+			var page=$('p.tips').attr('data-page');
+			getData(page);
+		}
+	})
+    </script>
+</body>
+</html>

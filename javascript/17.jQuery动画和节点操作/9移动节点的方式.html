@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 200px;
+      border: 1px solid #000;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //创建元素
+      var $div = $("<div></div>");
+      $div.text("我是新创建的div");
+      
+      $("#btn").click(function () {
+        //1 使用append() 直接添加创建的元素
+        //使用append添加的元素会被添加到子节点的最后，相当于appendChild
+        //$("#box").append($div);
+        
+        //2 同时给多个元素，执行append方法，会将一个标签添加到每个指定标签内（出现多个）
+        //注意点：使用append方法向多个元素内添加时，要添加的元素不要设置id名
+        //$("div").append($(".text"));
+        
+        //3 使用append方法可以直接传入字符串
+        //$("#box").append("<span>我是新添加的span</span>");
+        
+        
+        //4 prepend() 添加到子节点的最前面
+        //$("#box").prepend($div);
+        //$("#box").prepend("<span>我是新的span</span>");
+        
+        
+        //5 after()  添加到同级的后面
+        //$("#box").after($div);
+        //$("#box").after("<div>我是新创建的div</div>");
+        
+        //6 before()  添加到同级的前面
+        //$("#box").before($div);
+        $("#box").before("<div>我是新创建的div</div>");
+        
+      })
+    });
+  </script>
+</head>
+<body>
+<button id="btn">添加</button>
+<div id="box">
+  <p>我是内部的子元素p</p>
+  <p>我是内部的子元素p</p>
+</div>
+<!--<div></div>-->
+<p class="text">我是外面的p标签</p>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+      ul{
+          margin:0;
+          padding:0;
+          list-style: none;
+      }
+      li{
+          float: left;
+          margin-right: 10px;
+          width:224px;
+          height:252px;
+          transition: all 1s;
+          
+      }
+      li:hover{
+        box-shadow: 0 3px 7px rgba(0,0,0,0.3);
+      }
+      li .top{
+          width:100%;
+          height:112px;
+          position: relative;
+      }
+      .top>img{
+          width:100%;
+          height:100%;
+      }
+      .top a {
+          position: absolute;
+          top:65px;
+          left:50%;
+          margin-left: -43px;
+          display: block;
+          width:80px;
+          height:80px;
+          border:3px solid #fff;
+          border-radius: 50%;
+          overflow: hidden;
+      }
+      .top a img{}
+      li .bottom{
+          width:100%;
+          height:calc(252px - 112px);
+      }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <div class="top">
+                <a class="atav" href="">
+                    <img src="images/logo_1.jpg" alt="">
+                </a>
+                <img src="images/item_1.jpg" alt="">
+            </div>
+            <div class="bottom"></div>
+        </li>
+         <li>
+            <div class="top">
+                <a class="atav" href="">
+                    <img src="images/logo_1.jpg" alt="">
+                </a>
+                <img src="images/item_1.jpg" alt="">
+            </div>
+            <div class="bottom"></div>
+        </li>
+         <li>
+            <div class="top">
+                <a class="atav" href="">
+                    <img src="images/logo_2.jpg" alt="">
+                </a>
+                <img src="images/item_2.jpg" alt="">
+            </div>
+            <div class="bottom"></div>
+        </li>
+         <li>
+            <div class="top">
+                <a class="atav" href="">
+                    <img src="images/logo_3.jpg" alt="">
+                </a>
+                <img src="images/item_3.jpg" alt="">
+            </div>
+            <div class="bottom"></div>
+        </li>
+
+          <li>
+            <div class="top">
+                <a class="atav" href="">
+                    <img src="images/logo_4.jpg" alt="">
+                </a>
+                <img src="images/item_4.jpg" alt="">
+            </div>
+            <div class="bottom"></div>
+        </li>
+    </ul>
+</body>
+</html>

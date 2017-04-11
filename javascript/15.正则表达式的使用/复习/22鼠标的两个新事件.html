@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+      top: 200px;
+      left: 200px;
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+  var box = document.getElementById("box");
+  
+  //onmousedown 鼠标点下时触发
+  //onmouseup 鼠标按键抬起时触发
+  
+  
+  //  //点击盒子时，获取鼠标在盒子内的坐标
+  box.onmousedown = function (e) {
+    var e = e || window.event;
+    //获取鼠标在盒子内的位置
+    var x = e.clientX - box.offsetLeft;
+    var y = e.clientY - box.offsetTop;
+    
+    //设置跟随，让鼠标坐标-鼠标在盒子内的位置
+    document.onmousemove = function (e) {
+      var e = e || window.event;
+      
+      //设置的位置为鼠标坐标 - 鼠标在盒子内的位置
+      box.style.left = e.clientX - x + "px";
+      box.style.top = e.clientY - y + "px";
+    };
+  };
+  
+  //鼠标抬起，让盒子停止跟随
+  box.onmouseup = function () {
+    //清除掉document的移动事件
+    document.onmousemove = null;
+  };
+
+
+</script>
+</body>
+</html>

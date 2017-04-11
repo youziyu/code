@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+  var box = document.getElementById("box");
+//  box.onclick = fun;
+//  box.onmouseover = fun;
+//  box.onmouseout = fun;
+//  //由于当前设置的三个事件处理程序的代码相同，可以设置为一个命名函数进行复用
+//  function fun(e) {
+//    //console.log("我执行了");
+//    //想要根据触发函数的事件类型不同，执行不同的代码，第一步是获取当前的事件类型
+//    //判断e.type
+//    //console.log(e.type);
+//    if (e.type == "click") {
+//      console.log("这是点击事件");
+//    } else if (e.type == "mouseover") {
+//      console.log("这是移入事件");
+//    } else {
+//      console.log("这是移出事件");
+//    }
+//  }
+  //事件对象：事件对象中保存关于当前事件触发时的一些信息（例如事件类型、事件触发时鼠标的坐标等等。。）
+  //事件对象的获取方式：在事件处理程序的函数体小括号中可以接受到一个参数
+  
+  //这个参数我们称为事件对象，这个对象是由事件触发时，js的事件机制给我们传递的
+  box.onclick = function (e) {
+    //事件对象中具有一个属性type，表示当前触发的事件的类型名
+    console.log(e.type);
+  };
+
+
+</script>
+</body>
+</html>

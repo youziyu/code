@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 如何定义obj
+        var obj={
+            name:'佟丽娅',
+            age:18
+        }
+        // 如何编码json
+        // var str=JSON.stringify(obj);
+       
+        console.log(evalStr);
+        var strJson='{"name":"佟丽娅","age":18}';
+        // 如何解码json
+        var objJson=JSON.parse(strJson);
+        console.log(objJson);
+         var evalStr=eval('('+strJson+')');
+         console.log(evalStr);
+    </script>
+</body>
+</html>

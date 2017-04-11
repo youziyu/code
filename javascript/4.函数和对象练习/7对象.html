@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //对象是一个非常虚的一个词汇
+    //对象在js中所代表的是一个具体的事物
+    //通过给一个事物添加描述，可以让这个事物变得具体
+    
+    //对象的声明方式 : 构造函数声明方式
+    var xiaoLi = new Object();
+    //给对象添加描述，我们将描述称为属性
+    xiaoLi.name = "小李";
+    xiaoLi.age = 18;
+    xiaoLi.gender = "男";
+    xiaoLi.xueHao = 666;
+    
+    
+    //还可以给对象添加行为，行为在js中称为方法，说白了，就是属性中保存的值为函数
+    xiaoLi.fighting = function () {
+      console.log("左勾拳");
+      console.log("右勾拳");
+      console.log("下勾拳");
+    };
+    
+    xiaoLi.sayHi = function () {
+      console.log("嗨，你好,今天天气不错");
+    };
+    
+    //调用一个对象的方法时，需要指明这个方法属于哪个对象
+    xiaoLi.fighting();
+    xiaoLi.sayHi();
+    
+  
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>

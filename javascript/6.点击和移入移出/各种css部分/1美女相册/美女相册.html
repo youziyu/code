@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body {
+            font-family: "Helvetica", "Arial", serif;
+            color: #333;
+            background-color: #ccc;
+            margin: 1em 10%;
+        }
+
+        h1 {
+            color: #333;
+            background-color: transparent;
+        }
+
+        a {
+            color: #c60;
+            background-color: transparent;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+        li {
+            float: left;
+            padding: 1em;
+            list-style: none;
+        }
+
+        #imagegallery {
+
+            list-style: none;
+        }
+
+        #imagegallery li {
+            margin: 0px 20px 20px 0px;
+            padding: 0px;
+            display: inline;
+        }
+
+        #imagegallery li a img {
+            border: 0;
+        }
+    </style>
+
+</head>
+<body>
+<h2>
+    美女画廊
+</h2>
+<a href="#">注册</a>
+<ul id="imagegallery">
+    <li><a href="images/1.jpg" title="美女A">
+        <img src="images/1-small.jpg" width="100" alt="美女1"/>
+    </a></li>
+    <li><a href="images/2.jpg" title="美女B">
+        <img src="images/2-small.jpg" width="100" alt="美女2"/>
+    </a></li>
+    <li><a href="images/3.jpg" title="美女C">
+        <img src="images/3-small.jpg" width="100" alt="美女3"/>
+    </a></li>
+    <li><a href="images/4.jpg" title="美女D">
+        <img src="images/4-small.jpg" width="100" alt="美女4"/>
+    </a></li>
+</ul>
+
+<div style="clear:both"></div>
+<!--用于显示大图-->
+<img id="image" src="images/placeholder.png" alt="" width="450px"/>
+<!--用于显示这个图片的名称-->
+<p id="des">选择一个图片</p>
+<script>
+    //1.操作的时候操作的是上面的4个小盒子
+    //2.可以使用img也可以使用a
+    //3.但是img中的图片地址为小图，如果设置给image的大图区域会不清晰
+    //4.我们发现a标签上具有高清大图的图片地址
+    //5.所以我们将事件添加给a标签
+    //6.a标签点击会跳转，我们需要阻止跳转return false;
+
+    //制作效果三步走：
+    //1 要操作谁？
+    var imagegallery = document.getElementById("imagegallery");
+    var links = imagegallery.getElementsByTagName("a");
+    var image = document.getElementById("image1111");
+    var des = document.getElementById("des");
+
+    for (var i = 0; i < links.length; i++) {
+        //2 如何操作？点击
+        links[i].onclick = function () {
+            //3 操作效果什么样？
+            //3.1 修改大图的图片地址
+            image.src = this.href;
+            des.innerHTML = this.title;
+
+            //3.2 取消默认的跳转效果
+            return false;
+        };
+    }
+
+
+</script>
+</body>
+</html>

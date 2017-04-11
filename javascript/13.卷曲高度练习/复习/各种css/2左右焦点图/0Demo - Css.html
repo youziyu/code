@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body, ul, ol, li, img {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    #box {
+      width: 490px;
+      height: 270px;
+      padding: 5px;
+      position: relative;
+      border: 1px solid #ccc;
+      margin: 100px auto 0;
+    }
+    
+    .ad {
+      width: 490px;
+      height: 270px;
+      /*overflow: hidden;*/
+      position: relative;
+    }
+    
+    #box img {
+      width: 490px;
+    }
+    
+    .ad ol {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+    
+    .ad ol li {
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      border: 1px solid #ccc;
+      text-align: center;
+      background: #fff;
+      float: left;
+      margin-right: 10px;
+      cursor: pointer;
+      _display: inline;
+    }
+    
+    .ad ol li.current {
+      background: yellow;
+    }
+    
+    .ad ul li {
+      float: left;
+    }
+    
+    .ad ul {
+      position: absolute;
+      top: 0;
+      width: 2940px;
+    }
+    
+    .ad ul li.current {
+      display: block;
+    }
+    
+    #arr {
+      display: none;
+    }
+    
+    #arr span {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      margin-top: -20px;
+      background: #000;
+      cursor: pointer;
+      line-height: 40px;
+      text-align: center;
+      font-weight: bold;
+      font-family: '黑体';
+      font-size: 30px;
+      color: #fff;
+      opacity: 0.3;
+      border: 1px solid #fff;
+    }
+    
+    #arr #right {
+      right: 5px;
+      left: auto;
+    }
+  </style>
+</head>
+<body>
+<div id="box" class="all">
+  <div class="ad">
+    <ul id="imgs">
+      <li><img src="images/1.jpg"/></li>
+      <li><img src="images/2.jpg"/></li>
+      <li><img src="images/3.jpg"/></li>
+      <li><img src="images/4.jpg"/></li>
+      <li><img src="images/5.jpg"/></li>
+    </ul>
+  </div>
+  <div id="arr">
+    <span id="left">&lt;</span>
+    <span id="right">&gt;</span>
+  </div>
+</div>
+
+<script>
+  //分析，这个效果中，没有一个值可以代表滚过的图片张数
+  //我们可以在点击的时候，记录当前滚过的图片张数
+  
+  //1 获取元素
+  var box = document.getElementById("box");
+  var ad = box.children[0];//可视区域，用于获取图片宽度
+  var imgWid = ad.offsetWidth;
+  var list = ad.children[0];//ul，需要进行运动
+  var lis = list.children;
+  var arr = box.children[1];
+  var arrLeft = arr.children[0];//左按钮
+  var arrRight = arr.children[1];//右按钮
+  
+  //2 设置arr的显示与隐藏
+  box.onmouseover = function () {
+    arr.style.display = "block";
+  };
+  
+  box.onmouseout = function () {
+    arr.style.display = "none";
+  };
+  
+  var pic = 0;
+  
+  arrRight.onclick = function () {
+    if (pic < lis.length - 1) {
+      pic++;
+      var target = -pic * imgWid;
+      animate(list, target);
+    }
+  };
+  
+  
+  arrLeft.onclick = function () {
+    if (pic > 0) {
+      pic--;
+      var target = -pic * imgWid;
+      animate(list, target);
+    }
+  };
+  
+  
+  function animate(tag, target) {
+    clearInterval(tag.timer);
+    tag.timer = setInterval(function () {
+      var leader = tag.offsetLeft;
+      var step = 9;
+      step = leader > target ? -step : step;
+      if (Math.abs(leader - target) > Math.abs(step)) {
+        leader = leader + step;
+        tag.style.left = leader + "px";
+      } else {
+        tag.style.left = target + "px";
+        clearInterval(tag.timer);
+      }
+    }, 17);
+  }
+</script>
+</body>
+</html>

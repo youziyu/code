@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<button id="btn">按钮</button>
+<script>
+  var btn = document.getElementById("btn");
+  //区域1 相当于小明书写的代码
+  btn.onclick = function () {
+    console.log("这是小明的垃圾代码");
+  };
+  
+  //区域2 相当于我书写的代码
+  //btn.onclick = function () {
+  //  console.log("这是我的代码");
+  //};
+  function myCode() {
+    console.log("这是我的代码");
+  }
+  
+  //问题：简单事件添加会造成后设置的事件覆盖先设置的事件
+  //解决：我们可以通过检测，来实现多个事件同时执行
+  
+  //如果检测btn是否已经含有点击事件？
+  //检测某个事件的值，如果是函数，说明添加过事件，如果没有，说明没添加过事件
+  
+  addClick(btn, myCode);
+  addClick(btn, function () {
+    console.log("我是新设置的代码");
+  });
+  
+  function addClick(tag, myCode) {
+    var oldClick = tag.onclick;
+    if (typeof oldClick == "function") {
+      //说明设置过了事件。我们需要让新的事件代码（我得代码）和旧的事件代码（小明的）都执行
+      //设置一个新的点击事件
+      tag.onclick = function () {
+        oldClick();//旧的事件内容执行
+        myCode();//新的事件内容执行
+      };
+    } else {
+      tag.onclick = myCode;
+    }
+  }
+
+</script>
+</body>
+</html>

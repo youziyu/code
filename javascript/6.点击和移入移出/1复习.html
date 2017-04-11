@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    //如果在head中获取元素，由于body中的标签还未生成，所以无法获取
+    //解决方式1 使用入口函数
+    //window.onload = function () {
+    //};
+  </script>
+</head>
+<body>
+
+<div id="box">
+  我是box的文本
+  <span id="sp">我是sp</span>
+</div>
+<script>
+  //DOM document object model 文档对象模型：让我们可以操作页面上的标签
+  
+  //1 获取元素 元素/页面元素/标签
+  //根据id名获取元素：document.getElementById("id名");
+  
+  //2 获取的位置
+  //解决方式2 将script写到body的最底部，这时所有的标签都会在之前加载
+  
+  //3 样式操作
+  //3.1 要操作样式必须先获取元素
+  //var box = document.getElementById("box");
+  //var sp = document.getElementById("sp");//box原始的内部子标签span
+  //给旧的sp添加事件,使用innerHTML+=设置后，我们发现尽管sp还是存在（假的）但是没有了事件
+  //说明新的sp和旧的sp不是同一个标签
+  //sp.onclick = function () {
+  //  alert(1);
+  //};
+  
+  //3.2 要操作样式必须先.style，然后在操作具体的某一个样式
+  //3.3 设置的样式值必须是字符串，如果有单位，加单位
+  //box.style.width = "100px";
+  
+  //4 文本操作 innerHTML
+  //4.1 使用innerHTML可以操作一个标签的内部内容（纯文本，标签）
+  //console.log(box.innerHTML);
+  //box.innerHTML = "我是新的内容<div>我是子div</div>";
+  
+  //4.2 使用innerHTML进行设置时，会将原有的内容进行覆盖
+  
+  //4.3 解决覆盖的方式:尽管使用+=的方式可以解决被覆盖的问题，旧的内容和新的内容是完全不同的，只不过长得一样
+  //box.innerHTML = box.innerHTML + "我是新的内容<div>我是子div</div>"
+  box.innerHTML += "我是新的内容<div>我是子div</div>"
+  
+  //再次获取sp，与之前获取的sp进行比較
+//  var newSp = document.getElementById("sp");
+//
+//  console.log(sp == newSp);
+
+
+</script>
+</body>
+</html>

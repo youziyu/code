@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<button id="btn">按钮</button>
+<script>
+  var btn = document.getElementById("btn");
+  //新的事件添加方式不会产生覆盖的问题
+  //添加事件监听
+  // 标签.addEventListener(事件类型,事件处理程序) 事件类型不需要加on
+  btn.addEventListener("click", fun);
+  btn.addEventListener("click", function () {
+    //事件处理程序
+    console.log("我是第2次设置的事件代码");
+  });
+  btn.addEventListener("click", function () {
+    //事件处理程序
+    console.log("我是第3次设置的事件代码");
+  });
+  
+  function fun() {
+    //事件处理程序
+    console.log("我是第一次设置的事件代码");
+  }
+  
+  //移除方式 标签.removeEventListener(事件类型，事件处理程序)
+  //移除时需要执行事件处理程序，指定的事件处理程序的函数必须与设置时是同一个(必须是一个函数，长得一样不行)
+  btn.removeEventListener("click", fun);
+
+
+</script>
+</body>
+</html>

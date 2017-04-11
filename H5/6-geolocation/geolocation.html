@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <p></p>
+  <script>
+    // 判断浏览器是否支持定位接口  纬度40.05764046256465经度116.32948913997778
+      if(window.navigator.geolocation){
+        // 如果支持，那么就使用定位的方法来获取信息
+        window.navigator.geolocation.getCurrentPosition(function(position){
+          // 如果chrome定位不成功 那就换浏览器  edge绝对成功
+           document.querySelector('p').innerHTML='纬度'+position.coords.latitude+'经度'+position.coords.longitude;
+        },function(error){
+          // 把错误信息的内容写入p标签
+          document.querySelector('p').innerHTML=error.message
+        },{
+          // 配置信息 一把省略不写
+          // 超时   单位是毫秒
+          timeout:1000
+        })
+      }
+  </script>
+</body>
+</html>

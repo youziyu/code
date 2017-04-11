@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+
+<script>
+    var box = document.getElementById("box");
+
+
+    box.onclick = function () {
+        //不能同时修改多个属性
+//        animate(box, "width", 400);
+//        animate(box, "height", 400);
+
+        //同时更改多个属性
+        animate(box, {
+            "width": 350,
+            "height": 650,
+            "left": 400,
+            "top": 200
+        })
+    }
+
+    //今天我想要改宽度
+    function animate(tag, datas) {
+        clearInterval(tag.timer);
+        tag.timer = setInterval(function () {
+            //假设可以清除
+            var flag = true;
+            //取出data里面的每一个要修改的样式
+            for (var k in datas) {
+                //k 属性名 - 就是要修改的样式名 - attr
+                //datas[k] - 属性值 - target
+                //下列代码只能修改某一个样式属性
+                var leader = parseInt(getStyle(tag, k)) || 0;// NaN || 0
+                var target = datas[k];
+                var step = (target - leader) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                leader = leader + step;
+                //设置的是什么，就是改的什么
+                tag.style[k] = leader + "px";
+                //如果有任意一个属性没有到达指定位置，就需要阻止清除
+                if (leader != target) {
+                    flag = false;
+                }
+            }
+
+            //由于判断清除设置在内部，如果有任意一个属性到达了指定位置，就会清除
+            //但是可能其他属性还没有到达位置
+            if (flag) {
+                clearInterval(tag.timer);
+            }
+        }, 17);
+    }
+
+    //获取left
+    //第一个问题，是获取的结果带单位
+    //第二个问题，是如果没有设置初始值，获取结果是"auto"
+    // 如果你没有设置默认值，代表你心里想的是默认值为0
+    //    console.log(getStyle(box, "left"));
+
+
+    function getStyle(tag, attr) {
+        //if(tag.currentStyle){
+        //    return tag.currentStyle[attr];
+        //}else{
+        //    return getComputedStyle(tag,null)[attr];
+        //}
+        return tag.currentStyle ? tag.currentStyle[attr] : getComputedStyle(tag, null)[attr];
+    }
+
+
+    var obj = {
+        n1: 1,
+        n2: 2,
+        n3: 3,
+        n4: 4
+    };
+
+    for (var k in obj) {
+        obj[k] += 1;
+
+    }
+
+    console.log(obj);
+
+</script>
+</body>
+</html>

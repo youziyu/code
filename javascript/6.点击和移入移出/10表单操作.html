@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<input id="ipt" type="text" value="我是input的内容">
+<script>
+  //输入框的文本设置不使用innerHTML，而是使用自带的value属性
+  
+  var ipt = document.getElementById("ipt");
+  
+  //1 获取输入框的内容
+  //console.log(ipt.value);
+  
+  //2 设置输入框的内容
+  //ipt.value = "我是ipt的新的内容";
+  
+  //3 关于输入框的两个事件
+  
+  //3.1 获取焦点，当鼠标点击输入框时，光标在输入框中跳动  onfocus
+  ipt.onfocus = function () {
+    //清空输入框的内容
+    this.value = "";
+  };
+  
+  //3.2 失去焦点 在获取焦点的状态下，点击其他位置，光标就不再跳动了  onblur
+  ipt.onblur = function () {
+    //还原输入框的内容为原始内容
+    this.value = "我是input的内容";
+  };
+
+
+</script>
+</body>
+</html>

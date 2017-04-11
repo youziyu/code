@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<button id="stop">停止</button>
+<script>
+  //timeout定时器
+  //setTimeout(); 在一段时间后执行设置的代码(设置定时器开始记时)
+  //第一个参数为函数，第二个参数为延迟的事件，单位为毫秒
+  //返回值为当前定时器的id（标识）
+  
+  //时间到达后执行一次函数内的代码
+  var timer = setTimeout(function () {
+    //时间到了要执行的代码
+    console.log("呵呵，我执行了");
+  }, 3000);
+  
+  //clearTimeout()  可以清除指定的定时器（关掉）
+  //参数为指定定时器的id
+  var btn = document.getElementById("stop");
+  btn.onclick = function () {
+    clearTimeout(timer);
+  };
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script src="jquery-1.12.4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      //筛选选择器
+      //children()   $("ul>li")
+      // $("ul").children(".li").text("我是li");
+      
+      //使用筛选选择器的操作灵活性更强
+      $("ul").css("backgroundColor", "red").children(".li").text("我是li").css("backgroundColor", "blue");
+      
+      //jQ的第二个特性：链式编程
+      
+      
+    });
+  </script>
+</head>
+<body>
+<ul>
+  <li class="li"></li>
+  <li class="li"></li>
+  <li class="li"></li>
+  <li></li>
+  <li></li>
+</ul>
+</body>
+</html>

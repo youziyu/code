@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>属性选择器</title>
+    <style>
+        /*清除浏览器默认样式*/
+        
+        body,
+        html,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        /*我的样式*/
+        
+        ul {
+            width: 400px;
+            margin: 0 auto;
+        }
+        
+        li {
+            height: 40px;
+        }
+        
+        a {
+            font-size: 20px;
+            line-height: 22px;
+            color: #333;
+        }
+        /*1. 想让a标签中属性href完全等于a.mp3的a标签的文字变成红色*/
+        /*a[href="a.mp3"]{
+            color:red;
+        }*/
+        /*2.让a标签中属性href的值以b开头的a标签变成红色*/
+        /*a[href^="b"]{
+            color:red;
+        }*/
+        /*3.让a标签中属性href的值以t结尾的文字变成红色*/
+        /*a[href$="t"]{
+            color:blue;
+        }*/
+        /*4.选择到href属性的值含有m的元素文字变成红色*/
+        a[href*="m"]{
+            color:pink;
+        }
+        /*5.选择到元素中含有href属性的元素文字成红色*/
+        a[href]{
+            color:hotpink;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><a href="a.mp3">a.mp3是一个音频文件</a></li>
+        <li><a href="b.mp3">b.mp3是一个音频文件</a></li>
+
+        <li><a href="a.mp4">a.mp4是一个视频文件</a></li>
+        <li><a href="b.mp4">b.mp4是一个视频文件</a></li>
+
+        <li><a href="a.rmvb">a.rmvb是一个视频文件</a></li>
+        <li><a href="b.rmvb">b.rmvb是一个视频文件</a></li>
+
+        <li><a href="a.txtm">a.txt是一个文本文件</a></li>
+        <li><a href="b.txt">b.txt是一个文本文件</a></li>
+
+        <li><a>b.pdf是一个pdf文件</a></li>
+    </ul>
+</body>
+
+</html>

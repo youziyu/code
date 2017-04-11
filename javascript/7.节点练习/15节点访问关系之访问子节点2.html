@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+
+<div id="box">
+  <span></span>
+  <p>p1</p>
+  <p>p2</p>
+  <p>p3</p>
+</div>
+<script>
+  //获取box内部的子节点
+  var box = document.getElementById("box");
+  
+  //1 获取第一个子节点  firstChild  获取结果可能会包含换行和空格
+  //console.log(box.firstChild);
+  
+  //2 获取第一个元素子节点/子元素节点  firstElementChild
+  //console.log(box.firstElementChild);
+  
+  //2.1 firstElementChild在ie9以下不支持，可以使用children操作替换
+  //box.children[0].innerHTML = "我是第一个元素子节点";
+  //console.log(box.children[0]);
+  
+  //3 获取最后一个子节点  lastChild  获取结果可能会包含换行和空格
+  //console.log(box.lastChild);
+  
+  //4 获取最后一个元素子节点  lastElementChild
+  //console.log(box.lastElementChild);
+
+  //4.1 firstElementChild在ie9以下不支持
+  //可以使用children进行替换，虽然操作写法比较长，但是比没有强
+  console.log(box.children[box.children.length - 1]);
+
+</script>
+</body>
+</html>

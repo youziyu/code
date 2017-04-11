@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body, ul, ol, li, img {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    #box {
+      width: 490px;
+      height: 270px;
+      padding: 5px;
+      position: relative;
+      border: 1px solid #ccc;
+      margin: 100px auto 0;
+    }
+    
+    .ad {
+      width: 490px;
+      height: 270px;
+      /*overflow: hidden;*/
+      position: relative;
+    }
+    
+    #box img {
+      width: 490px;
+    }
+    
+    .ad ol {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+    
+    .ad ol li {
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      border: 1px solid #ccc;
+      text-align: center;
+      background: #fff;
+      float: left;
+      margin-right: 10px;
+      cursor: pointer;
+      _display: inline;
+    }
+    
+    .ad ol li.current {
+      background: yellow;
+    }
+    
+    .ad ul li {
+      float: left;
+    }
+    
+    .ad ul {
+      position: absolute;
+      top: 0;
+      width: 2940px;
+    }
+    
+    .ad ul li.current {
+      display: block;
+    }
+    
+    #arr {
+      display: none;
+    }
+    
+    #arr span {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      margin-top: -20px;
+      background: #000;
+      cursor: pointer;
+      line-height: 40px;
+      text-align: center;
+      font-weight: bold;
+      font-family: '黑体';
+      font-size: 30px;
+      color: #fff;
+      opacity: 0.3;
+      border: 1px solid #fff;
+    }
+    
+    #arr #right {
+      right: 5px;
+      left: auto;
+    }
+  </style>
+</head>
+<body>
+<div id="box" class="all">
+  <div class="ad">
+    <ul id="imgs">
+      <li><img src="images/1.jpg"/></li>
+      <li><img src="images/2.jpg"/></li>
+      <li><img src="images/3.jpg"/></li>
+      <li><img src="images/4.jpg"/></li>
+      <li><img src="images/5.jpg"/></li>
+    </ul>
+  </div>
+  <div id="arr">
+    <span id="left">&lt;</span>
+    <span id="right">&gt;</span>
+  </div>
+</div>
+
+<script>
+  //简单轮播图：在控制运动时使用的是按钮的索引值控制
+  //左右焦点图：在控制运动时，需要使用一个变量进行计数（记录滚过图片张数）
+  
+  //功能实现：
+  //1 获取元素
+  var box = document.getElementById("box");
+  var ad = box.children[0];//可视区域
+  var imgWid = ad.offsetWidth;//一张图片的宽度
+  var list = ad.children[0];//需要进行运动的列表
+  var lisLen = list.children.length;
+  var arrBox = box.children[1];//左右箭头的父盒子
+  var arrLeft = arrBox.children[0];
+  var arrRight = arrBox.children[1];
+  
+  //2 设置arrBox的显示与隐藏
+  box.onmouseover = function () {
+    arrBox.style.display = "block";
+  };
+  
+  box.onmouseout = function () {
+    arrBox.style.display = "none";
+  };
+  
+  //3 点击右按钮
+  var picCount = 0;//记录滚过的图片张数
+  
+  arrRight.onclick = function () {
+    //picCount必须小于4时才可以进行滚动，必须有一个最后一张显示在可视区域中
+    if (picCount < lisLen - 1) {
+      //设置picCount++
+      picCount++;
+      //使用picCount作为运动的参考值，计算出list需要运动到的位置
+      var target = -picCount * imgWid;
+      animate(list, target);
+    }
+  };
+  
+  
+  //4 点击左按钮
+  arrLeft.onclick = function () {
+    if(picCount>0){
+      //制作点击效果时，先让list可以运动，然后再观察运动的最大(小)位置，再进行条件设置
+      picCount--;
+      //计算要运动到的位置
+      var target = -picCount * imgWid;
+      animate(list,target);
+  
+    }
+  };
+  
+  
+  //animate的第二个参数表示运动结束后，left的最终值为target
+  function animate(tag, target) {
+    //由于防止加速的代码在animate执行开始时，会将前面调用的animate所开启的定时器进行清除
+    //导致前面的调用无法执行运动。
+    //如果每个元素的运动是使用一个独立的timer进行标识，这时就不会出现这个问题
+    //我们可以使用自定义属性进行定时器的保存
+    clearInterval(tag.timer);//防止加速
+    tag.timer = setInterval(function () {
+      //1 获取offsetLeft和step的设置
+      var leader = tag.offsetLeft;
+      var step = 10;//步数如果一直为正数，导致无法进行后退
+      //1.1 step的正负设置根据leader和target的关系
+      //step = target>leader?step:-step;
+      step = leader > target ? -step : step;//与上一种相同
+      
+      //4 给运动设置条件
+      //判断条件的修改：有时候我们设置的步数无法正好到达指定位置，可能会超出，造成抖动
+      //可以通过判断leader和target之间的距离与step的大小关系来解决
+      if (Math.abs(leader - target) > Math.abs(step)) {
+        //2 根据运动公式计算新的位置
+        leader = leader + step;
+        //3 将新的位置设置给box
+        tag.style.left = leader + "px";
+      } else {
+        //如果进入else，先设置tag的运动位置为target，然后再设置清除
+        tag.style.left = target + "px";
+        //5 设置停止
+        clearInterval(tag.timer);
+      }
+    }, 17);
+  }
+
+</script>
+</body>
+</html>

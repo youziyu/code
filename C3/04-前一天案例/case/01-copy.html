@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul{
+      list-style: none;
+
+    }
+    li{
+      width:225px;
+      /*height:255px;*/
+      box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+      float: left;
+      margin-right: 15px;
+    }
+    .top{
+      width:100%;
+      height:110px;
+      position: relative;
+    }
+    .top > img{
+      width:225px;
+      height:110px;
+    }
+    .top a{
+      position: absolute;
+      width:80px;
+      height:80px;
+      border:4px solid #fff;
+      border-radius: 50%;
+      box-sizing: border-box;
+      overflow: hidden;
+      left:50%;
+      margin-left: -40px;
+      bottom:-40px;
+    }
+    .bottom{
+      width:100%;
+      /*calc  计算  一定要在运算符的两边加空格 + - * / */
+      height:calc(255px - 110px);
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li>
+      <div class="top">
+        <a href="javascript:;"><img src="./images/logo_2.jpg" alt=""></a>
+        <img src="./images/item_1.jpg" alt="">
+      </div>
+      <div class="bottom"></div>
+    </li>
+      <li>
+      <div class="top">
+        <a href="javascript:;"><img src="./images/logo_2.jpg" alt=""></a>
+        <img src="./images/item_1.jpg" alt="">
+      </div>
+      <div class="bottom"></div>
+    </li>
+      <li>
+      <div class="top">
+        <a href="javascript:;"><img src="./images/logo_2.jpg" alt=""></a>
+        <img src="./images/item_1.jpg" alt="">
+      </div>
+      <div class="bottom"></div>
+    </li>
+      <li>
+      <div class="top">
+        <a href="javascript:;"><img src="./images/logo_2.jpg" alt=""></a>
+        <img src="./images/item_1.jpg" alt="">
+      </div>
+      <div class="bottom"></div>
+    </li>
+      <li>
+      <div class="top">
+        <a href="javascript:;"><img src="./images/logo_2.jpg" alt=""></a>
+        <img src="./images/item_1.jpg" alt="">
+      </div>
+      <div class="bottom"></div>
+    </li>
+  </ul>
+</body>
+
+</html>

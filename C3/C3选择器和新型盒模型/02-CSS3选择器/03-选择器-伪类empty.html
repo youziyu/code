@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>伪类empty</title>
+    <style>
+        /*CSSReset*/
+        
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft YaHei";
+        }
+        /*wanlum的样式*/
+        
+        .iphone {
+            margin: 0 auto;
+            width: 375px;
+            height: 671px;
+            position: relative;
+            background-image: url('images/IMG_2953.PNG');
+            background-size: 375px 700px;/*设置背景大小的属性*/
+            background-repeat: no-repeat;
+        }
+        
+        .iphone a {
+            position: absolute;
+            bottom: 0;
+            right: 117px;
+            width: 58px;
+            height: 58px;
+            border-radius: 8px;
+
+            }
+        
+        span {
+            position: absolute;
+            top: -9px;
+            right: -9px;
+            width: 22px;
+            height: 22px;
+            background-color: red;
+            text-align: center;
+            line-height: 22px;
+            color: #fff;
+            border-radius: 50%;
+        }
+        span:empty{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="iphone">
+        <a href="">
+            <span>5</span>
+        </a>
+    </div>
+</body>
+
+</html>

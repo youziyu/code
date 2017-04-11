@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    div {
+      width: 100px;
+      height: 100px;
+    }
+    .colorRed{
+      background-color: red;
+    }
+    .colorBlue{
+      background-color: blue;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(document).ready(function () {
+      //为什么要有类名操作
+      
+      //1 添加类名  addClass()  只会添加新的类名，不会对原有类名进行覆盖
+      //$("#box").addClass("box");//单个添加
+      //$("#box").addClass("box colorRed");//多个添加
+      
+      //2 移除指定类名  removeClass() 设置类名时的顺序不需要考虑
+      //$("#box").removeClass("old");//单个移除
+      //$("#box").removeClass("old box");//多个移除
+      //$("#box").removeClass("old fl");//多个移除不需要考虑原本的类名顺序
+      
+      
+      //3 切换类名 toggleClass();
+      //如果标签具有指定类名，则进行移除，如果没有某个指定的类名，则进行添加
+//      $("#box").toggleClass("fl");
+//      $("#box").toggleClass("box");
+//      $("#box").toggleClass("box fl");
+      
+      //点击box，设置两种不同颜色
+      //$("#box").click(function () {
+      //  $(this).toggleClass("colorRed colorBlue");
+      //});
+      
+      //4 检测是否拥有类名  hasClass()  返回值为bool值
+      //console.log($("#box").hasClass("old1"));//false
+      //console.log($("#box").hasClass("old"));//true
+  
+      //如果同时检测多个类名是否存在，必须保证检测的顺序和设置的顺序相同
+      //但是这一点我们无法保证，所以通常不使用这种方式。
+      //console.log($("#box").hasClass("box old"));
+  
+      //对多个标签同时进行类名检测， 只要有任意一个标签具有类名，就会返回true
+      //这种检测，不准确，所以一般不使用
+      //console.log($("div").hasClass("box"));
+      
+      //我们使用时，通常使用单个标签的单个类名进行检测
+    });
+  </script>
+</head>
+<body>
+<!--<div id="box" class="old box fl"></div>-->
+
+<!--<div id="box" class="colorRed">点我切换颜色</div>-->
+
+<div></div>
+<div class="box"></div>
+<div></div>
+<div></div>
+<div></div>
+
+</body>
+</html>

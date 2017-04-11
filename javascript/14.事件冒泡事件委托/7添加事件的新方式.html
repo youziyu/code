@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+</head>
+<body>
+<button id="btn">按钮</button>
+
+<script>
+  var btn = document.getElementById("btn");
+  
+  //addEventListener  添加事件监听
+  //ie9以下不支持
+  //标签.addEventListener(eventType,fn);
+  //事件类型不加on
+  
+  btn.addEventListener("click", function () {
+    console.log("今天天气不错1");
+  });
+  
+  btn.addEventListener("click", fun);
+  
+  btn.addEventListener("click", function () {
+    console.log("今天天气不错3");
+  });
+  
+  
+  //移出事件监听: 参数必须与设置时完全一致(事件处理程序必须是同一个函数)
+  btn.removeEventListener("click", fun);
+  
+  function fun() {
+    console.log("今天天气不错2");
+  }
+</script>
+</body>
+</html>

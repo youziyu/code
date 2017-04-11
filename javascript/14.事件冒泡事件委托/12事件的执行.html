@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box1 {
+      width: 400px;
+      height: 400px;
+      background-color: #ff89d9;
+    }
+    
+    #box2 {
+      width: 200px;
+      height: 200px;
+      background-color: #164dff;
+    }
+    
+    #box3 {
+      width: 100px;
+      height: 100px;
+      background-color: #dbffa7;
+    }
+    
+    #box4 {
+      width: 100px;
+      height: 100px;
+      background-color: #50ffeb;
+    }
+  </style>
+</head>
+<body>
+<div id="box1">
+  <div id="box2">
+    <div id="box3">box3</div>
+    <div id="box4">box4</div>
+  </div>
+</div>
+
+<script>
+  //获取三个元素，设置点击事件
+  var box1 = document.getElementById("box1");
+  var box2 = document.getElementById("box2");
+  var box3 = document.getElementById("box3");
+  var box4 = document.getElementById("box4");
+  
+  
+  //事件在执行时必经的几个阶段
+  //事件捕获阶段，从外往里走，如果事件设置捕获时执行，在执行捕获阶段时进行触发
+  //触发当前事件的阶段：具体你操作的那个元素触发事件
+  //事件冒泡阶段，从内往外走，如果事件设置冒泡时执行，在执行冒泡阶段时进行触发
+</script>
+</body>
+</html>

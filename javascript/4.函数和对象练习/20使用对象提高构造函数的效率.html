@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>今天天气不错</title>
+  <script>
+    
+    //1 创建一个构造函数。用于创建多个学生对象
+    function CreateStu(name) {
+      //2 设置创建出来的对象的属性和方法
+      this.name = name;
+      this.sayHi = obj.sayHi;
+      this.learning = obj.learning;
+      this.learningMath = obj.learningMath;
+    }
+    
+    var obj = {};
+    obj.sayHi = function () {
+      console.log("哈喽，我是一个男生");
+    };
+    
+    obj.learning = function () {
+      console.log("我今天学习了构造函数的使用，好简单");
+    }
+    
+    obj.learningMath = function () {
+      console.log("我今天学习了构造函数的使用，好简单");
+    }
+    
+    //3 使用CreateStu创建对象
+    var stu1 = new CreateStu("张三");
+    stu1.sayHi();
+    stu1.learning();
+    
+    var stu2 = new CreateStu("李四");
+    stu2.sayHi();
+    stu2.learning();
+  
+  
+  </script>
+</head>
+<body>
+
+</body>
+</html>
